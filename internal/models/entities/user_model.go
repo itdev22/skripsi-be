@@ -62,9 +62,20 @@ type Company struct {
 	Email     string     `json:"email"`
 	Phone     string     `json:"phone"`
 	LogoURL   string     `json:"logo_url"`
-	CreatedAt time.Time  `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt time.Time  `json:"updatedAt"`
+	CreatedAt time.Time  `json:"createdAt" gorm:"column:createdAt; default:current_timestamp"`
+	UpdatedAt time.Time  `json:"updatedAt"  gorm:"column:updatedAt" `
 	Customers []Customer `json:"customer" gorm:"foreignKey:CompanyID"`
+}
+
+func (c *Company) TableName() string {
+	return "company"
+}
+
+func (u *Company) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
 }
 
 // Customer model
