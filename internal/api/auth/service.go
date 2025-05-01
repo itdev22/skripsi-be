@@ -49,5 +49,4 @@ func (r *AuthServiceStruct) LoginAuthService(LoginRequest LoginRequest) (*dto.Lo
 	loginAuthDTO := dto.ModelToLoginAuth(token, *user)
 
 	return loginAuthDTO, nil
-
 }
