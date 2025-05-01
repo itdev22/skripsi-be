@@ -48,5 +48,39 @@ func (r *AuthServiceStruct) LoginAuthService(LoginRequest LoginRequest) (*dto.Lo
 	}
 	loginAuthDTO := dto.ModelToLoginAuth(token, *user)
 
+	r.repository.UpdateTokenUserByID(user.ID, token)
+
+	return loginAuthDTO, nil
+}
+
+func (r *AuthServiceStruct) VerifyAuthService(LoginRequest LoginRequest) (*dto.LoginAuthDTO, error) {
+	// Service logic here
+	user, err := r.repository.GetEmailAuthRepository(LoginRequest)
+
+	if err != nil {
+		// Handle error
+		return nil, err
+	}
+
+	// Check if the user exists
+	if user.ID == "" {
+		return nil, gorm.ErrRecordNotFound
+	}
+	// Check if the password is correct
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(LoginRequest.Password)); err != nil {
+		return nil, err
+	}
+
+	userDTO := dto.ModelToUser(*user)
+	// Return the user data
+
+	token, err := helpers.CreateToken(userDTO.ID, userDTO.Role)
+	if err != nil {
+		return nil, err
+	}
+	loginAuthDTO := dto.ModelToLoginAuth(token, *user)
+
+	r.repository.UpdateTokenUserByID(user.ID, token)
+
 	return loginAuthDTO, nil
 }

@@ -183,6 +183,7 @@ type User struct {
 	Name      string    `json:"name" gorm:"default:null"`
 	Password  string    `json:"password"`
 	Role      UserRole  `json:"role"`
+	Token     string    `json:"token" gorm:"default:null"`
 	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp; column:createdAt"`
 	UpdatedAt time.Time `json:"updatedAt" gorm:"column:updatedAt" omitempty"`
 	Log       []Log     `json:"log" gorm:"foreignKey:UserID"`

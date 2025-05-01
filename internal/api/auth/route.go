@@ -2,6 +2,7 @@ package authapi
 
 import (
 	"skripsi-be/internal/config/database"
+	"skripsi-be/internal/helpers"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -13,4 +14,5 @@ func AuthRoute(app fiber.Router) {
 	handler := NewAuthHandler(service)
 
 	app.Post("/login", handler.LoginAuthHandler)
+	app.Get("/", helpers.VerifyToken, handler.LoginAuthHandler)
 }

@@ -99,7 +99,6 @@ model logs {
   action    String
   createdAt DateTime @default(now())
   updatedAt DateTime
-  user      users     @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "log_ibfk_1")
 
   @@index([user_id], map: "user_id")
 }
@@ -169,10 +168,9 @@ model users {
   name      String?
   password  String
   role      user_role
-  token     String?
   createdAt DateTime  @default(now())
   updatedAt DateTime?
-  log       logs[]
+  token     String?   @db.Text
 }
 
 enum user_role {
