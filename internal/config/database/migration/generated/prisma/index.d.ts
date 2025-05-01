@@ -14873,7 +14873,7 @@ export namespace Prisma {
     role: $Enums.user_role
     token: string | null
     createdAt: Date
-    updatedAt: Date
+    updatedAt: Date | null
     _count: UsersCountAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
@@ -14938,7 +14938,7 @@ export namespace Prisma {
       role: $Enums.user_role
       token: string | null
       createdAt: Date
-      updatedAt: Date
+      updatedAt: Date | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -16982,7 +16982,7 @@ export namespace Prisma {
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
     token?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
-    updatedAt?: DateTimeFilter<"users"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     log?: LogsListRelationFilter
   }
 
@@ -16994,7 +16994,7 @@ export namespace Prisma {
     role?: SortOrder
     token?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     log?: logsOrderByRelationAggregateInput
     _relevance?: usersOrderByRelevanceInput
   }
@@ -17010,7 +17010,7 @@ export namespace Prisma {
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
     token?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
-    updatedAt?: DateTimeFilter<"users"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     log?: LogsListRelationFilter
   }, "id" | "email">
 
@@ -17022,7 +17022,7 @@ export namespace Prisma {
     role?: SortOrder
     token?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    updatedAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
     _min?: usersMinOrderByAggregateInput
@@ -17039,7 +17039,7 @@ export namespace Prisma {
     role?: Enumuser_roleWithAggregatesFilter<"users"> | $Enums.user_role
     token?: StringNullableWithAggregatesFilter<"users"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"users"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"users"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
   }
 
   export type accountsCreateInput = {
@@ -17963,7 +17963,7 @@ export namespace Prisma {
     role: $Enums.user_role
     token?: string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string | null
     log?: logsCreateNestedManyWithoutUserInput
   }
 
@@ -17975,7 +17975,7 @@ export namespace Prisma {
     role: $Enums.user_role
     token?: string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string | null
     log?: logsUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -17987,7 +17987,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     log?: logsUpdateManyWithoutUserNestedInput
   }
 
@@ -17999,7 +17999,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     log?: logsUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -18011,7 +18011,7 @@ export namespace Prisma {
     role: $Enums.user_role
     token?: string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type usersUpdateManyMutationInput = {
@@ -18022,7 +18022,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type usersUncheckedUpdateManyInput = {
@@ -18033,7 +18033,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -18824,6 +18824,17 @@ export namespace Prisma {
     not?: NestedEnumuser_roleFilter<$PrismaModel> | $Enums.user_role
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type LogsListRelationFilter = {
     every?: logsWhereInput
     some?: logsWhereInput
@@ -18881,6 +18892,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumuser_roleFilter<$PrismaModel>
     _max?: NestedEnumuser_roleFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type transfersCreateNestedManyWithoutAccounts_transfers_from_account_idToaccountsInput = {
@@ -19283,6 +19308,10 @@ export namespace Prisma {
     set?: $Enums.user_role
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type logsUpdateManyWithoutUserNestedInput = {
     create?: XOR<logsCreateWithoutUserInput, logsUncheckedCreateWithoutUserInput> | logsCreateWithoutUserInput[] | logsUncheckedCreateWithoutUserInput[]
     connectOrCreate?: logsCreateOrConnectWithoutUserInput | logsCreateOrConnectWithoutUserInput[]
@@ -19518,6 +19547,17 @@ export namespace Prisma {
     not?: NestedEnumuser_roleFilter<$PrismaModel> | $Enums.user_role
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedEnumuser_roleWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.user_role | Enumuser_roleFieldRefInput<$PrismaModel>
     in?: $Enums.user_role[]
@@ -19526,6 +19566,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumuser_roleFilter<$PrismaModel>
     _max?: NestedEnumuser_roleFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput = {
@@ -20109,7 +20163,7 @@ export namespace Prisma {
     role: $Enums.user_role
     token?: string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type usersUncheckedCreateWithoutLogInput = {
@@ -20120,7 +20174,7 @@ export namespace Prisma {
     role: $Enums.user_role
     token?: string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type usersCreateOrConnectWithoutLogInput = {
@@ -20147,7 +20201,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type usersUncheckedUpdateWithoutLogInput = {
@@ -20158,7 +20212,7 @@ export namespace Prisma {
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
     token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type assetsCreateWithoutReport_assetsInput = {

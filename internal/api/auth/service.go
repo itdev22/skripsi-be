@@ -1,6 +1,13 @@
 package authapi
 
-import "skripsi-be/internal/models/entities"
+import (
+	"skripsi-be/internal/helpers"
+	"skripsi-be/internal/models/dto"
+	"skripsi-be/internal/models/entities"
+
+	"golang.org/x/crypto/bcrypt"
+	"gorm.io/gorm"
+)
 
 type AuthServiceInterface interface {
 	LoginAuthService() (*entities.User, error)
@@ -14,15 +21,33 @@ func NewAuthService(repository *AuthRepositoryStruct) *AuthServiceStruct {
 	return &AuthServiceStruct{repository}
 }
 
-func (r *AuthServiceStruct) LoginAuthService(LoginRequest LoginRequest) (*entities.User, error) {
+func (r *AuthServiceStruct) LoginAuthService(LoginRequest LoginRequest) (*dto.LoginAuthDTO, error) {
 	// Service logic here
-	user, err := r.repository.LoginAuthRepository(LoginRequest)
+	user, err := r.repository.GetEmailAuthRepository(LoginRequest)
 
 	if err != nil {
 		// Handle error
 		return nil, err
 	}
 
-	return user, nil
+	// Check if the user exists
+	if user.ID == "" {
+		return nil, gorm.ErrRecordNotFound
+	}
+	// Check if the password is correct
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(LoginRequest.Password)); err != nil {
+		return nil, err
+	}
+
+	userDTO := dto.ModelToUser(*user)
+	// Return the user data
+
+	token, err := helpers.CreateToken(userDTO.ID, userDTO.Role)
+	if err != nil {
+		return nil, err
+	}
+	loginAuthDTO := dto.ModelToLoginAuth(token, *user)
+
+	return loginAuthDTO, nil
 
 }

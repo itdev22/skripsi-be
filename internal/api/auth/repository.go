@@ -18,7 +18,7 @@ func NewAuthRepository(db *gorm.DB) *AuthRepositoryStruct {
 	return &AuthRepositoryStruct{db}
 }
 
-func (db *AuthRepositoryStruct) LoginAuthRepository(LoginRequest LoginRequest) (*entities.User, error) {
+func (db *AuthRepositoryStruct) GetEmailAuthRepository(LoginRequest LoginRequest) (*entities.User, error) {
 	// Implement the logic to get a user by ID from the database
 
 	user := &entities.User{}

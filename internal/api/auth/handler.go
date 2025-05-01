@@ -2,6 +2,7 @@ package authapi
 
 import (
 	"skripsi-be/internal/api/common/validation"
+	"skripsi-be/internal/helpers"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -35,7 +36,7 @@ func (s AuthHandlerStruct) LoginAuthHandler(c *fiber.Ctx) error {
 	user, err := s.service.LoginAuthService(*request)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": "Internal server error",
+			"error": err.Error(),
 		})
 	}
 	if user == nil {
@@ -44,5 +45,5 @@ func (s AuthHandlerStruct) LoginAuthHandler(c *fiber.Ctx) error {
 		})
 	}
 	// Return the user data
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{})
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Login successful", user)
 }

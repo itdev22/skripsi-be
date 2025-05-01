@@ -180,11 +180,11 @@ type Transfers struct {
 type User struct {
 	ID        string    `json:"id" gorm:"primaryKey"`
 	Email     string    `json:"email" gorm:"unique"`
-	Name      *string   `json:"name" gorm:"default:null"`
+	Name      string    `json:"name" gorm:"default:null"`
 	Password  string    `json:"password"`
 	Role      UserRole  `json:"role"`
-	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt time.Time `json:"updatedAt"`
+	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp; column:createdAt"`
+	UpdatedAt time.Time `json:"updatedAt" gorm:"column:updatedAt" omitempty"`
 	Log       []Log     `json:"log" gorm:"foreignKey:UserID"`
 }
 

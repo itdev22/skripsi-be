@@ -49,6 +49,9 @@ func (v XValidator) Validate(data interface{}) []ErrorResponse {
 
 func ValidationRequest(payload any) []string {
 	err := validate.Struct(payload)
+	if err == nil {
+		return nil
+	}
 	validationErrors := err.(validator.ValidationErrors)
 	if len(validationErrors) > 0 {
 		var errorMessages []string
