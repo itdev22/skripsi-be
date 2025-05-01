@@ -1,0 +1,187 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model accounts {
+  id                                            String      @id
+  name                                          String
+  createdAt                                     DateTime    @default(now())
+  updatedAt                                     DateTime
+  transfers_transfers_from_account_idToaccounts transfers[] @relation("transfers_from_account_idToaccounts")
+  transfers_transfers_to_account_idToaccounts   transfers[] @relation("transfers_to_account_idToaccounts")
+}
+
+model archive_installation {
+  id          String    @id
+  price       Float
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime
+  customer_id String?
+  names       String
+  customer    customer? @relation(fields: [customer_id], references: [id], onUpdate: Restrict, map: "archive_installation_ibfk_1")
+
+  @@index([customer_id], map: "archive_installation_ibfk_1")
+}
+
+model assets {
+  id            String         @id
+  name          String
+  quantity      Int
+  price         Float
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime
+  report_assets report_assets?
+}
+
+model company {
+  id        String     @id
+  name      String
+  url       String
+  email     String
+  phone     String
+  logo_url  String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime
+  customer  customer[]
+}
+
+model customer {
+  id                   String                 @id
+  email                String
+  phone                String
+  address              String
+  installation_date    DateTime
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime
+  city                 String
+  code_postal          String
+  company_id           String
+  country              String
+  fullname             String
+  group_id             String
+  location             String
+  password             String
+  state_region         String
+  surname              String
+  tag                  String
+  archive_installation archive_installation[]
+  company              company                @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
+  groups               groups                 @relation(fields: [group_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
+
+  @@index([company_id], map: "company_id")
+  @@index([group_id], map: "customer_ibfk_2")
+}
+
+model device {
+  id        String   @id
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
+
+model groups {
+  id        String     @id
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime
+  customer  customer[]
+}
+
+model logs {
+  id        String   @id
+  user_id   String
+  action    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  user      users    @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "log_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model products {
+  id          String   @id
+  name        String
+  price       BigInt
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+}
+
+model report_assets {
+  id          String   @id
+  description String
+  quantity    BigInt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  assets      assets   @relation(fields: [id], references: [id], onUpdate: Restrict, map: "report_assets_ibfk_1")
+
+  @@index([id], map: "report_assets_ibfk_1")
+}
+
+model report_cash {
+  id          String   @id
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  credit      BigInt
+  debit       BigInt
+  description String
+}
+
+model transactions {
+  id          String            @id
+  account_id  String
+  date        DateTime
+  description String
+  amount      BigInt
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime
+  type        transactions_type
+
+  @@index([account_id], map: "transactions_account_id_fkey")
+}
+
+model transfers {
+  id                                           String   @id
+  from_account_id                              String
+  to_account_id                                String
+  date                                         DateTime
+  description                                  String
+  amount                                       BigInt
+  tags                                         String
+  createdAt                                    DateTime @default(now())
+  updatedAt                                    DateTime
+  accounts_transfers_from_account_idToaccounts accounts @relation("transfers_from_account_idToaccounts", fields: [from_account_id], references: [id], onUpdate: Restrict)
+  accounts_transfers_to_account_idToaccounts   accounts @relation("transfers_to_account_idToaccounts", fields: [to_account_id], references: [id], onUpdate: Restrict)
+
+  @@index([from_account_id], map: "transfers_from_account_id_fkey")
+  @@index([to_account_id], map: "transfers_to_account_id_fkey")
+}
+
+model users {
+  id        String    @id
+  email     String    @unique
+  name      String?
+  password  String
+  role      user_role
+  token     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  log       logs[]
+}
+
+enum user_role {
+  ADMIN
+  TECHNICIAN
+  FINANCE
+}
+
+enum transactions_type {
+  DEBIT
+  CREDIT
+}
