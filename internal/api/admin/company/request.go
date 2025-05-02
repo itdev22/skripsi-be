@@ -7,3 +7,7 @@ type CreateAdminCompanyRequest struct {
 	Phone   string `json:"phone" validate:"required"`
 	LogoUrl string `json:"logo_url" validate:"required"`
 }
+
+type IdAdminCompanyRequest struct {
+	Id string `json:"name" validate:"required"`
+}

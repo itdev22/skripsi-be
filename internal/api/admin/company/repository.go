@@ -24,7 +24,7 @@ func (r *AdminCompanyRepositoryStruct) GetAllAdminCompanyRepository() (*[]entiti
 	return companies, nil
 }
 
-func (r *AdminCompanyRepositoryStruct) GetByIDAdminCompanyRepository(id int) (*entities.Company, error) {
+func (r *AdminCompanyRepositoryStruct) GetByIDAdminCompanyRepository(id IdAdminCompanyRequest) (*entities.Company, error) {
 	company := &entities.Company{}
 	r.db.First(&company, id)
 	if company.ID == "" {

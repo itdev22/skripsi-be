@@ -21,6 +21,14 @@ func (s *AdminCompanyServiceStruct) GetAllAdminCompanyService() (*[]entities.Com
 	return companies, nil
 }
 
+func (s *AdminCompanyServiceStruct) GetByIdAdminCompanyService(request IdAdminCompanyRequest) (*entities.Company, error) {
+	companies, err := s.repository.GetByIDAdminCompanyRepository(request)
+	if err != nil {
+		return nil, err
+	}
+	return companies, nil
+}
+
 func (s *AdminCompanyServiceStruct) CreateAdminCompanyService(request CreateAdminCompanyRequest) {
 	s.repository.CreateAdminCompanyRepository(request)
 }

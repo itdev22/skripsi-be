@@ -24,6 +24,21 @@ func (h *AdminCompanyHandlerStruct) GetAllAdminCompanyHandler(c *fiber.Ctx) erro
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Get All Admin Company", companies)
 }
 
+func (h *AdminCompanyHandlerStruct) GetByIdAdminCompanyHandler(c *fiber.Ctx) error {
+	companyId := c.Params("id")
+	if companyId == "" {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Company ID is required", nil)
+	}
+	request := &IdAdminCompanyRequest{}
+	request.Id = companyId
+	companies, err := h.service.GetByIdAdminCompanyService(*request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusInternalServerError, false, "Get Admin Company Error", err)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Get Admin Company", companies)
+}
+
 func (h *AdminCompanyHandlerStruct) CreateAdminCompanyHandler(c *fiber.Ctx) error {
 	request := &CreateAdminCompanyRequest{}
 	c.BodyParser(request)

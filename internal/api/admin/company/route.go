@@ -15,5 +15,6 @@ func AdminCompanyRoute(app fiber.Router) {
 
 	app.Use(helpers.VerifyToken)
 	app.Get("/", handler.GetAllAdminCompanyHandler)
+	app.Get("/:id", handler.GetByIdAdminCompanyHandler)
 	app.Post("/", handler.CreateAdminCompanyHandler)
 }
