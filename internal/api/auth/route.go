@@ -14,5 +14,5 @@ func AuthRoute(app fiber.Router) {
 	handler := NewAuthHandler(service)
 
 	app.Post("/login", handler.LoginAuthHandler)
-	app.Get("/", helpers.VerifyToken, handler.LoginAuthHandler)
+	app.Post("/verify", helpers.VerifyToken, handler.VerifyAuthHandler)
 }
