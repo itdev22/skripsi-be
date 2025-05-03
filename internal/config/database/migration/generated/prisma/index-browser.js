@@ -255,6 +255,7 @@ exports.Prisma.UsersScalarFieldEnum = {
   name: 'name',
   password: 'password',
   role: 'role',
+  phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   token: 'token'
@@ -365,6 +366,7 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   email: 'email',
   name: 'name',
   password: 'password',
+  phone: 'phone',
   token: 'token'
 };
 exports.transactions_type = exports.$Enums.transactions_type = {

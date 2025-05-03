@@ -14663,6 +14663,7 @@ export namespace Prisma {
     name: string | null
     password: string | null
     role: $Enums.user_role | null
+    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
     token: string | null
@@ -14674,6 +14675,7 @@ export namespace Prisma {
     name: string | null
     password: string | null
     role: $Enums.user_role | null
+    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
     token: string | null
@@ -14685,6 +14687,7 @@ export namespace Prisma {
     name: number
     password: number
     role: number
+    phone: number
     createdAt: number
     updatedAt: number
     token: number
@@ -14698,6 +14701,7 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
     token?: true
@@ -14709,6 +14713,7 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
     token?: true
@@ -14720,6 +14725,7 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
+    phone?: true
     createdAt?: true
     updatedAt?: true
     token?: true
@@ -14804,6 +14810,7 @@ export namespace Prisma {
     name: string | null
     password: string
     role: $Enums.user_role
+    phone: string | null
     createdAt: Date
     updatedAt: Date | null
     token: string | null
@@ -14832,6 +14839,7 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     role?: boolean
+    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     token?: boolean
@@ -14845,12 +14853,13 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     role?: boolean
+    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     token?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "createdAt" | "updatedAt" | "token", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "phone" | "createdAt" | "updatedAt" | "token", ExtArgs["result"]["users"]>
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
@@ -14861,6 +14870,7 @@ export namespace Prisma {
       name: string | null
       password: string
       role: $Enums.user_role
+      phone: string | null
       createdAt: Date
       updatedAt: Date | null
       token: string | null
@@ -15238,6 +15248,7 @@ export namespace Prisma {
     readonly name: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
     readonly role: FieldRef<"users", 'user_role'>
+    readonly phone: FieldRef<"users", 'String'>
     readonly createdAt: FieldRef<"users", 'DateTime'>
     readonly updatedAt: FieldRef<"users", 'DateTime'>
     readonly token: FieldRef<"users", 'String'>
@@ -15750,6 +15761,7 @@ export namespace Prisma {
     name: 'name',
     password: 'password',
     role: 'role',
+    phone: 'phone',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     token: 'token'
@@ -15908,6 +15920,7 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     password: 'password',
+    phone: 'phone',
     token: 'token'
   };
 
@@ -16844,6 +16857,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"users"> | string | null
     password?: StringFilter<"users"> | string
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
+    phone?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     token?: StringNullableFilter<"users"> | string | null
@@ -16855,6 +16869,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrder
     role?: SortOrder
+    phone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     token?: SortOrderInput | SortOrder
@@ -16870,6 +16885,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"users"> | string | null
     password?: StringFilter<"users"> | string
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
+    phone?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     token?: StringNullableFilter<"users"> | string | null
@@ -16881,6 +16897,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrder
     role?: SortOrder
+    phone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     token?: SortOrderInput | SortOrder
@@ -16898,6 +16915,7 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"users"> | string | null
     password?: StringWithAggregatesFilter<"users"> | string
     role?: Enumuser_roleWithAggregatesFilter<"users"> | $Enums.user_role
+    phone?: StringNullableWithAggregatesFilter<"users"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
     token?: StringNullableWithAggregatesFilter<"users"> | string | null
@@ -17830,6 +17848,7 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
@@ -17841,6 +17860,7 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
@@ -17852,6 +17872,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17863,6 +17884,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17874,6 +17896,7 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
+    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
@@ -17885,6 +17908,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17896,6 +17920,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18710,6 +18735,7 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
+    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
@@ -18721,6 +18747,7 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
+    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
@@ -18732,6 +18759,7 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
+    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder

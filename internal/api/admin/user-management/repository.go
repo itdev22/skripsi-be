@@ -1,7 +1,10 @@
 package usermanagement
 
 import (
+	"skripsi-be/internal/models/dto"
 	"skripsi-be/internal/models/entities"
+
+	"github.com/jinzhu/copier"
 
 	"gorm.io/gorm"
 )
@@ -17,7 +20,20 @@ type AdminUserManagementRepositoryStruct struct {
 func NewAdminUserManagementRepository(db *gorm.DB) *AdminUserManagementRepositoryStruct {
 	return &AdminUserManagementRepositoryStruct{db}
 }
-func (r *AdminUserManagementRepositoryStruct) GetUserByID(request IdAdminUserManagementRequest) (*entities.User, error) {
+func (r *AdminUserManagementRepositoryStruct) GetAllAdminUserManagementRepository() (*[]dto.UserDTO, error) {
+	// Simulate a database call
+	users := []entities.User{}
+	r.db.Find(&users)
+
+	// Mapping to dto.User
+
+	userDTOs := &[]dto.UserDTO{}
+	copier.Copy(&userDTOs, &users)
+
+	return userDTOs, nil
+}
+
+func (r *AdminUserManagementRepositoryStruct) GetByIdAdminUserManagementRepository(request IdAdminUserManagementRequest) (*entities.User, error) {
 	// Simulate a database call
 	user := entities.User{}
 	r.db.First(&user, "id = ?", request.Id)

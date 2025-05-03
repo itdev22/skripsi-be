@@ -195,6 +195,7 @@ type User struct {
 	Password  string    `json:"password"`
 	Role      UserRole  `json:"role"`
 	Token     string    `json:"token" gorm:"default:null"`
+	Phone     string    `json:"phone"`
 	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp; column:createdAt"`
 	UpdatedAt time.Time `json:"updatedAt" gorm:"column:updatedAt" omitempty"`
 	Log       []Log     `json:"log" gorm:"foreignKey:UserID"`

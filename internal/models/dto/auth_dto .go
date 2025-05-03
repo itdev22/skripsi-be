@@ -11,11 +11,10 @@ func ModelToLoginAuth(token string, user entities.User) *LoginAuthDTO {
 	return &LoginAuthDTO{
 		Token: token,
 		User: UserDTO{
-			ID:       user.ID,
-			Name:     user.Name,
-			Email:    user.Email,
-			Password: user.Password,
-			Role:     string(user.Role),
+			ID:    user.ID,
+			Name:  user.Name,
+			Email: user.Email,
+			Role:  string(user.Role),
 		},
 	}
 }

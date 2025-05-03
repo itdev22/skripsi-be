@@ -14,18 +14,22 @@ func NewAdminUserManagementHandler(service *AdminUserManagementServiceStruct) *A
 	return &AdminUserManagementHandlerStruct{service}
 }
 
-func (h *AdminUserManagementHandlerStruct) GetUserManagement(c *fiber.Ctx) error {
+func (h *AdminUserManagementHandlerStruct) GetAllAdminUserManagementHandler(c *fiber.Ctx) error {
 	// Implement the logic to get user management details
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", nil)
+	User, err := h.service.GetAllAdminUserManagementService()
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "User Not Found", nil)
+	}
 
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get All User", User)
 }
 
-func (h *AdminUserManagementHandlerStruct) GetByIDAdminUserManagement(c *fiber.Ctx) error {
+func (h *AdminUserManagementHandlerStruct) GetByIDAdminUserManagementHandler(c *fiber.Ctx) error {
 	id := c.Params("id")
 	request := IdAdminUserManagementRequest{}
 	request.Id = id
 
-	h.service.GetUserByID(request)
+	h.service.GetByIdAdminUserManagementService(request)
 
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", nil)
 }
