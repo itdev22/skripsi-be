@@ -48,7 +48,7 @@ func (s AuthHandlerStruct) LoginAuthHandler(c *fiber.Ctx) error {
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Login successful", user)
 }
 
-func (h *AuthHandlerStruct) VerifyAuthHandler() error {
+func (h *AuthHandlerStruct) VerifyAuthHandler(c *fiber.Ctx) error {
 
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", "")
 }
