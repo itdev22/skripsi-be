@@ -50,3 +50,23 @@ func (r *AdminCompanyRepositoryStruct) CreateAdminCompanyRepository(request Crea
 
 	return nil, nil
 }
+
+func (r *AdminCompanyRepositoryStruct) UpdateAdminCompanyRepository(request UpdateAdminCompanyRequest) (*entities.Company, error) {
+	company := &entities.Company{}
+
+	r.db.First(&company, "id = ?", request.Id)
+
+	company.Name = request.Name
+	company.Email = request.Email
+	company.Phone = request.Phone
+	company.URL = request.URL
+	company.LogoURL = request.LogoUrl
+
+	tx := r.db.Save(company)
+
+	if tx.Error != nil {
+		return nil, tx.Error
+	}
+
+	return nil, nil
+}

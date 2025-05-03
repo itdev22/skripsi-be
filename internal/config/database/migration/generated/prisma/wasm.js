@@ -152,6 +152,7 @@ exports.Prisma.CompanyScalarFieldEnum = {
   email: 'email',
   phone: 'phone',
   logo_url: 'logo_url',
+  description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -254,9 +255,9 @@ exports.Prisma.UsersScalarFieldEnum = {
   name: 'name',
   password: 'password',
   role: 'role',
-  token: 'token',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  token: 'token'
 };
 
 exports.Prisma.SortOrder = {
@@ -291,7 +292,8 @@ exports.Prisma.companyOrderByRelevanceFieldEnum = {
   url: 'url',
   email: 'email',
   phone: 'phone',
-  logo_url: 'logo_url'
+  logo_url: 'logo_url',
+  description: 'description'
 };
 
 exports.Prisma.customerOrderByRelevanceFieldEnum = {

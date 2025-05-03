@@ -41,13 +41,37 @@ func (h *AdminCompanyHandlerStruct) GetByIdAdminCompanyHandler(c *fiber.Ctx) err
 
 func (h *AdminCompanyHandlerStruct) CreateAdminCompanyHandler(c *fiber.Ctx) error {
 	request := &CreateAdminCompanyRequest{}
-	c.BodyParser(request)
-	err := validation.ValidationRequest(request)
+	err := c.BodyParser(request)
 	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Error Parsing Data", err)
+	}
+
+	errValidation := validation.ValidationRequest(request)
+	if errValidation != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Validation Error", err)
 	}
 
 	h.service.CreateAdminCompanyService(*request)
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Create Admin Company", nil)
 
+}
+
+func (h *AdminCompanyHandlerStruct) UpdateAdminCompanyHandler(c *fiber.Ctx) error {
+	request := &UpdateAdminCompanyRequest{}
+
+	id := c.Params("id")
+	err := c.BodyParser(request)
+	request.Id = id
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Error Parsing Data", err)
+	}
+
+	errValidation := validation.ValidationRequest(request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Validation Error", err)
+	}
+
+	h.service.UpdateAdminCompanyService(*request)
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Data Company", "")
 }

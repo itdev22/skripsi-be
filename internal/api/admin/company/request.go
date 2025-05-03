@@ -9,5 +9,10 @@ type CreateAdminCompanyRequest struct {
 }
 
 type IdAdminCompanyRequest struct {
-	Id string `json:"name" validate:"required"`
+	Id string `json:"id" validate:"required"`
+}
+
+type UpdateAdminCompanyRequest struct {
+	IdAdminCompanyRequest
+	CreateAdminCompanyRequest
 }

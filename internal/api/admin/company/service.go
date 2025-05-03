@@ -32,3 +32,7 @@ func (s *AdminCompanyServiceStruct) GetByIdAdminCompanyService(request IdAdminCo
 func (s *AdminCompanyServiceStruct) CreateAdminCompanyService(request CreateAdminCompanyRequest) {
 	s.repository.CreateAdminCompanyRepository(request)
 }
+
+func (s *AdminCompanyServiceStruct) UpdateAdminCompanyService(request UpdateAdminCompanyRequest) {
+	s.repository.UpdateAdminCompanyRepository(request)
+}

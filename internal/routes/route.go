@@ -16,5 +16,5 @@ func RouteFiber(app *fiber.App) {
 
 	admin := api.Group("/admin")
 	company.AdminCompanyRoute(admin.Group("/company"))
-	usermanagement.AdminCompanyRoute(admin.Group("/company"))
+	usermanagement.AdminUserManagementRoute(admin.Group("/user-management"))
 }

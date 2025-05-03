@@ -2099,37 +2099,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type UsersCountOutputType
-   */
-
-  export type UsersCountOutputType = {
-    log: number
-  }
-
-  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    log?: boolean | UsersCountOutputTypeCountLogArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * UsersCountOutputType without action
-   */
-  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UsersCountOutputType
-     */
-    select?: UsersCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * UsersCountOutputType without action
-   */
-  export type UsersCountOutputTypeCountLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: logsWhereInput
-  }
-
-
-  /**
    * Models
    */
 
@@ -5112,6 +5081,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     logo_url: string | null
+    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5123,6 +5093,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     logo_url: string | null
+    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5134,6 +5105,7 @@ export namespace Prisma {
     email: number
     phone: number
     logo_url: number
+    description: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5147,6 +5119,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5158,6 +5131,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5169,6 +5143,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
+    description?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5252,7 +5227,8 @@ export namespace Prisma {
     url: string
     email: string
     phone: string
-    logo_url: string
+    logo_url: string | null
+    description: string | null
     createdAt: Date
     updatedAt: Date
     _count: CompanyCountAggregateOutputType | null
@@ -5281,6 +5257,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     logo_url?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     customer?: boolean | company$customerArgs<ExtArgs>
@@ -5296,11 +5273,12 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     logo_url?: boolean
+    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type companyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "email" | "phone" | "logo_url" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
+  export type companyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "email" | "phone" | "logo_url" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
   export type companyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | company$customerArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -5317,7 +5295,8 @@ export namespace Prisma {
       url: string
       email: string
       phone: string
-      logo_url: string
+      logo_url: string | null
+      description: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["company"]>
@@ -5696,6 +5675,7 @@ export namespace Prisma {
     readonly email: FieldRef<"company", 'String'>
     readonly phone: FieldRef<"company", 'String'>
     readonly logo_url: FieldRef<"company", 'String'>
+    readonly description: FieldRef<"company", 'String'>
     readonly createdAt: FieldRef<"company", 'DateTime'>
     readonly updatedAt: FieldRef<"company", 'DateTime'>
   }
@@ -9168,7 +9148,6 @@ export namespace Prisma {
     action?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["logs"]>
 
 
@@ -9182,15 +9161,10 @@ export namespace Prisma {
   }
 
   export type logsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "action" | "createdAt" | "updatedAt", ExtArgs["result"]["logs"]>
-  export type logsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | usersDefaultArgs<ExtArgs>
-  }
 
   export type $logsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "logs"
-    objects: {
-      user: Prisma.$usersPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       user_id: string
@@ -9537,7 +9511,6 @@ export namespace Prisma {
    */
   export interface Prisma__logsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9589,10 +9562,6 @@ export namespace Prisma {
      */
     omit?: logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
-    /**
      * Filter, which logs to fetch.
      */
     where: logsWhereUniqueInput
@@ -9611,10 +9580,6 @@ export namespace Prisma {
      */
     omit?: logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
-    /**
      * Filter, which logs to fetch.
      */
     where: logsWhereUniqueInput
@@ -9632,10 +9597,6 @@ export namespace Prisma {
      * Omit specific fields from the logs
      */
     omit?: logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
     /**
      * Filter, which logs to fetch.
      */
@@ -9685,10 +9646,6 @@ export namespace Prisma {
      */
     omit?: logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
-    /**
      * Filter, which logs to fetch.
      */
     where?: logsWhereInput
@@ -9737,10 +9694,6 @@ export namespace Prisma {
      */
     omit?: logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
-    /**
      * Filter, which logs to fetch.
      */
     where?: logsWhereInput
@@ -9784,10 +9737,6 @@ export namespace Prisma {
      */
     omit?: logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
-    /**
      * The data needed to create a logs.
      */
     data: XOR<logsCreateInput, logsUncheckedCreateInput>
@@ -9816,10 +9765,6 @@ export namespace Prisma {
      * Omit specific fields from the logs
      */
     omit?: logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
     /**
      * The data needed to update a logs.
      */
@@ -9861,10 +9806,6 @@ export namespace Prisma {
      */
     omit?: logsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
-    /**
      * The filter to search for the logs to update in case it exists.
      */
     where: logsWhereUniqueInput
@@ -9890,10 +9831,6 @@ export namespace Prisma {
      * Omit specific fields from the logs
      */
     omit?: logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
     /**
      * Filter which logs to delete.
      */
@@ -9926,10 +9863,6 @@ export namespace Prisma {
      * Omit specific fields from the logs
      */
     omit?: logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
   }
 
 
@@ -14730,9 +14663,9 @@ export namespace Prisma {
     name: string | null
     password: string | null
     role: $Enums.user_role | null
-    token: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    token: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -14741,9 +14674,9 @@ export namespace Prisma {
     name: string | null
     password: string | null
     role: $Enums.user_role | null
-    token: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    token: string | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -14752,9 +14685,9 @@ export namespace Prisma {
     name: number
     password: number
     role: number
-    token: number
     createdAt: number
     updatedAt: number
+    token: number
     _all: number
   }
 
@@ -14765,9 +14698,9 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
-    token?: true
     createdAt?: true
     updatedAt?: true
+    token?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -14776,9 +14709,9 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
-    token?: true
     createdAt?: true
     updatedAt?: true
+    token?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -14787,9 +14720,9 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
-    token?: true
     createdAt?: true
     updatedAt?: true
+    token?: true
     _all?: true
   }
 
@@ -14871,9 +14804,9 @@ export namespace Prisma {
     name: string | null
     password: string
     role: $Enums.user_role
-    token: string | null
     createdAt: Date
     updatedAt: Date | null
+    token: string | null
     _count: UsersCountAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
@@ -14899,11 +14832,9 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     role?: boolean
-    token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    log?: boolean | users$logArgs<ExtArgs>
-    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
+    token?: boolean
   }, ExtArgs["result"]["users"]>
 
 
@@ -14914,31 +14845,25 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     role?: boolean
-    token?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    token?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "token" | "createdAt" | "updatedAt", ExtArgs["result"]["users"]>
-  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    log?: boolean | users$logArgs<ExtArgs>
-    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
-  }
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "createdAt" | "updatedAt" | "token", ExtArgs["result"]["users"]>
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
-    objects: {
-      log: Prisma.$logsPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       email: string
       name: string | null
       password: string
       role: $Enums.user_role
-      token: string | null
       createdAt: Date
       updatedAt: Date | null
+      token: string | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -15279,7 +15204,6 @@ export namespace Prisma {
    */
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    log<T extends users$logArgs<ExtArgs> = {}>(args?: Subset<T, users$logArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$logsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15314,9 +15238,9 @@ export namespace Prisma {
     readonly name: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
     readonly role: FieldRef<"users", 'user_role'>
-    readonly token: FieldRef<"users", 'String'>
     readonly createdAt: FieldRef<"users", 'DateTime'>
     readonly updatedAt: FieldRef<"users", 'DateTime'>
+    readonly token: FieldRef<"users", 'String'>
   }
     
 
@@ -15333,10 +15257,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
     /**
      * Filter, which users to fetch.
      */
@@ -15356,10 +15276,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter, which users to fetch.
      */
     where: usersWhereUniqueInput
@@ -15377,10 +15293,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
     /**
      * Filter, which users to fetch.
      */
@@ -15430,10 +15342,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -15482,10 +15390,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -15529,10 +15433,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * The data needed to create a users.
      */
     data: XOR<usersCreateInput, usersUncheckedCreateInput>
@@ -15561,10 +15461,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
     /**
      * The data needed to update a users.
      */
@@ -15606,10 +15502,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * The filter to search for the users to update in case it exists.
      */
     where: usersWhereUniqueInput
@@ -15636,10 +15528,6 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
-    /**
      * Filter which users to delete.
      */
     where: usersWhereUniqueInput
@@ -15660,30 +15548,6 @@ export namespace Prisma {
   }
 
   /**
-   * users.log
-   */
-  export type users$logArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the logs
-     */
-    select?: logsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the logs
-     */
-    omit?: logsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: logsInclude<ExtArgs> | null
-    where?: logsWhereInput
-    orderBy?: logsOrderByWithRelationInput | logsOrderByWithRelationInput[]
-    cursor?: logsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: LogsScalarFieldEnum | LogsScalarFieldEnum[]
-  }
-
-  /**
    * users without action
    */
   export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15695,10 +15559,6 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: usersInclude<ExtArgs> | null
   }
 
 
@@ -15757,6 +15617,7 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     logo_url: 'logo_url',
+    description: 'description',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -15889,9 +15750,9 @@ export namespace Prisma {
     name: 'name',
     password: 'password',
     role: 'role',
-    token: 'token',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    token: 'token'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -15944,7 +15805,8 @@ export namespace Prisma {
     url: 'url',
     email: 'email',
     phone: 'phone',
-    logo_url: 'logo_url'
+    logo_url: 'logo_url',
+    description: 'description'
   };
 
   export type companyOrderByRelevanceFieldEnum = (typeof companyOrderByRelevanceFieldEnum)[keyof typeof companyOrderByRelevanceFieldEnum]
@@ -16298,7 +16160,8 @@ export namespace Prisma {
     url?: StringFilter<"company"> | string
     email?: StringFilter<"company"> | string
     phone?: StringFilter<"company"> | string
-    logo_url?: StringFilter<"company"> | string
+    logo_url?: StringNullableFilter<"company"> | string | null
+    description?: StringNullableFilter<"company"> | string | null
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
     customer?: CustomerListRelationFilter
@@ -16310,7 +16173,8 @@ export namespace Prisma {
     url?: SortOrder
     email?: SortOrder
     phone?: SortOrder
-    logo_url?: SortOrder
+    logo_url?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     customer?: customerOrderByRelationAggregateInput
@@ -16326,7 +16190,8 @@ export namespace Prisma {
     url?: StringFilter<"company"> | string
     email?: StringFilter<"company"> | string
     phone?: StringFilter<"company"> | string
-    logo_url?: StringFilter<"company"> | string
+    logo_url?: StringNullableFilter<"company"> | string | null
+    description?: StringNullableFilter<"company"> | string | null
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
     customer?: CustomerListRelationFilter
@@ -16338,7 +16203,8 @@ export namespace Prisma {
     url?: SortOrder
     email?: SortOrder
     phone?: SortOrder
-    logo_url?: SortOrder
+    logo_url?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: companyCountOrderByAggregateInput
@@ -16355,7 +16221,8 @@ export namespace Prisma {
     url?: StringWithAggregatesFilter<"company"> | string
     email?: StringWithAggregatesFilter<"company"> | string
     phone?: StringWithAggregatesFilter<"company"> | string
-    logo_url?: StringWithAggregatesFilter<"company"> | string
+    logo_url?: StringNullableWithAggregatesFilter<"company"> | string | null
+    description?: StringNullableWithAggregatesFilter<"company"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"company"> | Date | string
   }
@@ -16595,7 +16462,6 @@ export namespace Prisma {
     action?: StringFilter<"logs"> | string
     createdAt?: DateTimeFilter<"logs"> | Date | string
     updatedAt?: DateTimeFilter<"logs"> | Date | string
-    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }
 
   export type logsOrderByWithRelationInput = {
@@ -16604,7 +16470,6 @@ export namespace Prisma {
     action?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: usersOrderByWithRelationInput
     _relevance?: logsOrderByRelevanceInput
   }
 
@@ -16617,7 +16482,6 @@ export namespace Prisma {
     action?: StringFilter<"logs"> | string
     createdAt?: DateTimeFilter<"logs"> | Date | string
     updatedAt?: DateTimeFilter<"logs"> | Date | string
-    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }, "id">
 
   export type logsOrderByWithAggregationInput = {
@@ -16980,10 +16844,9 @@ export namespace Prisma {
     name?: StringNullableFilter<"users"> | string | null
     password?: StringFilter<"users"> | string
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
-    token?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
-    log?: LogsListRelationFilter
+    token?: StringNullableFilter<"users"> | string | null
   }
 
   export type usersOrderByWithRelationInput = {
@@ -16992,10 +16855,9 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrder
     role?: SortOrder
-    token?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    log?: logsOrderByRelationAggregateInput
+    token?: SortOrderInput | SortOrder
     _relevance?: usersOrderByRelevanceInput
   }
 
@@ -17008,10 +16870,9 @@ export namespace Prisma {
     name?: StringNullableFilter<"users"> | string | null
     password?: StringFilter<"users"> | string
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
-    token?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
-    log?: LogsListRelationFilter
+    token?: StringNullableFilter<"users"> | string | null
   }, "id" | "email">
 
   export type usersOrderByWithAggregationInput = {
@@ -17020,9 +16881,9 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrder
     role?: SortOrder
-    token?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    token?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
     _min?: usersMinOrderByAggregateInput
@@ -17037,9 +16898,9 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"users"> | string | null
     password?: StringWithAggregatesFilter<"users"> | string
     role?: Enumuser_roleWithAggregatesFilter<"users"> | $Enums.user_role
-    token?: StringNullableWithAggregatesFilter<"users"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    token?: StringNullableWithAggregatesFilter<"users"> | string | null
   }
 
   export type accountsCreateInput = {
@@ -17234,7 +17095,8 @@ export namespace Prisma {
     url: string
     email: string
     phone: string
-    logo_url: string
+    logo_url?: string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
     customer?: customerCreateNestedManyWithoutCompanyInput
@@ -17246,7 +17108,8 @@ export namespace Prisma {
     url: string
     email: string
     phone: string
-    logo_url: string
+    logo_url?: string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
     customer?: customerUncheckedCreateNestedManyWithoutCompanyInput
@@ -17258,7 +17121,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customer?: customerUpdateManyWithoutCompanyNestedInput
@@ -17270,7 +17134,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customer?: customerUncheckedUpdateManyWithoutCompanyNestedInput
@@ -17282,7 +17147,8 @@ export namespace Prisma {
     url: string
     email: string
     phone: string
-    logo_url: string
+    logo_url?: string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
   }
@@ -17293,7 +17159,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17304,7 +17171,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17562,10 +17430,10 @@ export namespace Prisma {
 
   export type logsCreateInput = {
     id: string
+    user_id: string
     action: string
     createdAt?: Date | string
     updatedAt: Date | string
-    user: usersCreateNestedOneWithoutLogInput
   }
 
   export type logsUncheckedCreateInput = {
@@ -17578,10 +17446,10 @@ export namespace Prisma {
 
   export type logsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     action?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: usersUpdateOneRequiredWithoutLogNestedInput
   }
 
   export type logsUncheckedUpdateInput = {
@@ -17602,6 +17470,7 @@ export namespace Prisma {
 
   export type logsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     action?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17961,10 +17830,9 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
-    token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    log?: logsCreateNestedManyWithoutUserInput
+    token?: string | null
   }
 
   export type usersUncheckedCreateInput = {
@@ -17973,10 +17841,9 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
-    token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    log?: logsUncheckedCreateNestedManyWithoutUserInput
+    token?: string | null
   }
 
   export type usersUpdateInput = {
@@ -17985,10 +17852,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    log?: logsUpdateManyWithoutUserNestedInput
+    token?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateInput = {
@@ -17997,10 +17863,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    log?: logsUncheckedUpdateManyWithoutUserNestedInput
+    token?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersCreateManyInput = {
@@ -18009,9 +17874,9 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
-    token?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    token?: string | null
   }
 
   export type usersUpdateManyMutationInput = {
@@ -18020,9 +17885,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    token?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateManyInput = {
@@ -18031,9 +17896,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    token?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    token?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -18340,6 +18205,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -18351,6 +18217,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -18362,6 +18229,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
+    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -18507,11 +18375,6 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type UsersScalarRelationFilter = {
-    is?: usersWhereInput
-    isNot?: usersWhereInput
   }
 
   export type logsOrderByRelevanceInput = {
@@ -18835,16 +18698,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type LogsListRelationFilter = {
-    every?: logsWhereInput
-    some?: logsWhereInput
-    none?: logsWhereInput
-  }
-
-  export type logsOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type usersOrderByRelevanceInput = {
     fields: usersOrderByRelevanceFieldEnum | usersOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -18857,9 +18710,9 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrder
   }
 
   export type usersMaxOrderByAggregateInput = {
@@ -18868,9 +18721,9 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrder
   }
 
   export type usersMinOrderByAggregateInput = {
@@ -18879,9 +18732,9 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    token?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    token?: SortOrder
   }
 
   export type Enumuser_roleWithAggregatesFilter<$PrismaModel = never> = {
@@ -19222,20 +19075,6 @@ export namespace Prisma {
     deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
   }
 
-  export type usersCreateNestedOneWithoutLogInput = {
-    create?: XOR<usersCreateWithoutLogInput, usersUncheckedCreateWithoutLogInput>
-    connectOrCreate?: usersCreateOrConnectWithoutLogInput
-    connect?: usersWhereUniqueInput
-  }
-
-  export type usersUpdateOneRequiredWithoutLogNestedInput = {
-    create?: XOR<usersCreateWithoutLogInput, usersUncheckedCreateWithoutLogInput>
-    connectOrCreate?: usersCreateOrConnectWithoutLogInput
-    upsert?: usersUpsertWithoutLogInput
-    connect?: usersWhereUniqueInput
-    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutLogInput, usersUpdateWithoutLogInput>, usersUncheckedUpdateWithoutLogInput>
-  }
-
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -19290,54 +19129,12 @@ export namespace Prisma {
     update?: XOR<XOR<accountsUpdateToOneWithWhereWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUpdateWithoutTransfers_transfers_to_account_idToaccountsInput>, accountsUncheckedUpdateWithoutTransfers_transfers_to_account_idToaccountsInput>
   }
 
-  export type logsCreateNestedManyWithoutUserInput = {
-    create?: XOR<logsCreateWithoutUserInput, logsUncheckedCreateWithoutUserInput> | logsCreateWithoutUserInput[] | logsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: logsCreateOrConnectWithoutUserInput | logsCreateOrConnectWithoutUserInput[]
-    createMany?: logsCreateManyUserInputEnvelope
-    connect?: logsWhereUniqueInput | logsWhereUniqueInput[]
-  }
-
-  export type logsUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<logsCreateWithoutUserInput, logsUncheckedCreateWithoutUserInput> | logsCreateWithoutUserInput[] | logsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: logsCreateOrConnectWithoutUserInput | logsCreateOrConnectWithoutUserInput[]
-    createMany?: logsCreateManyUserInputEnvelope
-    connect?: logsWhereUniqueInput | logsWhereUniqueInput[]
-  }
-
   export type Enumuser_roleFieldUpdateOperationsInput = {
     set?: $Enums.user_role
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
-  }
-
-  export type logsUpdateManyWithoutUserNestedInput = {
-    create?: XOR<logsCreateWithoutUserInput, logsUncheckedCreateWithoutUserInput> | logsCreateWithoutUserInput[] | logsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: logsCreateOrConnectWithoutUserInput | logsCreateOrConnectWithoutUserInput[]
-    upsert?: logsUpsertWithWhereUniqueWithoutUserInput | logsUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: logsCreateManyUserInputEnvelope
-    set?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    disconnect?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    delete?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    connect?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    update?: logsUpdateWithWhereUniqueWithoutUserInput | logsUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: logsUpdateManyWithWhereWithoutUserInput | logsUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: logsScalarWhereInput | logsScalarWhereInput[]
-  }
-
-  export type logsUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<logsCreateWithoutUserInput, logsUncheckedCreateWithoutUserInput> | logsCreateWithoutUserInput[] | logsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: logsCreateOrConnectWithoutUserInput | logsCreateOrConnectWithoutUserInput[]
-    upsert?: logsUpsertWithWhereUniqueWithoutUserInput | logsUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: logsCreateManyUserInputEnvelope
-    set?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    disconnect?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    delete?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    connect?: logsWhereUniqueInput | logsWhereUniqueInput[]
-    update?: logsUpdateWithWhereUniqueWithoutUserInput | logsUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: logsUpdateManyWithWhereWithoutUserInput | logsUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: logsScalarWhereInput | logsScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -19961,7 +19758,8 @@ export namespace Prisma {
     url: string
     email: string
     phone: string
-    logo_url: string
+    logo_url?: string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
   }
@@ -19972,7 +19770,8 @@ export namespace Prisma {
     url: string
     email: string
     phone: string
-    logo_url: string
+    logo_url?: string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
   }
@@ -20046,7 +19845,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20057,7 +19857,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20153,66 +19954,6 @@ export namespace Prisma {
   export type customerUpdateManyWithWhereWithoutGroupsInput = {
     where: customerScalarWhereInput
     data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutGroupsInput>
-  }
-
-  export type usersCreateWithoutLogInput = {
-    id: string
-    email: string
-    name?: string | null
-    password: string
-    role: $Enums.user_role
-    token?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string | null
-  }
-
-  export type usersUncheckedCreateWithoutLogInput = {
-    id: string
-    email: string
-    name?: string | null
-    password: string
-    role: $Enums.user_role
-    token?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string | null
-  }
-
-  export type usersCreateOrConnectWithoutLogInput = {
-    where: usersWhereUniqueInput
-    create: XOR<usersCreateWithoutLogInput, usersUncheckedCreateWithoutLogInput>
-  }
-
-  export type usersUpsertWithoutLogInput = {
-    update: XOR<usersUpdateWithoutLogInput, usersUncheckedUpdateWithoutLogInput>
-    create: XOR<usersCreateWithoutLogInput, usersUncheckedCreateWithoutLogInput>
-    where?: usersWhereInput
-  }
-
-  export type usersUpdateToOneWithWhereWithoutLogInput = {
-    where?: usersWhereInput
-    data: XOR<usersUpdateWithoutLogInput, usersUncheckedUpdateWithoutLogInput>
-  }
-
-  export type usersUpdateWithoutLogInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type usersUncheckedUpdateWithoutLogInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: StringFieldUpdateOperationsInput | string
-    role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    token?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type assetsCreateWithoutReport_assetsInput = {
@@ -20361,57 +20102,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     transfers_transfers_from_account_idToaccounts?: transfersUncheckedUpdateManyWithoutAccounts_transfers_from_account_idToaccountsNestedInput
-  }
-
-  export type logsCreateWithoutUserInput = {
-    id: string
-    action: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type logsUncheckedCreateWithoutUserInput = {
-    id: string
-    action: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type logsCreateOrConnectWithoutUserInput = {
-    where: logsWhereUniqueInput
-    create: XOR<logsCreateWithoutUserInput, logsUncheckedCreateWithoutUserInput>
-  }
-
-  export type logsCreateManyUserInputEnvelope = {
-    data: logsCreateManyUserInput | logsCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type logsUpsertWithWhereUniqueWithoutUserInput = {
-    where: logsWhereUniqueInput
-    update: XOR<logsUpdateWithoutUserInput, logsUncheckedUpdateWithoutUserInput>
-    create: XOR<logsCreateWithoutUserInput, logsUncheckedCreateWithoutUserInput>
-  }
-
-  export type logsUpdateWithWhereUniqueWithoutUserInput = {
-    where: logsWhereUniqueInput
-    data: XOR<logsUpdateWithoutUserInput, logsUncheckedUpdateWithoutUserInput>
-  }
-
-  export type logsUpdateManyWithWhereWithoutUserInput = {
-    where: logsScalarWhereInput
-    data: XOR<logsUpdateManyMutationInput, logsUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type logsScalarWhereInput = {
-    AND?: logsScalarWhereInput | logsScalarWhereInput[]
-    OR?: logsScalarWhereInput[]
-    NOT?: logsScalarWhereInput | logsScalarWhereInput[]
-    id?: StringFilter<"logs"> | string
-    user_id?: StringFilter<"logs"> | string
-    action?: StringFilter<"logs"> | string
-    createdAt?: DateTimeFilter<"logs"> | Date | string
-    updatedAt?: DateTimeFilter<"logs"> | Date | string
   }
 
   export type transfersCreateManyAccounts_transfers_from_account_idToaccountsInput = {
@@ -20696,34 +20386,6 @@ export namespace Prisma {
     state_region?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     tag?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type logsCreateManyUserInput = {
-    id: string
-    action: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type logsUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type logsUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type logsUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    action?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
