@@ -56,15 +56,16 @@ type Assets struct {
 
 // Company model
 type Company struct {
-	ID        string     `json:"id" gorm:"primaryKey"`
-	Name      string     `json:"name"`
-	URL       string     `json:"url"`
-	Email     string     `json:"email"`
-	Phone     string     `json:"phone"`
-	LogoURL   string     `json:"logo_url"`
-	CreatedAt time.Time  `json:"createdAt" gorm:"column:createdAt; default:current_timestamp"`
-	UpdatedAt time.Time  `json:"updatedAt"  gorm:"column:updatedAt" `
-	Customers []Customer `json:"customer" gorm:"foreignKey:CompanyID"`
+	ID          string     `json:"id" gorm:"primaryKey"`
+	Name        string     `json:"name"`
+	URL         string     `json:"url"`
+	Email       string     `json:"email"`
+	Phone       string     `json:"phone"`
+	LogoURL     string     `json:"logo_url"`
+	Description string     `json:"description"`
+	CreatedAt   time.Time  `json:"createdAt" gorm:"column:createdAt; default:current_timestamp"`
+	UpdatedAt   time.Time  `json:"updatedAt"  gorm:"column:updatedAt" `
+	Customers   []Customer `json:"customer" gorm:"foreignKey:CompanyID"`
 }
 
 func (c *Company) TableName() string {

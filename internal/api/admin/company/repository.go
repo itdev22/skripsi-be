@@ -8,6 +8,7 @@ import (
 
 type AdminCompanyRepositoryInterface interface {
 	GetCompanyByID(id int) (*entities.Company, error)
+	DeleteCompanyByID(id int) error
 }
 type AdminCompanyRepositoryStruct struct {
 	db *gorm.DB
@@ -63,6 +64,20 @@ func (r *AdminCompanyRepositoryStruct) UpdateAdminCompanyRepository(request Upda
 	company.LogoURL = request.LogoUrl
 
 	tx := r.db.Save(company)
+
+	if tx.Error != nil {
+		return nil, tx.Error
+	}
+
+	return nil, nil
+}
+
+func (r *AdminCompanyRepositoryStruct) DeleteCompanyByID(request IdAdminCompanyRequest) (*entities.Company, error) {
+	company := &entities.Company{}
+
+	r.db.First(&company, "id = ?", request.Id)
+
+	tx := r.db.Delete(company)
 
 	if tx.Error != nil {
 		return nil, tx.Error

@@ -18,4 +18,5 @@ func AdminCompanyRoute(app fiber.Router) {
 	app.Get("/:id", handler.GetByIdAdminCompanyHandler)
 	app.Post("/", handler.CreateAdminCompanyHandler)
 	app.Put("/:id", handler.UpdateAdminCompanyHandler)
+	app.Delete("/:id", handler.DeleteAdminCompanyHandler)
 }

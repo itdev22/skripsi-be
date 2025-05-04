@@ -75,3 +75,18 @@ func (h *AdminCompanyHandlerStruct) UpdateAdminCompanyHandler(c *fiber.Ctx) erro
 
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Data Company", "")
 }
+
+func (h *AdminCompanyHandlerStruct) DeleteAdminCompanyHandler(c *fiber.Ctx) error {
+	request := &IdAdminCompanyRequest{}
+
+	companyId := c.Params("id")
+	if companyId == "" {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Company ID is required", nil)
+	}
+
+	request.Id = companyId
+
+	h.service.DeleteAdminCompanyService(*request)
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Data Company", "")
+}
