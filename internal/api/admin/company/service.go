@@ -36,3 +36,7 @@ func (s *AdminCompanyServiceStruct) CreateAdminCompanyService(request CreateAdmi
 func (s *AdminCompanyServiceStruct) UpdateAdminCompanyService(request UpdateAdminCompanyRequest) {
 	s.repository.UpdateAdminCompanyRepository(request)
 }
+
+func (s *AdminCompanyServiceStruct) DeleteAdminCompanyService(request IdAdminCompanyRequest) {
+	s.repository.DeleteCompanyByID(request)
+}
