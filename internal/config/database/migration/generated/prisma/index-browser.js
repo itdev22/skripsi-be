@@ -170,7 +170,7 @@ exports.Prisma.CustomerScalarFieldEnum = {
   company_id: 'company_id',
   country: 'country',
   fullname: 'fullname',
-  group_id: 'group_id',
+  area_id: 'area_id',
   location: 'location',
   password: 'password',
   state_region: 'state_region',
@@ -185,7 +185,7 @@ exports.Prisma.DeviceScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.GroupsScalarFieldEnum = {
+exports.Prisma.AreasScalarFieldEnum = {
   id: 'id',
   name: 'name',
   createdAt: 'createdAt',
@@ -307,7 +307,7 @@ exports.Prisma.customerOrderByRelevanceFieldEnum = {
   company_id: 'company_id',
   country: 'country',
   fullname: 'fullname',
-  group_id: 'group_id',
+  area_id: 'area_id',
   location: 'location',
   password: 'password',
   state_region: 'state_region',
@@ -320,7 +320,7 @@ exports.Prisma.deviceOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
-exports.Prisma.groupsOrderByRelevanceFieldEnum = {
+exports.Prisma.areasOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name'
 };
@@ -387,7 +387,7 @@ exports.Prisma.ModelName = {
   company: 'company',
   customer: 'customer',
   device: 'device',
-  groups: 'groups',
+  areas: 'areas',
   logs: 'logs',
   products: 'products',
   report_assets: 'report_assets',

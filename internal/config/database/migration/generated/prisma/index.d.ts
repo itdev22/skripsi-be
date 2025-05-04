@@ -44,10 +44,10 @@ export type customer = $Result.DefaultSelection<Prisma.$customerPayload>
  */
 export type device = $Result.DefaultSelection<Prisma.$devicePayload>
 /**
- * Model groups
+ * Model areas
  * 
  */
-export type groups = $Result.DefaultSelection<Prisma.$groupsPayload>
+export type areas = $Result.DefaultSelection<Prisma.$areasPayload>
 /**
  * Model logs
  * 
@@ -300,14 +300,14 @@ export class PrismaClient<
   get device(): Prisma.deviceDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.groups`: Exposes CRUD operations for the **groups** model.
+   * `prisma.areas`: Exposes CRUD operations for the **areas** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Groups
-    * const groups = await prisma.groups.findMany()
+    * // Fetch zero or more Areas
+    * const areas = await prisma.areas.findMany()
     * ```
     */
-  get groups(): Prisma.groupsDelegate<ExtArgs, ClientOptions>;
+  get areas(): Prisma.areasDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.logs`: Exposes CRUD operations for the **logs** model.
@@ -824,7 +824,7 @@ export namespace Prisma {
     company: 'company',
     customer: 'customer',
     device: 'device',
-    groups: 'groups',
+    areas: 'areas',
     logs: 'logs',
     products: 'products',
     report_assets: 'report_assets',
@@ -850,7 +850,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "accounts" | "archive_installation" | "assets" | "company" | "customer" | "device" | "groups" | "logs" | "products" | "report_assets" | "report_cash" | "transactions" | "transfers" | "users"
+      modelProps: "accounts" | "archive_installation" | "assets" | "company" | "customer" | "device" | "areas" | "logs" | "products" | "report_assets" | "report_cash" | "transactions" | "transfers" | "users"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1250,69 +1250,69 @@ export namespace Prisma {
           }
         }
       }
-      groups: {
-        payload: Prisma.$groupsPayload<ExtArgs>
-        fields: Prisma.groupsFieldRefs
+      areas: {
+        payload: Prisma.$areasPayload<ExtArgs>
+        fields: Prisma.areasFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.groupsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload> | null
+            args: Prisma.areasFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.groupsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload>
+            args: Prisma.areasFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload>
           }
           findFirst: {
-            args: Prisma.groupsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload> | null
+            args: Prisma.areasFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.groupsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload>
+            args: Prisma.areasFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload>
           }
           findMany: {
-            args: Prisma.groupsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload>[]
+            args: Prisma.areasFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload>[]
           }
           create: {
-            args: Prisma.groupsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload>
+            args: Prisma.areasCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload>
           }
           createMany: {
-            args: Prisma.groupsCreateManyArgs<ExtArgs>
+            args: Prisma.areasCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.groupsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload>
+            args: Prisma.areasDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload>
           }
           update: {
-            args: Prisma.groupsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload>
+            args: Prisma.areasUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload>
           }
           deleteMany: {
-            args: Prisma.groupsDeleteManyArgs<ExtArgs>
+            args: Prisma.areasDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.groupsUpdateManyArgs<ExtArgs>
+            args: Prisma.areasUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.groupsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$groupsPayload>
+            args: Prisma.areasUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$areasPayload>
           }
           aggregate: {
-            args: Prisma.GroupsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateGroups>
+            args: Prisma.AreasAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAreas>
           }
           groupBy: {
-            args: Prisma.groupsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<GroupsGroupByOutputType>[]
+            args: Prisma.areasGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AreasGroupByOutputType>[]
           }
           count: {
-            args: Prisma.groupsCountArgs<ExtArgs>
-            result: $Utils.Optional<GroupsCountAggregateOutputType> | number
+            args: Prisma.areasCountArgs<ExtArgs>
+            result: $Utils.Optional<AreasCountAggregateOutputType> | number
           }
         }
       }
@@ -1868,7 +1868,7 @@ export namespace Prisma {
     company?: companyOmit
     customer?: customerOmit
     device?: deviceOmit
-    groups?: groupsOmit
+    areas?: areasOmit
     logs?: logsOmit
     products?: productsOmit
     report_assets?: report_assetsOmit
@@ -2068,32 +2068,32 @@ export namespace Prisma {
 
 
   /**
-   * Count Type GroupsCountOutputType
+   * Count Type AreasCountOutputType
    */
 
-  export type GroupsCountOutputType = {
+  export type AreasCountOutputType = {
     customer: number
   }
 
-  export type GroupsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | GroupsCountOutputTypeCountCustomerArgs
+  export type AreasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | AreasCountOutputTypeCountCustomerArgs
   }
 
   // Custom InputTypes
   /**
-   * GroupsCountOutputType without action
+   * AreasCountOutputType without action
    */
-  export type GroupsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AreasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the GroupsCountOutputType
+     * Select specific fields to fetch from the AreasCountOutputType
      */
-    select?: GroupsCountOutputTypeSelect<ExtArgs> | null
+    select?: AreasCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * GroupsCountOutputType without action
+   * AreasCountOutputType without action
    */
-  export type GroupsCountOutputTypeCountCustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AreasCountOutputTypeCountCustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: customerWhereInput
   }
 
@@ -6086,7 +6086,7 @@ export namespace Prisma {
     company_id: string | null
     country: string | null
     fullname: string | null
-    group_id: string | null
+    area_id: string | null
     location: string | null
     password: string | null
     state_region: string | null
@@ -6107,7 +6107,7 @@ export namespace Prisma {
     company_id: string | null
     country: string | null
     fullname: string | null
-    group_id: string | null
+    area_id: string | null
     location: string | null
     password: string | null
     state_region: string | null
@@ -6128,7 +6128,7 @@ export namespace Prisma {
     company_id: number
     country: number
     fullname: number
-    group_id: number
+    area_id: number
     location: number
     password: number
     state_region: number
@@ -6151,7 +6151,7 @@ export namespace Prisma {
     company_id?: true
     country?: true
     fullname?: true
-    group_id?: true
+    area_id?: true
     location?: true
     password?: true
     state_region?: true
@@ -6172,7 +6172,7 @@ export namespace Prisma {
     company_id?: true
     country?: true
     fullname?: true
-    group_id?: true
+    area_id?: true
     location?: true
     password?: true
     state_region?: true
@@ -6193,7 +6193,7 @@ export namespace Prisma {
     company_id?: true
     country?: true
     fullname?: true
-    group_id?: true
+    area_id?: true
     location?: true
     password?: true
     state_region?: true
@@ -6287,7 +6287,7 @@ export namespace Prisma {
     company_id: string
     country: string
     fullname: string
-    group_id: string
+    area_id: string
     location: string
     password: string
     state_region: string
@@ -6325,7 +6325,7 @@ export namespace Prisma {
     company_id?: boolean
     country?: boolean
     fullname?: boolean
-    group_id?: boolean
+    area_id?: boolean
     location?: boolean
     password?: boolean
     state_region?: boolean
@@ -6333,7 +6333,7 @@ export namespace Prisma {
     tag?: boolean
     archive_installation?: boolean | customer$archive_installationArgs<ExtArgs>
     company?: boolean | companyDefaultArgs<ExtArgs>
-    groups?: boolean | groupsDefaultArgs<ExtArgs>
+    areas?: boolean | areasDefaultArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customer"]>
 
@@ -6352,7 +6352,7 @@ export namespace Prisma {
     company_id?: boolean
     country?: boolean
     fullname?: boolean
-    group_id?: boolean
+    area_id?: boolean
     location?: boolean
     password?: boolean
     state_region?: boolean
@@ -6360,11 +6360,11 @@ export namespace Prisma {
     tag?: boolean
   }
 
-  export type customerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "address" | "installation_date" | "createdAt" | "updatedAt" | "city" | "code_postal" | "company_id" | "country" | "fullname" | "group_id" | "location" | "password" | "state_region" | "surname" | "tag", ExtArgs["result"]["customer"]>
+  export type customerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "address" | "installation_date" | "createdAt" | "updatedAt" | "city" | "code_postal" | "company_id" | "country" | "fullname" | "area_id" | "location" | "password" | "state_region" | "surname" | "tag", ExtArgs["result"]["customer"]>
   export type customerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     archive_installation?: boolean | customer$archive_installationArgs<ExtArgs>
     company?: boolean | companyDefaultArgs<ExtArgs>
-    groups?: boolean | groupsDefaultArgs<ExtArgs>
+    areas?: boolean | areasDefaultArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -6373,7 +6373,7 @@ export namespace Prisma {
     objects: {
       archive_installation: Prisma.$archive_installationPayload<ExtArgs>[]
       company: Prisma.$companyPayload<ExtArgs>
-      groups: Prisma.$groupsPayload<ExtArgs>
+      areas: Prisma.$areasPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6388,7 +6388,7 @@ export namespace Prisma {
       company_id: string
       country: string
       fullname: string
-      group_id: string
+      area_id: string
       location: string
       password: string
       state_region: string
@@ -6736,7 +6736,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     archive_installation<T extends customer$archive_installationArgs<ExtArgs> = {}>(args?: Subset<T, customer$archive_installationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$archive_installationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     company<T extends companyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, companyDefaultArgs<ExtArgs>>): Prisma__companyClient<$Result.GetResult<Prisma.$companyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    groups<T extends groupsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, groupsDefaultArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    areas<T extends areasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, areasDefaultArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6778,7 +6778,7 @@ export namespace Prisma {
     readonly company_id: FieldRef<"customer", 'String'>
     readonly country: FieldRef<"customer", 'String'>
     readonly fullname: FieldRef<"customer", 'String'>
-    readonly group_id: FieldRef<"customer", 'String'>
+    readonly area_id: FieldRef<"customer", 'String'>
     readonly location: FieldRef<"customer", 'String'>
     readonly password: FieldRef<"customer", 'String'>
     readonly state_region: FieldRef<"customer", 'String'>
@@ -8041,30 +8041,30 @@ export namespace Prisma {
 
 
   /**
-   * Model groups
+   * Model areas
    */
 
-  export type AggregateGroups = {
-    _count: GroupsCountAggregateOutputType | null
-    _min: GroupsMinAggregateOutputType | null
-    _max: GroupsMaxAggregateOutputType | null
+  export type AggregateAreas = {
+    _count: AreasCountAggregateOutputType | null
+    _min: AreasMinAggregateOutputType | null
+    _max: AreasMaxAggregateOutputType | null
   }
 
-  export type GroupsMinAggregateOutputType = {
+  export type AreasMinAggregateOutputType = {
     id: string | null
     name: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type GroupsMaxAggregateOutputType = {
+  export type AreasMaxAggregateOutputType = {
     id: string | null
     name: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type GroupsCountAggregateOutputType = {
+  export type AreasCountAggregateOutputType = {
     id: number
     name: number
     createdAt: number
@@ -8073,21 +8073,21 @@ export namespace Prisma {
   }
 
 
-  export type GroupsMinAggregateInputType = {
+  export type AreasMinAggregateInputType = {
     id?: true
     name?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type GroupsMaxAggregateInputType = {
+  export type AreasMaxAggregateInputType = {
     id?: true
     name?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type GroupsCountAggregateInputType = {
+  export type AreasCountAggregateInputType = {
     id?: true
     name?: true
     createdAt?: true
@@ -8095,128 +8095,128 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type GroupsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AreasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which groups to aggregate.
+     * Filter which areas to aggregate.
      */
-    where?: groupsWhereInput
+    where?: areasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of groups to fetch.
+     * Determine the order of areas to fetch.
      */
-    orderBy?: groupsOrderByWithRelationInput | groupsOrderByWithRelationInput[]
+    orderBy?: areasOrderByWithRelationInput | areasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: groupsWhereUniqueInput
+    cursor?: areasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` groups from the position of the cursor.
+     * Take `±n` areas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` groups.
+     * Skip the first `n` areas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned groups
+     * Count returned areas
     **/
-    _count?: true | GroupsCountAggregateInputType
+    _count?: true | AreasCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: GroupsMinAggregateInputType
+    _min?: AreasMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: GroupsMaxAggregateInputType
+    _max?: AreasMaxAggregateInputType
   }
 
-  export type GetGroupsAggregateType<T extends GroupsAggregateArgs> = {
-        [P in keyof T & keyof AggregateGroups]: P extends '_count' | 'count'
+  export type GetAreasAggregateType<T extends AreasAggregateArgs> = {
+        [P in keyof T & keyof AggregateAreas]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateGroups[P]>
-      : GetScalarType<T[P], AggregateGroups[P]>
+        : GetScalarType<T[P], AggregateAreas[P]>
+      : GetScalarType<T[P], AggregateAreas[P]>
   }
 
 
 
 
-  export type groupsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: groupsWhereInput
-    orderBy?: groupsOrderByWithAggregationInput | groupsOrderByWithAggregationInput[]
-    by: GroupsScalarFieldEnum[] | GroupsScalarFieldEnum
-    having?: groupsScalarWhereWithAggregatesInput
+  export type areasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: areasWhereInput
+    orderBy?: areasOrderByWithAggregationInput | areasOrderByWithAggregationInput[]
+    by: AreasScalarFieldEnum[] | AreasScalarFieldEnum
+    having?: areasScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: GroupsCountAggregateInputType | true
-    _min?: GroupsMinAggregateInputType
-    _max?: GroupsMaxAggregateInputType
+    _count?: AreasCountAggregateInputType | true
+    _min?: AreasMinAggregateInputType
+    _max?: AreasMaxAggregateInputType
   }
 
-  export type GroupsGroupByOutputType = {
+  export type AreasGroupByOutputType = {
     id: string
     name: string
     createdAt: Date
     updatedAt: Date
-    _count: GroupsCountAggregateOutputType | null
-    _min: GroupsMinAggregateOutputType | null
-    _max: GroupsMaxAggregateOutputType | null
+    _count: AreasCountAggregateOutputType | null
+    _min: AreasMinAggregateOutputType | null
+    _max: AreasMaxAggregateOutputType | null
   }
 
-  type GetGroupsGroupByPayload<T extends groupsGroupByArgs> = Prisma.PrismaPromise<
+  type GetAreasGroupByPayload<T extends areasGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<GroupsGroupByOutputType, T['by']> &
+      PickEnumerable<AreasGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof GroupsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AreasGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], GroupsGroupByOutputType[P]>
-            : GetScalarType<T[P], GroupsGroupByOutputType[P]>
+              : GetScalarType<T[P], AreasGroupByOutputType[P]>
+            : GetScalarType<T[P], AreasGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type groupsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type areasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer?: boolean | groups$customerArgs<ExtArgs>
-    _count?: boolean | GroupsCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["groups"]>
+    customer?: boolean | areas$customerArgs<ExtArgs>
+    _count?: boolean | AreasCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["areas"]>
 
 
 
-  export type groupsSelectScalar = {
+  export type areasSelectScalar = {
     id?: boolean
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type groupsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["groups"]>
-  export type groupsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | groups$customerArgs<ExtArgs>
-    _count?: boolean | GroupsCountOutputTypeDefaultArgs<ExtArgs>
+  export type areasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["areas"]>
+  export type areasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | areas$customerArgs<ExtArgs>
+    _count?: boolean | AreasCountOutputTypeDefaultArgs<ExtArgs>
   }
 
-  export type $groupsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "groups"
+  export type $areasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "areas"
     objects: {
       customer: Prisma.$customerPayload<ExtArgs>[]
     }
@@ -8225,143 +8225,143 @@ export namespace Prisma {
       name: string
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["groups"]>
+    }, ExtArgs["result"]["areas"]>
     composites: {}
   }
 
-  type groupsGetPayload<S extends boolean | null | undefined | groupsDefaultArgs> = $Result.GetResult<Prisma.$groupsPayload, S>
+  type areasGetPayload<S extends boolean | null | undefined | areasDefaultArgs> = $Result.GetResult<Prisma.$areasPayload, S>
 
-  type groupsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<groupsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: GroupsCountAggregateInputType | true
+  type areasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<areasFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AreasCountAggregateInputType | true
     }
 
-  export interface groupsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['groups'], meta: { name: 'groups' } }
+  export interface areasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['areas'], meta: { name: 'areas' } }
     /**
-     * Find zero or one Groups that matches the filter.
-     * @param {groupsFindUniqueArgs} args - Arguments to find a Groups
+     * Find zero or one Areas that matches the filter.
+     * @param {areasFindUniqueArgs} args - Arguments to find a Areas
      * @example
-     * // Get one Groups
-     * const groups = await prisma.groups.findUnique({
+     * // Get one Areas
+     * const areas = await prisma.areas.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends groupsFindUniqueArgs>(args: SelectSubset<T, groupsFindUniqueArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends areasFindUniqueArgs>(args: SelectSubset<T, areasFindUniqueArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Groups that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Areas that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {groupsFindUniqueOrThrowArgs} args - Arguments to find a Groups
+     * @param {areasFindUniqueOrThrowArgs} args - Arguments to find a Areas
      * @example
-     * // Get one Groups
-     * const groups = await prisma.groups.findUniqueOrThrow({
+     * // Get one Areas
+     * const areas = await prisma.areas.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends groupsFindUniqueOrThrowArgs>(args: SelectSubset<T, groupsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends areasFindUniqueOrThrowArgs>(args: SelectSubset<T, areasFindUniqueOrThrowArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Groups that matches the filter.
+     * Find the first Areas that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {groupsFindFirstArgs} args - Arguments to find a Groups
+     * @param {areasFindFirstArgs} args - Arguments to find a Areas
      * @example
-     * // Get one Groups
-     * const groups = await prisma.groups.findFirst({
+     * // Get one Areas
+     * const areas = await prisma.areas.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends groupsFindFirstArgs>(args?: SelectSubset<T, groupsFindFirstArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends areasFindFirstArgs>(args?: SelectSubset<T, areasFindFirstArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Groups that matches the filter or
+     * Find the first Areas that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {groupsFindFirstOrThrowArgs} args - Arguments to find a Groups
+     * @param {areasFindFirstOrThrowArgs} args - Arguments to find a Areas
      * @example
-     * // Get one Groups
-     * const groups = await prisma.groups.findFirstOrThrow({
+     * // Get one Areas
+     * const areas = await prisma.areas.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends groupsFindFirstOrThrowArgs>(args?: SelectSubset<T, groupsFindFirstOrThrowArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends areasFindFirstOrThrowArgs>(args?: SelectSubset<T, areasFindFirstOrThrowArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Groups that matches the filter.
+     * Find zero or more Areas that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {groupsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {areasFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Groups
-     * const groups = await prisma.groups.findMany()
+     * // Get all Areas
+     * const areas = await prisma.areas.findMany()
      * 
-     * // Get first 10 Groups
-     * const groups = await prisma.groups.findMany({ take: 10 })
+     * // Get first 10 Areas
+     * const areas = await prisma.areas.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const groupsWithIdOnly = await prisma.groups.findMany({ select: { id: true } })
+     * const areasWithIdOnly = await prisma.areas.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends groupsFindManyArgs>(args?: SelectSubset<T, groupsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends areasFindManyArgs>(args?: SelectSubset<T, areasFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Groups.
-     * @param {groupsCreateArgs} args - Arguments to create a Groups.
+     * Create a Areas.
+     * @param {areasCreateArgs} args - Arguments to create a Areas.
      * @example
-     * // Create one Groups
-     * const Groups = await prisma.groups.create({
+     * // Create one Areas
+     * const Areas = await prisma.areas.create({
      *   data: {
-     *     // ... data to create a Groups
+     *     // ... data to create a Areas
      *   }
      * })
      * 
      */
-    create<T extends groupsCreateArgs>(args: SelectSubset<T, groupsCreateArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends areasCreateArgs>(args: SelectSubset<T, areasCreateArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Groups.
-     * @param {groupsCreateManyArgs} args - Arguments to create many Groups.
+     * Create many Areas.
+     * @param {areasCreateManyArgs} args - Arguments to create many Areas.
      * @example
-     * // Create many Groups
-     * const groups = await prisma.groups.createMany({
+     * // Create many Areas
+     * const areas = await prisma.areas.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends groupsCreateManyArgs>(args?: SelectSubset<T, groupsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends areasCreateManyArgs>(args?: SelectSubset<T, areasCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Groups.
-     * @param {groupsDeleteArgs} args - Arguments to delete one Groups.
+     * Delete a Areas.
+     * @param {areasDeleteArgs} args - Arguments to delete one Areas.
      * @example
-     * // Delete one Groups
-     * const Groups = await prisma.groups.delete({
+     * // Delete one Areas
+     * const Areas = await prisma.areas.delete({
      *   where: {
-     *     // ... filter to delete one Groups
+     *     // ... filter to delete one Areas
      *   }
      * })
      * 
      */
-    delete<T extends groupsDeleteArgs>(args: SelectSubset<T, groupsDeleteArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends areasDeleteArgs>(args: SelectSubset<T, areasDeleteArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Groups.
-     * @param {groupsUpdateArgs} args - Arguments to update one Groups.
+     * Update one Areas.
+     * @param {areasUpdateArgs} args - Arguments to update one Areas.
      * @example
-     * // Update one Groups
-     * const groups = await prisma.groups.update({
+     * // Update one Areas
+     * const areas = await prisma.areas.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8371,30 +8371,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends groupsUpdateArgs>(args: SelectSubset<T, groupsUpdateArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends areasUpdateArgs>(args: SelectSubset<T, areasUpdateArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Groups.
-     * @param {groupsDeleteManyArgs} args - Arguments to filter Groups to delete.
+     * Delete zero or more Areas.
+     * @param {areasDeleteManyArgs} args - Arguments to filter Areas to delete.
      * @example
-     * // Delete a few Groups
-     * const { count } = await prisma.groups.deleteMany({
+     * // Delete a few Areas
+     * const { count } = await prisma.areas.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends groupsDeleteManyArgs>(args?: SelectSubset<T, groupsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends areasDeleteManyArgs>(args?: SelectSubset<T, areasDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Groups.
+     * Update zero or more Areas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {groupsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {areasUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Groups
-     * const groups = await prisma.groups.updateMany({
+     * // Update many Areas
+     * const areas = await prisma.areas.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8404,56 +8404,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends groupsUpdateManyArgs>(args: SelectSubset<T, groupsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends areasUpdateManyArgs>(args: SelectSubset<T, areasUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Groups.
-     * @param {groupsUpsertArgs} args - Arguments to update or create a Groups.
+     * Create or update one Areas.
+     * @param {areasUpsertArgs} args - Arguments to update or create a Areas.
      * @example
-     * // Update or create a Groups
-     * const groups = await prisma.groups.upsert({
+     * // Update or create a Areas
+     * const areas = await prisma.areas.upsert({
      *   create: {
-     *     // ... data to create a Groups
+     *     // ... data to create a Areas
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Groups we want to update
+     *     // ... the filter for the Areas we want to update
      *   }
      * })
      */
-    upsert<T extends groupsUpsertArgs>(args: SelectSubset<T, groupsUpsertArgs<ExtArgs>>): Prisma__groupsClient<$Result.GetResult<Prisma.$groupsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends areasUpsertArgs>(args: SelectSubset<T, areasUpsertArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Groups.
+     * Count the number of Areas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {groupsCountArgs} args - Arguments to filter Groups to count.
+     * @param {areasCountArgs} args - Arguments to filter Areas to count.
      * @example
-     * // Count the number of Groups
-     * const count = await prisma.groups.count({
+     * // Count the number of Areas
+     * const count = await prisma.areas.count({
      *   where: {
-     *     // ... the filter for the Groups we want to count
+     *     // ... the filter for the Areas we want to count
      *   }
      * })
     **/
-    count<T extends groupsCountArgs>(
-      args?: Subset<T, groupsCountArgs>,
+    count<T extends areasCountArgs>(
+      args?: Subset<T, areasCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], GroupsCountAggregateOutputType>
+          : GetScalarType<T['select'], AreasCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Groups.
+     * Allows you to perform aggregations operations on a Areas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {GroupsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AreasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -8473,13 +8473,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends GroupsAggregateArgs>(args: Subset<T, GroupsAggregateArgs>): Prisma.PrismaPromise<GetGroupsAggregateType<T>>
+    aggregate<T extends AreasAggregateArgs>(args: Subset<T, AreasAggregateArgs>): Prisma.PrismaPromise<GetAreasAggregateType<T>>
 
     /**
-     * Group by Groups.
+     * Group by Areas.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {groupsGroupByArgs} args - Group by arguments.
+     * @param {areasGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -8494,14 +8494,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends groupsGroupByArgs,
+      T extends areasGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: groupsGroupByArgs['orderBy'] }
-        : { orderBy?: groupsGroupByArgs['orderBy'] },
+        ? { orderBy: areasGroupByArgs['orderBy'] }
+        : { orderBy?: areasGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8550,22 +8550,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, groupsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGroupsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, areasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAreasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the groups model
+   * Fields of the areas model
    */
-  readonly fields: groupsFieldRefs;
+  readonly fields: areasFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for groups.
+   * The delegate class that acts as a "Promise-like" for areas.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__groupsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__areasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends groups$customerArgs<ExtArgs> = {}>(args?: Subset<T, groups$customerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    customer<T extends areas$customerArgs<ExtArgs> = {}>(args?: Subset<T, areas$customerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8592,359 +8592,359 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the groups model
+   * Fields of the areas model
    */
-  interface groupsFieldRefs {
-    readonly id: FieldRef<"groups", 'String'>
-    readonly name: FieldRef<"groups", 'String'>
-    readonly createdAt: FieldRef<"groups", 'DateTime'>
-    readonly updatedAt: FieldRef<"groups", 'DateTime'>
+  interface areasFieldRefs {
+    readonly id: FieldRef<"areas", 'String'>
+    readonly name: FieldRef<"areas", 'String'>
+    readonly createdAt: FieldRef<"areas", 'DateTime'>
+    readonly updatedAt: FieldRef<"areas", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * groups findUnique
+   * areas findUnique
    */
-  export type groupsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * Filter, which groups to fetch.
+     * Filter, which areas to fetch.
      */
-    where: groupsWhereUniqueInput
+    where: areasWhereUniqueInput
   }
 
   /**
-   * groups findUniqueOrThrow
+   * areas findUniqueOrThrow
    */
-  export type groupsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * Filter, which groups to fetch.
+     * Filter, which areas to fetch.
      */
-    where: groupsWhereUniqueInput
+    where: areasWhereUniqueInput
   }
 
   /**
-   * groups findFirst
+   * areas findFirst
    */
-  export type groupsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * Filter, which groups to fetch.
+     * Filter, which areas to fetch.
      */
-    where?: groupsWhereInput
+    where?: areasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of groups to fetch.
+     * Determine the order of areas to fetch.
      */
-    orderBy?: groupsOrderByWithRelationInput | groupsOrderByWithRelationInput[]
+    orderBy?: areasOrderByWithRelationInput | areasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for groups.
+     * Sets the position for searching for areas.
      */
-    cursor?: groupsWhereUniqueInput
+    cursor?: areasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` groups from the position of the cursor.
+     * Take `±n` areas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` groups.
+     * Skip the first `n` areas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of groups.
+     * Filter by unique combinations of areas.
      */
-    distinct?: GroupsScalarFieldEnum | GroupsScalarFieldEnum[]
+    distinct?: AreasScalarFieldEnum | AreasScalarFieldEnum[]
   }
 
   /**
-   * groups findFirstOrThrow
+   * areas findFirstOrThrow
    */
-  export type groupsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * Filter, which groups to fetch.
+     * Filter, which areas to fetch.
      */
-    where?: groupsWhereInput
+    where?: areasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of groups to fetch.
+     * Determine the order of areas to fetch.
      */
-    orderBy?: groupsOrderByWithRelationInput | groupsOrderByWithRelationInput[]
+    orderBy?: areasOrderByWithRelationInput | areasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for groups.
+     * Sets the position for searching for areas.
      */
-    cursor?: groupsWhereUniqueInput
+    cursor?: areasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` groups from the position of the cursor.
+     * Take `±n` areas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` groups.
+     * Skip the first `n` areas.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of groups.
+     * Filter by unique combinations of areas.
      */
-    distinct?: GroupsScalarFieldEnum | GroupsScalarFieldEnum[]
+    distinct?: AreasScalarFieldEnum | AreasScalarFieldEnum[]
   }
 
   /**
-   * groups findMany
+   * areas findMany
    */
-  export type groupsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * Filter, which groups to fetch.
+     * Filter, which areas to fetch.
      */
-    where?: groupsWhereInput
+    where?: areasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of groups to fetch.
+     * Determine the order of areas to fetch.
      */
-    orderBy?: groupsOrderByWithRelationInput | groupsOrderByWithRelationInput[]
+    orderBy?: areasOrderByWithRelationInput | areasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing groups.
+     * Sets the position for listing areas.
      */
-    cursor?: groupsWhereUniqueInput
+    cursor?: areasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` groups from the position of the cursor.
+     * Take `±n` areas from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` groups.
+     * Skip the first `n` areas.
      */
     skip?: number
-    distinct?: GroupsScalarFieldEnum | GroupsScalarFieldEnum[]
+    distinct?: AreasScalarFieldEnum | AreasScalarFieldEnum[]
   }
 
   /**
-   * groups create
+   * areas create
    */
-  export type groupsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * The data needed to create a groups.
+     * The data needed to create a areas.
      */
-    data: XOR<groupsCreateInput, groupsUncheckedCreateInput>
+    data: XOR<areasCreateInput, areasUncheckedCreateInput>
   }
 
   /**
-   * groups createMany
+   * areas createMany
    */
-  export type groupsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many groups.
+     * The data used to create many areas.
      */
-    data: groupsCreateManyInput | groupsCreateManyInput[]
+    data: areasCreateManyInput | areasCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * groups update
+   * areas update
    */
-  export type groupsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * The data needed to update a groups.
+     * The data needed to update a areas.
      */
-    data: XOR<groupsUpdateInput, groupsUncheckedUpdateInput>
+    data: XOR<areasUpdateInput, areasUncheckedUpdateInput>
     /**
-     * Choose, which groups to update.
+     * Choose, which areas to update.
      */
-    where: groupsWhereUniqueInput
+    where: areasWhereUniqueInput
   }
 
   /**
-   * groups updateMany
+   * areas updateMany
    */
-  export type groupsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update groups.
+     * The data used to update areas.
      */
-    data: XOR<groupsUpdateManyMutationInput, groupsUncheckedUpdateManyInput>
+    data: XOR<areasUpdateManyMutationInput, areasUncheckedUpdateManyInput>
     /**
-     * Filter which groups to update
+     * Filter which areas to update
      */
-    where?: groupsWhereInput
+    where?: areasWhereInput
     /**
-     * Limit how many groups to update.
+     * Limit how many areas to update.
      */
     limit?: number
   }
 
   /**
-   * groups upsert
+   * areas upsert
    */
-  export type groupsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * The filter to search for the groups to update in case it exists.
+     * The filter to search for the areas to update in case it exists.
      */
-    where: groupsWhereUniqueInput
+    where: areasWhereUniqueInput
     /**
-     * In case the groups found by the `where` argument doesn't exist, create a new groups with this data.
+     * In case the areas found by the `where` argument doesn't exist, create a new areas with this data.
      */
-    create: XOR<groupsCreateInput, groupsUncheckedCreateInput>
+    create: XOR<areasCreateInput, areasUncheckedCreateInput>
     /**
-     * In case the groups was found with the provided `where` argument, update it with this data.
+     * In case the areas was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<groupsUpdateInput, groupsUncheckedUpdateInput>
+    update: XOR<areasUpdateInput, areasUncheckedUpdateInput>
   }
 
   /**
-   * groups delete
+   * areas delete
    */
-  export type groupsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
     /**
-     * Filter which groups to delete.
+     * Filter which areas to delete.
      */
-    where: groupsWhereUniqueInput
+    where: areasWhereUniqueInput
   }
 
   /**
-   * groups deleteMany
+   * areas deleteMany
    */
-  export type groupsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which groups to delete
+     * Filter which areas to delete
      */
-    where?: groupsWhereInput
+    where?: areasWhereInput
     /**
-     * Limit how many groups to delete.
+     * Limit how many areas to delete.
      */
     limit?: number
   }
 
   /**
-   * groups.customer
+   * areas.customer
    */
-  export type groups$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areas$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the customer
      */
@@ -8966,21 +8966,21 @@ export namespace Prisma {
   }
 
   /**
-   * groups without action
+   * areas without action
    */
-  export type groupsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type areasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the groups
+     * Select specific fields to fetch from the areas
      */
-    select?: groupsSelect<ExtArgs> | null
+    select?: areasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the groups
+     * Omit specific fields from the areas
      */
-    omit?: groupsOmit<ExtArgs> | null
+    omit?: areasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: groupsInclude<ExtArgs> | null
+    include?: areasInclude<ExtArgs> | null
   }
 
 
@@ -15649,7 +15649,7 @@ export namespace Prisma {
     company_id: 'company_id',
     country: 'country',
     fullname: 'fullname',
-    group_id: 'group_id',
+    area_id: 'area_id',
     location: 'location',
     password: 'password',
     state_region: 'state_region',
@@ -15670,14 +15670,14 @@ export namespace Prisma {
   export type DeviceScalarFieldEnum = (typeof DeviceScalarFieldEnum)[keyof typeof DeviceScalarFieldEnum]
 
 
-  export const GroupsScalarFieldEnum: {
+  export const AreasScalarFieldEnum: {
     id: 'id',
     name: 'name',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type GroupsScalarFieldEnum = (typeof GroupsScalarFieldEnum)[keyof typeof GroupsScalarFieldEnum]
+  export type AreasScalarFieldEnum = (typeof AreasScalarFieldEnum)[keyof typeof AreasScalarFieldEnum]
 
 
   export const LogsScalarFieldEnum: {
@@ -15834,7 +15834,7 @@ export namespace Prisma {
     company_id: 'company_id',
     country: 'country',
     fullname: 'fullname',
-    group_id: 'group_id',
+    area_id: 'area_id',
     location: 'location',
     password: 'password',
     state_region: 'state_region',
@@ -15853,12 +15853,12 @@ export namespace Prisma {
   export type deviceOrderByRelevanceFieldEnum = (typeof deviceOrderByRelevanceFieldEnum)[keyof typeof deviceOrderByRelevanceFieldEnum]
 
 
-  export const groupsOrderByRelevanceFieldEnum: {
+  export const areasOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name'
   };
 
-  export type groupsOrderByRelevanceFieldEnum = (typeof groupsOrderByRelevanceFieldEnum)[keyof typeof groupsOrderByRelevanceFieldEnum]
+  export type areasOrderByRelevanceFieldEnum = (typeof areasOrderByRelevanceFieldEnum)[keyof typeof areasOrderByRelevanceFieldEnum]
 
 
   export const logsOrderByRelevanceFieldEnum: {
@@ -16256,7 +16256,7 @@ export namespace Prisma {
     company_id?: StringFilter<"customer"> | string
     country?: StringFilter<"customer"> | string
     fullname?: StringFilter<"customer"> | string
-    group_id?: StringFilter<"customer"> | string
+    area_id?: StringFilter<"customer"> | string
     location?: StringFilter<"customer"> | string
     password?: StringFilter<"customer"> | string
     state_region?: StringFilter<"customer"> | string
@@ -16264,7 +16264,7 @@ export namespace Prisma {
     tag?: StringFilter<"customer"> | string
     archive_installation?: Archive_installationListRelationFilter
     company?: XOR<CompanyScalarRelationFilter, companyWhereInput>
-    groups?: XOR<GroupsScalarRelationFilter, groupsWhereInput>
+    areas?: XOR<AreasScalarRelationFilter, areasWhereInput>
   }
 
   export type customerOrderByWithRelationInput = {
@@ -16280,7 +16280,7 @@ export namespace Prisma {
     company_id?: SortOrder
     country?: SortOrder
     fullname?: SortOrder
-    group_id?: SortOrder
+    area_id?: SortOrder
     location?: SortOrder
     password?: SortOrder
     state_region?: SortOrder
@@ -16288,7 +16288,7 @@ export namespace Prisma {
     tag?: SortOrder
     archive_installation?: archive_installationOrderByRelationAggregateInput
     company?: companyOrderByWithRelationInput
-    groups?: groupsOrderByWithRelationInput
+    areas?: areasOrderByWithRelationInput
     _relevance?: customerOrderByRelevanceInput
   }
 
@@ -16308,7 +16308,7 @@ export namespace Prisma {
     company_id?: StringFilter<"customer"> | string
     country?: StringFilter<"customer"> | string
     fullname?: StringFilter<"customer"> | string
-    group_id?: StringFilter<"customer"> | string
+    area_id?: StringFilter<"customer"> | string
     location?: StringFilter<"customer"> | string
     password?: StringFilter<"customer"> | string
     state_region?: StringFilter<"customer"> | string
@@ -16316,7 +16316,7 @@ export namespace Prisma {
     tag?: StringFilter<"customer"> | string
     archive_installation?: Archive_installationListRelationFilter
     company?: XOR<CompanyScalarRelationFilter, companyWhereInput>
-    groups?: XOR<GroupsScalarRelationFilter, groupsWhereInput>
+    areas?: XOR<AreasScalarRelationFilter, areasWhereInput>
   }, "id">
 
   export type customerOrderByWithAggregationInput = {
@@ -16332,7 +16332,7 @@ export namespace Prisma {
     company_id?: SortOrder
     country?: SortOrder
     fullname?: SortOrder
-    group_id?: SortOrder
+    area_id?: SortOrder
     location?: SortOrder
     password?: SortOrder
     state_region?: SortOrder
@@ -16359,7 +16359,7 @@ export namespace Prisma {
     company_id?: StringWithAggregatesFilter<"customer"> | string
     country?: StringWithAggregatesFilter<"customer"> | string
     fullname?: StringWithAggregatesFilter<"customer"> | string
-    group_id?: StringWithAggregatesFilter<"customer"> | string
+    area_id?: StringWithAggregatesFilter<"customer"> | string
     location?: StringWithAggregatesFilter<"customer"> | string
     password?: StringWithAggregatesFilter<"customer"> | string
     state_region?: StringWithAggregatesFilter<"customer"> | string
@@ -16415,55 +16415,55 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"device"> | Date | string
   }
 
-  export type groupsWhereInput = {
-    AND?: groupsWhereInput | groupsWhereInput[]
-    OR?: groupsWhereInput[]
-    NOT?: groupsWhereInput | groupsWhereInput[]
-    id?: StringFilter<"groups"> | string
-    name?: StringFilter<"groups"> | string
-    createdAt?: DateTimeFilter<"groups"> | Date | string
-    updatedAt?: DateTimeFilter<"groups"> | Date | string
+  export type areasWhereInput = {
+    AND?: areasWhereInput | areasWhereInput[]
+    OR?: areasWhereInput[]
+    NOT?: areasWhereInput | areasWhereInput[]
+    id?: StringFilter<"areas"> | string
+    name?: StringFilter<"areas"> | string
+    createdAt?: DateTimeFilter<"areas"> | Date | string
+    updatedAt?: DateTimeFilter<"areas"> | Date | string
     customer?: CustomerListRelationFilter
   }
 
-  export type groupsOrderByWithRelationInput = {
+  export type areasOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     customer?: customerOrderByRelationAggregateInput
-    _relevance?: groupsOrderByRelevanceInput
+    _relevance?: areasOrderByRelevanceInput
   }
 
-  export type groupsWhereUniqueInput = Prisma.AtLeast<{
+  export type areasWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: groupsWhereInput | groupsWhereInput[]
-    OR?: groupsWhereInput[]
-    NOT?: groupsWhereInput | groupsWhereInput[]
-    name?: StringFilter<"groups"> | string
-    createdAt?: DateTimeFilter<"groups"> | Date | string
-    updatedAt?: DateTimeFilter<"groups"> | Date | string
+    AND?: areasWhereInput | areasWhereInput[]
+    OR?: areasWhereInput[]
+    NOT?: areasWhereInput | areasWhereInput[]
+    name?: StringFilter<"areas"> | string
+    createdAt?: DateTimeFilter<"areas"> | Date | string
+    updatedAt?: DateTimeFilter<"areas"> | Date | string
     customer?: CustomerListRelationFilter
   }, "id">
 
-  export type groupsOrderByWithAggregationInput = {
+  export type areasOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: groupsCountOrderByAggregateInput
-    _max?: groupsMaxOrderByAggregateInput
-    _min?: groupsMinOrderByAggregateInput
+    _count?: areasCountOrderByAggregateInput
+    _max?: areasMaxOrderByAggregateInput
+    _min?: areasMinOrderByAggregateInput
   }
 
-  export type groupsScalarWhereWithAggregatesInput = {
-    AND?: groupsScalarWhereWithAggregatesInput | groupsScalarWhereWithAggregatesInput[]
-    OR?: groupsScalarWhereWithAggregatesInput[]
-    NOT?: groupsScalarWhereWithAggregatesInput | groupsScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"groups"> | string
-    name?: StringWithAggregatesFilter<"groups"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"groups"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"groups"> | Date | string
+  export type areasScalarWhereWithAggregatesInput = {
+    AND?: areasScalarWhereWithAggregatesInput | areasScalarWhereWithAggregatesInput[]
+    OR?: areasScalarWhereWithAggregatesInput[]
+    NOT?: areasScalarWhereWithAggregatesInput | areasScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"areas"> | string
+    name?: StringWithAggregatesFilter<"areas"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"areas"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"areas"> | Date | string
   }
 
   export type logsWhereInput = {
@@ -17214,7 +17214,7 @@ export namespace Prisma {
     tag: string
     archive_installation?: archive_installationCreateNestedManyWithoutCustomerInput
     company: companyCreateNestedOneWithoutCustomerInput
-    groups: groupsCreateNestedOneWithoutCustomerInput
+    areas: areasCreateNestedOneWithoutCustomerInput
   }
 
   export type customerUncheckedCreateInput = {
@@ -17230,7 +17230,7 @@ export namespace Prisma {
     company_id: string
     country: string
     fullname: string
-    group_id: string
+    area_id: string
     location: string
     password: string
     state_region: string
@@ -17258,7 +17258,7 @@ export namespace Prisma {
     tag?: StringFieldUpdateOperationsInput | string
     archive_installation?: archive_installationUpdateManyWithoutCustomerNestedInput
     company?: companyUpdateOneRequiredWithoutCustomerNestedInput
-    groups?: groupsUpdateOneRequiredWithoutCustomerNestedInput
+    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
   }
 
   export type customerUncheckedUpdateInput = {
@@ -17274,7 +17274,7 @@ export namespace Prisma {
     company_id?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
     fullname?: StringFieldUpdateOperationsInput | string
-    group_id?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     state_region?: StringFieldUpdateOperationsInput | string
@@ -17296,7 +17296,7 @@ export namespace Prisma {
     company_id: string
     country: string
     fullname: string
-    group_id: string
+    area_id: string
     location: string
     password: string
     state_region: string
@@ -17336,7 +17336,7 @@ export namespace Prisma {
     company_id?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
     fullname?: StringFieldUpdateOperationsInput | string
-    group_id?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     state_region?: StringFieldUpdateOperationsInput | string
@@ -17393,53 +17393,53 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type groupsCreateInput = {
+  export type areasCreateInput = {
     id: string
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
-    customer?: customerCreateNestedManyWithoutGroupsInput
+    customer?: customerCreateNestedManyWithoutAreasInput
   }
 
-  export type groupsUncheckedCreateInput = {
+  export type areasUncheckedCreateInput = {
     id: string
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
-    customer?: customerUncheckedCreateNestedManyWithoutGroupsInput
+    customer?: customerUncheckedCreateNestedManyWithoutAreasInput
   }
 
-  export type groupsUpdateInput = {
+  export type areasUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUpdateManyWithoutGroupsNestedInput
+    customer?: customerUpdateManyWithoutAreasNestedInput
   }
 
-  export type groupsUncheckedUpdateInput = {
+  export type areasUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUncheckedUpdateManyWithoutGroupsNestedInput
+    customer?: customerUncheckedUpdateManyWithoutAreasNestedInput
   }
 
-  export type groupsCreateManyInput = {
+  export type areasCreateManyInput = {
     id: string
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
   }
 
-  export type groupsUpdateManyMutationInput = {
+  export type areasUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type groupsUncheckedUpdateManyInput = {
+  export type areasUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18270,9 +18270,9 @@ export namespace Prisma {
     isNot?: companyWhereInput
   }
 
-  export type GroupsScalarRelationFilter = {
-    is?: groupsWhereInput
-    isNot?: groupsWhereInput
+  export type AreasScalarRelationFilter = {
+    is?: areasWhereInput
+    isNot?: areasWhereInput
   }
 
   export type archive_installationOrderByRelationAggregateInput = {
@@ -18298,7 +18298,7 @@ export namespace Prisma {
     company_id?: SortOrder
     country?: SortOrder
     fullname?: SortOrder
-    group_id?: SortOrder
+    area_id?: SortOrder
     location?: SortOrder
     password?: SortOrder
     state_region?: SortOrder
@@ -18319,7 +18319,7 @@ export namespace Prisma {
     company_id?: SortOrder
     country?: SortOrder
     fullname?: SortOrder
-    group_id?: SortOrder
+    area_id?: SortOrder
     location?: SortOrder
     password?: SortOrder
     state_region?: SortOrder
@@ -18340,7 +18340,7 @@ export namespace Prisma {
     company_id?: SortOrder
     country?: SortOrder
     fullname?: SortOrder
-    group_id?: SortOrder
+    area_id?: SortOrder
     location?: SortOrder
     password?: SortOrder
     state_region?: SortOrder
@@ -18375,27 +18375,27 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type groupsOrderByRelevanceInput = {
-    fields: groupsOrderByRelevanceFieldEnum | groupsOrderByRelevanceFieldEnum[]
+  export type areasOrderByRelevanceInput = {
+    fields: areasOrderByRelevanceFieldEnum | areasOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type groupsCountOrderByAggregateInput = {
+  export type areasCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type groupsMaxOrderByAggregateInput = {
+  export type areasMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type groupsMinOrderByAggregateInput = {
+  export type areasMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     createdAt?: SortOrder
@@ -19004,10 +19004,10 @@ export namespace Prisma {
     connect?: companyWhereUniqueInput
   }
 
-  export type groupsCreateNestedOneWithoutCustomerInput = {
-    create?: XOR<groupsCreateWithoutCustomerInput, groupsUncheckedCreateWithoutCustomerInput>
-    connectOrCreate?: groupsCreateOrConnectWithoutCustomerInput
-    connect?: groupsWhereUniqueInput
+  export type areasCreateNestedOneWithoutCustomerInput = {
+    create?: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: areasCreateOrConnectWithoutCustomerInput
+    connect?: areasWhereUniqueInput
   }
 
   export type archive_installationUncheckedCreateNestedManyWithoutCustomerInput = {
@@ -19039,12 +19039,12 @@ export namespace Prisma {
     update?: XOR<XOR<companyUpdateToOneWithWhereWithoutCustomerInput, companyUpdateWithoutCustomerInput>, companyUncheckedUpdateWithoutCustomerInput>
   }
 
-  export type groupsUpdateOneRequiredWithoutCustomerNestedInput = {
-    create?: XOR<groupsCreateWithoutCustomerInput, groupsUncheckedCreateWithoutCustomerInput>
-    connectOrCreate?: groupsCreateOrConnectWithoutCustomerInput
-    upsert?: groupsUpsertWithoutCustomerInput
-    connect?: groupsWhereUniqueInput
-    update?: XOR<XOR<groupsUpdateToOneWithWhereWithoutCustomerInput, groupsUpdateWithoutCustomerInput>, groupsUncheckedUpdateWithoutCustomerInput>
+  export type areasUpdateOneRequiredWithoutCustomerNestedInput = {
+    create?: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: areasCreateOrConnectWithoutCustomerInput
+    upsert?: areasUpsertWithoutCustomerInput
+    connect?: areasWhereUniqueInput
+    update?: XOR<XOR<areasUpdateToOneWithWhereWithoutCustomerInput, areasUpdateWithoutCustomerInput>, areasUncheckedUpdateWithoutCustomerInput>
   }
 
   export type archive_installationUncheckedUpdateManyWithoutCustomerNestedInput = {
@@ -19061,45 +19061,45 @@ export namespace Prisma {
     deleteMany?: archive_installationScalarWhereInput | archive_installationScalarWhereInput[]
   }
 
-  export type customerCreateNestedManyWithoutGroupsInput = {
-    create?: XOR<customerCreateWithoutGroupsInput, customerUncheckedCreateWithoutGroupsInput> | customerCreateWithoutGroupsInput[] | customerUncheckedCreateWithoutGroupsInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutGroupsInput | customerCreateOrConnectWithoutGroupsInput[]
-    createMany?: customerCreateManyGroupsInputEnvelope
+  export type customerCreateNestedManyWithoutAreasInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
     connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
   }
 
-  export type customerUncheckedCreateNestedManyWithoutGroupsInput = {
-    create?: XOR<customerCreateWithoutGroupsInput, customerUncheckedCreateWithoutGroupsInput> | customerCreateWithoutGroupsInput[] | customerUncheckedCreateWithoutGroupsInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutGroupsInput | customerCreateOrConnectWithoutGroupsInput[]
-    createMany?: customerCreateManyGroupsInputEnvelope
+  export type customerUncheckedCreateNestedManyWithoutAreasInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
     connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
   }
 
-  export type customerUpdateManyWithoutGroupsNestedInput = {
-    create?: XOR<customerCreateWithoutGroupsInput, customerUncheckedCreateWithoutGroupsInput> | customerCreateWithoutGroupsInput[] | customerUncheckedCreateWithoutGroupsInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutGroupsInput | customerCreateOrConnectWithoutGroupsInput[]
-    upsert?: customerUpsertWithWhereUniqueWithoutGroupsInput | customerUpsertWithWhereUniqueWithoutGroupsInput[]
-    createMany?: customerCreateManyGroupsInputEnvelope
+  export type customerUpdateManyWithoutAreasNestedInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutAreasInput | customerUpsertWithWhereUniqueWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
     set?: customerWhereUniqueInput | customerWhereUniqueInput[]
     disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
     delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
     connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    update?: customerUpdateWithWhereUniqueWithoutGroupsInput | customerUpdateWithWhereUniqueWithoutGroupsInput[]
-    updateMany?: customerUpdateManyWithWhereWithoutGroupsInput | customerUpdateManyWithWhereWithoutGroupsInput[]
+    update?: customerUpdateWithWhereUniqueWithoutAreasInput | customerUpdateWithWhereUniqueWithoutAreasInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutAreasInput | customerUpdateManyWithWhereWithoutAreasInput[]
     deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
   }
 
-  export type customerUncheckedUpdateManyWithoutGroupsNestedInput = {
-    create?: XOR<customerCreateWithoutGroupsInput, customerUncheckedCreateWithoutGroupsInput> | customerCreateWithoutGroupsInput[] | customerUncheckedCreateWithoutGroupsInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutGroupsInput | customerCreateOrConnectWithoutGroupsInput[]
-    upsert?: customerUpsertWithWhereUniqueWithoutGroupsInput | customerUpsertWithWhereUniqueWithoutGroupsInput[]
-    createMany?: customerCreateManyGroupsInputEnvelope
+  export type customerUncheckedUpdateManyWithoutAreasNestedInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutAreasInput | customerUpsertWithWhereUniqueWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
     set?: customerWhereUniqueInput | customerWhereUniqueInput[]
     disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
     delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
     connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    update?: customerUpdateWithWhereUniqueWithoutGroupsInput | customerUpdateWithWhereUniqueWithoutGroupsInput[]
-    updateMany?: customerUpdateManyWithWhereWithoutGroupsInput | customerUpdateManyWithWhereWithoutGroupsInput[]
+    update?: customerUpdateWithWhereUniqueWithoutAreasInput | customerUpdateWithWhereUniqueWithoutAreasInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutAreasInput | customerUpdateManyWithWhereWithoutAreasInput[]
     deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
   }
 
@@ -19536,7 +19536,7 @@ export namespace Prisma {
     surname: string
     tag: string
     company: companyCreateNestedOneWithoutCustomerInput
-    groups: groupsCreateNestedOneWithoutCustomerInput
+    areas: areasCreateNestedOneWithoutCustomerInput
   }
 
   export type customerUncheckedCreateWithoutArchive_installationInput = {
@@ -19552,7 +19552,7 @@ export namespace Prisma {
     company_id: string
     country: string
     fullname: string
-    group_id: string
+    area_id: string
     location: string
     password: string
     state_region: string
@@ -19594,7 +19594,7 @@ export namespace Prisma {
     surname?: StringFieldUpdateOperationsInput | string
     tag?: StringFieldUpdateOperationsInput | string
     company?: companyUpdateOneRequiredWithoutCustomerNestedInput
-    groups?: groupsUpdateOneRequiredWithoutCustomerNestedInput
+    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutArchive_installationInput = {
@@ -19610,7 +19610,7 @@ export namespace Prisma {
     company_id?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
     fullname?: StringFieldUpdateOperationsInput | string
-    group_id?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     state_region?: StringFieldUpdateOperationsInput | string
@@ -19680,7 +19680,7 @@ export namespace Prisma {
     surname: string
     tag: string
     archive_installation?: archive_installationCreateNestedManyWithoutCustomerInput
-    groups: groupsCreateNestedOneWithoutCustomerInput
+    areas: areasCreateNestedOneWithoutCustomerInput
   }
 
   export type customerUncheckedCreateWithoutCompanyInput = {
@@ -19695,7 +19695,7 @@ export namespace Prisma {
     code_postal: string
     country: string
     fullname: string
-    group_id: string
+    area_id: string
     location: string
     password: string
     state_region: string
@@ -19746,7 +19746,7 @@ export namespace Prisma {
     company_id?: StringFilter<"customer"> | string
     country?: StringFilter<"customer"> | string
     fullname?: StringFilter<"customer"> | string
-    group_id?: StringFilter<"customer"> | string
+    area_id?: StringFilter<"customer"> | string
     location?: StringFilter<"customer"> | string
     password?: StringFilter<"customer"> | string
     state_region?: StringFilter<"customer"> | string
@@ -19809,23 +19809,23 @@ export namespace Prisma {
     create: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
   }
 
-  export type groupsCreateWithoutCustomerInput = {
+  export type areasCreateWithoutCustomerInput = {
     id: string
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
   }
 
-  export type groupsUncheckedCreateWithoutCustomerInput = {
+  export type areasUncheckedCreateWithoutCustomerInput = {
     id: string
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
   }
 
-  export type groupsCreateOrConnectWithoutCustomerInput = {
-    where: groupsWhereUniqueInput
-    create: XOR<groupsCreateWithoutCustomerInput, groupsUncheckedCreateWithoutCustomerInput>
+  export type areasCreateOrConnectWithoutCustomerInput = {
+    where: areasWhereUniqueInput
+    create: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
   }
 
   export type archive_installationUpsertWithWhereUniqueWithoutCustomerInput = {
@@ -19891,32 +19891,32 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type groupsUpsertWithoutCustomerInput = {
-    update: XOR<groupsUpdateWithoutCustomerInput, groupsUncheckedUpdateWithoutCustomerInput>
-    create: XOR<groupsCreateWithoutCustomerInput, groupsUncheckedCreateWithoutCustomerInput>
-    where?: groupsWhereInput
+  export type areasUpsertWithoutCustomerInput = {
+    update: XOR<areasUpdateWithoutCustomerInput, areasUncheckedUpdateWithoutCustomerInput>
+    create: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
+    where?: areasWhereInput
   }
 
-  export type groupsUpdateToOneWithWhereWithoutCustomerInput = {
-    where?: groupsWhereInput
-    data: XOR<groupsUpdateWithoutCustomerInput, groupsUncheckedUpdateWithoutCustomerInput>
+  export type areasUpdateToOneWithWhereWithoutCustomerInput = {
+    where?: areasWhereInput
+    data: XOR<areasUpdateWithoutCustomerInput, areasUncheckedUpdateWithoutCustomerInput>
   }
 
-  export type groupsUpdateWithoutCustomerInput = {
+  export type areasUpdateWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type groupsUncheckedUpdateWithoutCustomerInput = {
+  export type areasUncheckedUpdateWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type customerCreateWithoutGroupsInput = {
+  export type customerCreateWithoutAreasInput = {
     id: string
     email: string
     phone: string
@@ -19937,7 +19937,7 @@ export namespace Prisma {
     company: companyCreateNestedOneWithoutCustomerInput
   }
 
-  export type customerUncheckedCreateWithoutGroupsInput = {
+  export type customerUncheckedCreateWithoutAreasInput = {
     id: string
     email: string
     phone: string
@@ -19958,30 +19958,30 @@ export namespace Prisma {
     archive_installation?: archive_installationUncheckedCreateNestedManyWithoutCustomerInput
   }
 
-  export type customerCreateOrConnectWithoutGroupsInput = {
+  export type customerCreateOrConnectWithoutAreasInput = {
     where: customerWhereUniqueInput
-    create: XOR<customerCreateWithoutGroupsInput, customerUncheckedCreateWithoutGroupsInput>
+    create: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput>
   }
 
-  export type customerCreateManyGroupsInputEnvelope = {
-    data: customerCreateManyGroupsInput | customerCreateManyGroupsInput[]
+  export type customerCreateManyAreasInputEnvelope = {
+    data: customerCreateManyAreasInput | customerCreateManyAreasInput[]
     skipDuplicates?: boolean
   }
 
-  export type customerUpsertWithWhereUniqueWithoutGroupsInput = {
+  export type customerUpsertWithWhereUniqueWithoutAreasInput = {
     where: customerWhereUniqueInput
-    update: XOR<customerUpdateWithoutGroupsInput, customerUncheckedUpdateWithoutGroupsInput>
-    create: XOR<customerCreateWithoutGroupsInput, customerUncheckedCreateWithoutGroupsInput>
+    update: XOR<customerUpdateWithoutAreasInput, customerUncheckedUpdateWithoutAreasInput>
+    create: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput>
   }
 
-  export type customerUpdateWithWhereUniqueWithoutGroupsInput = {
+  export type customerUpdateWithWhereUniqueWithoutAreasInput = {
     where: customerWhereUniqueInput
-    data: XOR<customerUpdateWithoutGroupsInput, customerUncheckedUpdateWithoutGroupsInput>
+    data: XOR<customerUpdateWithoutAreasInput, customerUncheckedUpdateWithoutAreasInput>
   }
 
-  export type customerUpdateManyWithWhereWithoutGroupsInput = {
+  export type customerUpdateManyWithWhereWithoutAreasInput = {
     where: customerScalarWhereInput
-    data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutGroupsInput>
+    data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutAreasInput>
   }
 
   export type assetsCreateWithoutReport_assetsInput = {
@@ -20232,7 +20232,7 @@ export namespace Prisma {
     code_postal: string
     country: string
     fullname: string
-    group_id: string
+    area_id: string
     location: string
     password: string
     state_region: string
@@ -20258,7 +20258,7 @@ export namespace Prisma {
     surname?: StringFieldUpdateOperationsInput | string
     tag?: StringFieldUpdateOperationsInput | string
     archive_installation?: archive_installationUpdateManyWithoutCustomerNestedInput
-    groups?: groupsUpdateOneRequiredWithoutCustomerNestedInput
+    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutCompanyInput = {
@@ -20273,7 +20273,7 @@ export namespace Prisma {
     code_postal?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
     fullname?: StringFieldUpdateOperationsInput | string
-    group_id?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     state_region?: StringFieldUpdateOperationsInput | string
@@ -20294,7 +20294,7 @@ export namespace Prisma {
     code_postal?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
     fullname?: StringFieldUpdateOperationsInput | string
-    group_id?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     state_region?: StringFieldUpdateOperationsInput | string
@@ -20334,7 +20334,7 @@ export namespace Prisma {
     names?: StringFieldUpdateOperationsInput | string
   }
 
-  export type customerCreateManyGroupsInput = {
+  export type customerCreateManyAreasInput = {
     id: string
     email: string
     phone: string
@@ -20354,7 +20354,7 @@ export namespace Prisma {
     tag: string
   }
 
-  export type customerUpdateWithoutGroupsInput = {
+  export type customerUpdateWithoutAreasInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
@@ -20375,7 +20375,7 @@ export namespace Prisma {
     company?: companyUpdateOneRequiredWithoutCustomerNestedInput
   }
 
-  export type customerUncheckedUpdateWithoutGroupsInput = {
+  export type customerUncheckedUpdateWithoutAreasInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
@@ -20396,7 +20396,7 @@ export namespace Prisma {
     archive_installation?: archive_installationUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
-  export type customerUncheckedUpdateManyWithoutGroupsInput = {
+  export type customerUncheckedUpdateManyWithoutAreasInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string

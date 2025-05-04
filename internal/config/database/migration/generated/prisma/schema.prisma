@@ -65,7 +65,7 @@ model customer {
   company_id           String
   country              String
   fullname             String
-  group_id             String
+  area_id              String
   location             String
   password             String
   state_region         String
@@ -73,10 +73,10 @@ model customer {
   tag                  String
   archive_installation archive_installation[]
   company              company                @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
-  groups               groups                 @relation(fields: [group_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
+  areas                areas                  @relation(fields: [area_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
 
   @@index([company_id], map: "company_id")
-  @@index([group_id], map: "customer_ibfk_2")
+  @@index([area_id], map: "customer_ibfk_2")
 }
 
 model device {
@@ -86,7 +86,7 @@ model device {
   updatedAt DateTime
 }
 
-model groups {
+model areas {
   id        String     @id
   name      String
   createdAt DateTime   @default(now())
