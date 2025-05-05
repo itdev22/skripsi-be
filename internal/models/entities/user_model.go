@@ -137,8 +137,18 @@ type Products struct {
 	Name        string    `json:"name"`
 	Price       int64     `json:"price"` // BigInt mapped to int64
 	Description string    `json:"description"`
-	CreatedAt   time.Time `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt   time.Time `json:"updatedAt"`
+	CreatedAt   time.Time `json:"createdAt" gorm:"default:current_timestamp; column:createdAt"`
+	UpdatedAt   time.Time `json:"updatedAt" gorm:"column:updatedAt" omitempty"`
+}
+
+func (u *Products) TableName() string {
+	return "products"
+}
+func (u *Products) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
 }
 
 // ReportAssets model
