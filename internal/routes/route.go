@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"skripsi-be/internal/api/admin/area"
 	"skripsi-be/internal/api/admin/company"
 	"skripsi-be/internal/api/admin/product"
 	usermanagement "skripsi-be/internal/api/admin/user-management"
@@ -19,4 +20,5 @@ func RouteFiber(app *fiber.App) {
 	company.AdminCompanyRoute(admin.Group("/company"))
 	usermanagement.AdminUserManagementRoute(admin.Group("/user-management"))
 	product.AdminProductRoute(admin.Group("/product"))
+	area.AdminAreaRoute(admin.Group("/area"))
 }

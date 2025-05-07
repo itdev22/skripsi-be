@@ -1,11 +1,20 @@
 package area
 
-func AdminAreaRoute() {
-	// adminAreaGroup := adminRouter.Group("/area")
-	// {
-	// 	adminAreaGroup.GET("", areaHandler.GetList)
-	// 	adminAreaGroup.POST("", areaHandler.Create)
-	// 	adminAreaGroup.PUT("/:id", areaHandler.Update)
-	// 	adminAreaGroup.DELETE("/:id", areaHandler.Delete)
-	// }
+import (
+	"skripsi-be/internal/config/database"
+
+	"github.com/gofiber/fiber/v2"
+)
+
+func AdminAreaRoute(app fiber.Router) {
+	db := database.GetDB()
+	repository := NewAdminAreaRepository(db)
+	service := NewAdminAreaService(repository)
+	handler := NewAdminAreaHandler(service)
+
+	app.Get("/", handler.GetAllAdminAreaHandler)
+	app.Get("/:id", handler.GetByIdAdminAreaHandler)
+	app.Post("/", handler.CreateAdminAreaHandler)
+	app.Put("/:id", handler.UpdateAdminAreaHandler)
+	app.Delete("/:id", handler.DeleteAdminAreaHandler)
 }

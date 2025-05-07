@@ -101,7 +101,7 @@ type Customer struct {
 	Tag                  string                `json:"tag"`
 	ArchiveInstallations []ArchiveInstallation `json:"archive_installation" gorm:"foreignKey:CustomerID"`
 	Company              Company               `json:"company" gorm:"foreignKey:CompanyID;constraint:OnUpdate:RESTRICT"`
-	Groups               Groups                `json:"groups" gorm:"foreignKey:GroupID;constraint:OnUpdate:RESTRICT"`
+	Areas                Areas                 `json:"groups" gorm:"foreignKey:GroupID;constraint:OnUpdate:RESTRICT"`
 }
 
 // Device model
@@ -113,12 +113,22 @@ type Device struct {
 }
 
 // Groups model
-type Groups struct {
+type Areas struct {
 	ID        string     `json:"id" gorm:"primaryKey"`
 	Name      string     `json:"name"`
-	CreatedAt time.Time  `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt time.Time  `json:"updatedAt"`
+	CreatedAt time.Time  `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
+	UpdatedAt time.Time  `json:"updatedAt" gorm:"column:createdAt;"`
 	Customers []Customer `json:"customer" gorm:"foreignKey:GroupID"`
+}
+
+func (u *Areas) TableName() string {
+	return "areas"
+}
+func (u *Areas) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
 }
 
 // Log model
