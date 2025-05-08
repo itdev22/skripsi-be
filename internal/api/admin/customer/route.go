@@ -8,8 +8,8 @@ import (
 )
 
 func AdminCustomerRoute(app fiber.Router) {
-	dbmysql := database.GetDB()
-	repository := NewAdminCustomerRepository(dbmysql)
+	db := database.GetDB()
+	repository := NewAdminCustomerRepository(db)
 	service := NewAdminCustomerService(repository)
 	handler := NewAdminCustomerHandler(service)
 
@@ -19,4 +19,7 @@ func AdminCustomerRoute(app fiber.Router) {
 	app.Post("/", handler.CreateAdminCustomerHandler)
 	app.Put("/:id", handler.UpdateAdminCustomerHandler)
 	app.Delete("/:id", handler.DeleteAdminCustomerHandler)
+
+	app.Get("", handler.GetAllAdminCustomerHandler)
+
 }

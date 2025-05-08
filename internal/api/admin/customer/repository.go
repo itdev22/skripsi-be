@@ -13,6 +13,7 @@ type AdminCustomerRepositoryInterface interface {
 	CreateAdminCustomerRepository(request CreateAdminCustomerRequest) (*entities.Customer, error)
 	DeleteCustomerByID(id int) error
 }
+
 type AdminCustomerRepositoryStruct struct {
 	db *gorm.DB
 }

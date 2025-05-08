@@ -1,13 +1,14 @@
 package area
 
 type CreateAdminAreaRequest struct {
-	Name    string `json:"name" validate:"required"`
-	URL     string `json:"url" validate:"required"`
-	Email   string `json:"email" validate:"required,email"`
-	Phone   string `json:"phone" validate:"required"`
-	LogoUrl string `json:"logo_url" validate:"required"`
+	Name string `json:"name" validate:"required"`
 }
 
 type IdAdminAreaRequest struct {
-	Id string `json:"name" validate:"required"`
+	Id string `json:"id" validate:"required"`
+}
+
+type UpdateAdminAreaRequest struct {
+	IdAdminAreaRequest
+	CreateAdminAreaRequest
 }
