@@ -8,6 +8,8 @@ type AdminUserManagementServiceInterface interface {
 	GetAllAdminUserManagementService() (*[]dto.UserDTO, error)
 	GetByIdAdminUserManagementService(request IdAdminUserManagementRequest) (dto.UserDTO, error)
 	CreateAdminUserManagementService(request CreateAdminUserManagementRequest) (dto.UserDTO, error)
+	UpdateAdminUserManagementService(request UpdateAdminUserManagementRequest) (dto.UserDTO, error)
+	DeleteAdminUserManagementService(request IdAdminUserManagementRequest) (dto.UserDTO, error)
 }
 
 type AdminUserManagementServiceStruct struct {
@@ -19,8 +21,6 @@ func NewAdminUserManagementService(repository *AdminUserManagementRepositoryStru
 }
 
 func (s *AdminUserManagementServiceStruct) GetAllAdminUserManagementService() (*[]dto.UserDTO, error) {
-	// Simulate a database call
-	// In a real implementation, this would interact with the repository to fetch user data
 	Users, err := s.repository.FindAdminUserManagementRepository()
 	if err != nil {
 		return nil, err
@@ -30,8 +30,6 @@ func (s *AdminUserManagementServiceStruct) GetAllAdminUserManagementService() (*
 }
 
 func (s *AdminUserManagementServiceStruct) GetByIdAdminUserManagementService(request IdAdminUserManagementRequest) (dto.UserDTO, error) {
-	// Simulate a database call
-	// In a real implementation, this would interact with the repository to fetch user data
 	user, err := s.repository.FindByIdAdminUserManagementRepository(request)
 	if err != nil {
 		return user, err
@@ -40,9 +38,23 @@ func (s *AdminUserManagementServiceStruct) GetByIdAdminUserManagementService(req
 }
 
 func (s *AdminUserManagementServiceStruct) CreateAdminUserManagementService(request CreateAdminUserManagementRequest) (dto.UserDTO, error) {
-	// Simulate a database call
-	// In a real implementation, this would interact with the repository to fetch user data
 	user, err := s.repository.CreateAdminUserManagementRepository(request)
+	if err != nil {
+		return user, err
+	}
+	return user, err
+}
+
+func (s *AdminUserManagementServiceStruct) UpdateAdminUserManagementService(request UpdateAdminUserManagementRequest) (dto.UserDTO, error) {
+	user, err := s.repository.UpdateAdminUserManagementRepository(request)
+	if err != nil {
+		return user, err
+	}
+	return user, err
+}
+
+func (s *AdminUserManagementServiceStruct) DeleteAdminUserManagementService(request IdAdminUserManagementRequest) (dto.UserDTO, error) {
+	user, err := s.repository.DeleteAdminUserManagementRepository(request)
 	if err != nil {
 		return user, err
 	}

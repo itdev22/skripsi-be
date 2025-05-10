@@ -75,7 +75,7 @@ func (h *AdminUserManagementHandlerStruct) UpdateAdminUserManagementHandler(c *f
 
 	}
 
-	user, err := h.service.CreateAdminUserManagementService(request)
+	user, err := h.service.UpdateAdminUserManagementService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}

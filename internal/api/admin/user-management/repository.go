@@ -15,6 +15,8 @@ type AdminUserManagementRepositoryInterface interface {
 	FindAdminUserManagementRepository() (*[]dto.UserDTO, error)
 	FindByIdAdminUserManagementRepository(request IdAdminUserManagementRequest) (dto.UserDTO, error)
 	CreateAdminUserManagementRepository(request CreateAdminUserManagementRequest) (dto.UserDTO, error)
+	UpdateAdminUserManagementRepository(request UpdateAdminUserManagementRequest) (dto.UserDTO, error)
+	DeleteAdminUserManagementRepository(request IdAdminUserManagementRequest) (dto.UserDTO, error)
 }
 
 type AdminUserManagementRepositoryStruct struct {
@@ -84,7 +86,7 @@ func (r *AdminUserManagementRepositoryStruct) CreateAdminUserManagementRepositor
 	return userDto, nil
 }
 
-func (r *AdminUserManagementRepositoryStruct) UpdateAdminUserManagementRepository(request CreateAdminUserManagementRequest) (dto.UserDTO, error) {
+func (r *AdminUserManagementRepositoryStruct) UpdateAdminUserManagementRepository(request UpdateAdminUserManagementRequest) (dto.UserDTO, error) {
 	// Simulate a database call
 	user := entities.User{}
 	userDto := dto.UserDTO{}
@@ -111,5 +113,24 @@ func (r *AdminUserManagementRepositoryStruct) UpdateAdminUserManagementRepositor
 		return userDto, tx.Error
 	}
 
+	return userDto, nil
+}
+
+func (r *AdminUserManagementRepositoryStruct) DeleteAdminUserManagementRepository(request IdAdminUserManagementRequest) (dto.UserDTO, error) {
+	// Simulate a database call
+	user := entities.User{}
+	userDto := dto.UserDTO{}
+
+	tx := r.db.First(&user, "id = ?", request.Id)
+
+	copier.Copy(&userDto, &user)
+	if tx.Error != nil {
+		return userDto, tx.Error
+	}
+
+	tx = r.db.Delete(&user)
+	if tx.Error != nil {
+		return userDto, tx.Error
+	}
 	return userDto, nil
 }
