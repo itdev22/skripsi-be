@@ -65,7 +65,7 @@ type Company struct {
 	Description string     `json:"description"`
 	CreatedAt   time.Time  `json:"createdAt" gorm:"column:createdAt; default:current_timestamp"`
 	UpdatedAt   time.Time  `json:"updatedAt"  gorm:"column:updatedAt" `
-	Customers   []Customer `json:"customer" gorm:"foreignKey:CompanyID"`
+	Customers   []Customer `json:"customer" gorm:"foreignKey:company_id"`
 }
 
 func (c *Company) TableName() string {
@@ -81,27 +81,40 @@ func (u *Company) BeforeCreate(tx *gorm.DB) error {
 
 // Customer model
 type Customer struct {
-	ID                   string                `json:"id" gorm:"primaryKey"`
-	Email                string                `json:"email"`
-	Phone                string                `json:"phone"`
-	Address              string                `json:"address"`
-	InstallationDate     time.Time             `json:"installation_date"`
-	CreatedAt            time.Time             `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt            time.Time             `json:"updatedAt"`
-	City                 string                `json:"city"`
-	CodePostal           string                `json:"code_postal"`
-	CompanyID            string                `json:"company_id" gorm:"index:company_id"`
-	Country              string                `json:"country"`
-	Fullname             string                `json:"fullname"`
-	GroupID              string                `json:"group_id" gorm:"index:customer_ibfk_2"`
-	Location             string                `json:"location"`
-	Password             string                `json:"password"`
-	StateRegion          string                `json:"state_region"`
-	Surname              string                `json:"surname"`
-	Tag                  string                `json:"tag"`
-	ArchiveInstallations []ArchiveInstallation `json:"archive_installation" gorm:"foreignKey:CustomerID"`
-	Company              Company               `json:"company" gorm:"foreignKey:CompanyID;constraint:OnUpdate:RESTRICT"`
-	Areas                Areas                 `json:"groups" gorm:"foreignKey:GroupID;constraint:OnUpdate:RESTRICT"`
+	ID               string    `json:"id" gorm:"primaryKey"`
+	Address          string    `gorm:"column:address" json:"address"`
+	AreaID           string    `gorm:"column:area_id" json:"area_id"`
+	CardIdentition   string    `gorm:"column:card_identition" json:"card_identition"`
+	CompanyID        string    `gorm:"column:company_id" json:"company_id"`
+	Email            string    `gorm:"column:email;unique" json:"email"`
+	Gender           string    `gorm:"column:gender" json:"gender"`
+	InternetPackage  string    `gorm:"column:internet_package" json:"internet_package"`
+	IPStatic         string    `gorm:"column:ip_static" json:"ip_static"`
+	Job              string    `gorm:"column:job" json:"job"`
+	Latitude         float64   `gorm:"column:latitude" json:"latitude"`
+	Longitude        float64   `gorm:"column:longitude" json:"longitude"`
+	MacAddress       string    `gorm:"column:mac_address" json:"mac_address"`
+	Name             string    `gorm:"column:name" json:"name"`
+	NoIdentition     int       `gorm:"column:no_identition" json:"no_identition"`
+	Password         string    `gorm:"column:password" json:"password"`
+	Phone            string    `gorm:"column:phone" json:"phone"`
+	TypeOfService    string    `gorm:"column:type_of_service" json:"type_of_service"`
+	CreatedAt        time.Time `gorm:"column:createdAt;autoCreateTime" json:"created_at"`
+	UpdatedAt        time.Time `gorm:"column:updatedAt;autoUpdateTime" json:"updated_at"`
+	InstallationDate time.Time `gorm:"column:installation_date;type:date" json:"installation_date"`
+	NextPaymentDate  time.Time `gorm:"column:installation_date;type:date" json:"installation_date"`
+}
+
+func (u *Customer) TableName() string {
+	return "customer"
+}
+func (u *Customer) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+		u.InstallationDate = time.Now()
+		u.NextPaymentDate = time.Now().AddDate(0, 1, 0)
+	}
+	return nil
 }
 
 // Device model
@@ -117,8 +130,8 @@ type Areas struct {
 	ID        string     `json:"id" gorm:"primaryKey"`
 	Name      string     `json:"name"`
 	CreatedAt time.Time  `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
-	UpdatedAt time.Time  `json:"updatedAt" gorm:"column:createdAt;"`
-	Customers []Customer `json:"customer" gorm:"foreignKey:GroupID"`
+	UpdatedAt time.Time  `json:"updatedAt" gorm:"column:updatedAt;"`
+	Customers []Customer `json:"customer" gorm:"foreignKey:area_id"`
 }
 
 func (u *Areas) TableName() string {

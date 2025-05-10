@@ -152,30 +152,32 @@ exports.Prisma.CompanyScalarFieldEnum = {
   email: 'email',
   phone: 'phone',
   logo_url: 'logo_url',
-  description: 'description',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  description: 'description'
 };
 
 exports.Prisma.CustomerScalarFieldEnum = {
   id: 'id',
+  type_of_service: 'type_of_service',
   email: 'email',
+  name: 'name',
+  company_id: 'company_id',
+  gender: 'gender',
+  card_identition: 'card_identition',
+  no_identition: 'no_identition',
+  area_id: 'area_id',
   phone: 'phone',
   address: 'address',
-  installation_date: 'installation_date',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  city: 'city',
-  code_postal: 'code_postal',
-  company_id: 'company_id',
-  country: 'country',
-  fullname: 'fullname',
-  area_id: 'area_id',
-  location: 'location',
+  latitude: 'latitude',
+  longitude: 'longitude',
   password: 'password',
-  state_region: 'state_region',
-  surname: 'surname',
-  tag: 'tag'
+  internet_package: 'internet_package',
+  ip_static: 'ip_static',
+  mac_address: 'mac_address',
+  job: 'job',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.DeviceScalarFieldEnum = {
@@ -255,10 +257,10 @@ exports.Prisma.UsersScalarFieldEnum = {
   name: 'name',
   password: 'password',
   role: 'role',
-  phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  token: 'token'
+  token: 'token',
+  phone: 'phone'
 };
 
 exports.Prisma.SortOrder = {
@@ -299,20 +301,20 @@ exports.Prisma.companyOrderByRelevanceFieldEnum = {
 
 exports.Prisma.customerOrderByRelevanceFieldEnum = {
   id: 'id',
+  type_of_service: 'type_of_service',
   email: 'email',
+  name: 'name',
+  company_id: 'company_id',
+  gender: 'gender',
+  card_identition: 'card_identition',
+  area_id: 'area_id',
   phone: 'phone',
   address: 'address',
-  city: 'city',
-  code_postal: 'code_postal',
-  company_id: 'company_id',
-  country: 'country',
-  fullname: 'fullname',
-  area_id: 'area_id',
-  location: 'location',
   password: 'password',
-  state_region: 'state_region',
-  surname: 'surname',
-  tag: 'tag'
+  internet_package: 'internet_package',
+  ip_static: 'ip_static',
+  mac_address: 'mac_address',
+  job: 'job'
 };
 
 exports.Prisma.deviceOrderByRelevanceFieldEnum = {
@@ -366,8 +368,8 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   email: 'email',
   name: 'name',
   password: 'password',
-  phone: 'phone',
-  token: 'token'
+  token: 'token',
+  phone: 'phone'
 };
 exports.transactions_type = exports.$Enums.transactions_type = {
   DEBIT: 'DEBIT',

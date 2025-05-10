@@ -1965,138 +1965,6 @@ export namespace Prisma {
    */
 
 
-  /**
-   * Count Type AccountsCountOutputType
-   */
-
-  export type AccountsCountOutputType = {
-    transfers_transfers_from_account_idToaccounts: number
-    transfers_transfers_to_account_idToaccounts: number
-  }
-
-  export type AccountsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transfers_transfers_from_account_idToaccounts?: boolean | AccountsCountOutputTypeCountTransfers_transfers_from_account_idToaccountsArgs
-    transfers_transfers_to_account_idToaccounts?: boolean | AccountsCountOutputTypeCountTransfers_transfers_to_account_idToaccountsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * AccountsCountOutputType without action
-   */
-  export type AccountsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AccountsCountOutputType
-     */
-    select?: AccountsCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AccountsCountOutputType without action
-   */
-  export type AccountsCountOutputTypeCountTransfers_transfers_from_account_idToaccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: transfersWhereInput
-  }
-
-  /**
-   * AccountsCountOutputType without action
-   */
-  export type AccountsCountOutputTypeCountTransfers_transfers_to_account_idToaccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: transfersWhereInput
-  }
-
-
-  /**
-   * Count Type CompanyCountOutputType
-   */
-
-  export type CompanyCountOutputType = {
-    customer: number
-  }
-
-  export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | CompanyCountOutputTypeCountCustomerArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CompanyCountOutputType without action
-   */
-  export type CompanyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CompanyCountOutputType
-     */
-    select?: CompanyCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CompanyCountOutputType without action
-   */
-  export type CompanyCountOutputTypeCountCustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: customerWhereInput
-  }
-
-
-  /**
-   * Count Type CustomerCountOutputType
-   */
-
-  export type CustomerCountOutputType = {
-    archive_installation: number
-  }
-
-  export type CustomerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    archive_installation?: boolean | CustomerCountOutputTypeCountArchive_installationArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CustomerCountOutputType without action
-   */
-  export type CustomerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CustomerCountOutputType
-     */
-    select?: CustomerCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CustomerCountOutputType without action
-   */
-  export type CustomerCountOutputTypeCountArchive_installationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: archive_installationWhereInput
-  }
-
-
-  /**
-   * Count Type AreasCountOutputType
-   */
-
-  export type AreasCountOutputType = {
-    customer: number
-  }
-
-  export type AreasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | AreasCountOutputTypeCountCustomerArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * AreasCountOutputType without action
-   */
-  export type AreasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AreasCountOutputType
-     */
-    select?: AreasCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AreasCountOutputType without action
-   */
-  export type AreasCountOutputTypeCountCustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: customerWhereInput
-  }
-
 
   /**
    * Models
@@ -2258,9 +2126,6 @@ export namespace Prisma {
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    transfers_transfers_from_account_idToaccounts?: boolean | accounts$transfers_transfers_from_account_idToaccountsArgs<ExtArgs>
-    transfers_transfers_to_account_idToaccounts?: boolean | accounts$transfers_transfers_to_account_idToaccountsArgs<ExtArgs>
-    _count?: boolean | AccountsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["accounts"]>
 
 
@@ -2273,18 +2138,10 @@ export namespace Prisma {
   }
 
   export type accountsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["accounts"]>
-  export type accountsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transfers_transfers_from_account_idToaccounts?: boolean | accounts$transfers_transfers_from_account_idToaccountsArgs<ExtArgs>
-    transfers_transfers_to_account_idToaccounts?: boolean | accounts$transfers_transfers_to_account_idToaccountsArgs<ExtArgs>
-    _count?: boolean | AccountsCountOutputTypeDefaultArgs<ExtArgs>
-  }
 
   export type $accountsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "accounts"
-    objects: {
-      transfers_transfers_from_account_idToaccounts: Prisma.$transfersPayload<ExtArgs>[]
-      transfers_transfers_to_account_idToaccounts: Prisma.$transfersPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -2630,8 +2487,6 @@ export namespace Prisma {
    */
   export interface Prisma__accountsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    transfers_transfers_from_account_idToaccounts<T extends accounts$transfers_transfers_from_account_idToaccountsArgs<ExtArgs> = {}>(args?: Subset<T, accounts$transfers_transfers_from_account_idToaccountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transfersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    transfers_transfers_to_account_idToaccounts<T extends accounts$transfers_transfers_to_account_idToaccountsArgs<ExtArgs> = {}>(args?: Subset<T, accounts$transfers_transfers_to_account_idToaccountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transfersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2682,10 +2537,6 @@ export namespace Prisma {
      */
     omit?: accountsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
-    /**
      * Filter, which accounts to fetch.
      */
     where: accountsWhereUniqueInput
@@ -2704,10 +2555,6 @@ export namespace Prisma {
      */
     omit?: accountsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
-    /**
      * Filter, which accounts to fetch.
      */
     where: accountsWhereUniqueInput
@@ -2725,10 +2572,6 @@ export namespace Prisma {
      * Omit specific fields from the accounts
      */
     omit?: accountsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
     /**
      * Filter, which accounts to fetch.
      */
@@ -2778,10 +2621,6 @@ export namespace Prisma {
      */
     omit?: accountsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
-    /**
      * Filter, which accounts to fetch.
      */
     where?: accountsWhereInput
@@ -2830,10 +2669,6 @@ export namespace Prisma {
      */
     omit?: accountsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
-    /**
      * Filter, which accounts to fetch.
      */
     where?: accountsWhereInput
@@ -2877,10 +2712,6 @@ export namespace Prisma {
      */
     omit?: accountsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
-    /**
      * The data needed to create a accounts.
      */
     data: XOR<accountsCreateInput, accountsUncheckedCreateInput>
@@ -2909,10 +2740,6 @@ export namespace Prisma {
      * Omit specific fields from the accounts
      */
     omit?: accountsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
     /**
      * The data needed to update a accounts.
      */
@@ -2954,10 +2781,6 @@ export namespace Prisma {
      */
     omit?: accountsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
-    /**
      * The filter to search for the accounts to update in case it exists.
      */
     where: accountsWhereUniqueInput
@@ -2984,10 +2807,6 @@ export namespace Prisma {
      */
     omit?: accountsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
-    /**
      * Filter which accounts to delete.
      */
     where: accountsWhereUniqueInput
@@ -3008,54 +2827,6 @@ export namespace Prisma {
   }
 
   /**
-   * accounts.transfers_transfers_from_account_idToaccounts
-   */
-  export type accounts$transfers_transfers_from_account_idToaccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the transfers
-     */
-    select?: transfersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the transfers
-     */
-    omit?: transfersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    where?: transfersWhereInput
-    orderBy?: transfersOrderByWithRelationInput | transfersOrderByWithRelationInput[]
-    cursor?: transfersWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TransfersScalarFieldEnum | TransfersScalarFieldEnum[]
-  }
-
-  /**
-   * accounts.transfers_transfers_to_account_idToaccounts
-   */
-  export type accounts$transfers_transfers_to_account_idToaccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the transfers
-     */
-    select?: transfersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the transfers
-     */
-    omit?: transfersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    where?: transfersWhereInput
-    orderBy?: transfersOrderByWithRelationInput | transfersOrderByWithRelationInput[]
-    cursor?: transfersWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TransfersScalarFieldEnum | TransfersScalarFieldEnum[]
-  }
-
-  /**
    * accounts without action
    */
   export type accountsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3067,10 +2838,6 @@ export namespace Prisma {
      * Omit specific fields from the accounts
      */
     omit?: accountsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: accountsInclude<ExtArgs> | null
   }
 
 
@@ -3280,7 +3047,6 @@ export namespace Prisma {
     updatedAt?: boolean
     customer_id?: boolean
     names?: boolean
-    customer?: boolean | archive_installation$customerArgs<ExtArgs>
   }, ExtArgs["result"]["archive_installation"]>
 
 
@@ -3295,15 +3061,10 @@ export namespace Prisma {
   }
 
   export type archive_installationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "price" | "createdAt" | "updatedAt" | "customer_id" | "names", ExtArgs["result"]["archive_installation"]>
-  export type archive_installationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | archive_installation$customerArgs<ExtArgs>
-  }
 
   export type $archive_installationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "archive_installation"
-    objects: {
-      customer: Prisma.$customerPayload<ExtArgs> | null
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       price: number
@@ -3651,7 +3412,6 @@ export namespace Prisma {
    */
   export interface Prisma__archive_installationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends archive_installation$customerArgs<ExtArgs> = {}>(args?: Subset<T, archive_installation$customerArgs<ExtArgs>>): Prisma__customerClient<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3704,10 +3464,6 @@ export namespace Prisma {
      */
     omit?: archive_installationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    /**
      * Filter, which archive_installation to fetch.
      */
     where: archive_installationWhereUniqueInput
@@ -3726,10 +3482,6 @@ export namespace Prisma {
      */
     omit?: archive_installationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    /**
      * Filter, which archive_installation to fetch.
      */
     where: archive_installationWhereUniqueInput
@@ -3747,10 +3499,6 @@ export namespace Prisma {
      * Omit specific fields from the archive_installation
      */
     omit?: archive_installationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
     /**
      * Filter, which archive_installation to fetch.
      */
@@ -3800,10 +3548,6 @@ export namespace Prisma {
      */
     omit?: archive_installationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    /**
      * Filter, which archive_installation to fetch.
      */
     where?: archive_installationWhereInput
@@ -3852,10 +3596,6 @@ export namespace Prisma {
      */
     omit?: archive_installationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    /**
      * Filter, which archive_installations to fetch.
      */
     where?: archive_installationWhereInput
@@ -3899,10 +3639,6 @@ export namespace Prisma {
      */
     omit?: archive_installationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    /**
      * The data needed to create a archive_installation.
      */
     data: XOR<archive_installationCreateInput, archive_installationUncheckedCreateInput>
@@ -3931,10 +3667,6 @@ export namespace Prisma {
      * Omit specific fields from the archive_installation
      */
     omit?: archive_installationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
     /**
      * The data needed to update a archive_installation.
      */
@@ -3976,10 +3708,6 @@ export namespace Prisma {
      */
     omit?: archive_installationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    /**
      * The filter to search for the archive_installation to update in case it exists.
      */
     where: archive_installationWhereUniqueInput
@@ -4006,10 +3734,6 @@ export namespace Prisma {
      */
     omit?: archive_installationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    /**
      * Filter which archive_installation to delete.
      */
     where: archive_installationWhereUniqueInput
@@ -4030,25 +3754,6 @@ export namespace Prisma {
   }
 
   /**
-   * archive_installation.customer
-   */
-  export type archive_installation$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the customer
-     */
-    select?: customerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the customer
-     */
-    omit?: customerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    where?: customerWhereInput
-  }
-
-  /**
    * archive_installation without action
    */
   export type archive_installationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4060,10 +3765,6 @@ export namespace Prisma {
      * Omit specific fields from the archive_installation
      */
     omit?: archive_installationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
   }
 
 
@@ -4277,7 +3978,6 @@ export namespace Prisma {
     price?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    report_assets?: boolean | assets$report_assetsArgs<ExtArgs>
   }, ExtArgs["result"]["assets"]>
 
 
@@ -4292,15 +3992,10 @@ export namespace Prisma {
   }
 
   export type assetsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "quantity" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["assets"]>
-  export type assetsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    report_assets?: boolean | assets$report_assetsArgs<ExtArgs>
-  }
 
   export type $assetsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "assets"
-    objects: {
-      report_assets: Prisma.$report_assetsPayload<ExtArgs> | null
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -4648,7 +4343,6 @@ export namespace Prisma {
    */
   export interface Prisma__assetsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    report_assets<T extends assets$report_assetsArgs<ExtArgs> = {}>(args?: Subset<T, assets$report_assetsArgs<ExtArgs>>): Prisma__report_assetsClient<$Result.GetResult<Prisma.$report_assetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4701,10 +4395,6 @@ export namespace Prisma {
      */
     omit?: assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
-    /**
      * Filter, which assets to fetch.
      */
     where: assetsWhereUniqueInput
@@ -4723,10 +4413,6 @@ export namespace Prisma {
      */
     omit?: assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
-    /**
      * Filter, which assets to fetch.
      */
     where: assetsWhereUniqueInput
@@ -4744,10 +4430,6 @@ export namespace Prisma {
      * Omit specific fields from the assets
      */
     omit?: assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
     /**
      * Filter, which assets to fetch.
      */
@@ -4797,10 +4479,6 @@ export namespace Prisma {
      */
     omit?: assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
-    /**
      * Filter, which assets to fetch.
      */
     where?: assetsWhereInput
@@ -4849,10 +4527,6 @@ export namespace Prisma {
      */
     omit?: assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
-    /**
      * Filter, which assets to fetch.
      */
     where?: assetsWhereInput
@@ -4896,10 +4570,6 @@ export namespace Prisma {
      */
     omit?: assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
-    /**
      * The data needed to create a assets.
      */
     data: XOR<assetsCreateInput, assetsUncheckedCreateInput>
@@ -4928,10 +4598,6 @@ export namespace Prisma {
      * Omit specific fields from the assets
      */
     omit?: assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
     /**
      * The data needed to update a assets.
      */
@@ -4973,10 +4639,6 @@ export namespace Prisma {
      */
     omit?: assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
-    /**
      * The filter to search for the assets to update in case it exists.
      */
     where: assetsWhereUniqueInput
@@ -5003,10 +4665,6 @@ export namespace Prisma {
      */
     omit?: assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
-    /**
      * Filter which assets to delete.
      */
     where: assetsWhereUniqueInput
@@ -5027,25 +4685,6 @@ export namespace Prisma {
   }
 
   /**
-   * assets.report_assets
-   */
-  export type assets$report_assetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the report_assets
-     */
-    select?: report_assetsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the report_assets
-     */
-    omit?: report_assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
-    where?: report_assetsWhereInput
-  }
-
-  /**
    * assets without action
    */
   export type assetsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5057,10 +4696,6 @@ export namespace Prisma {
      * Omit specific fields from the assets
      */
     omit?: assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: assetsInclude<ExtArgs> | null
   }
 
 
@@ -5081,9 +4716,9 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     logo_url: string | null
-    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    description: string | null
   }
 
   export type CompanyMaxAggregateOutputType = {
@@ -5093,9 +4728,9 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     logo_url: string | null
-    description: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    description: string | null
   }
 
   export type CompanyCountAggregateOutputType = {
@@ -5105,9 +4740,9 @@ export namespace Prisma {
     email: number
     phone: number
     logo_url: number
-    description: number
     createdAt: number
     updatedAt: number
+    description: number
     _all: number
   }
 
@@ -5119,9 +4754,9 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
-    description?: true
     createdAt?: true
     updatedAt?: true
+    description?: true
   }
 
   export type CompanyMaxAggregateInputType = {
@@ -5131,9 +4766,9 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
-    description?: true
     createdAt?: true
     updatedAt?: true
+    description?: true
   }
 
   export type CompanyCountAggregateInputType = {
@@ -5143,9 +4778,9 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
-    description?: true
     createdAt?: true
     updatedAt?: true
+    description?: true
     _all?: true
   }
 
@@ -5228,9 +4863,9 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url: string | null
-    description: string | null
     createdAt: Date
     updatedAt: Date
+    description: string | null
     _count: CompanyCountAggregateOutputType | null
     _min: CompanyMinAggregateOutputType | null
     _max: CompanyMaxAggregateOutputType | null
@@ -5257,11 +4892,9 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     logo_url?: boolean
-    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer?: boolean | company$customerArgs<ExtArgs>
-    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
+    description?: boolean
   }, ExtArgs["result"]["company"]>
 
 
@@ -5273,22 +4906,16 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     logo_url?: boolean
-    description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    description?: boolean
   }
 
-  export type companyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "email" | "phone" | "logo_url" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
-  export type companyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | company$customerArgs<ExtArgs>
-    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
-  }
+  export type companyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "email" | "phone" | "logo_url" | "createdAt" | "updatedAt" | "description", ExtArgs["result"]["company"]>
 
   export type $companyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "company"
-    objects: {
-      customer: Prisma.$customerPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -5296,9 +4923,9 @@ export namespace Prisma {
       email: string
       phone: string
       logo_url: string | null
-      description: string | null
       createdAt: Date
       updatedAt: Date
+      description: string | null
     }, ExtArgs["result"]["company"]>
     composites: {}
   }
@@ -5639,7 +5266,6 @@ export namespace Prisma {
    */
   export interface Prisma__companyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends company$customerArgs<ExtArgs> = {}>(args?: Subset<T, company$customerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5675,9 +5301,9 @@ export namespace Prisma {
     readonly email: FieldRef<"company", 'String'>
     readonly phone: FieldRef<"company", 'String'>
     readonly logo_url: FieldRef<"company", 'String'>
-    readonly description: FieldRef<"company", 'String'>
     readonly createdAt: FieldRef<"company", 'DateTime'>
     readonly updatedAt: FieldRef<"company", 'DateTime'>
+    readonly description: FieldRef<"company", 'String'>
   }
     
 
@@ -5694,10 +5320,6 @@ export namespace Prisma {
      * Omit specific fields from the company
      */
     omit?: companyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
     /**
      * Filter, which company to fetch.
      */
@@ -5717,10 +5339,6 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
-    /**
      * Filter, which company to fetch.
      */
     where: companyWhereUniqueInput
@@ -5738,10 +5356,6 @@ export namespace Prisma {
      * Omit specific fields from the company
      */
     omit?: companyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
     /**
      * Filter, which company to fetch.
      */
@@ -5791,10 +5405,6 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
-    /**
      * Filter, which company to fetch.
      */
     where?: companyWhereInput
@@ -5843,10 +5453,6 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
-    /**
      * Filter, which companies to fetch.
      */
     where?: companyWhereInput
@@ -5890,10 +5496,6 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
-    /**
      * The data needed to create a company.
      */
     data: XOR<companyCreateInput, companyUncheckedCreateInput>
@@ -5922,10 +5524,6 @@ export namespace Prisma {
      * Omit specific fields from the company
      */
     omit?: companyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
     /**
      * The data needed to update a company.
      */
@@ -5967,10 +5565,6 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
-    /**
      * The filter to search for the company to update in case it exists.
      */
     where: companyWhereUniqueInput
@@ -5997,10 +5591,6 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
-    /**
      * Filter which company to delete.
      */
     where: companyWhereUniqueInput
@@ -6021,30 +5611,6 @@ export namespace Prisma {
   }
 
   /**
-   * company.customer
-   */
-  export type company$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the customer
-     */
-    select?: customerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the customer
-     */
-    omit?: customerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    where?: customerWhereInput
-    orderBy?: customerOrderByWithRelationInput | customerOrderByWithRelationInput[]
-    cursor?: customerWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
-  }
-
-  /**
    * company without action
    */
   export type companyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6056,10 +5622,6 @@ export namespace Prisma {
      * Omit specific fields from the company
      */
     omit?: companyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: companyInclude<ExtArgs> | null
   }
 
 
@@ -6069,136 +5631,174 @@ export namespace Prisma {
 
   export type AggregateCustomer = {
     _count: CustomerCountAggregateOutputType | null
+    _avg: CustomerAvgAggregateOutputType | null
+    _sum: CustomerSumAggregateOutputType | null
     _min: CustomerMinAggregateOutputType | null
     _max: CustomerMaxAggregateOutputType | null
   }
 
+  export type CustomerAvgAggregateOutputType = {
+    no_identition: number | null
+    latitude: number | null
+    longitude: number | null
+  }
+
+  export type CustomerSumAggregateOutputType = {
+    no_identition: number | null
+    latitude: number | null
+    longitude: number | null
+  }
+
   export type CustomerMinAggregateOutputType = {
     id: string | null
+    type_of_service: string | null
     email: string | null
+    name: string | null
+    company_id: string | null
+    gender: string | null
+    card_identition: string | null
+    no_identition: number | null
+    area_id: string | null
     phone: string | null
     address: string | null
-    installation_date: Date | null
+    latitude: number | null
+    longitude: number | null
+    password: string | null
+    internet_package: string | null
+    ip_static: string | null
+    mac_address: string | null
+    job: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    city: string | null
-    code_postal: string | null
-    company_id: string | null
-    country: string | null
-    fullname: string | null
-    area_id: string | null
-    location: string | null
-    password: string | null
-    state_region: string | null
-    surname: string | null
-    tag: string | null
   }
 
   export type CustomerMaxAggregateOutputType = {
     id: string | null
+    type_of_service: string | null
     email: string | null
+    name: string | null
+    company_id: string | null
+    gender: string | null
+    card_identition: string | null
+    no_identition: number | null
+    area_id: string | null
     phone: string | null
     address: string | null
-    installation_date: Date | null
+    latitude: number | null
+    longitude: number | null
+    password: string | null
+    internet_package: string | null
+    ip_static: string | null
+    mac_address: string | null
+    job: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    city: string | null
-    code_postal: string | null
-    company_id: string | null
-    country: string | null
-    fullname: string | null
-    area_id: string | null
-    location: string | null
-    password: string | null
-    state_region: string | null
-    surname: string | null
-    tag: string | null
   }
 
   export type CustomerCountAggregateOutputType = {
     id: number
+    type_of_service: number
     email: number
+    name: number
+    company_id: number
+    gender: number
+    card_identition: number
+    no_identition: number
+    area_id: number
     phone: number
     address: number
-    installation_date: number
+    latitude: number
+    longitude: number
+    password: number
+    internet_package: number
+    ip_static: number
+    mac_address: number
+    job: number
     createdAt: number
     updatedAt: number
-    city: number
-    code_postal: number
-    company_id: number
-    country: number
-    fullname: number
-    area_id: number
-    location: number
-    password: number
-    state_region: number
-    surname: number
-    tag: number
     _all: number
   }
 
 
+  export type CustomerAvgAggregateInputType = {
+    no_identition?: true
+    latitude?: true
+    longitude?: true
+  }
+
+  export type CustomerSumAggregateInputType = {
+    no_identition?: true
+    latitude?: true
+    longitude?: true
+  }
+
   export type CustomerMinAggregateInputType = {
     id?: true
+    type_of_service?: true
     email?: true
+    name?: true
+    company_id?: true
+    gender?: true
+    card_identition?: true
+    no_identition?: true
+    area_id?: true
     phone?: true
     address?: true
-    installation_date?: true
+    latitude?: true
+    longitude?: true
+    password?: true
+    internet_package?: true
+    ip_static?: true
+    mac_address?: true
+    job?: true
     createdAt?: true
     updatedAt?: true
-    city?: true
-    code_postal?: true
-    company_id?: true
-    country?: true
-    fullname?: true
-    area_id?: true
-    location?: true
-    password?: true
-    state_region?: true
-    surname?: true
-    tag?: true
   }
 
   export type CustomerMaxAggregateInputType = {
     id?: true
+    type_of_service?: true
     email?: true
+    name?: true
+    company_id?: true
+    gender?: true
+    card_identition?: true
+    no_identition?: true
+    area_id?: true
     phone?: true
     address?: true
-    installation_date?: true
+    latitude?: true
+    longitude?: true
+    password?: true
+    internet_package?: true
+    ip_static?: true
+    mac_address?: true
+    job?: true
     createdAt?: true
     updatedAt?: true
-    city?: true
-    code_postal?: true
-    company_id?: true
-    country?: true
-    fullname?: true
-    area_id?: true
-    location?: true
-    password?: true
-    state_region?: true
-    surname?: true
-    tag?: true
   }
 
   export type CustomerCountAggregateInputType = {
     id?: true
+    type_of_service?: true
     email?: true
+    name?: true
+    company_id?: true
+    gender?: true
+    card_identition?: true
+    no_identition?: true
+    area_id?: true
     phone?: true
     address?: true
-    installation_date?: true
+    latitude?: true
+    longitude?: true
+    password?: true
+    internet_package?: true
+    ip_static?: true
+    mac_address?: true
+    job?: true
     createdAt?: true
     updatedAt?: true
-    city?: true
-    code_postal?: true
-    company_id?: true
-    country?: true
-    fullname?: true
-    area_id?: true
-    location?: true
-    password?: true
-    state_region?: true
-    surname?: true
-    tag?: true
     _all?: true
   }
 
@@ -6240,6 +5840,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CustomerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CustomerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CustomerMinAggregateInputType
@@ -6270,30 +5882,36 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CustomerCountAggregateInputType | true
+    _avg?: CustomerAvgAggregateInputType
+    _sum?: CustomerSumAggregateInputType
     _min?: CustomerMinAggregateInputType
     _max?: CustomerMaxAggregateInputType
   }
 
   export type CustomerGroupByOutputType = {
     id: string
+    type_of_service: string
     email: string
+    name: string
+    company_id: string
+    gender: string
+    card_identition: string
+    no_identition: number
+    area_id: string
     phone: string
     address: string
-    installation_date: Date
+    latitude: number
+    longitude: number
+    password: string
+    internet_package: string
+    ip_static: string
+    mac_address: string
+    job: string
     createdAt: Date
     updatedAt: Date
-    city: string
-    code_postal: string
-    company_id: string
-    country: string
-    fullname: string
-    area_id: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
     _count: CustomerCountAggregateOutputType | null
+    _avg: CustomerAvgAggregateOutputType | null
+    _sum: CustomerSumAggregateOutputType | null
     _min: CustomerMinAggregateOutputType | null
     _max: CustomerMaxAggregateOutputType | null
   }
@@ -6314,86 +5932,78 @@ export namespace Prisma {
 
   export type customerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    type_of_service?: boolean
     email?: boolean
+    name?: boolean
+    company_id?: boolean
+    gender?: boolean
+    card_identition?: boolean
+    no_identition?: boolean
+    area_id?: boolean
     phone?: boolean
     address?: boolean
-    installation_date?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    password?: boolean
+    internet_package?: boolean
+    ip_static?: boolean
+    mac_address?: boolean
+    job?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    city?: boolean
-    code_postal?: boolean
-    company_id?: boolean
-    country?: boolean
-    fullname?: boolean
-    area_id?: boolean
-    location?: boolean
-    password?: boolean
-    state_region?: boolean
-    surname?: boolean
-    tag?: boolean
-    archive_installation?: boolean | customer$archive_installationArgs<ExtArgs>
-    company?: boolean | companyDefaultArgs<ExtArgs>
-    areas?: boolean | areasDefaultArgs<ExtArgs>
-    _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customer"]>
 
 
 
   export type customerSelectScalar = {
     id?: boolean
+    type_of_service?: boolean
     email?: boolean
+    name?: boolean
+    company_id?: boolean
+    gender?: boolean
+    card_identition?: boolean
+    no_identition?: boolean
+    area_id?: boolean
     phone?: boolean
     address?: boolean
-    installation_date?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    password?: boolean
+    internet_package?: boolean
+    ip_static?: boolean
+    mac_address?: boolean
+    job?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    city?: boolean
-    code_postal?: boolean
-    company_id?: boolean
-    country?: boolean
-    fullname?: boolean
-    area_id?: boolean
-    location?: boolean
-    password?: boolean
-    state_region?: boolean
-    surname?: boolean
-    tag?: boolean
   }
 
-  export type customerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "address" | "installation_date" | "createdAt" | "updatedAt" | "city" | "code_postal" | "company_id" | "country" | "fullname" | "area_id" | "location" | "password" | "state_region" | "surname" | "tag", ExtArgs["result"]["customer"]>
-  export type customerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    archive_installation?: boolean | customer$archive_installationArgs<ExtArgs>
-    company?: boolean | companyDefaultArgs<ExtArgs>
-    areas?: boolean | areasDefaultArgs<ExtArgs>
-    _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
-  }
+  export type customerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type_of_service" | "email" | "name" | "company_id" | "gender" | "card_identition" | "no_identition" | "area_id" | "phone" | "address" | "latitude" | "longitude" | "password" | "internet_package" | "ip_static" | "mac_address" | "job" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
 
   export type $customerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "customer"
-    objects: {
-      archive_installation: Prisma.$archive_installationPayload<ExtArgs>[]
-      company: Prisma.$companyPayload<ExtArgs>
-      areas: Prisma.$areasPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      type_of_service: string
       email: string
+      name: string
+      company_id: string
+      gender: string
+      card_identition: string
+      no_identition: number
+      area_id: string
       phone: string
       address: string
-      installation_date: Date
+      latitude: number
+      longitude: number
+      password: string
+      internet_package: string
+      ip_static: string
+      mac_address: string
+      job: string
       createdAt: Date
       updatedAt: Date
-      city: string
-      code_postal: string
-      company_id: string
-      country: string
-      fullname: string
-      area_id: string
-      location: string
-      password: string
-      state_region: string
-      surname: string
-      tag: string
     }, ExtArgs["result"]["customer"]>
     composites: {}
   }
@@ -6734,9 +6344,6 @@ export namespace Prisma {
    */
   export interface Prisma__customerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    archive_installation<T extends customer$archive_installationArgs<ExtArgs> = {}>(args?: Subset<T, customer$archive_installationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$archive_installationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    company<T extends companyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, companyDefaultArgs<ExtArgs>>): Prisma__companyClient<$Result.GetResult<Prisma.$companyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    areas<T extends areasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, areasDefaultArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6767,23 +6374,25 @@ export namespace Prisma {
    */
   interface customerFieldRefs {
     readonly id: FieldRef<"customer", 'String'>
+    readonly type_of_service: FieldRef<"customer", 'String'>
     readonly email: FieldRef<"customer", 'String'>
+    readonly name: FieldRef<"customer", 'String'>
+    readonly company_id: FieldRef<"customer", 'String'>
+    readonly gender: FieldRef<"customer", 'String'>
+    readonly card_identition: FieldRef<"customer", 'String'>
+    readonly no_identition: FieldRef<"customer", 'Int'>
+    readonly area_id: FieldRef<"customer", 'String'>
     readonly phone: FieldRef<"customer", 'String'>
     readonly address: FieldRef<"customer", 'String'>
-    readonly installation_date: FieldRef<"customer", 'DateTime'>
+    readonly latitude: FieldRef<"customer", 'Float'>
+    readonly longitude: FieldRef<"customer", 'Float'>
+    readonly password: FieldRef<"customer", 'String'>
+    readonly internet_package: FieldRef<"customer", 'String'>
+    readonly ip_static: FieldRef<"customer", 'String'>
+    readonly mac_address: FieldRef<"customer", 'String'>
+    readonly job: FieldRef<"customer", 'String'>
     readonly createdAt: FieldRef<"customer", 'DateTime'>
     readonly updatedAt: FieldRef<"customer", 'DateTime'>
-    readonly city: FieldRef<"customer", 'String'>
-    readonly code_postal: FieldRef<"customer", 'String'>
-    readonly company_id: FieldRef<"customer", 'String'>
-    readonly country: FieldRef<"customer", 'String'>
-    readonly fullname: FieldRef<"customer", 'String'>
-    readonly area_id: FieldRef<"customer", 'String'>
-    readonly location: FieldRef<"customer", 'String'>
-    readonly password: FieldRef<"customer", 'String'>
-    readonly state_region: FieldRef<"customer", 'String'>
-    readonly surname: FieldRef<"customer", 'String'>
-    readonly tag: FieldRef<"customer", 'String'>
   }
     
 
@@ -6800,10 +6409,6 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
     /**
      * Filter, which customer to fetch.
      */
@@ -6823,10 +6428,6 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    /**
      * Filter, which customer to fetch.
      */
     where: customerWhereUniqueInput
@@ -6844,10 +6445,6 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
     /**
      * Filter, which customer to fetch.
      */
@@ -6897,10 +6494,6 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    /**
      * Filter, which customer to fetch.
      */
     where?: customerWhereInput
@@ -6949,10 +6542,6 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    /**
      * Filter, which customers to fetch.
      */
     where?: customerWhereInput
@@ -6996,10 +6585,6 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    /**
      * The data needed to create a customer.
      */
     data: XOR<customerCreateInput, customerUncheckedCreateInput>
@@ -7028,10 +6613,6 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
     /**
      * The data needed to update a customer.
      */
@@ -7073,10 +6654,6 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    /**
      * The filter to search for the customer to update in case it exists.
      */
     where: customerWhereUniqueInput
@@ -7103,10 +6680,6 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    /**
      * Filter which customer to delete.
      */
     where: customerWhereUniqueInput
@@ -7127,30 +6700,6 @@ export namespace Prisma {
   }
 
   /**
-   * customer.archive_installation
-   */
-  export type customer$archive_installationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the archive_installation
-     */
-    select?: archive_installationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the archive_installation
-     */
-    omit?: archive_installationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: archive_installationInclude<ExtArgs> | null
-    where?: archive_installationWhereInput
-    orderBy?: archive_installationOrderByWithRelationInput | archive_installationOrderByWithRelationInput[]
-    cursor?: archive_installationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Archive_installationScalarFieldEnum | Archive_installationScalarFieldEnum[]
-  }
-
-  /**
    * customer without action
    */
   export type customerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7162,10 +6711,6 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
   }
 
 
@@ -8196,8 +7741,6 @@ export namespace Prisma {
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer?: boolean | areas$customerArgs<ExtArgs>
-    _count?: boolean | AreasCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["areas"]>
 
 
@@ -8210,16 +7753,10 @@ export namespace Prisma {
   }
 
   export type areasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["areas"]>
-  export type areasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | areas$customerArgs<ExtArgs>
-    _count?: boolean | AreasCountOutputTypeDefaultArgs<ExtArgs>
-  }
 
   export type $areasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "areas"
-    objects: {
-      customer: Prisma.$customerPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -8565,7 +8102,6 @@ export namespace Prisma {
    */
   export interface Prisma__areasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends areas$customerArgs<ExtArgs> = {}>(args?: Subset<T, areas$customerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8616,10 +8152,6 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
-    /**
      * Filter, which areas to fetch.
      */
     where: areasWhereUniqueInput
@@ -8638,10 +8170,6 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
-    /**
      * Filter, which areas to fetch.
      */
     where: areasWhereUniqueInput
@@ -8659,10 +8187,6 @@ export namespace Prisma {
      * Omit specific fields from the areas
      */
     omit?: areasOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
     /**
      * Filter, which areas to fetch.
      */
@@ -8712,10 +8236,6 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
-    /**
      * Filter, which areas to fetch.
      */
     where?: areasWhereInput
@@ -8764,10 +8284,6 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
-    /**
      * Filter, which areas to fetch.
      */
     where?: areasWhereInput
@@ -8811,10 +8327,6 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
-    /**
      * The data needed to create a areas.
      */
     data: XOR<areasCreateInput, areasUncheckedCreateInput>
@@ -8843,10 +8355,6 @@ export namespace Prisma {
      * Omit specific fields from the areas
      */
     omit?: areasOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
     /**
      * The data needed to update a areas.
      */
@@ -8888,10 +8396,6 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
-    /**
      * The filter to search for the areas to update in case it exists.
      */
     where: areasWhereUniqueInput
@@ -8918,10 +8422,6 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
-    /**
      * Filter which areas to delete.
      */
     where: areasWhereUniqueInput
@@ -8942,30 +8442,6 @@ export namespace Prisma {
   }
 
   /**
-   * areas.customer
-   */
-  export type areas$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the customer
-     */
-    select?: customerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the customer
-     */
-    omit?: customerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: customerInclude<ExtArgs> | null
-    where?: customerWhereInput
-    orderBy?: customerOrderByWithRelationInput | customerOrderByWithRelationInput[]
-    cursor?: customerWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
-  }
-
-  /**
    * areas without action
    */
   export type areasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8977,10 +8453,6 @@ export namespace Prisma {
      * Omit specific fields from the areas
      */
     omit?: areasOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: areasInclude<ExtArgs> | null
   }
 
 
@@ -10991,7 +10463,6 @@ export namespace Prisma {
     quantity?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    assets?: boolean | assetsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["report_assets"]>
 
 
@@ -11005,15 +10476,10 @@ export namespace Prisma {
   }
 
   export type report_assetsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "quantity" | "createdAt" | "updatedAt", ExtArgs["result"]["report_assets"]>
-  export type report_assetsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    assets?: boolean | assetsDefaultArgs<ExtArgs>
-  }
 
   export type $report_assetsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "report_assets"
-    objects: {
-      assets: Prisma.$assetsPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       description: string
@@ -11360,7 +10826,6 @@ export namespace Prisma {
    */
   export interface Prisma__report_assetsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    assets<T extends assetsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, assetsDefaultArgs<ExtArgs>>): Prisma__assetsClient<$Result.GetResult<Prisma.$assetsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11412,10 +10877,6 @@ export namespace Prisma {
      */
     omit?: report_assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
-    /**
      * Filter, which report_assets to fetch.
      */
     where: report_assetsWhereUniqueInput
@@ -11434,10 +10895,6 @@ export namespace Prisma {
      */
     omit?: report_assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
-    /**
      * Filter, which report_assets to fetch.
      */
     where: report_assetsWhereUniqueInput
@@ -11455,10 +10912,6 @@ export namespace Prisma {
      * Omit specific fields from the report_assets
      */
     omit?: report_assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
     /**
      * Filter, which report_assets to fetch.
      */
@@ -11508,10 +10961,6 @@ export namespace Prisma {
      */
     omit?: report_assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
-    /**
      * Filter, which report_assets to fetch.
      */
     where?: report_assetsWhereInput
@@ -11560,10 +11009,6 @@ export namespace Prisma {
      */
     omit?: report_assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
-    /**
      * Filter, which report_assets to fetch.
      */
     where?: report_assetsWhereInput
@@ -11607,10 +11052,6 @@ export namespace Prisma {
      */
     omit?: report_assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
-    /**
      * The data needed to create a report_assets.
      */
     data: XOR<report_assetsCreateInput, report_assetsUncheckedCreateInput>
@@ -11639,10 +11080,6 @@ export namespace Prisma {
      * Omit specific fields from the report_assets
      */
     omit?: report_assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
     /**
      * The data needed to update a report_assets.
      */
@@ -11684,10 +11121,6 @@ export namespace Prisma {
      */
     omit?: report_assetsOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
-    /**
      * The filter to search for the report_assets to update in case it exists.
      */
     where: report_assetsWhereUniqueInput
@@ -11713,10 +11146,6 @@ export namespace Prisma {
      * Omit specific fields from the report_assets
      */
     omit?: report_assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
     /**
      * Filter which report_assets to delete.
      */
@@ -11749,10 +11178,6 @@ export namespace Prisma {
      * Omit specific fields from the report_assets
      */
     omit?: report_assetsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: report_assetsInclude<ExtArgs> | null
   }
 
 
@@ -13866,8 +13291,6 @@ export namespace Prisma {
     tags?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    accounts_transfers_from_account_idToaccounts?: boolean | accountsDefaultArgs<ExtArgs>
-    accounts_transfers_to_account_idToaccounts?: boolean | accountsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transfers"]>
 
 
@@ -13885,17 +13308,10 @@ export namespace Prisma {
   }
 
   export type transfersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "from_account_id" | "to_account_id" | "date" | "description" | "amount" | "tags" | "createdAt" | "updatedAt", ExtArgs["result"]["transfers"]>
-  export type transfersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    accounts_transfers_from_account_idToaccounts?: boolean | accountsDefaultArgs<ExtArgs>
-    accounts_transfers_to_account_idToaccounts?: boolean | accountsDefaultArgs<ExtArgs>
-  }
 
   export type $transfersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "transfers"
-    objects: {
-      accounts_transfers_from_account_idToaccounts: Prisma.$accountsPayload<ExtArgs>
-      accounts_transfers_to_account_idToaccounts: Prisma.$accountsPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       from_account_id: string
@@ -14246,8 +13662,6 @@ export namespace Prisma {
    */
   export interface Prisma__transfersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    accounts_transfers_from_account_idToaccounts<T extends accountsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, accountsDefaultArgs<ExtArgs>>): Prisma__accountsClient<$Result.GetResult<Prisma.$accountsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    accounts_transfers_to_account_idToaccounts<T extends accountsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, accountsDefaultArgs<ExtArgs>>): Prisma__accountsClient<$Result.GetResult<Prisma.$accountsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14303,10 +13717,6 @@ export namespace Prisma {
      */
     omit?: transfersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    /**
      * Filter, which transfers to fetch.
      */
     where: transfersWhereUniqueInput
@@ -14325,10 +13735,6 @@ export namespace Prisma {
      */
     omit?: transfersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    /**
      * Filter, which transfers to fetch.
      */
     where: transfersWhereUniqueInput
@@ -14346,10 +13752,6 @@ export namespace Prisma {
      * Omit specific fields from the transfers
      */
     omit?: transfersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
     /**
      * Filter, which transfers to fetch.
      */
@@ -14399,10 +13801,6 @@ export namespace Prisma {
      */
     omit?: transfersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    /**
      * Filter, which transfers to fetch.
      */
     where?: transfersWhereInput
@@ -14451,10 +13849,6 @@ export namespace Prisma {
      */
     omit?: transfersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    /**
      * Filter, which transfers to fetch.
      */
     where?: transfersWhereInput
@@ -14498,10 +13892,6 @@ export namespace Prisma {
      */
     omit?: transfersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    /**
      * The data needed to create a transfers.
      */
     data: XOR<transfersCreateInput, transfersUncheckedCreateInput>
@@ -14530,10 +13920,6 @@ export namespace Prisma {
      * Omit specific fields from the transfers
      */
     omit?: transfersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
     /**
      * The data needed to update a transfers.
      */
@@ -14575,10 +13961,6 @@ export namespace Prisma {
      */
     omit?: transfersOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
-    /**
      * The filter to search for the transfers to update in case it exists.
      */
     where: transfersWhereUniqueInput
@@ -14604,10 +13986,6 @@ export namespace Prisma {
      * Omit specific fields from the transfers
      */
     omit?: transfersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
     /**
      * Filter which transfers to delete.
      */
@@ -14640,10 +14018,6 @@ export namespace Prisma {
      * Omit specific fields from the transfers
      */
     omit?: transfersOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: transfersInclude<ExtArgs> | null
   }
 
 
@@ -14663,10 +14037,10 @@ export namespace Prisma {
     name: string | null
     password: string | null
     role: $Enums.user_role | null
-    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
     token: string | null
+    phone: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -14675,10 +14049,10 @@ export namespace Prisma {
     name: string | null
     password: string | null
     role: $Enums.user_role | null
-    phone: string | null
     createdAt: Date | null
     updatedAt: Date | null
     token: string | null
+    phone: string | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -14687,10 +14061,10 @@ export namespace Prisma {
     name: number
     password: number
     role: number
-    phone: number
     createdAt: number
     updatedAt: number
     token: number
+    phone: number
     _all: number
   }
 
@@ -14701,10 +14075,10 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
-    phone?: true
     createdAt?: true
     updatedAt?: true
     token?: true
+    phone?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -14713,10 +14087,10 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
-    phone?: true
     createdAt?: true
     updatedAt?: true
     token?: true
+    phone?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -14725,10 +14099,10 @@ export namespace Prisma {
     name?: true
     password?: true
     role?: true
-    phone?: true
     createdAt?: true
     updatedAt?: true
     token?: true
+    phone?: true
     _all?: true
   }
 
@@ -14810,10 +14184,10 @@ export namespace Prisma {
     name: string | null
     password: string
     role: $Enums.user_role
-    phone: string | null
     createdAt: Date
     updatedAt: Date | null
     token: string | null
+    phone: string | null
     _count: UsersCountAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
@@ -14839,10 +14213,10 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     role?: boolean
-    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     token?: boolean
+    phone?: boolean
   }, ExtArgs["result"]["users"]>
 
 
@@ -14853,13 +14227,13 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     role?: boolean
-    phone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     token?: boolean
+    phone?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "phone" | "createdAt" | "updatedAt" | "token", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "createdAt" | "updatedAt" | "token" | "phone", ExtArgs["result"]["users"]>
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
@@ -14870,10 +14244,10 @@ export namespace Prisma {
       name: string | null
       password: string
       role: $Enums.user_role
-      phone: string | null
       createdAt: Date
       updatedAt: Date | null
       token: string | null
+      phone: string | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -15248,10 +14622,10 @@ export namespace Prisma {
     readonly name: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
     readonly role: FieldRef<"users", 'user_role'>
-    readonly phone: FieldRef<"users", 'String'>
     readonly createdAt: FieldRef<"users", 'DateTime'>
     readonly updatedAt: FieldRef<"users", 'DateTime'>
     readonly token: FieldRef<"users", 'String'>
+    readonly phone: FieldRef<"users", 'String'>
   }
     
 
@@ -15628,9 +15002,9 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     logo_url: 'logo_url',
-    description: 'description',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    description: 'description'
   };
 
   export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]
@@ -15638,23 +15012,25 @@ export namespace Prisma {
 
   export const CustomerScalarFieldEnum: {
     id: 'id',
+    type_of_service: 'type_of_service',
     email: 'email',
+    name: 'name',
+    company_id: 'company_id',
+    gender: 'gender',
+    card_identition: 'card_identition',
+    no_identition: 'no_identition',
+    area_id: 'area_id',
     phone: 'phone',
     address: 'address',
-    installation_date: 'installation_date',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    city: 'city',
-    code_postal: 'code_postal',
-    company_id: 'company_id',
-    country: 'country',
-    fullname: 'fullname',
-    area_id: 'area_id',
-    location: 'location',
+    latitude: 'latitude',
+    longitude: 'longitude',
     password: 'password',
-    state_region: 'state_region',
-    surname: 'surname',
-    tag: 'tag'
+    internet_package: 'internet_package',
+    ip_static: 'ip_static',
+    mac_address: 'mac_address',
+    job: 'job',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
@@ -15761,10 +15137,10 @@ export namespace Prisma {
     name: 'name',
     password: 'password',
     role: 'role',
-    phone: 'phone',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    token: 'token'
+    token: 'token',
+    phone: 'phone'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -15826,20 +15202,20 @@ export namespace Prisma {
 
   export const customerOrderByRelevanceFieldEnum: {
     id: 'id',
+    type_of_service: 'type_of_service',
     email: 'email',
+    name: 'name',
+    company_id: 'company_id',
+    gender: 'gender',
+    card_identition: 'card_identition',
+    area_id: 'area_id',
     phone: 'phone',
     address: 'address',
-    city: 'city',
-    code_postal: 'code_postal',
-    company_id: 'company_id',
-    country: 'country',
-    fullname: 'fullname',
-    area_id: 'area_id',
-    location: 'location',
     password: 'password',
-    state_region: 'state_region',
-    surname: 'surname',
-    tag: 'tag'
+    internet_package: 'internet_package',
+    ip_static: 'ip_static',
+    mac_address: 'mac_address',
+    job: 'job'
   };
 
   export type customerOrderByRelevanceFieldEnum = (typeof customerOrderByRelevanceFieldEnum)[keyof typeof customerOrderByRelevanceFieldEnum]
@@ -15920,8 +15296,8 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     password: 'password',
-    phone: 'phone',
-    token: 'token'
+    token: 'token',
+    phone: 'phone'
   };
 
   export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
@@ -15992,8 +15368,6 @@ export namespace Prisma {
     name?: StringFilter<"accounts"> | string
     createdAt?: DateTimeFilter<"accounts"> | Date | string
     updatedAt?: DateTimeFilter<"accounts"> | Date | string
-    transfers_transfers_from_account_idToaccounts?: TransfersListRelationFilter
-    transfers_transfers_to_account_idToaccounts?: TransfersListRelationFilter
   }
 
   export type accountsOrderByWithRelationInput = {
@@ -16001,8 +15375,6 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    transfers_transfers_from_account_idToaccounts?: transfersOrderByRelationAggregateInput
-    transfers_transfers_to_account_idToaccounts?: transfersOrderByRelationAggregateInput
     _relevance?: accountsOrderByRelevanceInput
   }
 
@@ -16014,8 +15386,6 @@ export namespace Prisma {
     name?: StringFilter<"accounts"> | string
     createdAt?: DateTimeFilter<"accounts"> | Date | string
     updatedAt?: DateTimeFilter<"accounts"> | Date | string
-    transfers_transfers_from_account_idToaccounts?: TransfersListRelationFilter
-    transfers_transfers_to_account_idToaccounts?: TransfersListRelationFilter
   }, "id">
 
   export type accountsOrderByWithAggregationInput = {
@@ -16048,7 +15418,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"archive_installation"> | Date | string
     customer_id?: StringNullableFilter<"archive_installation"> | string | null
     names?: StringFilter<"archive_installation"> | string
-    customer?: XOR<CustomerNullableScalarRelationFilter, customerWhereInput> | null
   }
 
   export type archive_installationOrderByWithRelationInput = {
@@ -16058,7 +15427,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     customer_id?: SortOrderInput | SortOrder
     names?: SortOrder
-    customer?: customerOrderByWithRelationInput
     _relevance?: archive_installationOrderByRelevanceInput
   }
 
@@ -16072,7 +15440,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"archive_installation"> | Date | string
     customer_id?: StringNullableFilter<"archive_installation"> | string | null
     names?: StringFilter<"archive_installation"> | string
-    customer?: XOR<CustomerNullableScalarRelationFilter, customerWhereInput> | null
   }, "id">
 
   export type archive_installationOrderByWithAggregationInput = {
@@ -16111,7 +15478,6 @@ export namespace Prisma {
     price?: FloatFilter<"assets"> | number
     createdAt?: DateTimeFilter<"assets"> | Date | string
     updatedAt?: DateTimeFilter<"assets"> | Date | string
-    report_assets?: XOR<Report_assetsNullableScalarRelationFilter, report_assetsWhereInput> | null
   }
 
   export type assetsOrderByWithRelationInput = {
@@ -16121,7 +15487,6 @@ export namespace Prisma {
     price?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    report_assets?: report_assetsOrderByWithRelationInput
     _relevance?: assetsOrderByRelevanceInput
   }
 
@@ -16135,7 +15500,6 @@ export namespace Prisma {
     price?: FloatFilter<"assets"> | number
     createdAt?: DateTimeFilter<"assets"> | Date | string
     updatedAt?: DateTimeFilter<"assets"> | Date | string
-    report_assets?: XOR<Report_assetsNullableScalarRelationFilter, report_assetsWhereInput> | null
   }, "id">
 
   export type assetsOrderByWithAggregationInput = {
@@ -16174,10 +15538,9 @@ export namespace Prisma {
     email?: StringFilter<"company"> | string
     phone?: StringFilter<"company"> | string
     logo_url?: StringNullableFilter<"company"> | string | null
-    description?: StringNullableFilter<"company"> | string | null
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
-    customer?: CustomerListRelationFilter
+    description?: StringNullableFilter<"company"> | string | null
   }
 
   export type companyOrderByWithRelationInput = {
@@ -16187,10 +15550,9 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrderInput | SortOrder
-    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customer?: customerOrderByRelationAggregateInput
+    description?: SortOrderInput | SortOrder
     _relevance?: companyOrderByRelevanceInput
   }
 
@@ -16204,10 +15566,9 @@ export namespace Prisma {
     email?: StringFilter<"company"> | string
     phone?: StringFilter<"company"> | string
     logo_url?: StringNullableFilter<"company"> | string | null
-    description?: StringNullableFilter<"company"> | string | null
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
-    customer?: CustomerListRelationFilter
+    description?: StringNullableFilter<"company"> | string | null
   }, "id">
 
   export type companyOrderByWithAggregationInput = {
@@ -16217,9 +15578,9 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrderInput | SortOrder
-    description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrderInput | SortOrder
     _count?: companyCountOrderByAggregateInput
     _max?: companyMaxOrderByAggregateInput
     _min?: companyMinOrderByAggregateInput
@@ -16235,9 +15596,9 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"company"> | string
     phone?: StringWithAggregatesFilter<"company"> | string
     logo_url?: StringNullableWithAggregatesFilter<"company"> | string | null
-    description?: StringNullableWithAggregatesFilter<"company"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"company"> | Date | string
+    description?: StringNullableWithAggregatesFilter<"company"> | string | null
   }
 
   export type customerWhereInput = {
@@ -16245,102 +15606,103 @@ export namespace Prisma {
     OR?: customerWhereInput[]
     NOT?: customerWhereInput | customerWhereInput[]
     id?: StringFilter<"customer"> | string
+    type_of_service?: StringFilter<"customer"> | string
     email?: StringFilter<"customer"> | string
+    name?: StringFilter<"customer"> | string
+    company_id?: StringFilter<"customer"> | string
+    gender?: StringFilter<"customer"> | string
+    card_identition?: StringFilter<"customer"> | string
+    no_identition?: IntFilter<"customer"> | number
+    area_id?: StringFilter<"customer"> | string
     phone?: StringFilter<"customer"> | string
     address?: StringFilter<"customer"> | string
-    installation_date?: DateTimeFilter<"customer"> | Date | string
+    latitude?: FloatFilter<"customer"> | number
+    longitude?: FloatFilter<"customer"> | number
+    password?: StringFilter<"customer"> | string
+    internet_package?: StringFilter<"customer"> | string
+    ip_static?: StringFilter<"customer"> | string
+    mac_address?: StringFilter<"customer"> | string
+    job?: StringFilter<"customer"> | string
     createdAt?: DateTimeFilter<"customer"> | Date | string
     updatedAt?: DateTimeFilter<"customer"> | Date | string
-    city?: StringFilter<"customer"> | string
-    code_postal?: StringFilter<"customer"> | string
-    company_id?: StringFilter<"customer"> | string
-    country?: StringFilter<"customer"> | string
-    fullname?: StringFilter<"customer"> | string
-    area_id?: StringFilter<"customer"> | string
-    location?: StringFilter<"customer"> | string
-    password?: StringFilter<"customer"> | string
-    state_region?: StringFilter<"customer"> | string
-    surname?: StringFilter<"customer"> | string
-    tag?: StringFilter<"customer"> | string
-    archive_installation?: Archive_installationListRelationFilter
-    company?: XOR<CompanyScalarRelationFilter, companyWhereInput>
-    areas?: XOR<AreasScalarRelationFilter, areasWhereInput>
   }
 
   export type customerOrderByWithRelationInput = {
     id?: SortOrder
+    type_of_service?: SortOrder
     email?: SortOrder
+    name?: SortOrder
+    company_id?: SortOrder
+    gender?: SortOrder
+    card_identition?: SortOrder
+    no_identition?: SortOrder
+    area_id?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    installation_date?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    password?: SortOrder
+    internet_package?: SortOrder
+    ip_static?: SortOrder
+    mac_address?: SortOrder
+    job?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    city?: SortOrder
-    code_postal?: SortOrder
-    company_id?: SortOrder
-    country?: SortOrder
-    fullname?: SortOrder
-    area_id?: SortOrder
-    location?: SortOrder
-    password?: SortOrder
-    state_region?: SortOrder
-    surname?: SortOrder
-    tag?: SortOrder
-    archive_installation?: archive_installationOrderByRelationAggregateInput
-    company?: companyOrderByWithRelationInput
-    areas?: areasOrderByWithRelationInput
     _relevance?: customerOrderByRelevanceInput
   }
 
   export type customerWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    email?: string
     AND?: customerWhereInput | customerWhereInput[]
     OR?: customerWhereInput[]
     NOT?: customerWhereInput | customerWhereInput[]
-    email?: StringFilter<"customer"> | string
+    type_of_service?: StringFilter<"customer"> | string
+    name?: StringFilter<"customer"> | string
+    company_id?: StringFilter<"customer"> | string
+    gender?: StringFilter<"customer"> | string
+    card_identition?: StringFilter<"customer"> | string
+    no_identition?: IntFilter<"customer"> | number
+    area_id?: StringFilter<"customer"> | string
     phone?: StringFilter<"customer"> | string
     address?: StringFilter<"customer"> | string
-    installation_date?: DateTimeFilter<"customer"> | Date | string
+    latitude?: FloatFilter<"customer"> | number
+    longitude?: FloatFilter<"customer"> | number
+    password?: StringFilter<"customer"> | string
+    internet_package?: StringFilter<"customer"> | string
+    ip_static?: StringFilter<"customer"> | string
+    mac_address?: StringFilter<"customer"> | string
+    job?: StringFilter<"customer"> | string
     createdAt?: DateTimeFilter<"customer"> | Date | string
     updatedAt?: DateTimeFilter<"customer"> | Date | string
-    city?: StringFilter<"customer"> | string
-    code_postal?: StringFilter<"customer"> | string
-    company_id?: StringFilter<"customer"> | string
-    country?: StringFilter<"customer"> | string
-    fullname?: StringFilter<"customer"> | string
-    area_id?: StringFilter<"customer"> | string
-    location?: StringFilter<"customer"> | string
-    password?: StringFilter<"customer"> | string
-    state_region?: StringFilter<"customer"> | string
-    surname?: StringFilter<"customer"> | string
-    tag?: StringFilter<"customer"> | string
-    archive_installation?: Archive_installationListRelationFilter
-    company?: XOR<CompanyScalarRelationFilter, companyWhereInput>
-    areas?: XOR<AreasScalarRelationFilter, areasWhereInput>
-  }, "id">
+  }, "id" | "email">
 
   export type customerOrderByWithAggregationInput = {
     id?: SortOrder
+    type_of_service?: SortOrder
     email?: SortOrder
+    name?: SortOrder
+    company_id?: SortOrder
+    gender?: SortOrder
+    card_identition?: SortOrder
+    no_identition?: SortOrder
+    area_id?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    installation_date?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    password?: SortOrder
+    internet_package?: SortOrder
+    ip_static?: SortOrder
+    mac_address?: SortOrder
+    job?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    city?: SortOrder
-    code_postal?: SortOrder
-    company_id?: SortOrder
-    country?: SortOrder
-    fullname?: SortOrder
-    area_id?: SortOrder
-    location?: SortOrder
-    password?: SortOrder
-    state_region?: SortOrder
-    surname?: SortOrder
-    tag?: SortOrder
     _count?: customerCountOrderByAggregateInput
+    _avg?: customerAvgOrderByAggregateInput
     _max?: customerMaxOrderByAggregateInput
     _min?: customerMinOrderByAggregateInput
+    _sum?: customerSumOrderByAggregateInput
   }
 
   export type customerScalarWhereWithAggregatesInput = {
@@ -16348,23 +15710,25 @@ export namespace Prisma {
     OR?: customerScalarWhereWithAggregatesInput[]
     NOT?: customerScalarWhereWithAggregatesInput | customerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"customer"> | string
+    type_of_service?: StringWithAggregatesFilter<"customer"> | string
     email?: StringWithAggregatesFilter<"customer"> | string
+    name?: StringWithAggregatesFilter<"customer"> | string
+    company_id?: StringWithAggregatesFilter<"customer"> | string
+    gender?: StringWithAggregatesFilter<"customer"> | string
+    card_identition?: StringWithAggregatesFilter<"customer"> | string
+    no_identition?: IntWithAggregatesFilter<"customer"> | number
+    area_id?: StringWithAggregatesFilter<"customer"> | string
     phone?: StringWithAggregatesFilter<"customer"> | string
     address?: StringWithAggregatesFilter<"customer"> | string
-    installation_date?: DateTimeWithAggregatesFilter<"customer"> | Date | string
+    latitude?: FloatWithAggregatesFilter<"customer"> | number
+    longitude?: FloatWithAggregatesFilter<"customer"> | number
+    password?: StringWithAggregatesFilter<"customer"> | string
+    internet_package?: StringWithAggregatesFilter<"customer"> | string
+    ip_static?: StringWithAggregatesFilter<"customer"> | string
+    mac_address?: StringWithAggregatesFilter<"customer"> | string
+    job?: StringWithAggregatesFilter<"customer"> | string
     createdAt?: DateTimeWithAggregatesFilter<"customer"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"customer"> | Date | string
-    city?: StringWithAggregatesFilter<"customer"> | string
-    code_postal?: StringWithAggregatesFilter<"customer"> | string
-    company_id?: StringWithAggregatesFilter<"customer"> | string
-    country?: StringWithAggregatesFilter<"customer"> | string
-    fullname?: StringWithAggregatesFilter<"customer"> | string
-    area_id?: StringWithAggregatesFilter<"customer"> | string
-    location?: StringWithAggregatesFilter<"customer"> | string
-    password?: StringWithAggregatesFilter<"customer"> | string
-    state_region?: StringWithAggregatesFilter<"customer"> | string
-    surname?: StringWithAggregatesFilter<"customer"> | string
-    tag?: StringWithAggregatesFilter<"customer"> | string
   }
 
   export type deviceWhereInput = {
@@ -16423,7 +15787,6 @@ export namespace Prisma {
     name?: StringFilter<"areas"> | string
     createdAt?: DateTimeFilter<"areas"> | Date | string
     updatedAt?: DateTimeFilter<"areas"> | Date | string
-    customer?: CustomerListRelationFilter
   }
 
   export type areasOrderByWithRelationInput = {
@@ -16431,7 +15794,6 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customer?: customerOrderByRelationAggregateInput
     _relevance?: areasOrderByRelevanceInput
   }
 
@@ -16443,7 +15805,6 @@ export namespace Prisma {
     name?: StringFilter<"areas"> | string
     createdAt?: DateTimeFilter<"areas"> | Date | string
     updatedAt?: DateTimeFilter<"areas"> | Date | string
-    customer?: CustomerListRelationFilter
   }, "id">
 
   export type areasOrderByWithAggregationInput = {
@@ -16588,7 +15949,6 @@ export namespace Prisma {
     quantity?: BigIntFilter<"report_assets"> | bigint | number
     createdAt?: DateTimeFilter<"report_assets"> | Date | string
     updatedAt?: DateTimeFilter<"report_assets"> | Date | string
-    assets?: XOR<AssetsScalarRelationFilter, assetsWhereInput>
   }
 
   export type report_assetsOrderByWithRelationInput = {
@@ -16597,7 +15957,6 @@ export namespace Prisma {
     quantity?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    assets?: assetsOrderByWithRelationInput
     _relevance?: report_assetsOrderByRelevanceInput
   }
 
@@ -16610,7 +15969,6 @@ export namespace Prisma {
     quantity?: BigIntFilter<"report_assets"> | bigint | number
     createdAt?: DateTimeFilter<"report_assets"> | Date | string
     updatedAt?: DateTimeFilter<"report_assets"> | Date | string
-    assets?: XOR<AssetsScalarRelationFilter, assetsWhereInput>
   }, "id">
 
   export type report_assetsOrderByWithAggregationInput = {
@@ -16780,8 +16138,6 @@ export namespace Prisma {
     tags?: StringFilter<"transfers"> | string
     createdAt?: DateTimeFilter<"transfers"> | Date | string
     updatedAt?: DateTimeFilter<"transfers"> | Date | string
-    accounts_transfers_from_account_idToaccounts?: XOR<AccountsScalarRelationFilter, accountsWhereInput>
-    accounts_transfers_to_account_idToaccounts?: XOR<AccountsScalarRelationFilter, accountsWhereInput>
   }
 
   export type transfersOrderByWithRelationInput = {
@@ -16794,8 +16150,6 @@ export namespace Prisma {
     tags?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    accounts_transfers_from_account_idToaccounts?: accountsOrderByWithRelationInput
-    accounts_transfers_to_account_idToaccounts?: accountsOrderByWithRelationInput
     _relevance?: transfersOrderByRelevanceInput
   }
 
@@ -16812,8 +16166,6 @@ export namespace Prisma {
     tags?: StringFilter<"transfers"> | string
     createdAt?: DateTimeFilter<"transfers"> | Date | string
     updatedAt?: DateTimeFilter<"transfers"> | Date | string
-    accounts_transfers_from_account_idToaccounts?: XOR<AccountsScalarRelationFilter, accountsWhereInput>
-    accounts_transfers_to_account_idToaccounts?: XOR<AccountsScalarRelationFilter, accountsWhereInput>
   }, "id">
 
   export type transfersOrderByWithAggregationInput = {
@@ -16857,10 +16209,10 @@ export namespace Prisma {
     name?: StringNullableFilter<"users"> | string | null
     password?: StringFilter<"users"> | string
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
-    phone?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     token?: StringNullableFilter<"users"> | string | null
+    phone?: StringNullableFilter<"users"> | string | null
   }
 
   export type usersOrderByWithRelationInput = {
@@ -16869,10 +16221,10 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrder
     role?: SortOrder
-    phone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     token?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     _relevance?: usersOrderByRelevanceInput
   }
 
@@ -16885,10 +16237,10 @@ export namespace Prisma {
     name?: StringNullableFilter<"users"> | string | null
     password?: StringFilter<"users"> | string
     role?: Enumuser_roleFilter<"users"> | $Enums.user_role
-    phone?: StringNullableFilter<"users"> | string | null
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     token?: StringNullableFilter<"users"> | string | null
+    phone?: StringNullableFilter<"users"> | string | null
   }, "id" | "email">
 
   export type usersOrderByWithAggregationInput = {
@@ -16897,10 +16249,10 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrder
     role?: SortOrder
-    phone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     token?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
     _min?: usersMinOrderByAggregateInput
@@ -16915,10 +16267,10 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"users"> | string | null
     password?: StringWithAggregatesFilter<"users"> | string
     role?: Enumuser_roleWithAggregatesFilter<"users"> | $Enums.user_role
-    phone?: StringNullableWithAggregatesFilter<"users"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
     token?: StringNullableWithAggregatesFilter<"users"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"users"> | string | null
   }
 
   export type accountsCreateInput = {
@@ -16926,8 +16278,6 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersCreateNestedManyWithoutAccounts_transfers_from_account_idToaccountsInput
-    transfers_transfers_to_account_idToaccounts?: transfersCreateNestedManyWithoutAccounts_transfers_to_account_idToaccountsInput
   }
 
   export type accountsUncheckedCreateInput = {
@@ -16935,8 +16285,6 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersUncheckedCreateNestedManyWithoutAccounts_transfers_from_account_idToaccountsInput
-    transfers_transfers_to_account_idToaccounts?: transfersUncheckedCreateNestedManyWithoutAccounts_transfers_to_account_idToaccountsInput
   }
 
   export type accountsUpdateInput = {
@@ -16944,8 +16292,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersUpdateManyWithoutAccounts_transfers_from_account_idToaccountsNestedInput
-    transfers_transfers_to_account_idToaccounts?: transfersUpdateManyWithoutAccounts_transfers_to_account_idToaccountsNestedInput
   }
 
   export type accountsUncheckedUpdateInput = {
@@ -16953,8 +16299,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersUncheckedUpdateManyWithoutAccounts_transfers_from_account_idToaccountsNestedInput
-    transfers_transfers_to_account_idToaccounts?: transfersUncheckedUpdateManyWithoutAccounts_transfers_to_account_idToaccountsNestedInput
   }
 
   export type accountsCreateManyInput = {
@@ -16983,8 +16327,8 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt: Date | string
+    customer_id?: string | null
     names: string
-    customer?: customerCreateNestedOneWithoutArchive_installationInput
   }
 
   export type archive_installationUncheckedCreateInput = {
@@ -17001,8 +16345,8 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
     names?: StringFieldUpdateOperationsInput | string
-    customer?: customerUpdateOneWithoutArchive_installationNestedInput
   }
 
   export type archive_installationUncheckedUpdateInput = {
@@ -17028,6 +16372,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
     names?: StringFieldUpdateOperationsInput | string
   }
 
@@ -17047,7 +16392,6 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt: Date | string
-    report_assets?: report_assetsCreateNestedOneWithoutAssetsInput
   }
 
   export type assetsUncheckedCreateInput = {
@@ -17057,7 +16401,6 @@ export namespace Prisma {
     price: number
     createdAt?: Date | string
     updatedAt: Date | string
-    report_assets?: report_assetsUncheckedCreateNestedOneWithoutAssetsInput
   }
 
   export type assetsUpdateInput = {
@@ -17067,7 +16410,6 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    report_assets?: report_assetsUpdateOneWithoutAssetsNestedInput
   }
 
   export type assetsUncheckedUpdateInput = {
@@ -17077,7 +16419,6 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    report_assets?: report_assetsUncheckedUpdateOneWithoutAssetsNestedInput
   }
 
   export type assetsCreateManyInput = {
@@ -17114,10 +16455,9 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
-    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
-    customer?: customerCreateNestedManyWithoutCompanyInput
+    description?: string | null
   }
 
   export type companyUncheckedCreateInput = {
@@ -17127,10 +16467,9 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
-    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
-    customer?: customerUncheckedCreateNestedManyWithoutCompanyInput
+    description?: string | null
   }
 
   export type companyUpdateInput = {
@@ -17140,10 +16479,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUpdateManyWithoutCompanyNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type companyUncheckedUpdateInput = {
@@ -17153,10 +16491,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUncheckedUpdateManyWithoutCompanyNestedInput
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type companyCreateManyInput = {
@@ -17166,9 +16503,9 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
-    description?: string | null
     createdAt?: Date | string
     updatedAt: Date | string
+    description?: string | null
   }
 
   export type companyUpdateManyMutationInput = {
@@ -17178,9 +16515,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type companyUncheckedUpdateManyInput = {
@@ -17190,158 +16527,170 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type customerCreateInput = {
     id: string
+    type_of_service: string
     email: string
+    name: string
+    company_id: string
+    gender: string
+    card_identition: string
+    no_identition: number
+    area_id: string
     phone: string
     address: string
-    installation_date: Date | string
+    latitude: number
+    longitude: number
+    password: string
+    internet_package: string
+    ip_static: string
+    mac_address: string
+    job: string
     createdAt?: Date | string
     updatedAt: Date | string
-    city: string
-    code_postal: string
-    country: string
-    fullname: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-    archive_installation?: archive_installationCreateNestedManyWithoutCustomerInput
-    company: companyCreateNestedOneWithoutCustomerInput
-    areas: areasCreateNestedOneWithoutCustomerInput
   }
 
   export type customerUncheckedCreateInput = {
     id: string
+    type_of_service: string
     email: string
+    name: string
+    company_id: string
+    gender: string
+    card_identition: string
+    no_identition: number
+    area_id: string
     phone: string
     address: string
-    installation_date: Date | string
+    latitude: number
+    longitude: number
+    password: string
+    internet_package: string
+    ip_static: string
+    mac_address: string
+    job: string
     createdAt?: Date | string
     updatedAt: Date | string
-    city: string
-    code_postal: string
-    company_id: string
-    country: string
-    fullname: string
-    area_id: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-    archive_installation?: archive_installationUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type customerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    area_id?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    internet_package?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-    archive_installation?: archive_installationUpdateManyWithoutCustomerNestedInput
-    company?: companyUpdateOneRequiredWithoutCustomerNestedInput
-    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
   }
 
   export type customerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    area_id?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    internet_package?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    company_id?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    area_id?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-    archive_installation?: archive_installationUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type customerCreateManyInput = {
     id: string
+    type_of_service: string
     email: string
+    name: string
+    company_id: string
+    gender: string
+    card_identition: string
+    no_identition: number
+    area_id: string
     phone: string
     address: string
-    installation_date: Date | string
+    latitude: number
+    longitude: number
+    password: string
+    internet_package: string
+    ip_static: string
+    mac_address: string
+    job: string
     createdAt?: Date | string
     updatedAt: Date | string
-    city: string
-    code_postal: string
-    company_id: string
-    country: string
-    fullname: string
-    area_id: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
   }
 
   export type customerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    area_id?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    internet_package?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
   }
 
   export type customerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    area_id?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    internet_package?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    company_id?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    area_id?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
   }
 
   export type deviceCreateInput = {
@@ -17398,7 +16747,6 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
-    customer?: customerCreateNestedManyWithoutAreasInput
   }
 
   export type areasUncheckedCreateInput = {
@@ -17406,7 +16754,6 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt: Date | string
-    customer?: customerUncheckedCreateNestedManyWithoutAreasInput
   }
 
   export type areasUpdateInput = {
@@ -17414,7 +16761,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUpdateManyWithoutAreasNestedInput
   }
 
   export type areasUncheckedUpdateInput = {
@@ -17422,7 +16768,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUncheckedUpdateManyWithoutAreasNestedInput
   }
 
   export type areasCreateManyInput = {
@@ -17566,11 +16911,11 @@ export namespace Prisma {
   }
 
   export type report_assetsCreateInput = {
+    id: string
     description: string
     quantity: bigint | number
     createdAt?: Date | string
     updatedAt: Date | string
-    assets: assetsCreateNestedOneWithoutReport_assetsInput
   }
 
   export type report_assetsUncheckedCreateInput = {
@@ -17582,11 +16927,11 @@ export namespace Prisma {
   }
 
   export type report_assetsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     quantity?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assets?: assetsUpdateOneRequiredWithoutReport_assetsNestedInput
   }
 
   export type report_assetsUncheckedUpdateInput = {
@@ -17606,6 +16951,7 @@ export namespace Prisma {
   }
 
   export type report_assetsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     quantity?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17762,14 +17108,14 @@ export namespace Prisma {
 
   export type transfersCreateInput = {
     id: string
+    from_account_id: string
+    to_account_id: string
     date: Date | string
     description: string
     amount: bigint | number
     tags: string
     createdAt?: Date | string
     updatedAt: Date | string
-    accounts_transfers_from_account_idToaccounts: accountsCreateNestedOneWithoutTransfers_transfers_from_account_idToaccountsInput
-    accounts_transfers_to_account_idToaccounts: accountsCreateNestedOneWithoutTransfers_transfers_to_account_idToaccountsInput
   }
 
   export type transfersUncheckedCreateInput = {
@@ -17786,14 +17132,14 @@ export namespace Prisma {
 
   export type transfersUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    from_account_id?: StringFieldUpdateOperationsInput | string
+    to_account_id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     amount?: BigIntFieldUpdateOperationsInput | bigint | number
     tags?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts_transfers_from_account_idToaccounts?: accountsUpdateOneRequiredWithoutTransfers_transfers_from_account_idToaccountsNestedInput
-    accounts_transfers_to_account_idToaccounts?: accountsUpdateOneRequiredWithoutTransfers_transfers_to_account_idToaccountsNestedInput
   }
 
   export type transfersUncheckedUpdateInput = {
@@ -17822,6 +17168,8 @@ export namespace Prisma {
 
   export type transfersUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    from_account_id?: StringFieldUpdateOperationsInput | string
+    to_account_id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     amount?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -17848,10 +17196,10 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
-    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
+    phone?: string | null
   }
 
   export type usersUncheckedCreateInput = {
@@ -17860,10 +17208,10 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
-    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
+    phone?: string | null
   }
 
   export type usersUpdateInput = {
@@ -17872,10 +17220,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateInput = {
@@ -17884,10 +17232,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersCreateManyInput = {
@@ -17896,10 +17244,10 @@ export namespace Prisma {
     name?: string | null
     password: string
     role: $Enums.user_role
-    phone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
+    phone?: string | null
   }
 
   export type usersUpdateManyMutationInput = {
@@ -17908,10 +17256,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateManyInput = {
@@ -17920,10 +17268,10 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
     role?: Enumuser_roleFieldUpdateOperationsInput | $Enums.user_role
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -17950,16 +17298,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type TransfersListRelationFilter = {
-    every?: transfersWhereInput
-    some?: transfersWhereInput
-    none?: transfersWhereInput
-  }
-
-  export type transfersOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type accountsOrderByRelevanceInput = {
@@ -18045,11 +17383,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type CustomerNullableScalarRelationFilter = {
-    is?: customerWhereInput | null
-    isNot?: customerWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -18143,11 +17476,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type Report_assetsNullableScalarRelationFilter = {
-    is?: report_assetsWhereInput | null
-    isNot?: report_assetsWhereInput | null
-  }
-
   export type assetsOrderByRelevanceInput = {
     fields: assetsOrderByRelevanceFieldEnum | assetsOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -18207,16 +17535,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type CustomerListRelationFilter = {
-    every?: customerWhereInput
-    some?: customerWhereInput
-    none?: customerWhereInput
-  }
-
-  export type customerOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type companyOrderByRelevanceInput = {
     fields: companyOrderByRelevanceFieldEnum | companyOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -18230,9 +17548,9 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
-    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrder
   }
 
   export type companyMaxOrderByAggregateInput = {
@@ -18242,9 +17560,9 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
-    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    description?: SortOrder
   }
 
   export type companyMinOrderByAggregateInput = {
@@ -18254,29 +17572,9 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
-    description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type Archive_installationListRelationFilter = {
-    every?: archive_installationWhereInput
-    some?: archive_installationWhereInput
-    none?: archive_installationWhereInput
-  }
-
-  export type CompanyScalarRelationFilter = {
-    is?: companyWhereInput
-    isNot?: companyWhereInput
-  }
-
-  export type AreasScalarRelationFilter = {
-    is?: areasWhereInput
-    isNot?: areasWhereInput
-  }
-
-  export type archive_installationOrderByRelationAggregateInput = {
-    _count?: SortOrder
+    description?: SortOrder
   }
 
   export type customerOrderByRelevanceInput = {
@@ -18287,65 +17585,83 @@ export namespace Prisma {
 
   export type customerCountOrderByAggregateInput = {
     id?: SortOrder
+    type_of_service?: SortOrder
     email?: SortOrder
+    name?: SortOrder
+    company_id?: SortOrder
+    gender?: SortOrder
+    card_identition?: SortOrder
+    no_identition?: SortOrder
+    area_id?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    installation_date?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    password?: SortOrder
+    internet_package?: SortOrder
+    ip_static?: SortOrder
+    mac_address?: SortOrder
+    job?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    city?: SortOrder
-    code_postal?: SortOrder
-    company_id?: SortOrder
-    country?: SortOrder
-    fullname?: SortOrder
-    area_id?: SortOrder
-    location?: SortOrder
-    password?: SortOrder
-    state_region?: SortOrder
-    surname?: SortOrder
-    tag?: SortOrder
+  }
+
+  export type customerAvgOrderByAggregateInput = {
+    no_identition?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type customerMaxOrderByAggregateInput = {
     id?: SortOrder
+    type_of_service?: SortOrder
     email?: SortOrder
+    name?: SortOrder
+    company_id?: SortOrder
+    gender?: SortOrder
+    card_identition?: SortOrder
+    no_identition?: SortOrder
+    area_id?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    installation_date?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    password?: SortOrder
+    internet_package?: SortOrder
+    ip_static?: SortOrder
+    mac_address?: SortOrder
+    job?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    city?: SortOrder
-    code_postal?: SortOrder
-    company_id?: SortOrder
-    country?: SortOrder
-    fullname?: SortOrder
-    area_id?: SortOrder
-    location?: SortOrder
-    password?: SortOrder
-    state_region?: SortOrder
-    surname?: SortOrder
-    tag?: SortOrder
   }
 
   export type customerMinOrderByAggregateInput = {
     id?: SortOrder
+    type_of_service?: SortOrder
     email?: SortOrder
+    name?: SortOrder
+    company_id?: SortOrder
+    gender?: SortOrder
+    card_identition?: SortOrder
+    no_identition?: SortOrder
+    area_id?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    installation_date?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    password?: SortOrder
+    internet_package?: SortOrder
+    ip_static?: SortOrder
+    mac_address?: SortOrder
+    job?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    city?: SortOrder
-    code_postal?: SortOrder
-    company_id?: SortOrder
-    country?: SortOrder
-    fullname?: SortOrder
-    area_id?: SortOrder
-    location?: SortOrder
-    password?: SortOrder
-    state_region?: SortOrder
-    surname?: SortOrder
-    tag?: SortOrder
+  }
+
+  export type customerSumOrderByAggregateInput = {
+    no_identition?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type deviceOrderByRelevanceInput = {
@@ -18500,11 +17816,6 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type AssetsScalarRelationFilter = {
-    is?: assetsWhereInput
-    isNot?: assetsWhereInput
-  }
-
   export type report_assetsOrderByRelevanceInput = {
     fields: report_assetsOrderByRelevanceFieldEnum | report_assetsOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -18650,11 +17961,6 @@ export namespace Prisma {
     _max?: NestedEnumtransactions_typeFilter<$PrismaModel>
   }
 
-  export type AccountsScalarRelationFilter = {
-    is?: accountsWhereInput
-    isNot?: accountsWhereInput
-  }
-
   export type transfersOrderByRelevanceInput = {
     fields: transfersOrderByRelevanceFieldEnum | transfersOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -18735,10 +18041,10 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
+    phone?: SortOrder
   }
 
   export type usersMaxOrderByAggregateInput = {
@@ -18747,10 +18053,10 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
+    phone?: SortOrder
   }
 
   export type usersMinOrderByAggregateInput = {
@@ -18759,10 +18065,10 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    phone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
+    phone?: SortOrder
   }
 
   export type Enumuser_roleWithAggregatesFilter<$PrismaModel = never> = {
@@ -18789,102 +18095,12 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type transfersCreateNestedManyWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_from_account_idToaccountsInputEnvelope
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-  }
-
-  export type transfersCreateNestedManyWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_to_account_idToaccountsInputEnvelope
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-  }
-
-  export type transfersUncheckedCreateNestedManyWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_from_account_idToaccountsInputEnvelope
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-  }
-
-  export type transfersUncheckedCreateNestedManyWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_to_account_idToaccountsInputEnvelope
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type transfersUpdateManyWithoutAccounts_transfers_from_account_idToaccountsNestedInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    upsert?: transfersUpsertWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput | transfersUpsertWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_from_account_idToaccountsInputEnvelope
-    set?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    disconnect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    delete?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    update?: transfersUpdateWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput | transfersUpdateWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    updateMany?: transfersUpdateManyWithWhereWithoutAccounts_transfers_from_account_idToaccountsInput | transfersUpdateManyWithWhereWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    deleteMany?: transfersScalarWhereInput | transfersScalarWhereInput[]
-  }
-
-  export type transfersUpdateManyWithoutAccounts_transfers_to_account_idToaccountsNestedInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    upsert?: transfersUpsertWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput | transfersUpsertWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_to_account_idToaccountsInputEnvelope
-    set?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    disconnect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    delete?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    update?: transfersUpdateWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput | transfersUpdateWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    updateMany?: transfersUpdateManyWithWhereWithoutAccounts_transfers_to_account_idToaccountsInput | transfersUpdateManyWithWhereWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    deleteMany?: transfersScalarWhereInput | transfersScalarWhereInput[]
-  }
-
-  export type transfersUncheckedUpdateManyWithoutAccounts_transfers_from_account_idToaccountsNestedInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    upsert?: transfersUpsertWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput | transfersUpsertWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_from_account_idToaccountsInputEnvelope
-    set?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    disconnect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    delete?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    update?: transfersUpdateWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput | transfersUpdateWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    updateMany?: transfersUpdateManyWithWhereWithoutAccounts_transfers_from_account_idToaccountsInput | transfersUpdateManyWithWhereWithoutAccounts_transfers_from_account_idToaccountsInput[]
-    deleteMany?: transfersScalarWhereInput | transfersScalarWhereInput[]
-  }
-
-  export type transfersUncheckedUpdateManyWithoutAccounts_transfers_to_account_idToaccountsNestedInput = {
-    create?: XOR<transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput> | transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput[] | transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    connectOrCreate?: transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput | transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    upsert?: transfersUpsertWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput | transfersUpsertWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    createMany?: transfersCreateManyAccounts_transfers_to_account_idToaccountsInputEnvelope
-    set?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    disconnect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    delete?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    connect?: transfersWhereUniqueInput | transfersWhereUniqueInput[]
-    update?: transfersUpdateWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput | transfersUpdateWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    updateMany?: transfersUpdateManyWithWhereWithoutAccounts_transfers_to_account_idToaccountsInput | transfersUpdateManyWithWhereWithoutAccounts_transfers_to_account_idToaccountsInput[]
-    deleteMany?: transfersScalarWhereInput | transfersScalarWhereInput[]
-  }
-
-  export type customerCreateNestedOneWithoutArchive_installationInput = {
-    create?: XOR<customerCreateWithoutArchive_installationInput, customerUncheckedCreateWithoutArchive_installationInput>
-    connectOrCreate?: customerCreateOrConnectWithoutArchive_installationInput
-    connect?: customerWhereUniqueInput
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -18895,30 +18111,8 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type customerUpdateOneWithoutArchive_installationNestedInput = {
-    create?: XOR<customerCreateWithoutArchive_installationInput, customerUncheckedCreateWithoutArchive_installationInput>
-    connectOrCreate?: customerCreateOrConnectWithoutArchive_installationInput
-    upsert?: customerUpsertWithoutArchive_installationInput
-    disconnect?: customerWhereInput | boolean
-    delete?: customerWhereInput | boolean
-    connect?: customerWhereUniqueInput
-    update?: XOR<XOR<customerUpdateToOneWithWhereWithoutArchive_installationInput, customerUpdateWithoutArchive_installationInput>, customerUncheckedUpdateWithoutArchive_installationInput>
-  }
-
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type report_assetsCreateNestedOneWithoutAssetsInput = {
-    create?: XOR<report_assetsCreateWithoutAssetsInput, report_assetsUncheckedCreateWithoutAssetsInput>
-    connectOrCreate?: report_assetsCreateOrConnectWithoutAssetsInput
-    connect?: report_assetsWhereUniqueInput
-  }
-
-  export type report_assetsUncheckedCreateNestedOneWithoutAssetsInput = {
-    create?: XOR<report_assetsCreateWithoutAssetsInput, report_assetsUncheckedCreateWithoutAssetsInput>
-    connectOrCreate?: report_assetsCreateOrConnectWithoutAssetsInput
-    connect?: report_assetsWhereUniqueInput
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -18929,180 +18123,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type report_assetsUpdateOneWithoutAssetsNestedInput = {
-    create?: XOR<report_assetsCreateWithoutAssetsInput, report_assetsUncheckedCreateWithoutAssetsInput>
-    connectOrCreate?: report_assetsCreateOrConnectWithoutAssetsInput
-    upsert?: report_assetsUpsertWithoutAssetsInput
-    disconnect?: report_assetsWhereInput | boolean
-    delete?: report_assetsWhereInput | boolean
-    connect?: report_assetsWhereUniqueInput
-    update?: XOR<XOR<report_assetsUpdateToOneWithWhereWithoutAssetsInput, report_assetsUpdateWithoutAssetsInput>, report_assetsUncheckedUpdateWithoutAssetsInput>
-  }
-
-  export type report_assetsUncheckedUpdateOneWithoutAssetsNestedInput = {
-    create?: XOR<report_assetsCreateWithoutAssetsInput, report_assetsUncheckedCreateWithoutAssetsInput>
-    connectOrCreate?: report_assetsCreateOrConnectWithoutAssetsInput
-    upsert?: report_assetsUpsertWithoutAssetsInput
-    disconnect?: report_assetsWhereInput | boolean
-    delete?: report_assetsWhereInput | boolean
-    connect?: report_assetsWhereUniqueInput
-    update?: XOR<XOR<report_assetsUpdateToOneWithWhereWithoutAssetsInput, report_assetsUpdateWithoutAssetsInput>, report_assetsUncheckedUpdateWithoutAssetsInput>
-  }
-
-  export type customerCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
-    createMany?: customerCreateManyCompanyInputEnvelope
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-  }
-
-  export type customerUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
-    createMany?: customerCreateManyCompanyInputEnvelope
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-  }
-
-  export type customerUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
-    upsert?: customerUpsertWithWhereUniqueWithoutCompanyInput | customerUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: customerCreateManyCompanyInputEnvelope
-    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    update?: customerUpdateWithWhereUniqueWithoutCompanyInput | customerUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: customerUpdateManyWithWhereWithoutCompanyInput | customerUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
-  }
-
-  export type customerUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
-    upsert?: customerUpsertWithWhereUniqueWithoutCompanyInput | customerUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: customerCreateManyCompanyInputEnvelope
-    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    update?: customerUpdateWithWhereUniqueWithoutCompanyInput | customerUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: customerUpdateManyWithWhereWithoutCompanyInput | customerUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
-  }
-
-  export type archive_installationCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<archive_installationCreateWithoutCustomerInput, archive_installationUncheckedCreateWithoutCustomerInput> | archive_installationCreateWithoutCustomerInput[] | archive_installationUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: archive_installationCreateOrConnectWithoutCustomerInput | archive_installationCreateOrConnectWithoutCustomerInput[]
-    createMany?: archive_installationCreateManyCustomerInputEnvelope
-    connect?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-  }
-
-  export type companyCreateNestedOneWithoutCustomerInput = {
-    create?: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
-    connectOrCreate?: companyCreateOrConnectWithoutCustomerInput
-    connect?: companyWhereUniqueInput
-  }
-
-  export type areasCreateNestedOneWithoutCustomerInput = {
-    create?: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
-    connectOrCreate?: areasCreateOrConnectWithoutCustomerInput
-    connect?: areasWhereUniqueInput
-  }
-
-  export type archive_installationUncheckedCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<archive_installationCreateWithoutCustomerInput, archive_installationUncheckedCreateWithoutCustomerInput> | archive_installationCreateWithoutCustomerInput[] | archive_installationUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: archive_installationCreateOrConnectWithoutCustomerInput | archive_installationCreateOrConnectWithoutCustomerInput[]
-    createMany?: archive_installationCreateManyCustomerInputEnvelope
-    connect?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-  }
-
-  export type archive_installationUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<archive_installationCreateWithoutCustomerInput, archive_installationUncheckedCreateWithoutCustomerInput> | archive_installationCreateWithoutCustomerInput[] | archive_installationUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: archive_installationCreateOrConnectWithoutCustomerInput | archive_installationCreateOrConnectWithoutCustomerInput[]
-    upsert?: archive_installationUpsertWithWhereUniqueWithoutCustomerInput | archive_installationUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: archive_installationCreateManyCustomerInputEnvelope
-    set?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    disconnect?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    delete?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    connect?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    update?: archive_installationUpdateWithWhereUniqueWithoutCustomerInput | archive_installationUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: archive_installationUpdateManyWithWhereWithoutCustomerInput | archive_installationUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: archive_installationScalarWhereInput | archive_installationScalarWhereInput[]
-  }
-
-  export type companyUpdateOneRequiredWithoutCustomerNestedInput = {
-    create?: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
-    connectOrCreate?: companyCreateOrConnectWithoutCustomerInput
-    upsert?: companyUpsertWithoutCustomerInput
-    connect?: companyWhereUniqueInput
-    update?: XOR<XOR<companyUpdateToOneWithWhereWithoutCustomerInput, companyUpdateWithoutCustomerInput>, companyUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type areasUpdateOneRequiredWithoutCustomerNestedInput = {
-    create?: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
-    connectOrCreate?: areasCreateOrConnectWithoutCustomerInput
-    upsert?: areasUpsertWithoutCustomerInput
-    connect?: areasWhereUniqueInput
-    update?: XOR<XOR<areasUpdateToOneWithWhereWithoutCustomerInput, areasUpdateWithoutCustomerInput>, areasUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type archive_installationUncheckedUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<archive_installationCreateWithoutCustomerInput, archive_installationUncheckedCreateWithoutCustomerInput> | archive_installationCreateWithoutCustomerInput[] | archive_installationUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: archive_installationCreateOrConnectWithoutCustomerInput | archive_installationCreateOrConnectWithoutCustomerInput[]
-    upsert?: archive_installationUpsertWithWhereUniqueWithoutCustomerInput | archive_installationUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: archive_installationCreateManyCustomerInputEnvelope
-    set?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    disconnect?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    delete?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    connect?: archive_installationWhereUniqueInput | archive_installationWhereUniqueInput[]
-    update?: archive_installationUpdateWithWhereUniqueWithoutCustomerInput | archive_installationUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: archive_installationUpdateManyWithWhereWithoutCustomerInput | archive_installationUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: archive_installationScalarWhereInput | archive_installationScalarWhereInput[]
-  }
-
-  export type customerCreateNestedManyWithoutAreasInput = {
-    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
-    createMany?: customerCreateManyAreasInputEnvelope
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-  }
-
-  export type customerUncheckedCreateNestedManyWithoutAreasInput = {
-    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
-    createMany?: customerCreateManyAreasInputEnvelope
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-  }
-
-  export type customerUpdateManyWithoutAreasNestedInput = {
-    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
-    upsert?: customerUpsertWithWhereUniqueWithoutAreasInput | customerUpsertWithWhereUniqueWithoutAreasInput[]
-    createMany?: customerCreateManyAreasInputEnvelope
-    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    update?: customerUpdateWithWhereUniqueWithoutAreasInput | customerUpdateWithWhereUniqueWithoutAreasInput[]
-    updateMany?: customerUpdateManyWithWhereWithoutAreasInput | customerUpdateManyWithWhereWithoutAreasInput[]
-    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
-  }
-
-  export type customerUncheckedUpdateManyWithoutAreasNestedInput = {
-    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
-    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
-    upsert?: customerUpsertWithWhereUniqueWithoutAreasInput | customerUpsertWithWhereUniqueWithoutAreasInput[]
-    createMany?: customerCreateManyAreasInputEnvelope
-    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
-    update?: customerUpdateWithWhereUniqueWithoutAreasInput | customerUpdateWithWhereUniqueWithoutAreasInput[]
-    updateMany?: customerUpdateManyWithWhereWithoutAreasInput | customerUpdateManyWithWhereWithoutAreasInput[]
-    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
-  }
-
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -19111,50 +18131,8 @@ export namespace Prisma {
     divide?: bigint | number
   }
 
-  export type assetsCreateNestedOneWithoutReport_assetsInput = {
-    create?: XOR<assetsCreateWithoutReport_assetsInput, assetsUncheckedCreateWithoutReport_assetsInput>
-    connectOrCreate?: assetsCreateOrConnectWithoutReport_assetsInput
-    connect?: assetsWhereUniqueInput
-  }
-
-  export type assetsUpdateOneRequiredWithoutReport_assetsNestedInput = {
-    create?: XOR<assetsCreateWithoutReport_assetsInput, assetsUncheckedCreateWithoutReport_assetsInput>
-    connectOrCreate?: assetsCreateOrConnectWithoutReport_assetsInput
-    upsert?: assetsUpsertWithoutReport_assetsInput
-    connect?: assetsWhereUniqueInput
-    update?: XOR<XOR<assetsUpdateToOneWithWhereWithoutReport_assetsInput, assetsUpdateWithoutReport_assetsInput>, assetsUncheckedUpdateWithoutReport_assetsInput>
-  }
-
   export type Enumtransactions_typeFieldUpdateOperationsInput = {
     set?: $Enums.transactions_type
-  }
-
-  export type accountsCreateNestedOneWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    create?: XOR<accountsCreateWithoutTransfers_transfers_from_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_from_account_idToaccountsInput>
-    connectOrCreate?: accountsCreateOrConnectWithoutTransfers_transfers_from_account_idToaccountsInput
-    connect?: accountsWhereUniqueInput
-  }
-
-  export type accountsCreateNestedOneWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    create?: XOR<accountsCreateWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_to_account_idToaccountsInput>
-    connectOrCreate?: accountsCreateOrConnectWithoutTransfers_transfers_to_account_idToaccountsInput
-    connect?: accountsWhereUniqueInput
-  }
-
-  export type accountsUpdateOneRequiredWithoutTransfers_transfers_from_account_idToaccountsNestedInput = {
-    create?: XOR<accountsCreateWithoutTransfers_transfers_from_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_from_account_idToaccountsInput>
-    connectOrCreate?: accountsCreateOrConnectWithoutTransfers_transfers_from_account_idToaccountsInput
-    upsert?: accountsUpsertWithoutTransfers_transfers_from_account_idToaccountsInput
-    connect?: accountsWhereUniqueInput
-    update?: XOR<XOR<accountsUpdateToOneWithWhereWithoutTransfers_transfers_from_account_idToaccountsInput, accountsUpdateWithoutTransfers_transfers_from_account_idToaccountsInput>, accountsUncheckedUpdateWithoutTransfers_transfers_from_account_idToaccountsInput>
-  }
-
-  export type accountsUpdateOneRequiredWithoutTransfers_transfers_to_account_idToaccountsNestedInput = {
-    create?: XOR<accountsCreateWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_to_account_idToaccountsInput>
-    connectOrCreate?: accountsCreateOrConnectWithoutTransfers_transfers_to_account_idToaccountsInput
-    upsert?: accountsUpsertWithoutTransfers_transfers_to_account_idToaccountsInput
-    connect?: accountsWhereUniqueInput
-    update?: XOR<XOR<accountsUpdateToOneWithWhereWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUpdateWithoutTransfers_transfers_to_account_idToaccountsInput>, accountsUncheckedUpdateWithoutTransfers_transfers_to_account_idToaccountsInput>
   }
 
   export type Enumuser_roleFieldUpdateOperationsInput = {
@@ -19405,1015 +18383,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    id: string
-    date: Date | string
-    description: string
-    amount: bigint | number
-    tags: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    accounts_transfers_to_account_idToaccounts: accountsCreateNestedOneWithoutTransfers_transfers_to_account_idToaccountsInput
-  }
-
-  export type transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    id: string
-    to_account_id: string
-    date: Date | string
-    description: string
-    amount: bigint | number
-    tags: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type transfersCreateOrConnectWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    where: transfersWhereUniqueInput
-    create: XOR<transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput>
-  }
-
-  export type transfersCreateManyAccounts_transfers_from_account_idToaccountsInputEnvelope = {
-    data: transfersCreateManyAccounts_transfers_from_account_idToaccountsInput | transfersCreateManyAccounts_transfers_from_account_idToaccountsInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    id: string
-    date: Date | string
-    description: string
-    amount: bigint | number
-    tags: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    accounts_transfers_from_account_idToaccounts: accountsCreateNestedOneWithoutTransfers_transfers_from_account_idToaccountsInput
-  }
-
-  export type transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    id: string
-    from_account_id: string
-    date: Date | string
-    description: string
-    amount: bigint | number
-    tags: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type transfersCreateOrConnectWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    where: transfersWhereUniqueInput
-    create: XOR<transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput>
-  }
-
-  export type transfersCreateManyAccounts_transfers_to_account_idToaccountsInputEnvelope = {
-    data: transfersCreateManyAccounts_transfers_to_account_idToaccountsInput | transfersCreateManyAccounts_transfers_to_account_idToaccountsInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type transfersUpsertWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    where: transfersWhereUniqueInput
-    update: XOR<transfersUpdateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedUpdateWithoutAccounts_transfers_from_account_idToaccountsInput>
-    create: XOR<transfersCreateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_from_account_idToaccountsInput>
-  }
-
-  export type transfersUpdateWithWhereUniqueWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    where: transfersWhereUniqueInput
-    data: XOR<transfersUpdateWithoutAccounts_transfers_from_account_idToaccountsInput, transfersUncheckedUpdateWithoutAccounts_transfers_from_account_idToaccountsInput>
-  }
-
-  export type transfersUpdateManyWithWhereWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    where: transfersScalarWhereInput
-    data: XOR<transfersUpdateManyMutationInput, transfersUncheckedUpdateManyWithoutAccounts_transfers_from_account_idToaccountsInput>
-  }
-
-  export type transfersScalarWhereInput = {
-    AND?: transfersScalarWhereInput | transfersScalarWhereInput[]
-    OR?: transfersScalarWhereInput[]
-    NOT?: transfersScalarWhereInput | transfersScalarWhereInput[]
-    id?: StringFilter<"transfers"> | string
-    from_account_id?: StringFilter<"transfers"> | string
-    to_account_id?: StringFilter<"transfers"> | string
-    date?: DateTimeFilter<"transfers"> | Date | string
-    description?: StringFilter<"transfers"> | string
-    amount?: BigIntFilter<"transfers"> | bigint | number
-    tags?: StringFilter<"transfers"> | string
-    createdAt?: DateTimeFilter<"transfers"> | Date | string
-    updatedAt?: DateTimeFilter<"transfers"> | Date | string
-  }
-
-  export type transfersUpsertWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    where: transfersWhereUniqueInput
-    update: XOR<transfersUpdateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedUpdateWithoutAccounts_transfers_to_account_idToaccountsInput>
-    create: XOR<transfersCreateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedCreateWithoutAccounts_transfers_to_account_idToaccountsInput>
-  }
-
-  export type transfersUpdateWithWhereUniqueWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    where: transfersWhereUniqueInput
-    data: XOR<transfersUpdateWithoutAccounts_transfers_to_account_idToaccountsInput, transfersUncheckedUpdateWithoutAccounts_transfers_to_account_idToaccountsInput>
-  }
-
-  export type transfersUpdateManyWithWhereWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    where: transfersScalarWhereInput
-    data: XOR<transfersUpdateManyMutationInput, transfersUncheckedUpdateManyWithoutAccounts_transfers_to_account_idToaccountsInput>
-  }
-
-  export type customerCreateWithoutArchive_installationInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    country: string
-    fullname: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-    company: companyCreateNestedOneWithoutCustomerInput
-    areas: areasCreateNestedOneWithoutCustomerInput
-  }
-
-  export type customerUncheckedCreateWithoutArchive_installationInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    company_id: string
-    country: string
-    fullname: string
-    area_id: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-  }
-
-  export type customerCreateOrConnectWithoutArchive_installationInput = {
-    where: customerWhereUniqueInput
-    create: XOR<customerCreateWithoutArchive_installationInput, customerUncheckedCreateWithoutArchive_installationInput>
-  }
-
-  export type customerUpsertWithoutArchive_installationInput = {
-    update: XOR<customerUpdateWithoutArchive_installationInput, customerUncheckedUpdateWithoutArchive_installationInput>
-    create: XOR<customerCreateWithoutArchive_installationInput, customerUncheckedCreateWithoutArchive_installationInput>
-    where?: customerWhereInput
-  }
-
-  export type customerUpdateToOneWithWhereWithoutArchive_installationInput = {
-    where?: customerWhereInput
-    data: XOR<customerUpdateWithoutArchive_installationInput, customerUncheckedUpdateWithoutArchive_installationInput>
-  }
-
-  export type customerUpdateWithoutArchive_installationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-    company?: companyUpdateOneRequiredWithoutCustomerNestedInput
-    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
-  }
-
-  export type customerUncheckedUpdateWithoutArchive_installationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    company_id?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    area_id?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type report_assetsCreateWithoutAssetsInput = {
-    description: string
-    quantity: bigint | number
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type report_assetsUncheckedCreateWithoutAssetsInput = {
-    description: string
-    quantity: bigint | number
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type report_assetsCreateOrConnectWithoutAssetsInput = {
-    where: report_assetsWhereUniqueInput
-    create: XOR<report_assetsCreateWithoutAssetsInput, report_assetsUncheckedCreateWithoutAssetsInput>
-  }
-
-  export type report_assetsUpsertWithoutAssetsInput = {
-    update: XOR<report_assetsUpdateWithoutAssetsInput, report_assetsUncheckedUpdateWithoutAssetsInput>
-    create: XOR<report_assetsCreateWithoutAssetsInput, report_assetsUncheckedCreateWithoutAssetsInput>
-    where?: report_assetsWhereInput
-  }
-
-  export type report_assetsUpdateToOneWithWhereWithoutAssetsInput = {
-    where?: report_assetsWhereInput
-    data: XOR<report_assetsUpdateWithoutAssetsInput, report_assetsUncheckedUpdateWithoutAssetsInput>
-  }
-
-  export type report_assetsUpdateWithoutAssetsInput = {
-    description?: StringFieldUpdateOperationsInput | string
-    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type report_assetsUncheckedUpdateWithoutAssetsInput = {
-    description?: StringFieldUpdateOperationsInput | string
-    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type customerCreateWithoutCompanyInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    country: string
-    fullname: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-    archive_installation?: archive_installationCreateNestedManyWithoutCustomerInput
-    areas: areasCreateNestedOneWithoutCustomerInput
-  }
-
-  export type customerUncheckedCreateWithoutCompanyInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    country: string
-    fullname: string
-    area_id: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-    archive_installation?: archive_installationUncheckedCreateNestedManyWithoutCustomerInput
-  }
-
-  export type customerCreateOrConnectWithoutCompanyInput = {
-    where: customerWhereUniqueInput
-    create: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type customerCreateManyCompanyInputEnvelope = {
-    data: customerCreateManyCompanyInput | customerCreateManyCompanyInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type customerUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: customerWhereUniqueInput
-    update: XOR<customerUpdateWithoutCompanyInput, customerUncheckedUpdateWithoutCompanyInput>
-    create: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type customerUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: customerWhereUniqueInput
-    data: XOR<customerUpdateWithoutCompanyInput, customerUncheckedUpdateWithoutCompanyInput>
-  }
-
-  export type customerUpdateManyWithWhereWithoutCompanyInput = {
-    where: customerScalarWhereInput
-    data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutCompanyInput>
-  }
-
-  export type customerScalarWhereInput = {
-    AND?: customerScalarWhereInput | customerScalarWhereInput[]
-    OR?: customerScalarWhereInput[]
-    NOT?: customerScalarWhereInput | customerScalarWhereInput[]
-    id?: StringFilter<"customer"> | string
-    email?: StringFilter<"customer"> | string
-    phone?: StringFilter<"customer"> | string
-    address?: StringFilter<"customer"> | string
-    installation_date?: DateTimeFilter<"customer"> | Date | string
-    createdAt?: DateTimeFilter<"customer"> | Date | string
-    updatedAt?: DateTimeFilter<"customer"> | Date | string
-    city?: StringFilter<"customer"> | string
-    code_postal?: StringFilter<"customer"> | string
-    company_id?: StringFilter<"customer"> | string
-    country?: StringFilter<"customer"> | string
-    fullname?: StringFilter<"customer"> | string
-    area_id?: StringFilter<"customer"> | string
-    location?: StringFilter<"customer"> | string
-    password?: StringFilter<"customer"> | string
-    state_region?: StringFilter<"customer"> | string
-    surname?: StringFilter<"customer"> | string
-    tag?: StringFilter<"customer"> | string
-  }
-
-  export type archive_installationCreateWithoutCustomerInput = {
-    id: string
-    price: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-    names: string
-  }
-
-  export type archive_installationUncheckedCreateWithoutCustomerInput = {
-    id: string
-    price: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-    names: string
-  }
-
-  export type archive_installationCreateOrConnectWithoutCustomerInput = {
-    where: archive_installationWhereUniqueInput
-    create: XOR<archive_installationCreateWithoutCustomerInput, archive_installationUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type archive_installationCreateManyCustomerInputEnvelope = {
-    data: archive_installationCreateManyCustomerInput | archive_installationCreateManyCustomerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type companyCreateWithoutCustomerInput = {
-    id: string
-    name: string
-    url: string
-    email: string
-    phone: string
-    logo_url?: string | null
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type companyUncheckedCreateWithoutCustomerInput = {
-    id: string
-    name: string
-    url: string
-    email: string
-    phone: string
-    logo_url?: string | null
-    description?: string | null
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type companyCreateOrConnectWithoutCustomerInput = {
-    where: companyWhereUniqueInput
-    create: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type areasCreateWithoutCustomerInput = {
-    id: string
-    name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type areasUncheckedCreateWithoutCustomerInput = {
-    id: string
-    name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type areasCreateOrConnectWithoutCustomerInput = {
-    where: areasWhereUniqueInput
-    create: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type archive_installationUpsertWithWhereUniqueWithoutCustomerInput = {
-    where: archive_installationWhereUniqueInput
-    update: XOR<archive_installationUpdateWithoutCustomerInput, archive_installationUncheckedUpdateWithoutCustomerInput>
-    create: XOR<archive_installationCreateWithoutCustomerInput, archive_installationUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type archive_installationUpdateWithWhereUniqueWithoutCustomerInput = {
-    where: archive_installationWhereUniqueInput
-    data: XOR<archive_installationUpdateWithoutCustomerInput, archive_installationUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type archive_installationUpdateManyWithWhereWithoutCustomerInput = {
-    where: archive_installationScalarWhereInput
-    data: XOR<archive_installationUpdateManyMutationInput, archive_installationUncheckedUpdateManyWithoutCustomerInput>
-  }
-
-  export type archive_installationScalarWhereInput = {
-    AND?: archive_installationScalarWhereInput | archive_installationScalarWhereInput[]
-    OR?: archive_installationScalarWhereInput[]
-    NOT?: archive_installationScalarWhereInput | archive_installationScalarWhereInput[]
-    id?: StringFilter<"archive_installation"> | string
-    price?: FloatFilter<"archive_installation"> | number
-    createdAt?: DateTimeFilter<"archive_installation"> | Date | string
-    updatedAt?: DateTimeFilter<"archive_installation"> | Date | string
-    customer_id?: StringNullableFilter<"archive_installation"> | string | null
-    names?: StringFilter<"archive_installation"> | string
-  }
-
-  export type companyUpsertWithoutCustomerInput = {
-    update: XOR<companyUpdateWithoutCustomerInput, companyUncheckedUpdateWithoutCustomerInput>
-    create: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
-    where?: companyWhereInput
-  }
-
-  export type companyUpdateToOneWithWhereWithoutCustomerInput = {
-    where?: companyWhereInput
-    data: XOR<companyUpdateWithoutCustomerInput, companyUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type companyUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type companyUncheckedUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    url?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type areasUpsertWithoutCustomerInput = {
-    update: XOR<areasUpdateWithoutCustomerInput, areasUncheckedUpdateWithoutCustomerInput>
-    create: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
-    where?: areasWhereInput
-  }
-
-  export type areasUpdateToOneWithWhereWithoutCustomerInput = {
-    where?: areasWhereInput
-    data: XOR<areasUpdateWithoutCustomerInput, areasUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type areasUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type areasUncheckedUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type customerCreateWithoutAreasInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    country: string
-    fullname: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-    archive_installation?: archive_installationCreateNestedManyWithoutCustomerInput
-    company: companyCreateNestedOneWithoutCustomerInput
-  }
-
-  export type customerUncheckedCreateWithoutAreasInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    company_id: string
-    country: string
-    fullname: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-    archive_installation?: archive_installationUncheckedCreateNestedManyWithoutCustomerInput
-  }
-
-  export type customerCreateOrConnectWithoutAreasInput = {
-    where: customerWhereUniqueInput
-    create: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput>
-  }
-
-  export type customerCreateManyAreasInputEnvelope = {
-    data: customerCreateManyAreasInput | customerCreateManyAreasInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type customerUpsertWithWhereUniqueWithoutAreasInput = {
-    where: customerWhereUniqueInput
-    update: XOR<customerUpdateWithoutAreasInput, customerUncheckedUpdateWithoutAreasInput>
-    create: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput>
-  }
-
-  export type customerUpdateWithWhereUniqueWithoutAreasInput = {
-    where: customerWhereUniqueInput
-    data: XOR<customerUpdateWithoutAreasInput, customerUncheckedUpdateWithoutAreasInput>
-  }
-
-  export type customerUpdateManyWithWhereWithoutAreasInput = {
-    where: customerScalarWhereInput
-    data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutAreasInput>
-  }
-
-  export type assetsCreateWithoutReport_assetsInput = {
-    id: string
-    name: string
-    quantity: number
-    price: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type assetsUncheckedCreateWithoutReport_assetsInput = {
-    id: string
-    name: string
-    quantity: number
-    price: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type assetsCreateOrConnectWithoutReport_assetsInput = {
-    where: assetsWhereUniqueInput
-    create: XOR<assetsCreateWithoutReport_assetsInput, assetsUncheckedCreateWithoutReport_assetsInput>
-  }
-
-  export type assetsUpsertWithoutReport_assetsInput = {
-    update: XOR<assetsUpdateWithoutReport_assetsInput, assetsUncheckedUpdateWithoutReport_assetsInput>
-    create: XOR<assetsCreateWithoutReport_assetsInput, assetsUncheckedCreateWithoutReport_assetsInput>
-    where?: assetsWhereInput
-  }
-
-  export type assetsUpdateToOneWithWhereWithoutReport_assetsInput = {
-    where?: assetsWhereInput
-    data: XOR<assetsUpdateWithoutReport_assetsInput, assetsUncheckedUpdateWithoutReport_assetsInput>
-  }
-
-  export type assetsUpdateWithoutReport_assetsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type assetsUncheckedUpdateWithoutReport_assetsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type accountsCreateWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    id: string
-    name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    transfers_transfers_to_account_idToaccounts?: transfersCreateNestedManyWithoutAccounts_transfers_to_account_idToaccountsInput
-  }
-
-  export type accountsUncheckedCreateWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    id: string
-    name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    transfers_transfers_to_account_idToaccounts?: transfersUncheckedCreateNestedManyWithoutAccounts_transfers_to_account_idToaccountsInput
-  }
-
-  export type accountsCreateOrConnectWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    where: accountsWhereUniqueInput
-    create: XOR<accountsCreateWithoutTransfers_transfers_from_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_from_account_idToaccountsInput>
-  }
-
-  export type accountsCreateWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    id: string
-    name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersCreateNestedManyWithoutAccounts_transfers_from_account_idToaccountsInput
-  }
-
-  export type accountsUncheckedCreateWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    id: string
-    name: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersUncheckedCreateNestedManyWithoutAccounts_transfers_from_account_idToaccountsInput
-  }
-
-  export type accountsCreateOrConnectWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    where: accountsWhereUniqueInput
-    create: XOR<accountsCreateWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_to_account_idToaccountsInput>
-  }
-
-  export type accountsUpsertWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    update: XOR<accountsUpdateWithoutTransfers_transfers_from_account_idToaccountsInput, accountsUncheckedUpdateWithoutTransfers_transfers_from_account_idToaccountsInput>
-    create: XOR<accountsCreateWithoutTransfers_transfers_from_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_from_account_idToaccountsInput>
-    where?: accountsWhereInput
-  }
-
-  export type accountsUpdateToOneWithWhereWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    where?: accountsWhereInput
-    data: XOR<accountsUpdateWithoutTransfers_transfers_from_account_idToaccountsInput, accountsUncheckedUpdateWithoutTransfers_transfers_from_account_idToaccountsInput>
-  }
-
-  export type accountsUpdateWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transfers_transfers_to_account_idToaccounts?: transfersUpdateManyWithoutAccounts_transfers_to_account_idToaccountsNestedInput
-  }
-
-  export type accountsUncheckedUpdateWithoutTransfers_transfers_from_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transfers_transfers_to_account_idToaccounts?: transfersUncheckedUpdateManyWithoutAccounts_transfers_to_account_idToaccountsNestedInput
-  }
-
-  export type accountsUpsertWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    update: XOR<accountsUpdateWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUncheckedUpdateWithoutTransfers_transfers_to_account_idToaccountsInput>
-    create: XOR<accountsCreateWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUncheckedCreateWithoutTransfers_transfers_to_account_idToaccountsInput>
-    where?: accountsWhereInput
-  }
-
-  export type accountsUpdateToOneWithWhereWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    where?: accountsWhereInput
-    data: XOR<accountsUpdateWithoutTransfers_transfers_to_account_idToaccountsInput, accountsUncheckedUpdateWithoutTransfers_transfers_to_account_idToaccountsInput>
-  }
-
-  export type accountsUpdateWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersUpdateManyWithoutAccounts_transfers_from_account_idToaccountsNestedInput
-  }
-
-  export type accountsUncheckedUpdateWithoutTransfers_transfers_to_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transfers_transfers_from_account_idToaccounts?: transfersUncheckedUpdateManyWithoutAccounts_transfers_from_account_idToaccountsNestedInput
-  }
-
-  export type transfersCreateManyAccounts_transfers_from_account_idToaccountsInput = {
-    id: string
-    to_account_id: string
-    date: Date | string
-    description: string
-    amount: bigint | number
-    tags: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type transfersCreateManyAccounts_transfers_to_account_idToaccountsInput = {
-    id: string
-    from_account_id: string
-    date: Date | string
-    description: string
-    amount: bigint | number
-    tags: string
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type transfersUpdateWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    description?: StringFieldUpdateOperationsInput | string
-    amount?: BigIntFieldUpdateOperationsInput | bigint | number
-    tags?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts_transfers_to_account_idToaccounts?: accountsUpdateOneRequiredWithoutTransfers_transfers_to_account_idToaccountsNestedInput
-  }
-
-  export type transfersUncheckedUpdateWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    to_account_id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    description?: StringFieldUpdateOperationsInput | string
-    amount?: BigIntFieldUpdateOperationsInput | bigint | number
-    tags?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type transfersUncheckedUpdateManyWithoutAccounts_transfers_from_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    to_account_id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    description?: StringFieldUpdateOperationsInput | string
-    amount?: BigIntFieldUpdateOperationsInput | bigint | number
-    tags?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type transfersUpdateWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    description?: StringFieldUpdateOperationsInput | string
-    amount?: BigIntFieldUpdateOperationsInput | bigint | number
-    tags?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts_transfers_from_account_idToaccounts?: accountsUpdateOneRequiredWithoutTransfers_transfers_from_account_idToaccountsNestedInput
-  }
-
-  export type transfersUncheckedUpdateWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    from_account_id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    description?: StringFieldUpdateOperationsInput | string
-    amount?: BigIntFieldUpdateOperationsInput | bigint | number
-    tags?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type transfersUncheckedUpdateManyWithoutAccounts_transfers_to_account_idToaccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    from_account_id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    description?: StringFieldUpdateOperationsInput | string
-    amount?: BigIntFieldUpdateOperationsInput | bigint | number
-    tags?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type customerCreateManyCompanyInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    country: string
-    fullname: string
-    area_id: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-  }
-
-  export type customerUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-    archive_installation?: archive_installationUpdateManyWithoutCustomerNestedInput
-    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
-  }
-
-  export type customerUncheckedUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    area_id?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-    archive_installation?: archive_installationUncheckedUpdateManyWithoutCustomerNestedInput
-  }
-
-  export type customerUncheckedUpdateManyWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    area_id?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type archive_installationCreateManyCustomerInput = {
-    id: string
-    price: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-    names: string
-  }
-
-  export type archive_installationUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    names?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type archive_installationUncheckedUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    names?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type archive_installationUncheckedUpdateManyWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    names?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type customerCreateManyAreasInput = {
-    id: string
-    email: string
-    phone: string
-    address: string
-    installation_date: Date | string
-    createdAt?: Date | string
-    updatedAt: Date | string
-    city: string
-    code_postal: string
-    company_id: string
-    country: string
-    fullname: string
-    location: string
-    password: string
-    state_region: string
-    surname: string
-    tag: string
-  }
-
-  export type customerUpdateWithoutAreasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-    archive_installation?: archive_installationUpdateManyWithoutCustomerNestedInput
-    company?: companyUpdateOneRequiredWithoutCustomerNestedInput
-  }
-
-  export type customerUncheckedUpdateWithoutAreasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    company_id?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
-    archive_installation?: archive_installationUncheckedUpdateManyWithoutCustomerNestedInput
-  }
-
-  export type customerUncheckedUpdateManyWithoutAreasInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    city?: StringFieldUpdateOperationsInput | string
-    code_postal?: StringFieldUpdateOperationsInput | string
-    company_id?: StringFieldUpdateOperationsInput | string
-    country?: StringFieldUpdateOperationsInput | string
-    fullname?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    state_region?: StringFieldUpdateOperationsInput | string
-    surname?: StringFieldUpdateOperationsInput | string
-    tag?: StringFieldUpdateOperationsInput | string
   }
 
 

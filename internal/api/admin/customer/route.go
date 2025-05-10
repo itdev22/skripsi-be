@@ -13,5 +13,9 @@ func AdminCustomerRoute(app fiber.Router) {
 	handler := NewAdminCustomerHandler(service)
 
 	app.Get("", handler.GetAllAdminCustomerHandler)
+	app.Get("/:id", handler.GetByIdAdminCustomerHandler)
+	app.Post("", handler.CreateAdminCustomerHandler)
+	app.Put("/:id", handler.UpdateAdminCustomerHandler)
+	app.Delete("/:id", handler.DeleteAdminCustomerHandler)
 
 }
