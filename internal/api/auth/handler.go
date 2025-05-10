@@ -3,6 +3,7 @@ package authapi
 import (
 	"skripsi-be/internal/api/common/validation"
 	"skripsi-be/internal/helpers"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -19,30 +20,22 @@ func (s AuthHandlerStruct) LoginAuthHandler(c *fiber.Ctx) error {
 	// Handler logic here
 	request := new(LoginRequest)
 	if err := c.BodyParser(request); err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "Invalid request",
-		})
+		return helpers.ResponseUtils(c, fiber.StatusUnauthorized, false, err.Error(), "")
+
 	}
 	// Validate the request
 	errorMessages := validation.ValidationRequest(request)
 	if errorMessages != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error":   "Validation error",
-			"message": errorMessages,
-		})
+		return helpers.ResponseUtils(c, fiber.StatusUnauthorized, false, strings.Join(errorMessages, ", "), "")
 	}
 
 	// Call the service
 	user, err := s.service.LoginAuthService(*request)
 	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": err.Error(),
-		})
+		return helpers.ResponseUtils(c, fiber.StatusUnauthorized, false, err.Error(), "")
 	}
 	if user == nil {
-		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
-			"error": "Invalid credentials",
-		})
+		return helpers.ResponseUtils(c, fiber.StatusUnauthorized, false, "User Not Found", "")
 	}
 	// Return the user data
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Login successful", user)

@@ -1,13 +1,15 @@
 package usermanagement
 
 import (
+	"skripsi-be/internal/api/common/validation"
 	"skripsi-be/internal/helpers"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 type AdminUserManagementHandlerStruct struct {
-	service *AdminUserManagementServiceStruct
+	service AdminUserManagementServiceInterface
 }
 
 func NewAdminUserManagementHandler(service *AdminUserManagementServiceStruct) *AdminUserManagementHandlerStruct {
@@ -29,7 +31,73 @@ func (h *AdminUserManagementHandlerStruct) GetByIDAdminUserManagementHandler(c *
 	request := IdAdminUserManagementRequest{}
 	request.Id = id
 
-	h.service.GetByIdAdminUserManagementService(request)
+	user, err := h.service.GetByIdAdminUserManagementService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "User Not Found", nil)
+	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", nil)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get User", user)
+}
+
+func (h *AdminUserManagementHandlerStruct) CreateAdminUserManagementHandler(c *fiber.Ctx) error {
+	request := CreateAdminUserManagementRequest{}
+
+	err := c.BodyParser(&request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	errValidation := validation.ValidationRequest(&request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), nil)
+
+	}
+
+	user, err := h.service.CreateAdminUserManagementService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get User", user)
+}
+
+func (h *AdminUserManagementHandlerStruct) UpdateAdminUserManagementHandler(c *fiber.Ctx) error {
+	request := UpdateAdminUserManagementRequest{}
+
+	err := c.BodyParser(&request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	errValidation := validation.ValidationRequest(&request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), nil)
+
+	}
+
+	user, err := h.service.CreateAdminUserManagementService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get User", user)
+}
+
+func (h *AdminUserManagementHandlerStruct) DeleteAdminUserManagementHandler(c *fiber.Ctx) error {
+	request := IdAdminUserManagementRequest{}
+
+	request.Id = c.Params("id")
+
+	errValidation := validation.ValidationRequest(&request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), nil)
+
+	}
+
+	user, err := h.service.DeleteAdminUserManagementService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get User", user)
 }

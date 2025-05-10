@@ -138,9 +138,18 @@ exports.Prisma.Archive_installationScalarFieldEnum = {
 
 exports.Prisma.AssetsScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  type: 'type',
+  brand: 'brand',
+  model: 'model',
+  serial_number: 'serial_number',
+  mac_address: 'mac_address',
+  date: 'date',
+  site: 'site',
   quantity: 'quantity',
+  status: 'status',
   price: 'price',
+  description: 'description',
+  status_in_out: 'status_in_out',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -159,25 +168,27 @@ exports.Prisma.CompanyScalarFieldEnum = {
 
 exports.Prisma.CustomerScalarFieldEnum = {
   id: 'id',
-  type_of_service: 'type_of_service',
-  email: 'email',
-  name: 'name',
-  company_id: 'company_id',
-  gender: 'gender',
-  card_identition: 'card_identition',
-  no_identition: 'no_identition',
-  area_id: 'area_id',
-  phone: 'phone',
   address: 'address',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  password: 'password',
+  area_id: 'area_id',
+  card_identition: 'card_identition',
+  company_id: 'company_id',
+  email: 'email',
+  gender: 'gender',
   internet_package: 'internet_package',
   ip_static: 'ip_static',
-  mac_address: 'mac_address',
   job: 'job',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  mac_address: 'mac_address',
+  name: 'name',
+  no_identition: 'no_identition',
+  password: 'password',
+  phone: 'phone',
+  type_of_service: 'type_of_service',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  installation_date: 'installation_date',
+  next_payment_date: 'next_payment_date'
 };
 
 exports.Prisma.DeviceScalarFieldEnum = {
@@ -253,14 +264,22 @@ exports.Prisma.TransfersScalarFieldEnum = {
 
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
-  email: 'email',
   name: 'name',
+  email: 'email',
+  phone: 'phone',
+  logo_url: 'logo_url',
   password: 'password',
-  role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   token: 'token',
-  phone: 'phone'
+  role_id: 'role_id'
+};
+
+exports.Prisma.RolesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -286,7 +305,16 @@ exports.Prisma.archive_installationOrderByRelevanceFieldEnum = {
 
 exports.Prisma.assetsOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name'
+  type: 'type',
+  brand: 'brand',
+  model: 'model',
+  serial_number: 'serial_number',
+  mac_address: 'mac_address',
+  date: 'date',
+  site: 'site',
+  status: 'status',
+  description: 'description',
+  status_in_out: 'status_in_out'
 };
 
 exports.Prisma.companyOrderByRelevanceFieldEnum = {
@@ -301,20 +329,20 @@ exports.Prisma.companyOrderByRelevanceFieldEnum = {
 
 exports.Prisma.customerOrderByRelevanceFieldEnum = {
   id: 'id',
-  type_of_service: 'type_of_service',
-  email: 'email',
-  name: 'name',
-  company_id: 'company_id',
-  gender: 'gender',
-  card_identition: 'card_identition',
-  area_id: 'area_id',
-  phone: 'phone',
   address: 'address',
-  password: 'password',
+  area_id: 'area_id',
+  card_identition: 'card_identition',
+  company_id: 'company_id',
+  email: 'email',
+  gender: 'gender',
   internet_package: 'internet_package',
   ip_static: 'ip_static',
+  job: 'job',
   mac_address: 'mac_address',
-  job: 'job'
+  name: 'name',
+  password: 'password',
+  phone: 'phone',
+  type_of_service: 'type_of_service'
 };
 
 exports.Prisma.deviceOrderByRelevanceFieldEnum = {
@@ -365,21 +393,22 @@ exports.Prisma.transfersOrderByRelevanceFieldEnum = {
 
 exports.Prisma.usersOrderByRelevanceFieldEnum = {
   id: 'id',
-  email: 'email',
   name: 'name',
+  email: 'email',
+  phone: 'phone',
+  logo_url: 'logo_url',
   password: 'password',
   token: 'token',
-  phone: 'phone'
+  role_id: 'role_id'
+};
+
+exports.Prisma.rolesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 exports.transactions_type = exports.$Enums.transactions_type = {
   DEBIT: 'DEBIT',
   CREDIT: 'CREDIT'
-};
-
-exports.user_role = exports.$Enums.user_role = {
-  ADMIN: 'ADMIN',
-  TECHNICIAN: 'TECHNICIAN',
-  FINANCE: 'FINANCE'
 };
 
 exports.Prisma.ModelName = {
@@ -396,7 +425,8 @@ exports.Prisma.ModelName = {
   report_cash: 'report_cash',
   transactions: 'transactions',
   transfers: 'transfers',
-  users: 'users'
+  users: 'users',
+  roles: 'roles'
 };
 
 /**

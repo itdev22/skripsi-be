@@ -42,7 +42,7 @@ func (r *AuthServiceStruct) LoginAuthService(LoginRequest LoginRequest) (*dto.Lo
 	userDTO := dto.ModelToUser(*user)
 	// Return the user data
 
-	token, err := helpers.CreateToken(userDTO.ID, userDTO.Role)
+	token, err := helpers.CreateToken(userDTO.ID, userDTO.Role.Name)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +74,7 @@ func (r *AuthServiceStruct) VerifyAuthService(LoginRequest LoginRequest) (*dto.L
 	userDTO := dto.ModelToUser(*user)
 	// Return the user data
 
-	token, err := helpers.CreateToken(userDTO.ID, userDTO.Role)
+	token, err := helpers.CreateToken(userDTO.ID, userDTO.Role.Name)
 	if err != nil {
 		return nil, err
 	}

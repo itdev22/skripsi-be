@@ -44,14 +44,34 @@ type ArchiveInstallation struct {
 }
 
 // Assets model
-type Assets struct {
+type Asset struct {
 	ID           string        `json:"id" gorm:"primaryKey"`
-	Name         string        `json:"name"`
-	Quantity     int           `json:"quantity"`
-	Price        float64       `json:"price"`
-	CreatedAt    time.Time     `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt    time.Time     `json:"updatedAt"`
+	Type         string        `json:"type" validate:"required"`
+	Brand        string        `json:"brand" validate:"required"`
+	Model        string        `json:"model" validate:"required"`
+	SerialNumber string        `json:"serial_number" validate:"required"`
+	MacAddress   string        `json:"mac_address" validate:"required"`
+	Date         string        `json:"date" validate:"required"`
+	Site         string        `json:"site"`
+	Quantity     int64         `json:"quantity" validate:"required"`
+	Status       string        `json:"status" `
+	Price        int64         `json:"price" validate:"required"`
+	Description  string        `json:"description"`
+	StatusInOut  string        `json:"status_in_out validate:"required"`
+	CreatedAt    time.Time     `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
+	UpdatedAt    time.Time     `json:"updatedAt" gorm:"column:updatedAt;"`
 	ReportAssets *ReportAssets `json:"report_assets" gorm:"foreignKey:ID"`
+}
+
+func (c *Asset) TableName() string {
+	return "assets"
+}
+
+func (u *Asset) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
 }
 
 // Company model
@@ -102,7 +122,7 @@ type Customer struct {
 	CreatedAt        time.Time `gorm:"column:createdAt;autoCreateTime" json:"created_at"`
 	UpdatedAt        time.Time `gorm:"column:updatedAt;autoUpdateTime" json:"updated_at"`
 	InstallationDate time.Time `gorm:"column:installation_date;type:date" json:"installation_date"`
-	NextPaymentDate  time.Time `gorm:"column:installation_date;type:date" json:"installation_date"`
+	NextPaymentDate  time.Time `gorm:"column:next_payment_date;type:date" json:"next_payment_date"`
 }
 
 func (u *Customer) TableName() string {
@@ -181,7 +201,7 @@ type ReportAssets struct {
 	Quantity    int64     `json:"quantity"` // BigInt mapped to int64
 	CreatedAt   time.Time `json:"createdAt" gorm:"default:current_timestamp"`
 	UpdatedAt   time.Time `json:"updatedAt"`
-	Assets      Assets    `json:"assets" gorm:"foreignKey:ID;constraint:OnUpdate:RESTRICT"`
+	Assets      []Asset   `json:"assets" gorm:"foreignKey:ID;constraint:OnUpdate:RESTRICT"`
 }
 
 // ReportCash model
@@ -227,7 +247,8 @@ type User struct {
 	Email     string    `json:"email" gorm:"unique"`
 	Name      string    `json:"name" gorm:"default:null"`
 	Password  string    `json:"password"`
-	Role      UserRole  `json:"role"`
+	RoleId    string    `gorm:"column:role_id"`
+	Role      Role      `gorm:"foreignKey:RoleId"`
 	Token     string    `json:"token" gorm:"default:null"`
 	Phone     string    `json:"phone"`
 	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp; column:createdAt"`
@@ -239,6 +260,23 @@ func (u *User) TableName() string {
 	return "users"
 }
 func (u *User) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
+}
+
+type Role struct {
+	ID        string    `json:"id" gorm:"primaryKey"`
+	Name      string    `json:"name" gorm:"default:null"`
+	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp; column:createdAt"`
+	UpdatedAt time.Time `json:"updatedAt" gorm:"column:updatedAt" omitempty"`
+}
+
+func (u *Role) TableName() string {
+	return "roles"
+}
+func (u *Role) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == "" {
 		u.ID = uuid.New().String()
 	}

@@ -17,5 +17,7 @@ func AdminUserManagementRoute(app fiber.Router) {
 	app.Use(helpers.VerifyToken)
 	app.Get("/", handler.GetAllAdminUserManagementHandler)
 	app.Get("/:id", handler.GetByIDAdminUserManagementHandler)
-	// app.Post("/", handler.GetUserManagement)
+	app.Post("/", handler.CreateAdminUserManagementHandler)
+	app.Put("/:id", handler.UpdateAdminUserManagementHandler)
+	app.Delete("/", handler.DeleteAdminUserManagementHandler)
 }

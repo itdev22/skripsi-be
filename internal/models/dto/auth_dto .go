@@ -14,7 +14,7 @@ func ModelToLoginAuth(token string, user entities.User) *LoginAuthDTO {
 			ID:    user.ID,
 			Name:  user.Name,
 			Email: user.Email,
-			Role:  string(user.Role),
+			Role:  user.Role,
 		},
 	}
 }

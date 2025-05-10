@@ -27,12 +27,21 @@ model archive_installation {
 }
 
 model assets {
-  id        String   @id
-  name      String
-  quantity  Int
-  price     Float
-  createdAt DateTime @default(now())
-  updatedAt DateTime
+  id            String   @id
+  type          String
+  brand         String
+  model         String
+  serial_number String
+  mac_address   String
+  date          String
+  site          String
+  quantity      Float
+  status        String
+  price         Float
+  description   String
+  status_in_out String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime
 }
 
 model company {
@@ -48,26 +57,28 @@ model company {
 }
 
 model customer {
-  id               String   @id
-  type_of_service  String
-  email            String   @unique
-  name             String
-  company_id       String
-  gender           String
-  card_identition  String
-  no_identition    Int
-  area_id          String
-  phone            String
-  address          String
-  latitude         Float
-  longitude        Float
-  password         String
-  internet_package String
-  ip_static        String
-  mac_address      String
-  job              String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime
+  id                String    @id
+  address           String
+  area_id           String
+  card_identition   String
+  company_id        String
+  email             String    @unique
+  gender            String
+  internet_package  String
+  ip_static         String
+  job               String
+  latitude          Float
+  longitude         Float
+  mac_address       String
+  name              String
+  no_identition     Int
+  password          String
+  phone             String
+  type_of_service   String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime
+  installation_date DateTime  @db.Date
+  next_payment_date DateTime? @db.Date
 }
 
 model device {
@@ -152,20 +163,26 @@ model transfers {
 
 model users {
   id        String    @id
+  name      String
   email     String    @unique
-  name      String?
+  phone     String?
+  logo_url  String?
   password  String
-  role      user_role
   createdAt DateTime  @default(now())
   updatedAt DateTime?
   token     String?   @db.Text
-  phone     String?
+  role_id   String?
+  role      roles?    @relation(fields: [role_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "users_ibfk_1")
+
+  @@index([role_id], map: "role_id")
 }
 
-enum user_role {
-  ADMIN
-  TECHNICIAN
-  FINANCE
+model roles {
+  id        String    @id
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+  users     users[]
 }
 
 enum transactions_type {
