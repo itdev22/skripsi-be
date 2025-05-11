@@ -65,6 +65,7 @@ func (h *AdminUserManagementHandlerStruct) UpdateAdminUserManagementHandler(c *f
 	request := UpdateAdminUserManagementRequest{}
 
 	err := c.BodyParser(&request)
+	request.Id = c.Params("id")
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}

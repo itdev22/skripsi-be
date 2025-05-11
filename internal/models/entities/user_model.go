@@ -104,11 +104,14 @@ type Customer struct {
 	ID               string    `json:"id" gorm:"primaryKey"`
 	Address          string    `gorm:"column:address" json:"address"`
 	AreaID           string    `gorm:"column:area_id" json:"area_id"`
+	Area             Areas     `gorm:"foreignKey:AreaID" json:"area"`
 	CardIdentition   string    `gorm:"column:card_identition" json:"card_identition"`
 	CompanyID        string    `gorm:"column:company_id" json:"company_id"`
+	Company          Company   `gorm:"foreignKey:CompanyID" json:"company"`
 	Email            string    `gorm:"column:email;unique" json:"email"`
 	Gender           string    `gorm:"column:gender" json:"gender"`
-	InternetPackage  string    `gorm:"column:internet_package" json:"internet_package"`
+	ProductID        string    `gorm:"column:product_id" json:"product_id"`
+	Product          Products  `gorm:"foreignKey:ProductID" json:"product"`
 	IPStatic         string    `gorm:"column:ip_static" json:"ip_static"`
 	Job              string    `gorm:"column:job" json:"job"`
 	Latitude         float64   `gorm:"column:latitude" json:"latitude"`
