@@ -57,7 +57,7 @@ type Asset struct {
 	Status       string        `json:"status" `
 	Price        int64         `json:"price" validate:"required"`
 	Description  string        `json:"description"`
-	StatusInOut  string        `json:"status_in_out validate:"required"`
+	StatusInOut  string        `json:"status_in_out" validate:"required"`
 	CreatedAt    time.Time     `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
 	UpdatedAt    time.Time     `json:"updatedAt" gorm:"column:updatedAt;"`
 	ReportAssets *ReportAssets `json:"report_assets" gorm:"foreignKey:ID"`
@@ -150,11 +150,13 @@ type Device struct {
 
 // Groups model
 type Areas struct {
-	ID        string     `json:"id" gorm:"primaryKey"`
-	Name      string     `json:"name"`
-	CreatedAt time.Time  `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
-	UpdatedAt time.Time  `json:"updatedAt" gorm:"column:updatedAt;"`
-	Customers []Customer `json:"customer" gorm:"foreignKey:area_id"`
+	ID              string     `json:"id" gorm:"primaryKey"`
+	NameCity        string     `json:"name_city"`
+	NameSubdistrict string     `json:"name_subdistrict"`
+	NameVillage     string     `json:"name_village"`
+	CreatedAt       time.Time  `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
+	UpdatedAt       time.Time  `json:"updatedAt" gorm:"column:updatedAt;"`
+	Customers       []Customer `json:"customer" gorm:"foreignKey:area_id"`
 }
 
 func (u *Areas) TableName() string {

@@ -3,12 +3,13 @@ package area
 import (
 	"skripsi-be/internal/models/entities"
 
+	"github.com/jinzhu/copier"
 	"gorm.io/gorm"
 )
 
 type AdminAreaRepositoryInterface interface {
 	FindAdminAreaRepository() ([]entities.Areas, error)
-	CreateAdminAreaRepository(request entities.Areas) (entities.Areas, error)
+	CreateAdminAreaRepository(request CreateAdminAreaRequest) (entities.Areas, error)
 	FindByIdAdminAreaRepository(request IdAdminAreaRequest) (entities.Areas, error)
 	UpdateAdminAreaRepository(request UpdateAdminAreaRequest) (entities.Areas, error)
 	DeleteAdminAreaRepository(request IdAdminAreaRequest) (entities.Areas, error)
@@ -44,24 +45,26 @@ func (r AdminAreaRepositoryStruct) FindByIdAdminAreaRepository(request IdAdminAr
 	return area, nil
 }
 
-func (r AdminAreaRepositoryStruct) CreateAdminAreaRepository(request entities.Areas) (entities.Areas, error) {
-	tx := r.db.Create(&request)
+func (r AdminAreaRepositoryStruct) CreateAdminAreaRepository(request CreateAdminAreaRequest) (entities.Areas, error) {
+	area := entities.Areas{}
+	copier.Copy(&area, &request)
+	tx := r.db.Create(&area)
 	if tx.Error != nil {
 		return entities.Areas{}, tx.Error
 	}
 
-	return entities.Areas{}, nil
+	return area, nil
 }
 
 func (r AdminAreaRepositoryStruct) UpdateAdminAreaRepository(request UpdateAdminAreaRequest) (entities.Areas, error) {
 	area := entities.Areas{}
-
 	tx := r.db.First(&area, "id = ?", request.Id)
 
 	if tx.Error != nil {
 		return area, tx.Error
 	}
-	area.Name = request.Name
+	copier.Copy(&area, &request)
+
 	r.db.Save(&area)
 	return area, nil
 }
@@ -71,7 +74,6 @@ func (r AdminAreaRepositoryStruct) DeleteAdminAreaRepository(request IdAdminArea
 	area := entities.Areas{}
 
 	tx := r.db.First(&area, "id = ?", request.Id)
-
 	if tx.Error != nil {
 		return area, tx.Error
 	}

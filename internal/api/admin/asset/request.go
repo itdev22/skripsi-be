@@ -12,7 +12,7 @@ type CreateAdminAssetRequest struct {
 	Status       string `json:"status" `
 	Price        int64  `json:"price" validate:"required"`
 	Description  string `json:"description"`
-	StatusInOut  string `json:"status_in_out validate:"required"`
+	StatusInOut  string `json:"status_in_out" validate:"required"`
 }
 
 type IdAdminAssetRequest struct {

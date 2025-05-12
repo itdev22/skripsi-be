@@ -2036,6 +2036,99 @@ export namespace Prisma {
 
 
   /**
+   * Count Type CompanyCountOutputType
+   */
+
+  export type CompanyCountOutputType = {
+    customer: number
+  }
+
+  export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | CompanyCountOutputTypeCountCustomerArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CompanyCountOutputType
+     */
+    select?: CompanyCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountCustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: customerWhereInput
+  }
+
+
+  /**
+   * Count Type AreasCountOutputType
+   */
+
+  export type AreasCountOutputType = {
+    customer: number
+  }
+
+  export type AreasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | AreasCountOutputTypeCountCustomerArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AreasCountOutputType without action
+   */
+  export type AreasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AreasCountOutputType
+     */
+    select?: AreasCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AreasCountOutputType without action
+   */
+  export type AreasCountOutputTypeCountCustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: customerWhereInput
+  }
+
+
+  /**
+   * Count Type ProductsCountOutputType
+   */
+
+  export type ProductsCountOutputType = {
+    customer: number
+  }
+
+  export type ProductsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | ProductsCountOutputTypeCountCustomerArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProductsCountOutputType without action
+   */
+  export type ProductsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductsCountOutputType
+     */
+    select?: ProductsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProductsCountOutputType without action
+   */
+  export type ProductsCountOutputTypeCountCustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: customerWhereInput
+  }
+
+
+  /**
    * Count Type RolesCountOutputType
    */
 
@@ -3881,133 +3974,133 @@ export namespace Prisma {
   }
 
   export type AssetsAvgAggregateOutputType = {
-    quantity: number | null
     price: number | null
+    quantity: number | null
   }
 
   export type AssetsSumAggregateOutputType = {
-    quantity: number | null
     price: number | null
+    quantity: number | null
   }
 
   export type AssetsMinAggregateOutputType = {
     id: string | null
-    type: string | null
-    brand: string | null
-    model: string | null
-    serial_number: string | null
-    mac_address: string | null
-    date: string | null
-    site: string | null
-    quantity: number | null
-    status: string | null
-    price: number | null
-    description: string | null
-    status_in_out: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    brand: string | null
+    date: string | null
+    description: string | null
+    mac_address: string | null
+    model: string | null
+    price: number | null
+    quantity: number | null
+    serial_number: string | null
+    site: string | null
+    status: string | null
+    status_in_out: string | null
+    type: string | null
   }
 
   export type AssetsMaxAggregateOutputType = {
     id: string | null
-    type: string | null
-    brand: string | null
-    model: string | null
-    serial_number: string | null
-    mac_address: string | null
-    date: string | null
-    site: string | null
-    quantity: number | null
-    status: string | null
-    price: number | null
-    description: string | null
-    status_in_out: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    brand: string | null
+    date: string | null
+    description: string | null
+    mac_address: string | null
+    model: string | null
+    price: number | null
+    quantity: number | null
+    serial_number: string | null
+    site: string | null
+    status: string | null
+    status_in_out: string | null
+    type: string | null
   }
 
   export type AssetsCountAggregateOutputType = {
     id: number
-    type: number
-    brand: number
-    model: number
-    serial_number: number
-    mac_address: number
-    date: number
-    site: number
-    quantity: number
-    status: number
-    price: number
-    description: number
-    status_in_out: number
     createdAt: number
     updatedAt: number
+    brand: number
+    date: number
+    description: number
+    mac_address: number
+    model: number
+    price: number
+    quantity: number
+    serial_number: number
+    site: number
+    status: number
+    status_in_out: number
+    type: number
     _all: number
   }
 
 
   export type AssetsAvgAggregateInputType = {
-    quantity?: true
     price?: true
+    quantity?: true
   }
 
   export type AssetsSumAggregateInputType = {
-    quantity?: true
     price?: true
+    quantity?: true
   }
 
   export type AssetsMinAggregateInputType = {
     id?: true
-    type?: true
-    brand?: true
-    model?: true
-    serial_number?: true
-    mac_address?: true
-    date?: true
-    site?: true
-    quantity?: true
-    status?: true
-    price?: true
-    description?: true
-    status_in_out?: true
     createdAt?: true
     updatedAt?: true
+    brand?: true
+    date?: true
+    description?: true
+    mac_address?: true
+    model?: true
+    price?: true
+    quantity?: true
+    serial_number?: true
+    site?: true
+    status?: true
+    status_in_out?: true
+    type?: true
   }
 
   export type AssetsMaxAggregateInputType = {
     id?: true
-    type?: true
-    brand?: true
-    model?: true
-    serial_number?: true
-    mac_address?: true
-    date?: true
-    site?: true
-    quantity?: true
-    status?: true
-    price?: true
-    description?: true
-    status_in_out?: true
     createdAt?: true
     updatedAt?: true
+    brand?: true
+    date?: true
+    description?: true
+    mac_address?: true
+    model?: true
+    price?: true
+    quantity?: true
+    serial_number?: true
+    site?: true
+    status?: true
+    status_in_out?: true
+    type?: true
   }
 
   export type AssetsCountAggregateInputType = {
     id?: true
-    type?: true
-    brand?: true
-    model?: true
-    serial_number?: true
-    mac_address?: true
-    date?: true
-    site?: true
-    quantity?: true
-    status?: true
-    price?: true
-    description?: true
-    status_in_out?: true
     createdAt?: true
     updatedAt?: true
+    brand?: true
+    date?: true
+    description?: true
+    mac_address?: true
+    model?: true
+    price?: true
+    quantity?: true
+    serial_number?: true
+    site?: true
+    status?: true
+    status_in_out?: true
+    type?: true
     _all?: true
   }
 
@@ -4099,20 +4192,20 @@ export namespace Prisma {
 
   export type AssetsGroupByOutputType = {
     id: string
-    type: string
-    brand: string
-    model: string
-    serial_number: string
-    mac_address: string
-    date: string
-    site: string
-    quantity: number
-    status: string
-    price: number
-    description: string
-    status_in_out: string
     createdAt: Date
     updatedAt: Date
+    brand: string
+    date: string
+    description: string
+    mac_address: string
+    model: string
+    price: number
+    quantity: number
+    serial_number: string
+    site: string
+    status: string
+    status_in_out: string
+    type: string
     _count: AssetsCountAggregateOutputType | null
     _avg: AssetsAvgAggregateOutputType | null
     _sum: AssetsSumAggregateOutputType | null
@@ -4136,63 +4229,63 @@ export namespace Prisma {
 
   export type assetsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    type?: boolean
-    brand?: boolean
-    model?: boolean
-    serial_number?: boolean
-    mac_address?: boolean
-    date?: boolean
-    site?: boolean
-    quantity?: boolean
-    status?: boolean
-    price?: boolean
-    description?: boolean
-    status_in_out?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    brand?: boolean
+    date?: boolean
+    description?: boolean
+    mac_address?: boolean
+    model?: boolean
+    price?: boolean
+    quantity?: boolean
+    serial_number?: boolean
+    site?: boolean
+    status?: boolean
+    status_in_out?: boolean
+    type?: boolean
   }, ExtArgs["result"]["assets"]>
 
 
 
   export type assetsSelectScalar = {
     id?: boolean
-    type?: boolean
-    brand?: boolean
-    model?: boolean
-    serial_number?: boolean
-    mac_address?: boolean
-    date?: boolean
-    site?: boolean
-    quantity?: boolean
-    status?: boolean
-    price?: boolean
-    description?: boolean
-    status_in_out?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    brand?: boolean
+    date?: boolean
+    description?: boolean
+    mac_address?: boolean
+    model?: boolean
+    price?: boolean
+    quantity?: boolean
+    serial_number?: boolean
+    site?: boolean
+    status?: boolean
+    status_in_out?: boolean
+    type?: boolean
   }
 
-  export type assetsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "brand" | "model" | "serial_number" | "mac_address" | "date" | "site" | "quantity" | "status" | "price" | "description" | "status_in_out" | "createdAt" | "updatedAt", ExtArgs["result"]["assets"]>
+  export type assetsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "brand" | "date" | "description" | "mac_address" | "model" | "price" | "quantity" | "serial_number" | "site" | "status" | "status_in_out" | "type", ExtArgs["result"]["assets"]>
 
   export type $assetsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "assets"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      type: string
-      brand: string
-      model: string
-      serial_number: string
-      mac_address: string
-      date: string
-      site: string
-      quantity: number
-      status: string
-      price: number
-      description: string
-      status_in_out: string
       createdAt: Date
       updatedAt: Date
+      brand: string
+      date: string
+      description: string
+      mac_address: string
+      model: string
+      price: number
+      quantity: number
+      serial_number: string
+      site: string
+      status: string
+      status_in_out: string
+      type: string
     }, ExtArgs["result"]["assets"]>
     composites: {}
   }
@@ -4563,20 +4656,20 @@ export namespace Prisma {
    */
   interface assetsFieldRefs {
     readonly id: FieldRef<"assets", 'String'>
-    readonly type: FieldRef<"assets", 'String'>
-    readonly brand: FieldRef<"assets", 'String'>
-    readonly model: FieldRef<"assets", 'String'>
-    readonly serial_number: FieldRef<"assets", 'String'>
-    readonly mac_address: FieldRef<"assets", 'String'>
-    readonly date: FieldRef<"assets", 'String'>
-    readonly site: FieldRef<"assets", 'String'>
-    readonly quantity: FieldRef<"assets", 'Float'>
-    readonly status: FieldRef<"assets", 'String'>
-    readonly price: FieldRef<"assets", 'Float'>
-    readonly description: FieldRef<"assets", 'String'>
-    readonly status_in_out: FieldRef<"assets", 'String'>
     readonly createdAt: FieldRef<"assets", 'DateTime'>
     readonly updatedAt: FieldRef<"assets", 'DateTime'>
+    readonly brand: FieldRef<"assets", 'String'>
+    readonly date: FieldRef<"assets", 'String'>
+    readonly description: FieldRef<"assets", 'String'>
+    readonly mac_address: FieldRef<"assets", 'String'>
+    readonly model: FieldRef<"assets", 'String'>
+    readonly price: FieldRef<"assets", 'Float'>
+    readonly quantity: FieldRef<"assets", 'Float'>
+    readonly serial_number: FieldRef<"assets", 'String'>
+    readonly site: FieldRef<"assets", 'String'>
+    readonly status: FieldRef<"assets", 'String'>
+    readonly status_in_out: FieldRef<"assets", 'String'>
+    readonly type: FieldRef<"assets", 'String'>
   }
     
 
@@ -5094,6 +5187,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     description?: boolean
+    customer?: boolean | company$customerArgs<ExtArgs>
+    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
 
@@ -5111,10 +5206,16 @@ export namespace Prisma {
   }
 
   export type companyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "email" | "phone" | "logo_url" | "createdAt" | "updatedAt" | "description", ExtArgs["result"]["company"]>
+  export type companyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | company$customerArgs<ExtArgs>
+    _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $companyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "company"
-    objects: {}
+    objects: {
+      customer: Prisma.$customerPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -5465,6 +5566,7 @@ export namespace Prisma {
    */
   export interface Prisma__companyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    customer<T extends company$customerArgs<ExtArgs> = {}>(args?: Subset<T, company$customerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5520,6 +5622,10 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
+    /**
      * Filter, which company to fetch.
      */
     where: companyWhereUniqueInput
@@ -5538,6 +5644,10 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
+    /**
      * Filter, which company to fetch.
      */
     where: companyWhereUniqueInput
@@ -5555,6 +5665,10 @@ export namespace Prisma {
      * Omit specific fields from the company
      */
     omit?: companyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
     /**
      * Filter, which company to fetch.
      */
@@ -5604,6 +5718,10 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
+    /**
      * Filter, which company to fetch.
      */
     where?: companyWhereInput
@@ -5652,6 +5770,10 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
+    /**
      * Filter, which companies to fetch.
      */
     where?: companyWhereInput
@@ -5695,6 +5817,10 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
+    /**
      * The data needed to create a company.
      */
     data: XOR<companyCreateInput, companyUncheckedCreateInput>
@@ -5723,6 +5849,10 @@ export namespace Prisma {
      * Omit specific fields from the company
      */
     omit?: companyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
     /**
      * The data needed to update a company.
      */
@@ -5764,6 +5894,10 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
+    /**
      * The filter to search for the company to update in case it exists.
      */
     where: companyWhereUniqueInput
@@ -5790,6 +5924,10 @@ export namespace Prisma {
      */
     omit?: companyOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
+    /**
      * Filter which company to delete.
      */
     where: companyWhereUniqueInput
@@ -5810,6 +5948,30 @@ export namespace Prisma {
   }
 
   /**
+   * company.customer
+   */
+  export type company$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the customer
+     */
+    select?: customerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the customer
+     */
+    omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    where?: customerWhereInput
+    orderBy?: customerOrderByWithRelationInput | customerOrderByWithRelationInput[]
+    cursor?: customerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
+  }
+
+  /**
    * company without action
    */
   export type companyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5821,6 +5983,10 @@ export namespace Prisma {
      * Omit specific fields from the company
      */
     omit?: companyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: companyInclude<ExtArgs> | null
   }
 
 
@@ -5856,7 +6022,7 @@ export namespace Prisma {
     company_id: string | null
     email: string | null
     gender: string | null
-    internet_package: string | null
+    product_id: string | null
     ip_static: string | null
     job: string | null
     latitude: number | null
@@ -5881,7 +6047,7 @@ export namespace Prisma {
     company_id: string | null
     email: string | null
     gender: string | null
-    internet_package: string | null
+    product_id: string | null
     ip_static: string | null
     job: string | null
     latitude: number | null
@@ -5906,7 +6072,7 @@ export namespace Prisma {
     company_id: number
     email: number
     gender: number
-    internet_package: number
+    product_id: number
     ip_static: number
     job: number
     latitude: number
@@ -5945,7 +6111,7 @@ export namespace Prisma {
     company_id?: true
     email?: true
     gender?: true
-    internet_package?: true
+    product_id?: true
     ip_static?: true
     job?: true
     latitude?: true
@@ -5970,7 +6136,7 @@ export namespace Prisma {
     company_id?: true
     email?: true
     gender?: true
-    internet_package?: true
+    product_id?: true
     ip_static?: true
     job?: true
     latitude?: true
@@ -5995,7 +6161,7 @@ export namespace Prisma {
     company_id?: true
     email?: true
     gender?: true
-    internet_package?: true
+    product_id?: true
     ip_static?: true
     job?: true
     latitude?: true
@@ -6107,7 +6273,7 @@ export namespace Prisma {
     company_id: string
     email: string
     gender: string
-    internet_package: string
+    product_id: string
     ip_static: string
     job: string
     latitude: number
@@ -6151,7 +6317,7 @@ export namespace Prisma {
     company_id?: boolean
     email?: boolean
     gender?: boolean
-    internet_package?: boolean
+    product_id?: boolean
     ip_static?: boolean
     job?: boolean
     latitude?: boolean
@@ -6166,6 +6332,9 @@ export namespace Prisma {
     updatedAt?: boolean
     installation_date?: boolean
     next_payment_date?: boolean
+    areas?: boolean | areasDefaultArgs<ExtArgs>
+    company?: boolean | companyDefaultArgs<ExtArgs>
+    products?: boolean | productsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customer"]>
 
 
@@ -6178,7 +6347,7 @@ export namespace Prisma {
     company_id?: boolean
     email?: boolean
     gender?: boolean
-    internet_package?: boolean
+    product_id?: boolean
     ip_static?: boolean
     job?: boolean
     latitude?: boolean
@@ -6195,11 +6364,20 @@ export namespace Prisma {
     next_payment_date?: boolean
   }
 
-  export type customerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "address" | "area_id" | "card_identition" | "company_id" | "email" | "gender" | "internet_package" | "ip_static" | "job" | "latitude" | "longitude" | "mac_address" | "name" | "no_identition" | "password" | "phone" | "type_of_service" | "createdAt" | "updatedAt" | "installation_date" | "next_payment_date", ExtArgs["result"]["customer"]>
+  export type customerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "address" | "area_id" | "card_identition" | "company_id" | "email" | "gender" | "product_id" | "ip_static" | "job" | "latitude" | "longitude" | "mac_address" | "name" | "no_identition" | "password" | "phone" | "type_of_service" | "createdAt" | "updatedAt" | "installation_date" | "next_payment_date", ExtArgs["result"]["customer"]>
+  export type customerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    areas?: boolean | areasDefaultArgs<ExtArgs>
+    company?: boolean | companyDefaultArgs<ExtArgs>
+    products?: boolean | productsDefaultArgs<ExtArgs>
+  }
 
   export type $customerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "customer"
-    objects: {}
+    objects: {
+      areas: Prisma.$areasPayload<ExtArgs>
+      company: Prisma.$companyPayload<ExtArgs>
+      products: Prisma.$productsPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       address: string
@@ -6208,7 +6386,7 @@ export namespace Prisma {
       company_id: string
       email: string
       gender: string
-      internet_package: string
+      product_id: string
       ip_static: string
       job: string
       latitude: number
@@ -6563,6 +6741,9 @@ export namespace Prisma {
    */
   export interface Prisma__customerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    areas<T extends areasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, areasDefaultArgs<ExtArgs>>): Prisma__areasClient<$Result.GetResult<Prisma.$areasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    company<T extends companyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, companyDefaultArgs<ExtArgs>>): Prisma__companyClient<$Result.GetResult<Prisma.$companyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    products<T extends productsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, productsDefaultArgs<ExtArgs>>): Prisma__productsClient<$Result.GetResult<Prisma.$productsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6599,7 +6780,7 @@ export namespace Prisma {
     readonly company_id: FieldRef<"customer", 'String'>
     readonly email: FieldRef<"customer", 'String'>
     readonly gender: FieldRef<"customer", 'String'>
-    readonly internet_package: FieldRef<"customer", 'String'>
+    readonly product_id: FieldRef<"customer", 'String'>
     readonly ip_static: FieldRef<"customer", 'String'>
     readonly job: FieldRef<"customer", 'String'>
     readonly latitude: FieldRef<"customer", 'Float'>
@@ -6631,6 +6812,10 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    /**
      * Filter, which customer to fetch.
      */
     where: customerWhereUniqueInput
@@ -6649,6 +6834,10 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    /**
      * Filter, which customer to fetch.
      */
     where: customerWhereUniqueInput
@@ -6666,6 +6855,10 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
     /**
      * Filter, which customer to fetch.
      */
@@ -6715,6 +6908,10 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    /**
      * Filter, which customer to fetch.
      */
     where?: customerWhereInput
@@ -6763,6 +6960,10 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    /**
      * Filter, which customers to fetch.
      */
     where?: customerWhereInput
@@ -6806,6 +7007,10 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    /**
      * The data needed to create a customer.
      */
     data: XOR<customerCreateInput, customerUncheckedCreateInput>
@@ -6834,6 +7039,10 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
     /**
      * The data needed to update a customer.
      */
@@ -6875,6 +7084,10 @@ export namespace Prisma {
      */
     omit?: customerOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    /**
      * The filter to search for the customer to update in case it exists.
      */
     where: customerWhereUniqueInput
@@ -6900,6 +7113,10 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
     /**
      * Filter which customer to delete.
      */
@@ -6932,6 +7149,10 @@ export namespace Prisma {
      * Omit specific fields from the customer
      */
     omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
   }
 
 
@@ -7818,21 +8039,27 @@ export namespace Prisma {
 
   export type AreasMinAggregateOutputType = {
     id: string | null
-    name: string | null
+    name_city: string | null
+    name_subdistrict: string | null
+    name_village: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type AreasMaxAggregateOutputType = {
     id: string | null
-    name: string | null
+    name_city: string | null
+    name_subdistrict: string | null
+    name_village: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type AreasCountAggregateOutputType = {
     id: number
-    name: number
+    name_city: number
+    name_subdistrict: number
+    name_village: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -7841,21 +8068,27 @@ export namespace Prisma {
 
   export type AreasMinAggregateInputType = {
     id?: true
-    name?: true
+    name_city?: true
+    name_subdistrict?: true
+    name_village?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type AreasMaxAggregateInputType = {
     id?: true
-    name?: true
+    name_city?: true
+    name_subdistrict?: true
+    name_village?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type AreasCountAggregateInputType = {
     id?: true
-    name?: true
+    name_city?: true
+    name_subdistrict?: true
+    name_village?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7935,7 +8168,9 @@ export namespace Prisma {
 
   export type AreasGroupByOutputType = {
     id: string
-    name: string
+    name_city: string
+    name_subdistrict: string
+    name_village: string
     createdAt: Date
     updatedAt: Date
     _count: AreasCountAggregateOutputType | null
@@ -7959,28 +8194,42 @@ export namespace Prisma {
 
   export type areasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    name_city?: boolean
+    name_subdistrict?: boolean
+    name_village?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    customer?: boolean | areas$customerArgs<ExtArgs>
+    _count?: boolean | AreasCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["areas"]>
 
 
 
   export type areasSelectScalar = {
     id?: boolean
-    name?: boolean
+    name_city?: boolean
+    name_subdistrict?: boolean
+    name_village?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type areasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["areas"]>
+  export type areasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name_city" | "name_subdistrict" | "name_village" | "createdAt" | "updatedAt", ExtArgs["result"]["areas"]>
+  export type areasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | areas$customerArgs<ExtArgs>
+    _count?: boolean | AreasCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $areasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "areas"
-    objects: {}
+    objects: {
+      customer: Prisma.$customerPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
+      name_city: string
+      name_subdistrict: string
+      name_village: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["areas"]>
@@ -8323,6 +8572,7 @@ export namespace Prisma {
    */
   export interface Prisma__areasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    customer<T extends areas$customerArgs<ExtArgs> = {}>(args?: Subset<T, areas$customerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8353,7 +8603,9 @@ export namespace Prisma {
    */
   interface areasFieldRefs {
     readonly id: FieldRef<"areas", 'String'>
-    readonly name: FieldRef<"areas", 'String'>
+    readonly name_city: FieldRef<"areas", 'String'>
+    readonly name_subdistrict: FieldRef<"areas", 'String'>
+    readonly name_village: FieldRef<"areas", 'String'>
     readonly createdAt: FieldRef<"areas", 'DateTime'>
     readonly updatedAt: FieldRef<"areas", 'DateTime'>
   }
@@ -8373,6 +8625,10 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
+    /**
      * Filter, which areas to fetch.
      */
     where: areasWhereUniqueInput
@@ -8391,6 +8647,10 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
+    /**
      * Filter, which areas to fetch.
      */
     where: areasWhereUniqueInput
@@ -8408,6 +8668,10 @@ export namespace Prisma {
      * Omit specific fields from the areas
      */
     omit?: areasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
     /**
      * Filter, which areas to fetch.
      */
@@ -8457,6 +8721,10 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
+    /**
      * Filter, which areas to fetch.
      */
     where?: areasWhereInput
@@ -8505,6 +8773,10 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
+    /**
      * Filter, which areas to fetch.
      */
     where?: areasWhereInput
@@ -8548,6 +8820,10 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
+    /**
      * The data needed to create a areas.
      */
     data: XOR<areasCreateInput, areasUncheckedCreateInput>
@@ -8576,6 +8852,10 @@ export namespace Prisma {
      * Omit specific fields from the areas
      */
     omit?: areasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
     /**
      * The data needed to update a areas.
      */
@@ -8617,6 +8897,10 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
+    /**
      * The filter to search for the areas to update in case it exists.
      */
     where: areasWhereUniqueInput
@@ -8643,6 +8927,10 @@ export namespace Prisma {
      */
     omit?: areasOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
+    /**
      * Filter which areas to delete.
      */
     where: areasWhereUniqueInput
@@ -8663,6 +8951,30 @@ export namespace Prisma {
   }
 
   /**
+   * areas.customer
+   */
+  export type areas$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the customer
+     */
+    select?: customerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the customer
+     */
+    omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    where?: customerWhereInput
+    orderBy?: customerOrderByWithRelationInput | customerOrderByWithRelationInput[]
+    cursor?: customerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
+  }
+
+  /**
    * areas without action
    */
   export type areasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8674,6 +8986,10 @@ export namespace Prisma {
      * Omit specific fields from the areas
      */
     omit?: areasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: areasInclude<ExtArgs> | null
   }
 
 
@@ -9765,6 +10081,8 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    customer?: boolean | products$customerArgs<ExtArgs>
+    _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["products"]>
 
 
@@ -9779,10 +10097,16 @@ export namespace Prisma {
   }
 
   export type productsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["products"]>
+  export type productsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | products$customerArgs<ExtArgs>
+    _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $productsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "products"
-    objects: {}
+    objects: {
+      customer: Prisma.$customerPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -10130,6 +10454,7 @@ export namespace Prisma {
    */
   export interface Prisma__productsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    customer<T extends products$customerArgs<ExtArgs> = {}>(args?: Subset<T, products$customerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10182,6 +10507,10 @@ export namespace Prisma {
      */
     omit?: productsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
+    /**
      * Filter, which products to fetch.
      */
     where: productsWhereUniqueInput
@@ -10200,6 +10529,10 @@ export namespace Prisma {
      */
     omit?: productsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
+    /**
      * Filter, which products to fetch.
      */
     where: productsWhereUniqueInput
@@ -10217,6 +10550,10 @@ export namespace Prisma {
      * Omit specific fields from the products
      */
     omit?: productsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
     /**
      * Filter, which products to fetch.
      */
@@ -10266,6 +10603,10 @@ export namespace Prisma {
      */
     omit?: productsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
+    /**
      * Filter, which products to fetch.
      */
     where?: productsWhereInput
@@ -10314,6 +10655,10 @@ export namespace Prisma {
      */
     omit?: productsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
+    /**
      * Filter, which products to fetch.
      */
     where?: productsWhereInput
@@ -10357,6 +10702,10 @@ export namespace Prisma {
      */
     omit?: productsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
+    /**
      * The data needed to create a products.
      */
     data: XOR<productsCreateInput, productsUncheckedCreateInput>
@@ -10385,6 +10734,10 @@ export namespace Prisma {
      * Omit specific fields from the products
      */
     omit?: productsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
     /**
      * The data needed to update a products.
      */
@@ -10426,6 +10779,10 @@ export namespace Prisma {
      */
     omit?: productsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
+    /**
      * The filter to search for the products to update in case it exists.
      */
     where: productsWhereUniqueInput
@@ -10452,6 +10809,10 @@ export namespace Prisma {
      */
     omit?: productsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
+    /**
      * Filter which products to delete.
      */
     where: productsWhereUniqueInput
@@ -10472,6 +10833,30 @@ export namespace Prisma {
   }
 
   /**
+   * products.customer
+   */
+  export type products$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the customer
+     */
+    select?: customerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the customer
+     */
+    omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    where?: customerWhereInput
+    orderBy?: customerOrderByWithRelationInput | customerOrderByWithRelationInput[]
+    cursor?: customerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
+  }
+
+  /**
    * products without action
    */
   export type productsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10483,6 +10868,10 @@ export namespace Prisma {
      * Omit specific fields from the products
      */
     omit?: productsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productsInclude<ExtArgs> | null
   }
 
 
@@ -14254,82 +14643,82 @@ export namespace Prisma {
 
   export type UsersMinAggregateOutputType = {
     id: string | null
-    name: string | null
     email: string | null
-    phone: string | null
-    logo_url: string | null
+    name: string | null
     password: string | null
     createdAt: Date | null
     updatedAt: Date | null
     token: string | null
     role_id: string | null
+    logo_url: string | null
+    phone: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
     id: string | null
-    name: string | null
     email: string | null
-    phone: string | null
-    logo_url: string | null
+    name: string | null
     password: string | null
     createdAt: Date | null
     updatedAt: Date | null
     token: string | null
     role_id: string | null
+    logo_url: string | null
+    phone: string | null
   }
 
   export type UsersCountAggregateOutputType = {
     id: number
-    name: number
     email: number
-    phone: number
-    logo_url: number
+    name: number
     password: number
     createdAt: number
     updatedAt: number
     token: number
     role_id: number
+    logo_url: number
+    phone: number
     _all: number
   }
 
 
   export type UsersMinAggregateInputType = {
     id?: true
-    name?: true
     email?: true
-    phone?: true
-    logo_url?: true
+    name?: true
     password?: true
     createdAt?: true
     updatedAt?: true
     token?: true
     role_id?: true
+    logo_url?: true
+    phone?: true
   }
 
   export type UsersMaxAggregateInputType = {
     id?: true
-    name?: true
     email?: true
-    phone?: true
-    logo_url?: true
+    name?: true
     password?: true
     createdAt?: true
     updatedAt?: true
     token?: true
     role_id?: true
+    logo_url?: true
+    phone?: true
   }
 
   export type UsersCountAggregateInputType = {
     id?: true
-    name?: true
     email?: true
-    phone?: true
-    logo_url?: true
+    name?: true
     password?: true
     createdAt?: true
     updatedAt?: true
     token?: true
     role_id?: true
+    logo_url?: true
+    phone?: true
     _all?: true
   }
 
@@ -14407,15 +14796,15 @@ export namespace Prisma {
 
   export type UsersGroupByOutputType = {
     id: string
-    name: string
     email: string
-    phone: string | null
-    logo_url: string | null
+    name: string
     password: string
     createdAt: Date
     updatedAt: Date | null
     token: string | null
     role_id: string | null
+    logo_url: string | null
+    phone: string | null
     _count: UsersCountAggregateOutputType | null
     _min: UsersMinAggregateOutputType | null
     _max: UsersMaxAggregateOutputType | null
@@ -14437,15 +14826,15 @@ export namespace Prisma {
 
   export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     email?: boolean
-    phone?: boolean
-    logo_url?: boolean
+    name?: boolean
     password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     token?: boolean
     role_id?: boolean
+    logo_url?: boolean
+    phone?: boolean
     role?: boolean | users$roleArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -14453,18 +14842,18 @@ export namespace Prisma {
 
   export type usersSelectScalar = {
     id?: boolean
-    name?: boolean
     email?: boolean
-    phone?: boolean
-    logo_url?: boolean
+    name?: boolean
     password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     token?: boolean
     role_id?: boolean
+    logo_url?: boolean
+    phone?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "logo_url" | "password" | "createdAt" | "updatedAt" | "token" | "role_id", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "createdAt" | "updatedAt" | "token" | "role_id" | "logo_url" | "phone", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | users$roleArgs<ExtArgs>
   }
@@ -14476,15 +14865,15 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
       email: string
-      phone: string | null
-      logo_url: string | null
+      name: string
       password: string
       createdAt: Date
       updatedAt: Date | null
       token: string | null
       role_id: string | null
+      logo_url: string | null
+      phone: string | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -14856,15 +15245,15 @@ export namespace Prisma {
    */
   interface usersFieldRefs {
     readonly id: FieldRef<"users", 'String'>
-    readonly name: FieldRef<"users", 'String'>
     readonly email: FieldRef<"users", 'String'>
-    readonly phone: FieldRef<"users", 'String'>
-    readonly logo_url: FieldRef<"users", 'String'>
+    readonly name: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
     readonly createdAt: FieldRef<"users", 'DateTime'>
     readonly updatedAt: FieldRef<"users", 'DateTime'>
     readonly token: FieldRef<"users", 'String'>
     readonly role_id: FieldRef<"users", 'String'>
+    readonly logo_url: FieldRef<"users", 'String'>
+    readonly phone: FieldRef<"users", 'String'>
   }
     
 
@@ -16227,20 +16616,20 @@ export namespace Prisma {
 
   export const AssetsScalarFieldEnum: {
     id: 'id',
-    type: 'type',
-    brand: 'brand',
-    model: 'model',
-    serial_number: 'serial_number',
-    mac_address: 'mac_address',
-    date: 'date',
-    site: 'site',
-    quantity: 'quantity',
-    status: 'status',
-    price: 'price',
-    description: 'description',
-    status_in_out: 'status_in_out',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    brand: 'brand',
+    date: 'date',
+    description: 'description',
+    mac_address: 'mac_address',
+    model: 'model',
+    price: 'price',
+    quantity: 'quantity',
+    serial_number: 'serial_number',
+    site: 'site',
+    status: 'status',
+    status_in_out: 'status_in_out',
+    type: 'type'
   };
 
   export type AssetsScalarFieldEnum = (typeof AssetsScalarFieldEnum)[keyof typeof AssetsScalarFieldEnum]
@@ -16269,7 +16658,7 @@ export namespace Prisma {
     company_id: 'company_id',
     email: 'email',
     gender: 'gender',
-    internet_package: 'internet_package',
+    product_id: 'product_id',
     ip_static: 'ip_static',
     job: 'job',
     latitude: 'latitude',
@@ -16301,7 +16690,9 @@ export namespace Prisma {
 
   export const AreasScalarFieldEnum: {
     id: 'id',
-    name: 'name',
+    name_city: 'name_city',
+    name_subdistrict: 'name_subdistrict',
+    name_village: 'name_village',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -16386,15 +16777,15 @@ export namespace Prisma {
 
   export const UsersScalarFieldEnum: {
     id: 'id',
-    name: 'name',
     email: 'email',
-    phone: 'phone',
-    logo_url: 'logo_url',
+    name: 'name',
     password: 'password',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     token: 'token',
-    role_id: 'role_id'
+    role_id: 'role_id',
+    logo_url: 'logo_url',
+    phone: 'phone'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -16445,16 +16836,16 @@ export namespace Prisma {
 
   export const assetsOrderByRelevanceFieldEnum: {
     id: 'id',
-    type: 'type',
     brand: 'brand',
+    date: 'date',
+    description: 'description',
+    mac_address: 'mac_address',
     model: 'model',
     serial_number: 'serial_number',
-    mac_address: 'mac_address',
-    date: 'date',
     site: 'site',
     status: 'status',
-    description: 'description',
-    status_in_out: 'status_in_out'
+    status_in_out: 'status_in_out',
+    type: 'type'
   };
 
   export type assetsOrderByRelevanceFieldEnum = (typeof assetsOrderByRelevanceFieldEnum)[keyof typeof assetsOrderByRelevanceFieldEnum]
@@ -16481,7 +16872,7 @@ export namespace Prisma {
     company_id: 'company_id',
     email: 'email',
     gender: 'gender',
-    internet_package: 'internet_package',
+    product_id: 'product_id',
     ip_static: 'ip_static',
     job: 'job',
     mac_address: 'mac_address',
@@ -16504,7 +16895,9 @@ export namespace Prisma {
 
   export const areasOrderByRelevanceFieldEnum: {
     id: 'id',
-    name: 'name'
+    name_city: 'name_city',
+    name_subdistrict: 'name_subdistrict',
+    name_village: 'name_village'
   };
 
   export type areasOrderByRelevanceFieldEnum = (typeof areasOrderByRelevanceFieldEnum)[keyof typeof areasOrderByRelevanceFieldEnum]
@@ -16566,13 +16959,13 @@ export namespace Prisma {
 
   export const usersOrderByRelevanceFieldEnum: {
     id: 'id',
-    name: 'name',
     email: 'email',
-    phone: 'phone',
-    logo_url: 'logo_url',
+    name: 'name',
     password: 'password',
     token: 'token',
-    role_id: 'role_id'
+    role_id: 'role_id',
+    logo_url: 'logo_url',
+    phone: 'phone'
   };
 
   export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
@@ -16749,38 +17142,38 @@ export namespace Prisma {
     OR?: assetsWhereInput[]
     NOT?: assetsWhereInput | assetsWhereInput[]
     id?: StringFilter<"assets"> | string
-    type?: StringFilter<"assets"> | string
-    brand?: StringFilter<"assets"> | string
-    model?: StringFilter<"assets"> | string
-    serial_number?: StringFilter<"assets"> | string
-    mac_address?: StringFilter<"assets"> | string
-    date?: StringFilter<"assets"> | string
-    site?: StringFilter<"assets"> | string
-    quantity?: FloatFilter<"assets"> | number
-    status?: StringFilter<"assets"> | string
-    price?: FloatFilter<"assets"> | number
-    description?: StringFilter<"assets"> | string
-    status_in_out?: StringFilter<"assets"> | string
     createdAt?: DateTimeFilter<"assets"> | Date | string
     updatedAt?: DateTimeFilter<"assets"> | Date | string
+    brand?: StringFilter<"assets"> | string
+    date?: StringFilter<"assets"> | string
+    description?: StringFilter<"assets"> | string
+    mac_address?: StringFilter<"assets"> | string
+    model?: StringFilter<"assets"> | string
+    price?: FloatFilter<"assets"> | number
+    quantity?: FloatFilter<"assets"> | number
+    serial_number?: StringFilter<"assets"> | string
+    site?: StringFilter<"assets"> | string
+    status?: StringFilter<"assets"> | string
+    status_in_out?: StringFilter<"assets"> | string
+    type?: StringFilter<"assets"> | string
   }
 
   export type assetsOrderByWithRelationInput = {
     id?: SortOrder
-    type?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    serial_number?: SortOrder
-    mac_address?: SortOrder
-    date?: SortOrder
-    site?: SortOrder
-    quantity?: SortOrder
-    status?: SortOrder
-    price?: SortOrder
-    description?: SortOrder
-    status_in_out?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    brand?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    mac_address?: SortOrder
+    model?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    serial_number?: SortOrder
+    site?: SortOrder
+    status?: SortOrder
+    status_in_out?: SortOrder
+    type?: SortOrder
     _relevance?: assetsOrderByRelevanceInput
   }
 
@@ -16789,38 +17182,38 @@ export namespace Prisma {
     AND?: assetsWhereInput | assetsWhereInput[]
     OR?: assetsWhereInput[]
     NOT?: assetsWhereInput | assetsWhereInput[]
-    type?: StringFilter<"assets"> | string
-    brand?: StringFilter<"assets"> | string
-    model?: StringFilter<"assets"> | string
-    serial_number?: StringFilter<"assets"> | string
-    mac_address?: StringFilter<"assets"> | string
-    date?: StringFilter<"assets"> | string
-    site?: StringFilter<"assets"> | string
-    quantity?: FloatFilter<"assets"> | number
-    status?: StringFilter<"assets"> | string
-    price?: FloatFilter<"assets"> | number
-    description?: StringFilter<"assets"> | string
-    status_in_out?: StringFilter<"assets"> | string
     createdAt?: DateTimeFilter<"assets"> | Date | string
     updatedAt?: DateTimeFilter<"assets"> | Date | string
+    brand?: StringFilter<"assets"> | string
+    date?: StringFilter<"assets"> | string
+    description?: StringFilter<"assets"> | string
+    mac_address?: StringFilter<"assets"> | string
+    model?: StringFilter<"assets"> | string
+    price?: FloatFilter<"assets"> | number
+    quantity?: FloatFilter<"assets"> | number
+    serial_number?: StringFilter<"assets"> | string
+    site?: StringFilter<"assets"> | string
+    status?: StringFilter<"assets"> | string
+    status_in_out?: StringFilter<"assets"> | string
+    type?: StringFilter<"assets"> | string
   }, "id">
 
   export type assetsOrderByWithAggregationInput = {
     id?: SortOrder
-    type?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    serial_number?: SortOrder
-    mac_address?: SortOrder
-    date?: SortOrder
-    site?: SortOrder
-    quantity?: SortOrder
-    status?: SortOrder
-    price?: SortOrder
-    description?: SortOrder
-    status_in_out?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    brand?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    mac_address?: SortOrder
+    model?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    serial_number?: SortOrder
+    site?: SortOrder
+    status?: SortOrder
+    status_in_out?: SortOrder
+    type?: SortOrder
     _count?: assetsCountOrderByAggregateInput
     _avg?: assetsAvgOrderByAggregateInput
     _max?: assetsMaxOrderByAggregateInput
@@ -16833,20 +17226,20 @@ export namespace Prisma {
     OR?: assetsScalarWhereWithAggregatesInput[]
     NOT?: assetsScalarWhereWithAggregatesInput | assetsScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"assets"> | string
-    type?: StringWithAggregatesFilter<"assets"> | string
-    brand?: StringWithAggregatesFilter<"assets"> | string
-    model?: StringWithAggregatesFilter<"assets"> | string
-    serial_number?: StringWithAggregatesFilter<"assets"> | string
-    mac_address?: StringWithAggregatesFilter<"assets"> | string
-    date?: StringWithAggregatesFilter<"assets"> | string
-    site?: StringWithAggregatesFilter<"assets"> | string
-    quantity?: FloatWithAggregatesFilter<"assets"> | number
-    status?: StringWithAggregatesFilter<"assets"> | string
-    price?: FloatWithAggregatesFilter<"assets"> | number
-    description?: StringWithAggregatesFilter<"assets"> | string
-    status_in_out?: StringWithAggregatesFilter<"assets"> | string
     createdAt?: DateTimeWithAggregatesFilter<"assets"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"assets"> | Date | string
+    brand?: StringWithAggregatesFilter<"assets"> | string
+    date?: StringWithAggregatesFilter<"assets"> | string
+    description?: StringWithAggregatesFilter<"assets"> | string
+    mac_address?: StringWithAggregatesFilter<"assets"> | string
+    model?: StringWithAggregatesFilter<"assets"> | string
+    price?: FloatWithAggregatesFilter<"assets"> | number
+    quantity?: FloatWithAggregatesFilter<"assets"> | number
+    serial_number?: StringWithAggregatesFilter<"assets"> | string
+    site?: StringWithAggregatesFilter<"assets"> | string
+    status?: StringWithAggregatesFilter<"assets"> | string
+    status_in_out?: StringWithAggregatesFilter<"assets"> | string
+    type?: StringWithAggregatesFilter<"assets"> | string
   }
 
   export type companyWhereInput = {
@@ -16862,6 +17255,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
     description?: StringNullableFilter<"company"> | string | null
+    customer?: CustomerListRelationFilter
   }
 
   export type companyOrderByWithRelationInput = {
@@ -16874,6 +17268,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     description?: SortOrderInput | SortOrder
+    customer?: customerOrderByRelationAggregateInput
     _relevance?: companyOrderByRelevanceInput
   }
 
@@ -16890,6 +17285,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
     description?: StringNullableFilter<"company"> | string | null
+    customer?: CustomerListRelationFilter
   }, "id">
 
   export type companyOrderByWithAggregationInput = {
@@ -16933,7 +17329,7 @@ export namespace Prisma {
     company_id?: StringFilter<"customer"> | string
     email?: StringFilter<"customer"> | string
     gender?: StringFilter<"customer"> | string
-    internet_package?: StringFilter<"customer"> | string
+    product_id?: StringFilter<"customer"> | string
     ip_static?: StringFilter<"customer"> | string
     job?: StringFilter<"customer"> | string
     latitude?: FloatFilter<"customer"> | number
@@ -16948,6 +17344,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"customer"> | Date | string
     installation_date?: DateTimeFilter<"customer"> | Date | string
     next_payment_date?: DateTimeNullableFilter<"customer"> | Date | string | null
+    areas?: XOR<AreasScalarRelationFilter, areasWhereInput>
+    company?: XOR<CompanyScalarRelationFilter, companyWhereInput>
+    products?: XOR<ProductsScalarRelationFilter, productsWhereInput>
   }
 
   export type customerOrderByWithRelationInput = {
@@ -16958,7 +17357,7 @@ export namespace Prisma {
     company_id?: SortOrder
     email?: SortOrder
     gender?: SortOrder
-    internet_package?: SortOrder
+    product_id?: SortOrder
     ip_static?: SortOrder
     job?: SortOrder
     latitude?: SortOrder
@@ -16973,6 +17372,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
     installation_date?: SortOrder
     next_payment_date?: SortOrderInput | SortOrder
+    areas?: areasOrderByWithRelationInput
+    company?: companyOrderByWithRelationInput
+    products?: productsOrderByWithRelationInput
     _relevance?: customerOrderByRelevanceInput
   }
 
@@ -16987,7 +17389,7 @@ export namespace Prisma {
     card_identition?: StringFilter<"customer"> | string
     company_id?: StringFilter<"customer"> | string
     gender?: StringFilter<"customer"> | string
-    internet_package?: StringFilter<"customer"> | string
+    product_id?: StringFilter<"customer"> | string
     ip_static?: StringFilter<"customer"> | string
     job?: StringFilter<"customer"> | string
     latitude?: FloatFilter<"customer"> | number
@@ -17002,6 +17404,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"customer"> | Date | string
     installation_date?: DateTimeFilter<"customer"> | Date | string
     next_payment_date?: DateTimeNullableFilter<"customer"> | Date | string | null
+    areas?: XOR<AreasScalarRelationFilter, areasWhereInput>
+    company?: XOR<CompanyScalarRelationFilter, companyWhereInput>
+    products?: XOR<ProductsScalarRelationFilter, productsWhereInput>
   }, "id" | "email">
 
   export type customerOrderByWithAggregationInput = {
@@ -17012,7 +17417,7 @@ export namespace Prisma {
     company_id?: SortOrder
     email?: SortOrder
     gender?: SortOrder
-    internet_package?: SortOrder
+    product_id?: SortOrder
     ip_static?: SortOrder
     job?: SortOrder
     latitude?: SortOrder
@@ -17045,7 +17450,7 @@ export namespace Prisma {
     company_id?: StringWithAggregatesFilter<"customer"> | string
     email?: StringWithAggregatesFilter<"customer"> | string
     gender?: StringWithAggregatesFilter<"customer"> | string
-    internet_package?: StringWithAggregatesFilter<"customer"> | string
+    product_id?: StringWithAggregatesFilter<"customer"> | string
     ip_static?: StringWithAggregatesFilter<"customer"> | string
     job?: StringWithAggregatesFilter<"customer"> | string
     latitude?: FloatWithAggregatesFilter<"customer"> | number
@@ -17115,16 +17520,22 @@ export namespace Prisma {
     OR?: areasWhereInput[]
     NOT?: areasWhereInput | areasWhereInput[]
     id?: StringFilter<"areas"> | string
-    name?: StringFilter<"areas"> | string
+    name_city?: StringFilter<"areas"> | string
+    name_subdistrict?: StringFilter<"areas"> | string
+    name_village?: StringFilter<"areas"> | string
     createdAt?: DateTimeFilter<"areas"> | Date | string
     updatedAt?: DateTimeFilter<"areas"> | Date | string
+    customer?: CustomerListRelationFilter
   }
 
   export type areasOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
+    name_city?: SortOrder
+    name_subdistrict?: SortOrder
+    name_village?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    customer?: customerOrderByRelationAggregateInput
     _relevance?: areasOrderByRelevanceInput
   }
 
@@ -17133,14 +17544,19 @@ export namespace Prisma {
     AND?: areasWhereInput | areasWhereInput[]
     OR?: areasWhereInput[]
     NOT?: areasWhereInput | areasWhereInput[]
-    name?: StringFilter<"areas"> | string
+    name_city?: StringFilter<"areas"> | string
+    name_subdistrict?: StringFilter<"areas"> | string
+    name_village?: StringFilter<"areas"> | string
     createdAt?: DateTimeFilter<"areas"> | Date | string
     updatedAt?: DateTimeFilter<"areas"> | Date | string
+    customer?: CustomerListRelationFilter
   }, "id">
 
   export type areasOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
+    name_city?: SortOrder
+    name_subdistrict?: SortOrder
+    name_village?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: areasCountOrderByAggregateInput
@@ -17153,7 +17569,9 @@ export namespace Prisma {
     OR?: areasScalarWhereWithAggregatesInput[]
     NOT?: areasScalarWhereWithAggregatesInput | areasScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"areas"> | string
-    name?: StringWithAggregatesFilter<"areas"> | string
+    name_city?: StringWithAggregatesFilter<"areas"> | string
+    name_subdistrict?: StringWithAggregatesFilter<"areas"> | string
+    name_village?: StringWithAggregatesFilter<"areas"> | string
     createdAt?: DateTimeWithAggregatesFilter<"areas"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"areas"> | Date | string
   }
@@ -17221,6 +17639,7 @@ export namespace Prisma {
     description?: StringFilter<"products"> | string
     createdAt?: DateTimeFilter<"products"> | Date | string
     updatedAt?: DateTimeFilter<"products"> | Date | string
+    customer?: CustomerListRelationFilter
   }
 
   export type productsOrderByWithRelationInput = {
@@ -17230,6 +17649,7 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    customer?: customerOrderByRelationAggregateInput
     _relevance?: productsOrderByRelevanceInput
   }
 
@@ -17243,6 +17663,7 @@ export namespace Prisma {
     description?: StringFilter<"products"> | string
     createdAt?: DateTimeFilter<"products"> | Date | string
     updatedAt?: DateTimeFilter<"products"> | Date | string
+    customer?: CustomerListRelationFilter
   }, "id">
 
   export type productsOrderByWithAggregationInput = {
@@ -17536,29 +17957,29 @@ export namespace Prisma {
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
     id?: StringFilter<"users"> | string
-    name?: StringFilter<"users"> | string
     email?: StringFilter<"users"> | string
-    phone?: StringNullableFilter<"users"> | string | null
-    logo_url?: StringNullableFilter<"users"> | string | null
+    name?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     token?: StringNullableFilter<"users"> | string | null
     role_id?: StringNullableFilter<"users"> | string | null
+    logo_url?: StringNullableFilter<"users"> | string | null
+    phone?: StringNullableFilter<"users"> | string | null
     role?: XOR<RolesNullableScalarRelationFilter, rolesWhereInput> | null
   }
 
   export type usersOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
-    phone?: SortOrderInput | SortOrder
-    logo_url?: SortOrderInput | SortOrder
+    name?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     token?: SortOrderInput | SortOrder
     role_id?: SortOrderInput | SortOrder
+    logo_url?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     role?: rolesOrderByWithRelationInput
     _relevance?: usersOrderByRelevanceInput
   }
@@ -17570,27 +17991,27 @@ export namespace Prisma {
     OR?: usersWhereInput[]
     NOT?: usersWhereInput | usersWhereInput[]
     name?: StringFilter<"users"> | string
-    phone?: StringNullableFilter<"users"> | string | null
-    logo_url?: StringNullableFilter<"users"> | string | null
     password?: StringFilter<"users"> | string
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     token?: StringNullableFilter<"users"> | string | null
     role_id?: StringNullableFilter<"users"> | string | null
+    logo_url?: StringNullableFilter<"users"> | string | null
+    phone?: StringNullableFilter<"users"> | string | null
     role?: XOR<RolesNullableScalarRelationFilter, rolesWhereInput> | null
   }, "id" | "email">
 
   export type usersOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
-    phone?: SortOrderInput | SortOrder
-    logo_url?: SortOrderInput | SortOrder
+    name?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     token?: SortOrderInput | SortOrder
     role_id?: SortOrderInput | SortOrder
+    logo_url?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
     _min?: usersMinOrderByAggregateInput
@@ -17601,15 +18022,15 @@ export namespace Prisma {
     OR?: usersScalarWhereWithAggregatesInput[]
     NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"users"> | string
-    name?: StringWithAggregatesFilter<"users"> | string
     email?: StringWithAggregatesFilter<"users"> | string
-    phone?: StringNullableWithAggregatesFilter<"users"> | string | null
-    logo_url?: StringNullableWithAggregatesFilter<"users"> | string | null
+    name?: StringWithAggregatesFilter<"users"> | string
     password?: StringWithAggregatesFilter<"users"> | string
     createdAt?: DateTimeWithAggregatesFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
     token?: StringNullableWithAggregatesFilter<"users"> | string | null
     role_id?: StringNullableWithAggregatesFilter<"users"> | string | null
+    logo_url?: StringNullableWithAggregatesFilter<"users"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"users"> | string | null
   }
 
   export type rolesWhereInput = {
@@ -17777,128 +18198,128 @@ export namespace Prisma {
 
   export type assetsCreateInput = {
     id: string
-    type: string
-    brand: string
-    model: string
-    serial_number: string
-    mac_address: string
-    date: string
-    site: string
-    quantity: number
-    status: string
-    price: number
-    description: string
-    status_in_out: string
     createdAt?: Date | string
     updatedAt: Date | string
+    brand: string
+    date: string
+    description: string
+    mac_address: string
+    model: string
+    price: number
+    quantity: number
+    serial_number: string
+    site: string
+    status: string
+    status_in_out: string
+    type: string
   }
 
   export type assetsUncheckedCreateInput = {
     id: string
-    type: string
-    brand: string
-    model: string
-    serial_number: string
-    mac_address: string
-    date: string
-    site: string
-    quantity: number
-    status: string
-    price: number
-    description: string
-    status_in_out: string
     createdAt?: Date | string
     updatedAt: Date | string
+    brand: string
+    date: string
+    description: string
+    mac_address: string
+    model: string
+    price: number
+    quantity: number
+    serial_number: string
+    site: string
+    status: string
+    status_in_out: string
+    type: string
   }
 
   export type assetsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    serial_number?: StringFieldUpdateOperationsInput | string
-    mac_address?: StringFieldUpdateOperationsInput | string
-    date?: StringFieldUpdateOperationsInput | string
-    site?: StringFieldUpdateOperationsInput | string
-    quantity?: FloatFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    status_in_out?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brand?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    quantity?: FloatFieldUpdateOperationsInput | number
+    serial_number?: StringFieldUpdateOperationsInput | string
+    site?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    status_in_out?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type assetsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    serial_number?: StringFieldUpdateOperationsInput | string
-    mac_address?: StringFieldUpdateOperationsInput | string
-    date?: StringFieldUpdateOperationsInput | string
-    site?: StringFieldUpdateOperationsInput | string
-    quantity?: FloatFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    status_in_out?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brand?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    quantity?: FloatFieldUpdateOperationsInput | number
+    serial_number?: StringFieldUpdateOperationsInput | string
+    site?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    status_in_out?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type assetsCreateManyInput = {
     id: string
-    type: string
-    brand: string
-    model: string
-    serial_number: string
-    mac_address: string
-    date: string
-    site: string
-    quantity: number
-    status: string
-    price: number
-    description: string
-    status_in_out: string
     createdAt?: Date | string
     updatedAt: Date | string
+    brand: string
+    date: string
+    description: string
+    mac_address: string
+    model: string
+    price: number
+    quantity: number
+    serial_number: string
+    site: string
+    status: string
+    status_in_out: string
+    type: string
   }
 
   export type assetsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    serial_number?: StringFieldUpdateOperationsInput | string
-    mac_address?: StringFieldUpdateOperationsInput | string
-    date?: StringFieldUpdateOperationsInput | string
-    site?: StringFieldUpdateOperationsInput | string
-    quantity?: FloatFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    status_in_out?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brand?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    quantity?: FloatFieldUpdateOperationsInput | number
+    serial_number?: StringFieldUpdateOperationsInput | string
+    site?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    status_in_out?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type assetsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    serial_number?: StringFieldUpdateOperationsInput | string
-    mac_address?: StringFieldUpdateOperationsInput | string
-    date?: StringFieldUpdateOperationsInput | string
-    site?: StringFieldUpdateOperationsInput | string
-    quantity?: FloatFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    status_in_out?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    brand?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    mac_address?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    quantity?: FloatFieldUpdateOperationsInput | number
+    serial_number?: StringFieldUpdateOperationsInput | string
+    site?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    status_in_out?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
   }
 
   export type companyCreateInput = {
@@ -17911,6 +18332,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt: Date | string
     description?: string | null
+    customer?: customerCreateNestedManyWithoutCompanyInput
   }
 
   export type companyUncheckedCreateInput = {
@@ -17923,6 +18345,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt: Date | string
     description?: string | null
+    customer?: customerUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type companyUpdateInput = {
@@ -17935,6 +18358,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    customer?: customerUpdateManyWithoutCompanyNestedInput
   }
 
   export type companyUncheckedUpdateInput = {
@@ -17947,6 +18371,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    customer?: customerUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type companyCreateManyInput = {
@@ -17988,12 +18413,9 @@ export namespace Prisma {
   export type customerCreateInput = {
     id: string
     address: string
-    area_id: string
     card_identition: string
-    company_id: string
     email: string
     gender: string
-    internet_package: string
     ip_static: string
     job: string
     latitude: number
@@ -18008,6 +18430,9 @@ export namespace Prisma {
     updatedAt: Date | string
     installation_date: Date | string
     next_payment_date?: Date | string | null
+    areas: areasCreateNestedOneWithoutCustomerInput
+    company: companyCreateNestedOneWithoutCustomerInput
+    products: productsCreateNestedOneWithoutCustomerInput
   }
 
   export type customerUncheckedCreateInput = {
@@ -18018,7 +18443,7 @@ export namespace Prisma {
     company_id: string
     email: string
     gender: string
-    internet_package: string
+    product_id: string
     ip_static: string
     job: string
     latitude: number
@@ -18038,12 +18463,9 @@ export namespace Prisma {
   export type customerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    area_id?: StringFieldUpdateOperationsInput | string
     card_identition?: StringFieldUpdateOperationsInput | string
-    company_id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
-    internet_package?: StringFieldUpdateOperationsInput | string
     ip_static?: StringFieldUpdateOperationsInput | string
     job?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -18058,6 +18480,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
     next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
+    company?: companyUpdateOneRequiredWithoutCustomerNestedInput
+    products?: productsUpdateOneRequiredWithoutCustomerNestedInput
   }
 
   export type customerUncheckedUpdateInput = {
@@ -18068,7 +18493,7 @@ export namespace Prisma {
     company_id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
-    internet_package?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     ip_static?: StringFieldUpdateOperationsInput | string
     job?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -18093,7 +18518,7 @@ export namespace Prisma {
     company_id: string
     email: string
     gender: string
-    internet_package: string
+    product_id: string
     ip_static: string
     job: string
     latitude: number
@@ -18113,12 +18538,9 @@ export namespace Prisma {
   export type customerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    area_id?: StringFieldUpdateOperationsInput | string
     card_identition?: StringFieldUpdateOperationsInput | string
-    company_id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
-    internet_package?: StringFieldUpdateOperationsInput | string
     ip_static?: StringFieldUpdateOperationsInput | string
     job?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -18143,7 +18565,7 @@ export namespace Prisma {
     company_id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
-    internet_package?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     ip_static?: StringFieldUpdateOperationsInput | string
     job?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
@@ -18211,49 +18633,67 @@ export namespace Prisma {
 
   export type areasCreateInput = {
     id: string
-    name: string
+    name_city: string
+    name_subdistrict: string
+    name_village: string
     createdAt?: Date | string
     updatedAt: Date | string
+    customer?: customerCreateNestedManyWithoutAreasInput
   }
 
   export type areasUncheckedCreateInput = {
     id: string
-    name: string
+    name_city: string
+    name_subdistrict: string
+    name_village: string
     createdAt?: Date | string
     updatedAt: Date | string
+    customer?: customerUncheckedCreateNestedManyWithoutAreasInput
   }
 
   export type areasUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name_city?: StringFieldUpdateOperationsInput | string
+    name_subdistrict?: StringFieldUpdateOperationsInput | string
+    name_village?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: customerUpdateManyWithoutAreasNestedInput
   }
 
   export type areasUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name_city?: StringFieldUpdateOperationsInput | string
+    name_subdistrict?: StringFieldUpdateOperationsInput | string
+    name_village?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: customerUncheckedUpdateManyWithoutAreasNestedInput
   }
 
   export type areasCreateManyInput = {
     id: string
-    name: string
+    name_city: string
+    name_subdistrict: string
+    name_village: string
     createdAt?: Date | string
     updatedAt: Date | string
   }
 
   export type areasUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name_city?: StringFieldUpdateOperationsInput | string
+    name_subdistrict?: StringFieldUpdateOperationsInput | string
+    name_village?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type areasUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    name_city?: StringFieldUpdateOperationsInput | string
+    name_subdistrict?: StringFieldUpdateOperationsInput | string
+    name_village?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18321,6 +18761,7 @@ export namespace Prisma {
     description: string
     createdAt?: Date | string
     updatedAt: Date | string
+    customer?: customerCreateNestedManyWithoutProductsInput
   }
 
   export type productsUncheckedCreateInput = {
@@ -18330,6 +18771,7 @@ export namespace Prisma {
     description: string
     createdAt?: Date | string
     updatedAt: Date | string
+    customer?: customerUncheckedCreateNestedManyWithoutProductsInput
   }
 
   export type productsUpdateInput = {
@@ -18339,6 +18781,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: customerUpdateManyWithoutProductsNestedInput
   }
 
   export type productsUncheckedUpdateInput = {
@@ -18348,6 +18791,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: customerUncheckedUpdateManyWithoutProductsNestedInput
   }
 
   export type productsCreateManyInput = {
@@ -18659,92 +19103,92 @@ export namespace Prisma {
 
   export type usersCreateInput = {
     id: string
-    name: string
     email: string
-    phone?: string | null
-    logo_url?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
+    logo_url?: string | null
+    phone?: string | null
     role?: rolesCreateNestedOneWithoutUsersInput
   }
 
   export type usersUncheckedCreateInput = {
     id: string
-    name: string
     email: string
-    phone?: string | null
-    logo_url?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
     role_id?: string | null
+    logo_url?: string | null
+    phone?: string | null
   }
 
   export type usersUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     role?: rolesUpdateOneWithoutUsersNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
     role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersCreateManyInput = {
     id: string
-    name: string
     email: string
-    phone?: string | null
-    logo_url?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
     role_id?: string | null
+    logo_url?: string | null
+    phone?: string | null
   }
 
   export type usersUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
     role_id?: NullableStringFieldUpdateOperationsInput | string | null
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type rolesCreateInput = {
@@ -18999,66 +19443,76 @@ export namespace Prisma {
 
   export type assetsCountOrderByAggregateInput = {
     id?: SortOrder
-    type?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    serial_number?: SortOrder
-    mac_address?: SortOrder
-    date?: SortOrder
-    site?: SortOrder
-    quantity?: SortOrder
-    status?: SortOrder
-    price?: SortOrder
-    description?: SortOrder
-    status_in_out?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    brand?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    mac_address?: SortOrder
+    model?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    serial_number?: SortOrder
+    site?: SortOrder
+    status?: SortOrder
+    status_in_out?: SortOrder
+    type?: SortOrder
   }
 
   export type assetsAvgOrderByAggregateInput = {
-    quantity?: SortOrder
     price?: SortOrder
+    quantity?: SortOrder
   }
 
   export type assetsMaxOrderByAggregateInput = {
     id?: SortOrder
-    type?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    serial_number?: SortOrder
-    mac_address?: SortOrder
-    date?: SortOrder
-    site?: SortOrder
-    quantity?: SortOrder
-    status?: SortOrder
-    price?: SortOrder
-    description?: SortOrder
-    status_in_out?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    brand?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    mac_address?: SortOrder
+    model?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    serial_number?: SortOrder
+    site?: SortOrder
+    status?: SortOrder
+    status_in_out?: SortOrder
+    type?: SortOrder
   }
 
   export type assetsMinOrderByAggregateInput = {
     id?: SortOrder
-    type?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    serial_number?: SortOrder
-    mac_address?: SortOrder
-    date?: SortOrder
-    site?: SortOrder
-    quantity?: SortOrder
-    status?: SortOrder
-    price?: SortOrder
-    description?: SortOrder
-    status_in_out?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    brand?: SortOrder
+    date?: SortOrder
+    description?: SortOrder
+    mac_address?: SortOrder
+    model?: SortOrder
+    price?: SortOrder
+    quantity?: SortOrder
+    serial_number?: SortOrder
+    site?: SortOrder
+    status?: SortOrder
+    status_in_out?: SortOrder
+    type?: SortOrder
   }
 
   export type assetsSumOrderByAggregateInput = {
-    quantity?: SortOrder
     price?: SortOrder
+    quantity?: SortOrder
+  }
+
+  export type CustomerListRelationFilter = {
+    every?: customerWhereInput
+    some?: customerWhereInput
+    none?: customerWhereInput
+  }
+
+  export type customerOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type companyOrderByRelevanceInput = {
@@ -19125,6 +19579,21 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type AreasScalarRelationFilter = {
+    is?: areasWhereInput
+    isNot?: areasWhereInput
+  }
+
+  export type CompanyScalarRelationFilter = {
+    is?: companyWhereInput
+    isNot?: companyWhereInput
+  }
+
+  export type ProductsScalarRelationFilter = {
+    is?: productsWhereInput
+    isNot?: productsWhereInput
+  }
+
   export type customerOrderByRelevanceInput = {
     fields: customerOrderByRelevanceFieldEnum | customerOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -19139,7 +19608,7 @@ export namespace Prisma {
     company_id?: SortOrder
     email?: SortOrder
     gender?: SortOrder
-    internet_package?: SortOrder
+    product_id?: SortOrder
     ip_static?: SortOrder
     job?: SortOrder
     latitude?: SortOrder
@@ -19170,7 +19639,7 @@ export namespace Prisma {
     company_id?: SortOrder
     email?: SortOrder
     gender?: SortOrder
-    internet_package?: SortOrder
+    product_id?: SortOrder
     ip_static?: SortOrder
     job?: SortOrder
     latitude?: SortOrder
@@ -19195,7 +19664,7 @@ export namespace Prisma {
     company_id?: SortOrder
     email?: SortOrder
     gender?: SortOrder
-    internet_package?: SortOrder
+    product_id?: SortOrder
     ip_static?: SortOrder
     job?: SortOrder
     latitude?: SortOrder
@@ -19283,21 +19752,27 @@ export namespace Prisma {
 
   export type areasCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    name_city?: SortOrder
+    name_subdistrict?: SortOrder
+    name_village?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type areasMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    name_city?: SortOrder
+    name_subdistrict?: SortOrder
+    name_village?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type areasMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    name_city?: SortOrder
+    name_subdistrict?: SortOrder
+    name_village?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19608,41 +20083,41 @@ export namespace Prisma {
 
   export type usersCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
-    phone?: SortOrder
-    logo_url?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
     role_id?: SortOrder
+    logo_url?: SortOrder
+    phone?: SortOrder
   }
 
   export type usersMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
-    phone?: SortOrder
-    logo_url?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
     role_id?: SortOrder
+    logo_url?: SortOrder
+    phone?: SortOrder
   }
 
   export type usersMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
     email?: SortOrder
-    phone?: SortOrder
-    logo_url?: SortOrder
+    name?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     token?: SortOrder
     role_id?: SortOrder
+    logo_url?: SortOrder
+    phone?: SortOrder
   }
 
   export type UsersListRelationFilter = {
@@ -19702,6 +20177,66 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type customerCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
+    createMany?: customerCreateManyCompanyInputEnvelope
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+  }
+
+  export type customerUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
+    createMany?: customerCreateManyCompanyInputEnvelope
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+  }
+
+  export type customerUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutCompanyInput | customerUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: customerCreateManyCompanyInputEnvelope
+    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    update?: customerUpdateWithWhereUniqueWithoutCompanyInput | customerUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutCompanyInput | customerUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
+  }
+
+  export type customerUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput> | customerCreateWithoutCompanyInput[] | customerUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutCompanyInput | customerCreateOrConnectWithoutCompanyInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutCompanyInput | customerUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: customerCreateManyCompanyInputEnvelope
+    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    update?: customerUpdateWithWhereUniqueWithoutCompanyInput | customerUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutCompanyInput | customerUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
+  }
+
+  export type areasCreateNestedOneWithoutCustomerInput = {
+    create?: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: areasCreateOrConnectWithoutCustomerInput
+    connect?: areasWhereUniqueInput
+  }
+
+  export type companyCreateNestedOneWithoutCustomerInput = {
+    create?: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: companyCreateOrConnectWithoutCustomerInput
+    connect?: companyWhereUniqueInput
+  }
+
+  export type productsCreateNestedOneWithoutCustomerInput = {
+    create?: XOR<productsCreateWithoutCustomerInput, productsUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: productsCreateOrConnectWithoutCustomerInput
+    connect?: productsWhereUniqueInput
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -19714,12 +20249,120 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
+  export type areasUpdateOneRequiredWithoutCustomerNestedInput = {
+    create?: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: areasCreateOrConnectWithoutCustomerInput
+    upsert?: areasUpsertWithoutCustomerInput
+    connect?: areasWhereUniqueInput
+    update?: XOR<XOR<areasUpdateToOneWithWhereWithoutCustomerInput, areasUpdateWithoutCustomerInput>, areasUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type companyUpdateOneRequiredWithoutCustomerNestedInput = {
+    create?: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: companyCreateOrConnectWithoutCustomerInput
+    upsert?: companyUpsertWithoutCustomerInput
+    connect?: companyWhereUniqueInput
+    update?: XOR<XOR<companyUpdateToOneWithWhereWithoutCustomerInput, companyUpdateWithoutCustomerInput>, companyUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type productsUpdateOneRequiredWithoutCustomerNestedInput = {
+    create?: XOR<productsCreateWithoutCustomerInput, productsUncheckedCreateWithoutCustomerInput>
+    connectOrCreate?: productsCreateOrConnectWithoutCustomerInput
+    upsert?: productsUpsertWithoutCustomerInput
+    connect?: productsWhereUniqueInput
+    update?: XOR<XOR<productsUpdateToOneWithWhereWithoutCustomerInput, productsUpdateWithoutCustomerInput>, productsUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type customerCreateNestedManyWithoutAreasInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+  }
+
+  export type customerUncheckedCreateNestedManyWithoutAreasInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+  }
+
+  export type customerUpdateManyWithoutAreasNestedInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutAreasInput | customerUpsertWithWhereUniqueWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
+    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    update?: customerUpdateWithWhereUniqueWithoutAreasInput | customerUpdateWithWhereUniqueWithoutAreasInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutAreasInput | customerUpdateManyWithWhereWithoutAreasInput[]
+    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
+  }
+
+  export type customerUncheckedUpdateManyWithoutAreasNestedInput = {
+    create?: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput> | customerCreateWithoutAreasInput[] | customerUncheckedCreateWithoutAreasInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutAreasInput | customerCreateOrConnectWithoutAreasInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutAreasInput | customerUpsertWithWhereUniqueWithoutAreasInput[]
+    createMany?: customerCreateManyAreasInputEnvelope
+    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    update?: customerUpdateWithWhereUniqueWithoutAreasInput | customerUpdateWithWhereUniqueWithoutAreasInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutAreasInput | customerUpdateManyWithWhereWithoutAreasInput[]
+    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
+  }
+
+  export type customerCreateNestedManyWithoutProductsInput = {
+    create?: XOR<customerCreateWithoutProductsInput, customerUncheckedCreateWithoutProductsInput> | customerCreateWithoutProductsInput[] | customerUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutProductsInput | customerCreateOrConnectWithoutProductsInput[]
+    createMany?: customerCreateManyProductsInputEnvelope
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+  }
+
+  export type customerUncheckedCreateNestedManyWithoutProductsInput = {
+    create?: XOR<customerCreateWithoutProductsInput, customerUncheckedCreateWithoutProductsInput> | customerCreateWithoutProductsInput[] | customerUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutProductsInput | customerCreateOrConnectWithoutProductsInput[]
+    createMany?: customerCreateManyProductsInputEnvelope
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
+  }
+
+  export type customerUpdateManyWithoutProductsNestedInput = {
+    create?: XOR<customerCreateWithoutProductsInput, customerUncheckedCreateWithoutProductsInput> | customerCreateWithoutProductsInput[] | customerUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutProductsInput | customerCreateOrConnectWithoutProductsInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutProductsInput | customerUpsertWithWhereUniqueWithoutProductsInput[]
+    createMany?: customerCreateManyProductsInputEnvelope
+    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    update?: customerUpdateWithWhereUniqueWithoutProductsInput | customerUpdateWithWhereUniqueWithoutProductsInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutProductsInput | customerUpdateManyWithWhereWithoutProductsInput[]
+    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
+  }
+
+  export type customerUncheckedUpdateManyWithoutProductsNestedInput = {
+    create?: XOR<customerCreateWithoutProductsInput, customerUncheckedCreateWithoutProductsInput> | customerCreateWithoutProductsInput[] | customerUncheckedCreateWithoutProductsInput[]
+    connectOrCreate?: customerCreateOrConnectWithoutProductsInput | customerCreateOrConnectWithoutProductsInput[]
+    upsert?: customerUpsertWithWhereUniqueWithoutProductsInput | customerUpsertWithWhereUniqueWithoutProductsInput[]
+    createMany?: customerCreateManyProductsInputEnvelope
+    set?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    disconnect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    delete?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    connect?: customerWhereUniqueInput | customerWhereUniqueInput[]
+    update?: customerUpdateWithWhereUniqueWithoutProductsInput | customerUpdateWithWhereUniqueWithoutProductsInput[]
+    updateMany?: customerUpdateManyWithWhereWithoutProductsInput | customerUpdateManyWithWhereWithoutProductsInput[]
+    deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
   }
 
   export type Enumtransactions_typeFieldUpdateOperationsInput = {
@@ -20009,6 +20652,424 @@ export namespace Prisma {
     _max?: NestedEnumtransactions_typeFilter<$PrismaModel>
   }
 
+  export type customerCreateWithoutCompanyInput = {
+    id: string
+    address: string
+    card_identition: string
+    email: string
+    gender: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+    areas: areasCreateNestedOneWithoutCustomerInput
+    products: productsCreateNestedOneWithoutCustomerInput
+  }
+
+  export type customerUncheckedCreateWithoutCompanyInput = {
+    id: string
+    address: string
+    area_id: string
+    card_identition: string
+    email: string
+    gender: string
+    product_id: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+  }
+
+  export type customerCreateOrConnectWithoutCompanyInput = {
+    where: customerWhereUniqueInput
+    create: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type customerCreateManyCompanyInputEnvelope = {
+    data: customerCreateManyCompanyInput | customerCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type customerUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: customerWhereUniqueInput
+    update: XOR<customerUpdateWithoutCompanyInput, customerUncheckedUpdateWithoutCompanyInput>
+    create: XOR<customerCreateWithoutCompanyInput, customerUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type customerUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: customerWhereUniqueInput
+    data: XOR<customerUpdateWithoutCompanyInput, customerUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type customerUpdateManyWithWhereWithoutCompanyInput = {
+    where: customerScalarWhereInput
+    data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type customerScalarWhereInput = {
+    AND?: customerScalarWhereInput | customerScalarWhereInput[]
+    OR?: customerScalarWhereInput[]
+    NOT?: customerScalarWhereInput | customerScalarWhereInput[]
+    id?: StringFilter<"customer"> | string
+    address?: StringFilter<"customer"> | string
+    area_id?: StringFilter<"customer"> | string
+    card_identition?: StringFilter<"customer"> | string
+    company_id?: StringFilter<"customer"> | string
+    email?: StringFilter<"customer"> | string
+    gender?: StringFilter<"customer"> | string
+    product_id?: StringFilter<"customer"> | string
+    ip_static?: StringFilter<"customer"> | string
+    job?: StringFilter<"customer"> | string
+    latitude?: FloatFilter<"customer"> | number
+    longitude?: FloatFilter<"customer"> | number
+    mac_address?: StringFilter<"customer"> | string
+    name?: StringFilter<"customer"> | string
+    no_identition?: IntFilter<"customer"> | number
+    password?: StringFilter<"customer"> | string
+    phone?: StringFilter<"customer"> | string
+    type_of_service?: StringFilter<"customer"> | string
+    createdAt?: DateTimeFilter<"customer"> | Date | string
+    updatedAt?: DateTimeFilter<"customer"> | Date | string
+    installation_date?: DateTimeFilter<"customer"> | Date | string
+    next_payment_date?: DateTimeNullableFilter<"customer"> | Date | string | null
+  }
+
+  export type areasCreateWithoutCustomerInput = {
+    id: string
+    name_city: string
+    name_subdistrict: string
+    name_village: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type areasUncheckedCreateWithoutCustomerInput = {
+    id: string
+    name_city: string
+    name_subdistrict: string
+    name_village: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type areasCreateOrConnectWithoutCustomerInput = {
+    where: areasWhereUniqueInput
+    create: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type companyCreateWithoutCustomerInput = {
+    id: string
+    name: string
+    url: string
+    email: string
+    phone: string
+    logo_url?: string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+    description?: string | null
+  }
+
+  export type companyUncheckedCreateWithoutCustomerInput = {
+    id: string
+    name: string
+    url: string
+    email: string
+    phone: string
+    logo_url?: string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+    description?: string | null
+  }
+
+  export type companyCreateOrConnectWithoutCustomerInput = {
+    where: companyWhereUniqueInput
+    create: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type productsCreateWithoutCustomerInput = {
+    id: string
+    name: string
+    price: bigint | number
+    description: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type productsUncheckedCreateWithoutCustomerInput = {
+    id: string
+    name: string
+    price: bigint | number
+    description: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type productsCreateOrConnectWithoutCustomerInput = {
+    where: productsWhereUniqueInput
+    create: XOR<productsCreateWithoutCustomerInput, productsUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type areasUpsertWithoutCustomerInput = {
+    update: XOR<areasUpdateWithoutCustomerInput, areasUncheckedUpdateWithoutCustomerInput>
+    create: XOR<areasCreateWithoutCustomerInput, areasUncheckedCreateWithoutCustomerInput>
+    where?: areasWhereInput
+  }
+
+  export type areasUpdateToOneWithWhereWithoutCustomerInput = {
+    where?: areasWhereInput
+    data: XOR<areasUpdateWithoutCustomerInput, areasUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type areasUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name_city?: StringFieldUpdateOperationsInput | string
+    name_subdistrict?: StringFieldUpdateOperationsInput | string
+    name_village?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type areasUncheckedUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name_city?: StringFieldUpdateOperationsInput | string
+    name_subdistrict?: StringFieldUpdateOperationsInput | string
+    name_village?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type companyUpsertWithoutCustomerInput = {
+    update: XOR<companyUpdateWithoutCustomerInput, companyUncheckedUpdateWithoutCustomerInput>
+    create: XOR<companyCreateWithoutCustomerInput, companyUncheckedCreateWithoutCustomerInput>
+    where?: companyWhereInput
+  }
+
+  export type companyUpdateToOneWithWhereWithoutCustomerInput = {
+    where?: companyWhereInput
+    data: XOR<companyUpdateWithoutCustomerInput, companyUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type companyUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type companyUncheckedUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type productsUpsertWithoutCustomerInput = {
+    update: XOR<productsUpdateWithoutCustomerInput, productsUncheckedUpdateWithoutCustomerInput>
+    create: XOR<productsCreateWithoutCustomerInput, productsUncheckedCreateWithoutCustomerInput>
+    where?: productsWhereInput
+  }
+
+  export type productsUpdateToOneWithWhereWithoutCustomerInput = {
+    where?: productsWhereInput
+    data: XOR<productsUpdateWithoutCustomerInput, productsUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type productsUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: BigIntFieldUpdateOperationsInput | bigint | number
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type productsUncheckedUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: BigIntFieldUpdateOperationsInput | bigint | number
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type customerCreateWithoutAreasInput = {
+    id: string
+    address: string
+    card_identition: string
+    email: string
+    gender: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+    company: companyCreateNestedOneWithoutCustomerInput
+    products: productsCreateNestedOneWithoutCustomerInput
+  }
+
+  export type customerUncheckedCreateWithoutAreasInput = {
+    id: string
+    address: string
+    card_identition: string
+    company_id: string
+    email: string
+    gender: string
+    product_id: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+  }
+
+  export type customerCreateOrConnectWithoutAreasInput = {
+    where: customerWhereUniqueInput
+    create: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput>
+  }
+
+  export type customerCreateManyAreasInputEnvelope = {
+    data: customerCreateManyAreasInput | customerCreateManyAreasInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type customerUpsertWithWhereUniqueWithoutAreasInput = {
+    where: customerWhereUniqueInput
+    update: XOR<customerUpdateWithoutAreasInput, customerUncheckedUpdateWithoutAreasInput>
+    create: XOR<customerCreateWithoutAreasInput, customerUncheckedCreateWithoutAreasInput>
+  }
+
+  export type customerUpdateWithWhereUniqueWithoutAreasInput = {
+    where: customerWhereUniqueInput
+    data: XOR<customerUpdateWithoutAreasInput, customerUncheckedUpdateWithoutAreasInput>
+  }
+
+  export type customerUpdateManyWithWhereWithoutAreasInput = {
+    where: customerScalarWhereInput
+    data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutAreasInput>
+  }
+
+  export type customerCreateWithoutProductsInput = {
+    id: string
+    address: string
+    card_identition: string
+    email: string
+    gender: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+    areas: areasCreateNestedOneWithoutCustomerInput
+    company: companyCreateNestedOneWithoutCustomerInput
+  }
+
+  export type customerUncheckedCreateWithoutProductsInput = {
+    id: string
+    address: string
+    area_id: string
+    card_identition: string
+    company_id: string
+    email: string
+    gender: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+  }
+
+  export type customerCreateOrConnectWithoutProductsInput = {
+    where: customerWhereUniqueInput
+    create: XOR<customerCreateWithoutProductsInput, customerUncheckedCreateWithoutProductsInput>
+  }
+
+  export type customerCreateManyProductsInputEnvelope = {
+    data: customerCreateManyProductsInput | customerCreateManyProductsInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type customerUpsertWithWhereUniqueWithoutProductsInput = {
+    where: customerWhereUniqueInput
+    update: XOR<customerUpdateWithoutProductsInput, customerUncheckedUpdateWithoutProductsInput>
+    create: XOR<customerCreateWithoutProductsInput, customerUncheckedCreateWithoutProductsInput>
+  }
+
+  export type customerUpdateWithWhereUniqueWithoutProductsInput = {
+    where: customerWhereUniqueInput
+    data: XOR<customerUpdateWithoutProductsInput, customerUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type customerUpdateManyWithWhereWithoutProductsInput = {
+    where: customerScalarWhereInput
+    data: XOR<customerUpdateManyMutationInput, customerUncheckedUpdateManyWithoutProductsInput>
+  }
+
   export type rolesCreateWithoutUsersInput = {
     id: string
     name: string
@@ -20055,26 +21116,26 @@ export namespace Prisma {
 
   export type usersCreateWithoutRoleInput = {
     id: string
-    name: string
     email: string
-    phone?: string | null
-    logo_url?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
+    logo_url?: string | null
+    phone?: string | null
   }
 
   export type usersUncheckedCreateWithoutRoleInput = {
     id: string
-    name: string
     email: string
-    phone?: string | null
-    logo_url?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
+    logo_url?: string | null
+    phone?: string | null
   }
 
   export type usersCreateOrConnectWithoutRoleInput = {
@@ -20108,63 +21169,351 @@ export namespace Prisma {
     OR?: usersScalarWhereInput[]
     NOT?: usersScalarWhereInput | usersScalarWhereInput[]
     id?: StringFilter<"users"> | string
-    name?: StringFilter<"users"> | string
     email?: StringFilter<"users"> | string
-    phone?: StringNullableFilter<"users"> | string | null
-    logo_url?: StringNullableFilter<"users"> | string | null
+    name?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     createdAt?: DateTimeFilter<"users"> | Date | string
     updatedAt?: DateTimeNullableFilter<"users"> | Date | string | null
     token?: StringNullableFilter<"users"> | string | null
     role_id?: StringNullableFilter<"users"> | string | null
+    logo_url?: StringNullableFilter<"users"> | string | null
+    phone?: StringNullableFilter<"users"> | string | null
+  }
+
+  export type customerCreateManyCompanyInput = {
+    id: string
+    address: string
+    area_id: string
+    card_identition: string
+    email: string
+    gender: string
+    product_id: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+  }
+
+  export type customerUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
+    products?: productsUpdateOneRequiredWithoutCustomerNestedInput
+  }
+
+  export type customerUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type customerUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type customerCreateManyAreasInput = {
+    id: string
+    address: string
+    card_identition: string
+    company_id: string
+    email: string
+    gender: string
+    product_id: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+  }
+
+  export type customerUpdateWithoutAreasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    company?: companyUpdateOneRequiredWithoutCustomerNestedInput
+    products?: productsUpdateOneRequiredWithoutCustomerNestedInput
+  }
+
+  export type customerUncheckedUpdateWithoutAreasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type customerUncheckedUpdateManyWithoutAreasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type customerCreateManyProductsInput = {
+    id: string
+    address: string
+    area_id: string
+    card_identition: string
+    company_id: string
+    email: string
+    gender: string
+    ip_static: string
+    job: string
+    latitude: number
+    longitude: number
+    mac_address: string
+    name: string
+    no_identition: number
+    password: string
+    phone: string
+    type_of_service: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+    installation_date: Date | string
+    next_payment_date?: Date | string | null
+  }
+
+  export type customerUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    areas?: areasUpdateOneRequiredWithoutCustomerNestedInput
+    company?: companyUpdateOneRequiredWithoutCustomerNestedInput
+  }
+
+  export type customerUncheckedUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type customerUncheckedUpdateManyWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    area_id?: StringFieldUpdateOperationsInput | string
+    card_identition?: StringFieldUpdateOperationsInput | string
+    company_id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
+    ip_static?: StringFieldUpdateOperationsInput | string
+    job?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    mac_address?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    no_identition?: IntFieldUpdateOperationsInput | number
+    password?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    type_of_service?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    installation_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    next_payment_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type usersCreateManyRoleInput = {
     id: string
-    name: string
     email: string
-    phone?: string | null
-    logo_url?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     token?: string | null
+    logo_url?: string | null
+    phone?: string | null
   }
 
   export type usersUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateManyWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     token?: NullableStringFieldUpdateOperationsInput | string | null
+    logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

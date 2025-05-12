@@ -28,32 +28,33 @@ model archive_installation {
 
 model assets {
   id            String   @id
-  type          String
-  brand         String
-  model         String
-  serial_number String
-  mac_address   String
-  date          String
-  site          String
-  quantity      Float
-  status        String
-  price         Float
-  description   String
-  status_in_out String
   createdAt     DateTime @default(now())
   updatedAt     DateTime
+  brand         String
+  date          String
+  description   String
+  mac_address   String
+  model         String
+  price         Float
+  quantity      Float
+  serial_number String
+  site          String
+  status        String
+  status_in_out String
+  type          String
 }
 
 model company {
-  id          String   @id
+  id          String     @id
   name        String
   url         String
   email       String
   phone       String
   logo_url    String?
-  createdAt   DateTime @default(now())
+  createdAt   DateTime   @default(now())
   updatedAt   DateTime
-  description String?  @db.Text
+  description String?    @db.Text
+  customer    customer[]
 }
 
 model customer {
@@ -64,7 +65,7 @@ model customer {
   company_id        String
   email             String    @unique
   gender            String
-  internet_package  String
+  product_id        String
   ip_static         String
   job               String
   latitude          Float
@@ -79,6 +80,13 @@ model customer {
   updatedAt         DateTime
   installation_date DateTime  @db.Date
   next_payment_date DateTime? @db.Date
+  areas             areas     @relation(fields: [area_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
+  company           company   @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
+  products          products  @relation(fields: [product_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_3")
+
+  @@index([area_id], map: "area_id")
+  @@index([company_id], map: "company_id")
+  @@index([product_id], map: "product_id")
 }
 
 model device {
@@ -89,10 +97,13 @@ model device {
 }
 
 model areas {
-  id        String   @id
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime
+  id               String     @id
+  name_city        String
+  name_subdistrict String
+  name_village     String
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime
+  customer         customer[]
 }
 
 model logs {
@@ -106,12 +117,13 @@ model logs {
 }
 
 model products {
-  id          String   @id
+  id          String     @id
   name        String
   price       BigInt
   description String
-  createdAt   DateTime @default(now())
+  createdAt   DateTime   @default(now())
   updatedAt   DateTime
+  customer    customer[]
 }
 
 model report_assets {
@@ -163,15 +175,15 @@ model transfers {
 
 model users {
   id        String    @id
-  name      String
   email     String    @unique
-  phone     String?
-  logo_url  String?
+  name      String
   password  String
   createdAt DateTime  @default(now())
   updatedAt DateTime?
   token     String?   @db.Text
   role_id   String?
+  logo_url  String?
+  phone     String?
   role      roles?    @relation(fields: [role_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "users_ibfk_1")
 
   @@index([role_id], map: "role_id")

@@ -47,14 +47,8 @@ func (s AdminAreaServiceStruct) GetByIdAdminAreaService(request IdAdminAreaReque
 }
 
 func (s AdminAreaServiceStruct) CreateAdminAreaService(request CreateAdminAreaRequest) (entities.Areas, error) {
-	area := entities.Areas{}
-	err := copier.Copy(&area, &request)
 
-	if err != nil {
-		return area, err
-	}
-
-	area, err = s.repository.CreateAdminAreaRepository(area)
+	area, err := s.repository.CreateAdminAreaRepository(request)
 
 	if err != nil {
 		return area, err

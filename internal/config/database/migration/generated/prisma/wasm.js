@@ -138,20 +138,20 @@ exports.Prisma.Archive_installationScalarFieldEnum = {
 
 exports.Prisma.AssetsScalarFieldEnum = {
   id: 'id',
-  type: 'type',
-  brand: 'brand',
-  model: 'model',
-  serial_number: 'serial_number',
-  mac_address: 'mac_address',
-  date: 'date',
-  site: 'site',
-  quantity: 'quantity',
-  status: 'status',
-  price: 'price',
-  description: 'description',
-  status_in_out: 'status_in_out',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  brand: 'brand',
+  date: 'date',
+  description: 'description',
+  mac_address: 'mac_address',
+  model: 'model',
+  price: 'price',
+  quantity: 'quantity',
+  serial_number: 'serial_number',
+  site: 'site',
+  status: 'status',
+  status_in_out: 'status_in_out',
+  type: 'type'
 };
 
 exports.Prisma.CompanyScalarFieldEnum = {
@@ -174,7 +174,7 @@ exports.Prisma.CustomerScalarFieldEnum = {
   company_id: 'company_id',
   email: 'email',
   gender: 'gender',
-  internet_package: 'internet_package',
+  product_id: 'product_id',
   ip_static: 'ip_static',
   job: 'job',
   latitude: 'latitude',
@@ -200,7 +200,9 @@ exports.Prisma.DeviceScalarFieldEnum = {
 
 exports.Prisma.AreasScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  name_city: 'name_city',
+  name_subdistrict: 'name_subdistrict',
+  name_village: 'name_village',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -264,15 +266,15 @@ exports.Prisma.TransfersScalarFieldEnum = {
 
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
-  name: 'name',
   email: 'email',
-  phone: 'phone',
-  logo_url: 'logo_url',
+  name: 'name',
   password: 'password',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   token: 'token',
-  role_id: 'role_id'
+  role_id: 'role_id',
+  logo_url: 'logo_url',
+  phone: 'phone'
 };
 
 exports.Prisma.RolesScalarFieldEnum = {
@@ -305,16 +307,16 @@ exports.Prisma.archive_installationOrderByRelevanceFieldEnum = {
 
 exports.Prisma.assetsOrderByRelevanceFieldEnum = {
   id: 'id',
-  type: 'type',
   brand: 'brand',
+  date: 'date',
+  description: 'description',
+  mac_address: 'mac_address',
   model: 'model',
   serial_number: 'serial_number',
-  mac_address: 'mac_address',
-  date: 'date',
   site: 'site',
   status: 'status',
-  description: 'description',
-  status_in_out: 'status_in_out'
+  status_in_out: 'status_in_out',
+  type: 'type'
 };
 
 exports.Prisma.companyOrderByRelevanceFieldEnum = {
@@ -335,7 +337,7 @@ exports.Prisma.customerOrderByRelevanceFieldEnum = {
   company_id: 'company_id',
   email: 'email',
   gender: 'gender',
-  internet_package: 'internet_package',
+  product_id: 'product_id',
   ip_static: 'ip_static',
   job: 'job',
   mac_address: 'mac_address',
@@ -352,7 +354,9 @@ exports.Prisma.deviceOrderByRelevanceFieldEnum = {
 
 exports.Prisma.areasOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name'
+  name_city: 'name_city',
+  name_subdistrict: 'name_subdistrict',
+  name_village: 'name_village'
 };
 
 exports.Prisma.logsOrderByRelevanceFieldEnum = {
@@ -393,13 +397,13 @@ exports.Prisma.transfersOrderByRelevanceFieldEnum = {
 
 exports.Prisma.usersOrderByRelevanceFieldEnum = {
   id: 'id',
-  name: 'name',
   email: 'email',
-  phone: 'phone',
-  logo_url: 'logo_url',
+  name: 'name',
   password: 'password',
   token: 'token',
-  role_id: 'role_id'
+  role_id: 'role_id',
+  logo_url: 'logo_url',
+  phone: 'phone'
 };
 
 exports.Prisma.rolesOrderByRelevanceFieldEnum = {
