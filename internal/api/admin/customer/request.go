@@ -16,7 +16,7 @@ type CreateAdminCustomerRequest struct {
 	ProductID      string  `json:"product_id" validate:"required"`
 	IpStatic       string  `json:"ip_static" validate:"required"`
 	MacAddress     string  `json:"mac_address" validate:"required"`
-	Job            string  `json:"job" validate:"required"`
+	Job            string  `json:"job"`
 }
 
 type IdAdminCustomerRequest struct {

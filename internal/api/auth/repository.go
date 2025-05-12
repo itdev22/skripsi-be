@@ -22,7 +22,7 @@ func (db *AuthRepositoryStruct) GetEmailAuthRepository(LoginRequest LoginRequest
 	// Implement the logic to get a user by ID from the database
 
 	user := &entities.User{}
-	if err := db.DB.First(user, "email = ?", LoginRequest.Email).Error; err != nil {
+	if err := db.DB.Preload("Role").First(user, "email = ?", LoginRequest.Email).Error; err != nil {
 		return nil, err
 	}
 
