@@ -17,11 +17,11 @@ func NewAdminAssetHandler(service AdminAssetServiceInterface) *AdminAssetHandler
 }
 
 func (h AdminAssetHandlerStruct) GetAllAdminAssetHandler(c *fiber.Ctx) error {
-	roles, err := h.service.GetAllAdminAssetService()
+	assets, err := h.service.GetAllAdminAssetService()
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", roles)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", assets)
 }
 
 func (h AdminAssetHandlerStruct) GetByIdAdminAssetHandler(c *fiber.Ctx) error {
@@ -33,12 +33,12 @@ func (h AdminAssetHandlerStruct) GetByIdAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
 	}
 
-	role, err := h.service.GetByIdAdminAssetService(request)
+	asset, err := h.service.GetByIdAdminAssetService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", role)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
 }
 
 func (h AdminAssetHandlerStruct) CreateAdminAssetHandler(c *fiber.Ctx) error {
@@ -53,12 +53,12 @@ func (h AdminAssetHandlerStruct) CreateAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
 	}
 
-	role, err := h.service.CreateAdminAssetService(request)
+	asset, err := h.service.CreateAdminAssetService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", role)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
 }
 
 func (h AdminAssetHandlerStruct) UpdateAdminAssetHandler(c *fiber.Ctx) error {
@@ -73,12 +73,12 @@ func (h AdminAssetHandlerStruct) UpdateAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
 	}
 
-	role, err := h.service.UpdateAdminAssetService(request)
+	asset, err := h.service.UpdateAdminAssetService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", role)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
 }
 
 func (h AdminAssetHandlerStruct) DeleteAdminAssetHandler(c *fiber.Ctx) error {
@@ -90,10 +90,10 @@ func (h AdminAssetHandlerStruct) DeleteAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
 	}
 
-	role, err := h.service.DeleteAdminAssetService(request)
+	asset, err := h.service.DeleteAdminAssetService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", role)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
 }

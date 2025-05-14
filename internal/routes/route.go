@@ -7,8 +7,10 @@ import (
 	"skripsi-be/internal/api/admin/customer"
 	"skripsi-be/internal/api/admin/product"
 	"skripsi-be/internal/api/admin/role"
+	"skripsi-be/internal/api/admin/transaction"
 	usermanagement "skripsi-be/internal/api/admin/user-management"
 	authapi "skripsi-be/internal/api/auth"
+	"skripsi-be/internal/api/webhook/moota"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -27,4 +29,9 @@ func RouteFiber(app *fiber.App) {
 	area.AdminAreaRoute(admin.Group("/area"))
 	customer.AdminCustomerRoute(admin.Group("/customer"))
 	asset.AdminAssetRoute(admin.Group("/asset"))
+	transaction.AdminTrasactionRoute(admin.Group("/transaction"))
+
+	webhook := api.Group("/webhook")
+	moota.WebhookMootaRoute(webhook.Group("/moota"))
+
 }

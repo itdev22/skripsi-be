@@ -16,13 +16,6 @@ const (
 	RoleFinance    UserRole = "FINANCE"
 )
 
-type TransactionsType string
-
-const (
-	TransactionDebit  TransactionsType = "DEBIT"
-	TransactionCredit TransactionsType = "CREDIT"
-)
-
 // Accounts model
 type Accounts struct {
 	ID        string      `json:"id" gorm:"primaryKey"`
@@ -220,15 +213,49 @@ type ReportCash struct {
 }
 
 // Transactions model
-type Transactions struct {
-	ID          string           `json:"id" gorm:"primaryKey"`
-	AccountID   string           `json:"account_id" gorm:"index:transactions_account_id_fkey"`
-	Date        time.Time        `json:"date"`
-	Description string           `json:"description"`
-	Amount      int64            `json:"amount"` // BigInt mapped to int64
-	CreatedAt   time.Time        `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt   time.Time        `json:"updatedAt"`
-	Type        TransactionsType `json:"type"`
+// TransactionsTypeCash represents the type of cash transaction
+type TransactionsTypeCash string
+
+// Constants for TransactionsTypeCash
+const (
+	TransactionsTypeCashInternet TransactionsTypeCash = "internet"
+	TransactionsTypeCashCashFlow TransactionsTypeCash = "cash_flow"
+	TransactionsTypeCashAsset    TransactionsTypeCash = "asset"
+)
+
+// TransactionsTypeInOut represents the direction of the transaction
+type TransactionsTypeInOut string
+
+// Constants for TransactionsTypeInOut
+const (
+	TransactionsTypeInOutIn  TransactionsTypeInOut = "in"
+	TransactionsTypeInOutOut TransactionsTypeInOut = "out"
+)
+
+// TransactionsType represents the general transaction type
+type TransactionsType string
+
+type Transaction struct {
+	ID          string                `json:"id" gorm:"column:id;primaryKey;type:varchar"`
+	AccountID   string                `json:"account_id" gorm:"column:account_id;index:transactions_account_id_fkey;type:varchar"`
+	TypeCash    TransactionsTypeCash  `json:"type_cash" gorm:"column:type_cash;type:varchar"`
+	TypeInOut   TransactionsTypeInOut `json:"type_in_out" gorm:"column:type_in_out;type:varchar"`
+	Date        time.Time             `json:"date" gorm:"column:date;type:datetime"`
+	Description string                `json:"description" gorm:"column:description;type:varchar"`
+	Amount      int64                 `json:"amount" gorm:"column:amount;type:bigint"`
+	CreatedAt   time.Time             `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
+	UpdatedAt   time.Time             `json:"updatedAt" gorm:"column:updatedAt;type:datetime"`
+	Type        TransactionsType      `json:"type" gorm:"column:type;type:varchar"`
+}
+
+func (u *Transaction) TableName() string {
+	return "transactions"
+}
+func (u *Transaction) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
 }
 
 // Transfers model

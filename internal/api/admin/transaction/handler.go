@@ -1,5 +1,13 @@
 package transaction
 
+import (
+	"skripsi-be/internal/api/common/validation"
+	"skripsi-be/internal/helpers"
+	"strings"
+
+	"github.com/gofiber/fiber/v2"
+)
+
 type AdminTransactionHandlerStruct struct {
 	service AdminTransactionServiceStruct
 }
@@ -8,22 +16,76 @@ func NewAdminTransactionHandler(service AdminTransactionServiceStruct) AdminTran
 	return AdminTransactionHandlerStruct{service}
 }
 
-func (h AdminTransactionHandlerStruct) GetAllAdminTransactionHandlerStruct() {
+func (h AdminTransactionHandlerStruct) GetAllAdminTransactionHandlerStruct(c *fiber.Ctx) error {
+	request := SearchAdminTransactionRequest{}
+	request.TypeCash = c.Query("type_cash")
+	transactions, err := h.service.GetAllAdminTransactionService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", transactions)
+}
+
+func (h AdminTransactionHandlerStruct) GetByIdAdminTransactionHandlerStruct(c *fiber.Ctx) error {
+	request := IdAdminTransactionRequest{}
+	request.Id = c.Params("id")
+	transaction, err := h.service.GetByIdAdminTransactionService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", transaction)
 
 }
 
-func (h AdminTransactionHandlerStruct) GetByIdAdminTransactionHandlerStruct() {
+func (h AdminTransactionHandlerStruct) CreateAdminTransactionHandlerStruct(c *fiber.Ctx) error {
+	request := CreateAdminTransactionRequest{}
 
+	errValidatio := validation.ValidationRequest(&request)
+	if errValidatio != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidatio, ", "), "")
+	}
+	transaction, err := h.service.CreateAdminTransactionService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", transaction)
 }
 
-func (h AdminTransactionHandlerStruct) CreateAdminTransactionHandlerStruct() {
+func (h AdminTransactionHandlerStruct) UpdateAdminTransactionHandlerStruct(c *fiber.Ctx) error {
+	request := UpdateAdminTransactionRequest{}
 
+	c.BodyParser(&request)
+	request.Id = c.Params("id")
+
+	errValidatio := validation.ValidationRequest(&request)
+	if errValidatio != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidatio, ", "), "")
+	}
+	transaction, err := h.service.UpdateAdminTransactionService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", transaction)
 }
 
-func (h AdminTransactionHandlerStruct) UpdateAdminTransactionHandlerStruct() {
+func (h AdminTransactionHandlerStruct) DeleteAdminTransactionHandlerStruct(c *fiber.Ctx) error {
+	request := IdAdminTransactionRequest{}
 
-}
+	request.Id = c.Params("id")
 
-func (h AdminTransactionHandlerStruct) DeleteAdminTransactionHandlerStruct() {
+	errValidatio := validation.ValidationRequest(&request)
+	if errValidatio != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidatio, ", "), "")
+	}
 
+	transaction, err := h.service.DeleteAdminTransactionService(request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", transaction)
 }

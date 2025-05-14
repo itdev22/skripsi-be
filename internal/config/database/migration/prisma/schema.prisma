@@ -98,7 +98,7 @@ model device {
 
 model areas {
   id               String     @id
-    name_city        String
+  name_city        String
   name_subdistrict String
   name_village     String
   createdAt        DateTime   @default(now())
@@ -146,12 +146,14 @@ model report_cash {
 }
 
 model transactions {
-  id          String            @id
+  id          String                   @id
   account_id  String
+  type_cash   transactions_type_cash
+  type_in_out transactions_type_in_out
   date        DateTime
   description String
   amount      BigInt
-  createdAt   DateTime          @default(now())
+  createdAt   DateTime                 @default(now())
   updatedAt   DateTime
   type        transactions_type
 
@@ -200,4 +202,15 @@ model roles {
 enum transactions_type {
   DEBIT
   CREDIT
+}
+
+enum transactions_type_cash {
+  internet
+  cash_flow
+  asset
+}
+
+enum transactions_type_in_out {
+  in
+  out
 }
