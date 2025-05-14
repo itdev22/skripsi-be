@@ -9,10 +9,10 @@ import (
 )
 
 type AdminTransactionHandlerStruct struct {
-	service AdminTransactionServiceStruct
+	service AdminTransactionServiceInterface
 }
 
-func NewAdminTransactionHandler(service AdminTransactionServiceStruct) AdminTransactionHandlerStruct {
+func NewAdminTransactionHandler(service AdminTransactionServiceInterface) AdminTransactionHandlerStruct {
 	return AdminTransactionHandlerStruct{service}
 }
 

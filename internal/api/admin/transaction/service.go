@@ -1,12 +1,15 @@
 package transaction
 
 import (
-	"log"
 	"skripsi-be/internal/models/entities"
 )
 
 type AdminTransactionServiceInterface interface {
 	GetAllAdminTransactionService(request SearchAdminTransactionRequest) ([]entities.Transaction, error)
+	GetByIdAdminTransactionService(request IdAdminTransactionRequest) (entities.Transaction, error)
+	CreateAdminTransactionService(request CreateAdminTransactionRequest) (entities.Transaction, error)
+	UpdateAdminTransactionService(request UpdateAdminTransactionRequest) (entities.Transaction, error)
+	DeleteAdminTransactionService(request IdAdminTransactionRequest) (entities.Transaction, error)
 }
 
 type AdminTransactionServiceStruct struct {
@@ -37,7 +40,6 @@ func (s AdminTransactionServiceStruct) GetByIdAdminTransactionService(request Id
 
 func (s AdminTransactionServiceStruct) CreateAdminTransactionService(request CreateAdminTransactionRequest) (entities.Transaction, error) {
 	transaction, err := s.repository.CreateAdminTransactionRepository(request)
-	log.Println(request.Date)
 
 	if err != nil {
 		return transaction, err
