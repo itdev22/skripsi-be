@@ -1,7 +1,6 @@
 package transaction
 
 import (
-	"log"
 	"skripsi-be/internal/models/entities"
 
 	"github.com/jinzhu/copier"
@@ -27,8 +26,11 @@ func (r AdminTransactionRepositoryStruct) FindAdminTransactionRepository(request
 	transactions := []entities.Transaction{}
 	tx := r.db
 	if request.TypeCash != "" && request.TypeCash != "all" {
-		log.Println(request.TypeCash)
 		tx = tx.Where("type_cash = ?", request.TypeCash)
+	}
+
+	if request.Type != "" && request.Type != "all" {
+		tx = tx.Where("type = ?", request.Type)
 	}
 
 	tx = tx.Find(&transactions)

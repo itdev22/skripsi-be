@@ -21,4 +21,5 @@ type UpdateAdminTransactionRequest struct {
 
 type SearchAdminTransactionRequest struct {
 	TypeCash string `json:"type_cash"`
+	Type     string `json:"type"`
 }
