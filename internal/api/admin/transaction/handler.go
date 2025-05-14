@@ -41,10 +41,11 @@ func (h AdminTransactionHandlerStruct) GetByIdAdminTransactionHandlerStruct(c *f
 
 func (h AdminTransactionHandlerStruct) CreateAdminTransactionHandlerStruct(c *fiber.Ctx) error {
 	request := CreateAdminTransactionRequest{}
+	c.BodyParser(&request)
 
-	errValidatio := validation.ValidationRequest(&request)
-	if errValidatio != nil {
-		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidatio, ", "), "")
+	errValidation := validation.ValidationRequest(&request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
 	}
 	transaction, err := h.service.CreateAdminTransactionService(request)
 	if err != nil {
@@ -60,9 +61,9 @@ func (h AdminTransactionHandlerStruct) UpdateAdminTransactionHandlerStruct(c *fi
 	c.BodyParser(&request)
 	request.Id = c.Params("id")
 
-	errValidatio := validation.ValidationRequest(&request)
-	if errValidatio != nil {
-		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidatio, ", "), "")
+	errValidation := validation.ValidationRequest(&request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
 	}
 	transaction, err := h.service.UpdateAdminTransactionService(request)
 	if err != nil {
@@ -77,9 +78,9 @@ func (h AdminTransactionHandlerStruct) DeleteAdminTransactionHandlerStruct(c *fi
 
 	request.Id = c.Params("id")
 
-	errValidatio := validation.ValidationRequest(&request)
-	if errValidatio != nil {
-		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidatio, ", "), "")
+	errValidation := validation.ValidationRequest(&request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
 	}
 
 	transaction, err := h.service.DeleteAdminTransactionService(request)

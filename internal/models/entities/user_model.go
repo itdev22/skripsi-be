@@ -240,7 +240,7 @@ type Transaction struct {
 	AccountID   string                `json:"account_id" gorm:"column:account_id;index:transactions_account_id_fkey;type:varchar"`
 	TypeCash    TransactionsTypeCash  `json:"type_cash" gorm:"column:type_cash;type:varchar"`
 	TypeInOut   TransactionsTypeInOut `json:"type_in_out" gorm:"column:type_in_out;type:varchar"`
-	Date        time.Time             `json:"date" gorm:"column:date;type:datetime"`
+	Date        string                `json:"date" gorm:"column:date;type:datetime"`
 	Description string                `json:"description" gorm:"column:description;type:varchar"`
 	Amount      int64                 `json:"amount" gorm:"column:amount;type:bigint"`
 	CreatedAt   time.Time             `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
