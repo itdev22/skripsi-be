@@ -18,3 +18,7 @@ type UpdateAdminUserManagementRequest struct {
 	IdAdminUserManagementRequest
 	CreateAdminUserManagementRequest
 }
+
+type SearchAdminUserManagementRequest struct {
+	Role string `json:"role"`
+}

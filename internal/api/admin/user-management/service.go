@@ -5,7 +5,7 @@ import (
 )
 
 type AdminUserManagementServiceInterface interface {
-	GetAllAdminUserManagementService() (*[]dto.UserDTO, error)
+	GetAllAdminUserManagementService(request SearchAdminUserManagementRequest) (*[]dto.UserDTO, error)
 	GetByIdAdminUserManagementService(request IdAdminUserManagementRequest) (dto.UserDTO, error)
 	CreateAdminUserManagementService(request CreateAdminUserManagementRequest) (dto.UserDTO, error)
 	UpdateAdminUserManagementService(request UpdateAdminUserManagementRequest) (dto.UserDTO, error)
@@ -20,8 +20,8 @@ func NewAdminUserManagementService(repository *AdminUserManagementRepositoryStru
 	return &AdminUserManagementServiceStruct{repository}
 }
 
-func (s *AdminUserManagementServiceStruct) GetAllAdminUserManagementService() (*[]dto.UserDTO, error) {
-	Users, err := s.repository.FindAdminUserManagementRepository()
+func (s *AdminUserManagementServiceStruct) GetAllAdminUserManagementService(request SearchAdminUserManagementRequest) (*[]dto.UserDTO, error) {
+	Users, err := s.repository.FindAdminUserManagementRepository(request)
 	if err != nil {
 		return nil, err
 	}

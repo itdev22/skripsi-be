@@ -26,7 +26,7 @@ type Accounts struct {
 }
 
 // ArchiveInstallation model
-type ArchiveInstallation struct {
+type CustomerInstallation struct {
 	ID         string    `json:"id" gorm:"primaryKey"`
 	Price      float64   `json:"price"`
 	CreatedAt  time.Time `json:"createdAt" gorm:"default:current_timestamp"`

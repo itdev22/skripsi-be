@@ -12,7 +12,7 @@ import (
 )
 
 type AdminUserManagementRepositoryInterface interface {
-	FindAdminUserManagementRepository() (*[]dto.UserDTO, error)
+	FindAdminUserManagementRepository(request SearchAdminUserManagementRequest) (*[]dto.UserDTO, error)
 	FindByIdAdminUserManagementRepository(request IdAdminUserManagementRequest) (dto.UserDTO, error)
 	CreateAdminUserManagementRepository(request CreateAdminUserManagementRequest) (dto.UserDTO, error)
 	UpdateAdminUserManagementRepository(request UpdateAdminUserManagementRequest) (dto.UserDTO, error)
@@ -26,14 +26,23 @@ type AdminUserManagementRepositoryStruct struct {
 func NewAdminUserManagementRepository(db *gorm.DB) *AdminUserManagementRepositoryStruct {
 	return &AdminUserManagementRepositoryStruct{db}
 }
-func (r *AdminUserManagementRepositoryStruct) FindAdminUserManagementRepository() (*[]dto.UserDTO, error) {
+func (r *AdminUserManagementRepositoryStruct) FindAdminUserManagementRepository(request SearchAdminUserManagementRequest) (*[]dto.UserDTO, error) {
 	// Simulate a database call
 	users := []entities.User{}
-	r.db.Preload("Role").Find(&users)
+
+	tx := r.db.Preload("Role")
+	if request.Role != "" && request.Role != "ALL" {
+		tx = tx.Joins("JOIN roles ON roles.id = users.role_id").
+			Where("roles.name = ?", request.Role)
+	}
+	tx = tx.Find(&users)
 
 	// Mapping to dto.User
 	userDTOs := &[]dto.UserDTO{}
 	copier.Copy(&userDTOs, &users)
+	if tx.Error != nil {
+		return userDTOs, tx.Error
+	}
 
 	return userDTOs, nil
 }

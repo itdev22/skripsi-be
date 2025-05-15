@@ -18,7 +18,9 @@ func NewAdminUserManagementHandler(service *AdminUserManagementServiceStruct) *A
 
 func (h *AdminUserManagementHandlerStruct) GetAllAdminUserManagementHandler(c *fiber.Ctx) error {
 	// Implement the logic to get user management details
-	User, err := h.service.GetAllAdminUserManagementService()
+	request := SearchAdminUserManagementRequest{}
+	request.Role = c.Query("role")
+	User, err := h.service.GetAllAdminUserManagementService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "User Not Found", nil)
 	}
