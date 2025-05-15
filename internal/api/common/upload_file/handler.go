@@ -61,8 +61,13 @@ func (h CommonUploadFileHandlerStruct) CreateCommonUploadFileHandler(c *fiber.Ct
 	}
 
 	destination := fmt.Sprintf("./public/uploads/%s/%s.%s", request.Path, request.Name, extension)
-	if err := c.SaveFile(request.File, destination); err != nil {
-		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	err := c.SaveFile(request.File, destination)
+	if err != nil {
+		err := os.MkdirAll(fmt.Sprintf("./public/uploads/%s", request.Path), 0755)
+		err = c.SaveFile(request.File, destination)
+		if err != nil {
+			return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+		}
 	}
 
 	image, err := h.service.CreateCommonUploadFileService(request)
