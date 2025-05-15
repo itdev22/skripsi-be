@@ -328,6 +328,7 @@ type Image struct {
 func (u *Image) TableName() string {
 	return "images"
 }
+
 func (u *Image) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == "" {
 		u.ID = uuid.New().String()

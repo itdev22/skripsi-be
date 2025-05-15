@@ -2,8 +2,6 @@ package customerinstallation
 
 import (
 	"skripsi-be/internal/models/entities"
-
-	"github.com/jinzhu/copier"
 )
 
 type AdminCustomerInstallationServiceInterface interface {
@@ -41,14 +39,7 @@ func (s AdminCustomerInstallationServiceStruct) GetByIdAdminCustomerInstallation
 }
 
 func (s AdminCustomerInstallationServiceStruct) CreateAdminCustomerInstallationService(request CreateAdminCustomerInstallationRequest) (entities.CustomerInstallation, error) {
-	customer := entities.CustomerInstallation{}
-
-	err := copier.Copy(&customer, &request)
-	if err != nil {
-		return customer, err
-	}
-
-	customer, err = s.repository.CreateAdminCustomerInstallationRepository(customer)
+	customer, err := s.repository.CreateAdminCustomerInstallationRepository(request)
 	if err != nil {
 		return customer, err
 	}

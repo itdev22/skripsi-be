@@ -8,7 +8,7 @@ import (
 )
 
 type AdminCustomerInstallationRepositoryInterface interface {
-	CreateAdminCustomerInstallationRepository(customer entities.CustomerInstallation) (entities.CustomerInstallation, error)
+	CreateAdminCustomerInstallationRepository(customer CreateAdminCustomerInstallationRequest) (entities.CustomerInstallation, error)
 	UpdateAdminCustomerInstallationRepository(request UpdateAdminCustomerInstallationRequest) (entities.CustomerInstallation, error)
 	DeleteAdminCustomerInstallationRepository(request IdAdminCustomerInstallationRequest) (entities.CustomerInstallation, error)
 	FindByIdAdminCustomerInstallationRepository(request IdAdminCustomerInstallationRequest) (entities.CustomerInstallation, error)
@@ -41,13 +41,34 @@ func (r AdminCustomerInstallationRepositoryStruct) FindByIdAdminCustomerInstalla
 
 	return customer, tx.Error
 }
-func (r AdminCustomerInstallationRepositoryStruct) CreateAdminCustomerInstallationRepository(customer entities.CustomerInstallation) (entities.CustomerInstallation, error) {
-	tx := r.db.Create(&customer)
+func (r AdminCustomerInstallationRepositoryStruct) CreateAdminCustomerInstallationRepository(request CreateAdminCustomerInstallationRequest) (entities.CustomerInstallation, error) {
+	images := []entities.CustomerInstallation{}
+	customerInstallation := entities.CustomerInstallation{}
+	copier.Copy(&customerInstallation, &request)
+
+	tx := r.db.Begin()
+	tx = tx.Create(&customerInstallation)
+
+	tx = tx.Where("id IN ?", request.Images).Find(&images)
 	if tx.Error != nil {
-		return customer, tx.Error
+		tx.Rollback()
+		return entities.CustomerInstallation{}, tx.Error
 	}
 
-	return customer, nil
+	for _, vimage := range images {
+		tx = tx.Model(&vimage).Update("archive_installation_id", customerInstallation.ID)
+		if tx.Error != nil {
+			tx.Rollback()
+			return entities.CustomerInstallation{}, tx.Error
+		}
+
+	}
+
+	if tx.Error != nil {
+		return entities.CustomerInstallation{}, tx.Error
+	}
+
+	return customerInstallation, nil
 
 }
 func (r AdminCustomerInstallationRepositoryStruct) UpdateAdminCustomerInstallationRepository(request UpdateAdminCustomerInstallationRequest) (entities.CustomerInstallation, error) {

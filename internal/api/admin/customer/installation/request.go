@@ -1,7 +1,11 @@
 package customerinstallation
 
 type CreateAdminCustomerInstallationRequest struct {
-	Images []string `json:"images" validate:"required,min=1,dive,required"`
+	CustomerId   string   `json:"customer_id" validate:"required"`
+	TechnicianId string   `json:"technician_id" validate:"required"`
+	Date         string   `json:"date" validate:"required"`
+	Description  string   `json:"description" validate:"required"`
+	Images       []string `json:"images" validate:"required"`
 }
 
 type IdAdminCustomerInstallationRequest struct {

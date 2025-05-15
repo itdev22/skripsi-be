@@ -11,7 +11,7 @@ import (
 	"skripsi-be/internal/api/admin/transaction"
 	usermanagement "skripsi-be/internal/api/admin/user-management"
 	authapi "skripsi-be/internal/api/auth"
-	upload_file "skripsi-be/internal/api/common/upload_file/moota"
+	upload_file "skripsi-be/internal/api/common/upload_file"
 	"skripsi-be/internal/api/webhook/moota"
 
 	"github.com/gofiber/fiber/v2"

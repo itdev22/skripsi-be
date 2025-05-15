@@ -41,20 +41,6 @@ func (h AdminCustomerInstallationHandlerStruct) GetByIdAdminCustomerInstallation
 func (h AdminCustomerInstallationHandlerStruct) CreateAdminCustomerInstallationHandler(c *fiber.Ctx) error {
 	request := CreateAdminCustomerInstallationRequest{}
 
-	// Get the uploaded file from the "file" form field
-	file, err := c.FormFile("images")
-	if err != nil {
-		return err
-	}
-
-	// Save the file to the "uploads" directory
-	err = c.SaveFile(file, "./uploads/"+file.Filename)
-	if err != nil {
-		return err
-	}
-
-	return c.SendString("File uploaded successfully: " + file.Filename)
-
 	errValidation := validation.ValidationRequest(request)
 	if errValidation != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), "")
