@@ -11,13 +11,18 @@ import (
 	"skripsi-be/internal/api/admin/transaction"
 	usermanagement "skripsi-be/internal/api/admin/user-management"
 	authapi "skripsi-be/internal/api/auth"
+	upload_file "skripsi-be/internal/api/common/upload_file/moota"
 	"skripsi-be/internal/api/webhook/moota"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func RouteFiber(app *fiber.App) {
+	app.Static("/", "./public")
+
 	api := app.Group("/api")
+
+	upload_file.CommonUploadFileRoute(api.Group("/upload-file"))
 
 	auth := api.Group("/auth")
 	authapi.AuthRoute(auth)
