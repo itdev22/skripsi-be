@@ -76,6 +76,8 @@ type Company struct {
 	Phone       string     `json:"phone"`
 	LogoURL     string     `json:"logo_url"`
 	Description string     `json:"description"`
+	Npwp        string     `json:"description"`
+	Address     string     `json:"description"`
 	CreatedAt   time.Time  `json:"createdAt" gorm:"column:createdAt; default:current_timestamp"`
 	UpdatedAt   time.Time  `json:"updatedAt"  gorm:"column:updatedAt" `
 	Customers   []Customer `json:"customer" gorm:"foreignKey:company_id"`

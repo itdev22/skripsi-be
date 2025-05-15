@@ -42,6 +42,8 @@ func (r *AdminCompanyRepositoryStruct) CreateAdminCompanyRepository(request Crea
 	company.Phone = request.Phone
 	company.URL = request.URL
 	company.LogoURL = request.LogoUrl
+	company.Npwp = request.Npwp
+	company.Address = request.Address
 
 	tx := r.db.Create(company)
 
@@ -62,6 +64,8 @@ func (r *AdminCompanyRepositoryStruct) UpdateAdminCompanyRepository(request Upda
 	company.Phone = request.Phone
 	company.URL = request.URL
 	company.LogoURL = request.LogoUrl
+	company.Npwp = request.Npwp
+	company.Address = request.Address
 
 	tx := r.db.Save(company)
 
