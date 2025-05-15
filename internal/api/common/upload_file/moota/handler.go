@@ -1,6 +1,9 @@
 package upload_file
 
 import (
+	"fmt"
+	"os"
+	"path/filepath"
 	"skripsi-be/internal/api/common/validation"
 	"skripsi-be/internal/helpers"
 	"strings"
@@ -25,7 +28,7 @@ func (h CommonUploadFileHandlerStruct) GetAllCommonUploadFileHandler(c *fiber.Ct
 }
 
 func (h CommonUploadFileHandlerStruct) GetByIdCommonUploadFileHandler(c *fiber.Ctx) error {
-	request := IdWebhookMootaRequest{}
+	request := IdCommonUploadFileRequest{}
 	request.Id = c.Params("id")
 	areas, err := h.service.GetByIdCommonUploadFileService(request)
 	if err != nil {
@@ -35,32 +38,44 @@ func (h CommonUploadFileHandlerStruct) GetByIdCommonUploadFileHandler(c *fiber.C
 }
 
 func (h CommonUploadFileHandlerStruct) CreateCommonUploadFileHandler(c *fiber.Ctx) error {
-	request := []CreateWebhookMootaRequest{}
-	err := c.BodyParser(&request)
+	request := CreateCommonUploadFileRequest{}
+	request.File, _ = c.FormFile("file") // Get file separately
 
+	if err := c.BodyParser(&request); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Cannot parse form data",
+		})
+	}
+
+	if err := validation.ValidationRequest(&request); err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(err, ", "), nil)
+	}
+
+	extension := filepath.Ext(request.File.Filename)
+	if extension != "" {
+		extension = extension[1:]
+	} else {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "File has no extension",
+		})
+	}
+
+	destination := fmt.Sprintf("./public/uploads/%s/%s.%s", request.Path, request.Name, extension)
+	if err := c.SaveFile(request.File, destination); err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	image, err := h.service.CreateCommonUploadFileService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}
 
-	for _, vrequest := range request {
-		errValidation := validation.ValidationRequest(&vrequest)
-		if errValidation != nil {
-			return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), nil)
-		}
-	}
-
-	area, err := h.service.CreateCommonUploadFileService(request)
-
-	if err != nil {
-		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
-	}
-
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Create Area", area)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Create Area", image)
 }
 
 func (h CommonUploadFileHandlerStruct) UpdateCommonUploadFileHandler(c *fiber.Ctx) error {
 
-	request := &UpdateWebhookMootaRequest{}
+	request := &UpdateCommonUploadFileRequest{}
 
 	id := c.Params("id")
 	err := c.BodyParser(request)
@@ -83,18 +98,25 @@ func (h CommonUploadFileHandlerStruct) UpdateCommonUploadFileHandler(c *fiber.Ct
 }
 
 func (h CommonUploadFileHandlerStruct) DeleteCommonUploadFileHandler(c *fiber.Ctx) error {
-	request := &IdWebhookMootaRequest{}
+	request := &IdCommonUploadFileRequest{}
 	request.Id = c.Params("id")
 	errValidation := validation.ValidationRequest(request)
 	if errValidation != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), nil)
 	}
 
-	area, err := h.service.DeleteCommonUploadFileService(*request)
+	image, err := h.service.DeleteCommonUploadFileService(*request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Delete Area", area)
+	if err := os.Remove("./public/" + image.FullPath); err != nil {
+		if !os.IsNotExist(err) {
+			return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+		}
+		// If file doesn't exist, proceed to delete the database record
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Delete Area", image)
 
 }

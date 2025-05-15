@@ -53,6 +53,8 @@ model company {
   email       String
   phone       String
   logo_url    String?
+  npwp        String
+  address     String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime
   description String?    @db.Text
@@ -199,6 +201,14 @@ model roles {
   createdAt DateTime  @default(now())
   updatedAt DateTime?
   users     users[]
+}
+
+model images {
+  id        String    @id
+  file      String
+  full_path String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
 }
 
 enum transactions_type_in_out {

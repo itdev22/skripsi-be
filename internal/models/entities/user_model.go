@@ -316,3 +316,21 @@ func (u *Role) BeforeCreate(tx *gorm.DB) error {
 	}
 	return nil
 }
+
+type Image struct {
+	ID        string     `gorm:"column:id;type:varchar;primaryKey" json:"id"`
+	File      string     `gorm:"column:file;type:varchar;not null" json:"file"`
+	FullPath  string     `gorm:"column:full_path;type:varchar;not null" json:"full_path"`
+	CreatedAt time.Time  `gorm:"column:createdAt;not null;default:now()" json:"createdAt"`
+	UpdatedAt *time.Time `gorm:"column:updatedAt;default:null" json:"updatedAt"`
+}
+
+func (u *Image) TableName() string {
+	return "images"
+}
+func (u *Image) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
+}

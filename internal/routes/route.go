@@ -22,7 +22,7 @@ func RouteFiber(app *fiber.App) {
 
 	api := app.Group("/api")
 
-	upload_file.CommonUploadFileRoute(api.Group("/upload-file"))
+	upload_file.CommonUploadFileRoute(api.Group("/file-upload"))
 
 	auth := api.Group("/auth")
 	authapi.AuthRoute(auth)

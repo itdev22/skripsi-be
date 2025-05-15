@@ -129,11 +129,13 @@ exports.Prisma.AccountsScalarFieldEnum = {
 
 exports.Prisma.Archive_installationScalarFieldEnum = {
   id: 'id',
-  price: 'price',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
   customer_id: 'customer_id',
-  names: 'names'
+  technician_id: 'technician_id',
+  description: 'description',
+  date: 'date',
+  images: 'images',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.AssetsScalarFieldEnum = {
@@ -161,6 +163,8 @@ exports.Prisma.CompanyScalarFieldEnum = {
   email: 'email',
   phone: 'phone',
   logo_url: 'logo_url',
+  npwp: 'npwp',
+  address: 'address',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   description: 'description'
@@ -244,6 +248,8 @@ exports.Prisma.Report_cashScalarFieldEnum = {
 exports.Prisma.TransactionsScalarFieldEnum = {
   id: 'id',
   account_id: 'account_id',
+  type_cash: 'type_cash',
+  type_in_out: 'type_in_out',
   date: 'date',
   description: 'description',
   amount: 'amount',
@@ -284,6 +290,14 @@ exports.Prisma.RolesScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ImagesScalarFieldEnum = {
+  id: 'id',
+  file: 'file',
+  full_path: 'full_path',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -302,7 +316,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.archive_installationOrderByRelevanceFieldEnum = {
   id: 'id',
   customer_id: 'customer_id',
-  names: 'names'
+  technician_id: 'technician_id',
+  description: 'description',
+  images: 'images'
 };
 
 exports.Prisma.assetsOrderByRelevanceFieldEnum = {
@@ -326,6 +342,8 @@ exports.Prisma.companyOrderByRelevanceFieldEnum = {
   email: 'email',
   phone: 'phone',
   logo_url: 'logo_url',
+  npwp: 'npwp',
+  address: 'address',
   description: 'description'
 };
 
@@ -410,9 +428,27 @@ exports.Prisma.rolesOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name'
 };
+
+exports.Prisma.imagesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  file: 'file',
+  full_path: 'full_path'
+};
+exports.transactions_type_cash = exports.$Enums.transactions_type_cash = {
+  internet: 'internet',
+  cash_flow: 'cash_flow',
+  asset: 'asset',
+  transaction: 'transaction'
+};
+
+exports.transactions_type_in_out = exports.$Enums.transactions_type_in_out = {
+  in: 'in',
+  out: 'out'
+};
+
 exports.transactions_type = exports.$Enums.transactions_type = {
-  DEBIT: 'DEBIT',
-  CREDIT: 'CREDIT'
+  debit: 'debit',
+  credit: 'credit'
 };
 
 exports.Prisma.ModelName = {
@@ -430,7 +466,8 @@ exports.Prisma.ModelName = {
   transactions: 'transactions',
   transfers: 'transfers',
   users: 'users',
-  roles: 'roles'
+  roles: 'roles',
+  images: 'images'
 };
 
 /**

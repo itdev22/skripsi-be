@@ -13,8 +13,6 @@ func CommonUploadFileRoute(app fiber.Router) {
 	handler := NewCommonUploadFileHandler(service)
 
 	app.Get("/", handler.GetAllCommonUploadFileHandler)
-	app.Get("/:id", handler.GetByIdCommonUploadFileHandler)
 	app.Post("/", handler.CreateCommonUploadFileHandler)
-	app.Put("/:id", handler.UpdateCommonUploadFileHandler)
 	app.Delete("/:id", handler.DeleteCommonUploadFileHandler)
 }

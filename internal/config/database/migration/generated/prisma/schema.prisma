@@ -16,12 +16,14 @@ model accounts {
 }
 
 model archive_installation {
-  id          String   @id
-  price       Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
-  customer_id String?
-  names       String
+  id            String   @id
+  customer_id   String?
+  technician_id String
+  description   String?  @db.Text
+  date          DateTime @db.Date
+  images        String   @db.LongText
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime
 
   @@index([customer_id], map: "archive_installation_ibfk_1")
 }
@@ -51,6 +53,8 @@ model company {
   email       String
   phone       String
   logo_url    String?
+  npwp        String
+  address     String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime
   description String?    @db.Text
@@ -146,12 +150,14 @@ model report_cash {
 }
 
 model transactions {
-  id          String            @id
+  id          String                   @id
   account_id  String
+  type_cash   transactions_type_cash
+  type_in_out transactions_type_in_out
   date        DateTime
   description String
   amount      BigInt
-  createdAt   DateTime          @default(now())
+  createdAt   DateTime                 @default(now())
   updatedAt   DateTime
   type        transactions_type
 
@@ -197,7 +203,27 @@ model roles {
   users     users[]
 }
 
+model images {
+  id        String    @id
+  file      String
+  full_path String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+}
+
+enum transactions_type_in_out {
+  in
+  out
+}
+
+enum transactions_type_cash {
+  internet
+  cash_flow
+  asset
+  transaction
+}
+
 enum transactions_type {
-  DEBIT
-  CREDIT
+  debit
+  credit
 }

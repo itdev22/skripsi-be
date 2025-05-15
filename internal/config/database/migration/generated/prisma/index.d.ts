@@ -88,19 +88,50 @@ export type users = $Result.DefaultSelection<Prisma.$usersPayload>
  * 
  */
 export type roles = $Result.DefaultSelection<Prisma.$rolesPayload>
+/**
+ * Model images
+ * 
+ */
+export type images = $Result.DefaultSelection<Prisma.$imagesPayload>
 
 /**
  * Enums
  */
 export namespace $Enums {
-  export const transactions_type: {
-  DEBIT: 'DEBIT',
-  CREDIT: 'CREDIT'
+  export const transactions_type_in_out: {
+  in: 'in',
+  out: 'out'
+};
+
+export type transactions_type_in_out = (typeof transactions_type_in_out)[keyof typeof transactions_type_in_out]
+
+
+export const transactions_type_cash: {
+  internet: 'internet',
+  cash_flow: 'cash_flow',
+  asset: 'asset',
+  transaction: 'transaction'
+};
+
+export type transactions_type_cash = (typeof transactions_type_cash)[keyof typeof transactions_type_cash]
+
+
+export const transactions_type: {
+  debit: 'debit',
+  credit: 'credit'
 };
 
 export type transactions_type = (typeof transactions_type)[keyof typeof transactions_type]
 
 }
+
+export type transactions_type_in_out = $Enums.transactions_type_in_out
+
+export const transactions_type_in_out: typeof $Enums.transactions_type_in_out
+
+export type transactions_type_cash = $Enums.transactions_type_cash
+
+export const transactions_type_cash: typeof $Enums.transactions_type_cash
 
 export type transactions_type = $Enums.transactions_type
 
@@ -380,6 +411,16 @@ export class PrismaClient<
     * ```
     */
   get roles(): Prisma.rolesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.images`: Exposes CRUD operations for the **images** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Images
+    * const images = await prisma.images.findMany()
+    * ```
+    */
+  get images(): Prisma.imagesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -834,7 +875,8 @@ export namespace Prisma {
     transactions: 'transactions',
     transfers: 'transfers',
     users: 'users',
-    roles: 'roles'
+    roles: 'roles',
+    images: 'images'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -853,7 +895,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "accounts" | "archive_installation" | "assets" | "company" | "customer" | "device" | "areas" | "logs" | "products" | "report_assets" | "report_cash" | "transactions" | "transfers" | "users" | "roles"
+      modelProps: "accounts" | "archive_installation" | "assets" | "company" | "customer" | "device" | "areas" | "logs" | "products" | "report_assets" | "report_cash" | "transactions" | "transfers" | "users" | "roles" | "images"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1847,6 +1889,72 @@ export namespace Prisma {
           }
         }
       }
+      images: {
+        payload: Prisma.$imagesPayload<ExtArgs>
+        fields: Prisma.imagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.imagesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.imagesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload>
+          }
+          findFirst: {
+            args: Prisma.imagesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.imagesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload>
+          }
+          findMany: {
+            args: Prisma.imagesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload>[]
+          }
+          create: {
+            args: Prisma.imagesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload>
+          }
+          createMany: {
+            args: Prisma.imagesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.imagesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload>
+          }
+          update: {
+            args: Prisma.imagesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.imagesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.imagesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.imagesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$imagesPayload>
+          }
+          aggregate: {
+            args: Prisma.ImagesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImages>
+          }
+          groupBy: {
+            args: Prisma.imagesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.imagesCountArgs<ExtArgs>
+            result: $Utils.Optional<ImagesCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1946,6 +2054,7 @@ export namespace Prisma {
     transfers?: transfersOmit
     users?: usersOmit
     roles?: rolesOmit
+    images?: imagesOmit
   }
 
   /* Types for Logging */
@@ -3040,82 +3149,76 @@ export namespace Prisma {
 
   export type AggregateArchive_installation = {
     _count: Archive_installationCountAggregateOutputType | null
-    _avg: Archive_installationAvgAggregateOutputType | null
-    _sum: Archive_installationSumAggregateOutputType | null
     _min: Archive_installationMinAggregateOutputType | null
     _max: Archive_installationMaxAggregateOutputType | null
   }
 
-  export type Archive_installationAvgAggregateOutputType = {
-    price: number | null
-  }
-
-  export type Archive_installationSumAggregateOutputType = {
-    price: number | null
-  }
-
   export type Archive_installationMinAggregateOutputType = {
     id: string | null
-    price: number | null
+    customer_id: string | null
+    technician_id: string | null
+    description: string | null
+    date: Date | null
+    images: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    customer_id: string | null
-    names: string | null
   }
 
   export type Archive_installationMaxAggregateOutputType = {
     id: string | null
-    price: number | null
+    customer_id: string | null
+    technician_id: string | null
+    description: string | null
+    date: Date | null
+    images: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    customer_id: string | null
-    names: string | null
   }
 
   export type Archive_installationCountAggregateOutputType = {
     id: number
-    price: number
+    customer_id: number
+    technician_id: number
+    description: number
+    date: number
+    images: number
     createdAt: number
     updatedAt: number
-    customer_id: number
-    names: number
     _all: number
   }
 
 
-  export type Archive_installationAvgAggregateInputType = {
-    price?: true
-  }
-
-  export type Archive_installationSumAggregateInputType = {
-    price?: true
-  }
-
   export type Archive_installationMinAggregateInputType = {
     id?: true
-    price?: true
+    customer_id?: true
+    technician_id?: true
+    description?: true
+    date?: true
+    images?: true
     createdAt?: true
     updatedAt?: true
-    customer_id?: true
-    names?: true
   }
 
   export type Archive_installationMaxAggregateInputType = {
     id?: true
-    price?: true
+    customer_id?: true
+    technician_id?: true
+    description?: true
+    date?: true
+    images?: true
     createdAt?: true
     updatedAt?: true
-    customer_id?: true
-    names?: true
   }
 
   export type Archive_installationCountAggregateInputType = {
     id?: true
-    price?: true
+    customer_id?: true
+    technician_id?: true
+    description?: true
+    date?: true
+    images?: true
     createdAt?: true
     updatedAt?: true
-    customer_id?: true
-    names?: true
     _all?: true
   }
 
@@ -3157,18 +3260,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: Archive_installationAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Archive_installationSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: Archive_installationMinAggregateInputType
@@ -3199,22 +3290,20 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: Archive_installationCountAggregateInputType | true
-    _avg?: Archive_installationAvgAggregateInputType
-    _sum?: Archive_installationSumAggregateInputType
     _min?: Archive_installationMinAggregateInputType
     _max?: Archive_installationMaxAggregateInputType
   }
 
   export type Archive_installationGroupByOutputType = {
     id: string
-    price: number
+    customer_id: string | null
+    technician_id: string
+    description: string | null
+    date: Date
+    images: string
     createdAt: Date
     updatedAt: Date
-    customer_id: string | null
-    names: string
     _count: Archive_installationCountAggregateOutputType | null
-    _avg: Archive_installationAvgAggregateOutputType | null
-    _sum: Archive_installationSumAggregateOutputType | null
     _min: Archive_installationMinAggregateOutputType | null
     _max: Archive_installationMaxAggregateOutputType | null
   }
@@ -3235,36 +3324,42 @@ export namespace Prisma {
 
   export type archive_installationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    price?: boolean
+    customer_id?: boolean
+    technician_id?: boolean
+    description?: boolean
+    date?: boolean
+    images?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer_id?: boolean
-    names?: boolean
   }, ExtArgs["result"]["archive_installation"]>
 
 
 
   export type archive_installationSelectScalar = {
     id?: boolean
-    price?: boolean
+    customer_id?: boolean
+    technician_id?: boolean
+    description?: boolean
+    date?: boolean
+    images?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer_id?: boolean
-    names?: boolean
   }
 
-  export type archive_installationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "price" | "createdAt" | "updatedAt" | "customer_id" | "names", ExtArgs["result"]["archive_installation"]>
+  export type archive_installationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customer_id" | "technician_id" | "description" | "date" | "images" | "createdAt" | "updatedAt", ExtArgs["result"]["archive_installation"]>
 
   export type $archive_installationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "archive_installation"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      price: number
+      customer_id: string | null
+      technician_id: string
+      description: string | null
+      date: Date
+      images: string
       createdAt: Date
       updatedAt: Date
-      customer_id: string | null
-      names: string
     }, ExtArgs["result"]["archive_installation"]>
     composites: {}
   }
@@ -3635,11 +3730,13 @@ export namespace Prisma {
    */
   interface archive_installationFieldRefs {
     readonly id: FieldRef<"archive_installation", 'String'>
-    readonly price: FieldRef<"archive_installation", 'Float'>
+    readonly customer_id: FieldRef<"archive_installation", 'String'>
+    readonly technician_id: FieldRef<"archive_installation", 'String'>
+    readonly description: FieldRef<"archive_installation", 'String'>
+    readonly date: FieldRef<"archive_installation", 'DateTime'>
+    readonly images: FieldRef<"archive_installation", 'String'>
     readonly createdAt: FieldRef<"archive_installation", 'DateTime'>
     readonly updatedAt: FieldRef<"archive_installation", 'DateTime'>
-    readonly customer_id: FieldRef<"archive_installation", 'String'>
-    readonly names: FieldRef<"archive_installation", 'String'>
   }
     
 
@@ -5008,6 +5105,8 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     logo_url: string | null
+    npwp: string | null
+    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
     description: string | null
@@ -5020,6 +5119,8 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     logo_url: string | null
+    npwp: string | null
+    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
     description: string | null
@@ -5032,6 +5133,8 @@ export namespace Prisma {
     email: number
     phone: number
     logo_url: number
+    npwp: number
+    address: number
     createdAt: number
     updatedAt: number
     description: number
@@ -5046,6 +5149,8 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
+    npwp?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
     description?: true
@@ -5058,6 +5163,8 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
+    npwp?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
     description?: true
@@ -5070,6 +5177,8 @@ export namespace Prisma {
     email?: true
     phone?: true
     logo_url?: true
+    npwp?: true
+    address?: true
     createdAt?: true
     updatedAt?: true
     description?: true
@@ -5155,6 +5264,8 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url: string | null
+    npwp: string
+    address: string
     createdAt: Date
     updatedAt: Date
     description: string | null
@@ -5184,6 +5295,8 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     logo_url?: boolean
+    npwp?: boolean
+    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     description?: boolean
@@ -5200,12 +5313,14 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     logo_url?: boolean
+    npwp?: boolean
+    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     description?: boolean
   }
 
-  export type companyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "email" | "phone" | "logo_url" | "createdAt" | "updatedAt" | "description", ExtArgs["result"]["company"]>
+  export type companyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "url" | "email" | "phone" | "logo_url" | "npwp" | "address" | "createdAt" | "updatedAt" | "description", ExtArgs["result"]["company"]>
   export type companyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | company$customerArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -5223,6 +5338,8 @@ export namespace Prisma {
       email: string
       phone: string
       logo_url: string | null
+      npwp: string
+      address: string
       createdAt: Date
       updatedAt: Date
       description: string | null
@@ -5602,6 +5719,8 @@ export namespace Prisma {
     readonly email: FieldRef<"company", 'String'>
     readonly phone: FieldRef<"company", 'String'>
     readonly logo_url: FieldRef<"company", 'String'>
+    readonly npwp: FieldRef<"company", 'String'>
+    readonly address: FieldRef<"company", 'String'>
     readonly createdAt: FieldRef<"company", 'DateTime'>
     readonly updatedAt: FieldRef<"company", 'DateTime'>
     readonly description: FieldRef<"company", 'String'>
@@ -12745,6 +12864,8 @@ export namespace Prisma {
   export type TransactionsMinAggregateOutputType = {
     id: string | null
     account_id: string | null
+    type_cash: $Enums.transactions_type_cash | null
+    type_in_out: $Enums.transactions_type_in_out | null
     date: Date | null
     description: string | null
     amount: bigint | null
@@ -12756,6 +12877,8 @@ export namespace Prisma {
   export type TransactionsMaxAggregateOutputType = {
     id: string | null
     account_id: string | null
+    type_cash: $Enums.transactions_type_cash | null
+    type_in_out: $Enums.transactions_type_in_out | null
     date: Date | null
     description: string | null
     amount: bigint | null
@@ -12767,6 +12890,8 @@ export namespace Prisma {
   export type TransactionsCountAggregateOutputType = {
     id: number
     account_id: number
+    type_cash: number
+    type_in_out: number
     date: number
     description: number
     amount: number
@@ -12788,6 +12913,8 @@ export namespace Prisma {
   export type TransactionsMinAggregateInputType = {
     id?: true
     account_id?: true
+    type_cash?: true
+    type_in_out?: true
     date?: true
     description?: true
     amount?: true
@@ -12799,6 +12926,8 @@ export namespace Prisma {
   export type TransactionsMaxAggregateInputType = {
     id?: true
     account_id?: true
+    type_cash?: true
+    type_in_out?: true
     date?: true
     description?: true
     amount?: true
@@ -12810,6 +12939,8 @@ export namespace Prisma {
   export type TransactionsCountAggregateInputType = {
     id?: true
     account_id?: true
+    type_cash?: true
+    type_in_out?: true
     date?: true
     description?: true
     amount?: true
@@ -12908,6 +13039,8 @@ export namespace Prisma {
   export type TransactionsGroupByOutputType = {
     id: string
     account_id: string
+    type_cash: $Enums.transactions_type_cash
+    type_in_out: $Enums.transactions_type_in_out
     date: Date
     description: string
     amount: bigint
@@ -12938,6 +13071,8 @@ export namespace Prisma {
   export type transactionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     account_id?: boolean
+    type_cash?: boolean
+    type_in_out?: boolean
     date?: boolean
     description?: boolean
     amount?: boolean
@@ -12951,6 +13086,8 @@ export namespace Prisma {
   export type transactionsSelectScalar = {
     id?: boolean
     account_id?: boolean
+    type_cash?: boolean
+    type_in_out?: boolean
     date?: boolean
     description?: boolean
     amount?: boolean
@@ -12959,7 +13096,7 @@ export namespace Prisma {
     type?: boolean
   }
 
-  export type transactionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "account_id" | "date" | "description" | "amount" | "createdAt" | "updatedAt" | "type", ExtArgs["result"]["transactions"]>
+  export type transactionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "account_id" | "type_cash" | "type_in_out" | "date" | "description" | "amount" | "createdAt" | "updatedAt" | "type", ExtArgs["result"]["transactions"]>
 
   export type $transactionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "transactions"
@@ -12967,6 +13104,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       account_id: string
+      type_cash: $Enums.transactions_type_cash
+      type_in_out: $Enums.transactions_type_in_out
       date: Date
       description: string
       amount: bigint
@@ -13344,6 +13483,8 @@ export namespace Prisma {
   interface transactionsFieldRefs {
     readonly id: FieldRef<"transactions", 'String'>
     readonly account_id: FieldRef<"transactions", 'String'>
+    readonly type_cash: FieldRef<"transactions", 'transactions_type_cash'>
+    readonly type_in_out: FieldRef<"transactions", 'transactions_type_in_out'>
     readonly date: FieldRef<"transactions", 'DateTime'>
     readonly description: FieldRef<"transactions", 'String'>
     readonly amount: FieldRef<"transactions", 'BigInt'>
@@ -16579,6 +16720,888 @@ export namespace Prisma {
 
 
   /**
+   * Model images
+   */
+
+  export type AggregateImages = {
+    _count: ImagesCountAggregateOutputType | null
+    _min: ImagesMinAggregateOutputType | null
+    _max: ImagesMaxAggregateOutputType | null
+  }
+
+  export type ImagesMinAggregateOutputType = {
+    id: string | null
+    file: string | null
+    full_path: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ImagesMaxAggregateOutputType = {
+    id: string | null
+    file: string | null
+    full_path: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ImagesCountAggregateOutputType = {
+    id: number
+    file: number
+    full_path: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ImagesMinAggregateInputType = {
+    id?: true
+    file?: true
+    full_path?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ImagesMaxAggregateInputType = {
+    id?: true
+    file?: true
+    full_path?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ImagesCountAggregateInputType = {
+    id?: true
+    file?: true
+    full_path?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ImagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which images to aggregate.
+     */
+    where?: imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of images to fetch.
+     */
+    orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned images
+    **/
+    _count?: true | ImagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ImagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ImagesMaxAggregateInputType
+  }
+
+  export type GetImagesAggregateType<T extends ImagesAggregateArgs> = {
+        [P in keyof T & keyof AggregateImages]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateImages[P]>
+      : GetScalarType<T[P], AggregateImages[P]>
+  }
+
+
+
+
+  export type imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: imagesWhereInput
+    orderBy?: imagesOrderByWithAggregationInput | imagesOrderByWithAggregationInput[]
+    by: ImagesScalarFieldEnum[] | ImagesScalarFieldEnum
+    having?: imagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ImagesCountAggregateInputType | true
+    _min?: ImagesMinAggregateInputType
+    _max?: ImagesMaxAggregateInputType
+  }
+
+  export type ImagesGroupByOutputType = {
+    id: string
+    file: string
+    full_path: string
+    createdAt: Date
+    updatedAt: Date | null
+    _count: ImagesCountAggregateOutputType | null
+    _min: ImagesMinAggregateOutputType | null
+    _max: ImagesMaxAggregateOutputType | null
+  }
+
+  type GetImagesGroupByPayload<T extends imagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ImagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ImagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ImagesGroupByOutputType[P]>
+            : GetScalarType<T[P], ImagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    file?: boolean
+    full_path?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["images"]>
+
+
+
+  export type imagesSelectScalar = {
+    id?: boolean
+    file?: boolean
+    full_path?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "full_path" | "createdAt" | "updatedAt", ExtArgs["result"]["images"]>
+
+  export type $imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "images"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      file: string
+      full_path: string
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["images"]>
+    composites: {}
+  }
+
+  type imagesGetPayload<S extends boolean | null | undefined | imagesDefaultArgs> = $Result.GetResult<Prisma.$imagesPayload, S>
+
+  type imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImagesCountAggregateInputType | true
+    }
+
+  export interface imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['images'], meta: { name: 'images' } }
+    /**
+     * Find zero or one Images that matches the filter.
+     * @param {imagesFindUniqueArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends imagesFindUniqueArgs>(args: SelectSubset<T, imagesFindUniqueArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Images that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {imagesFindUniqueOrThrowArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {imagesFindFirstArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends imagesFindFirstArgs>(args?: SelectSubset<T, imagesFindFirstArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Images that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {imagesFindFirstOrThrowArgs} args - Arguments to find a Images
+     * @example
+     * // Get one Images
+     * const images = await prisma.images.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {imagesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Images
+     * const images = await prisma.images.findMany()
+     * 
+     * // Get first 10 Images
+     * const images = await prisma.images.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const imagesWithIdOnly = await prisma.images.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends imagesFindManyArgs>(args?: SelectSubset<T, imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Images.
+     * @param {imagesCreateArgs} args - Arguments to create a Images.
+     * @example
+     * // Create one Images
+     * const Images = await prisma.images.create({
+     *   data: {
+     *     // ... data to create a Images
+     *   }
+     * })
+     * 
+     */
+    create<T extends imagesCreateArgs>(args: SelectSubset<T, imagesCreateArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Images.
+     * @param {imagesCreateManyArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const images = await prisma.images.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends imagesCreateManyArgs>(args?: SelectSubset<T, imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Images.
+     * @param {imagesDeleteArgs} args - Arguments to delete one Images.
+     * @example
+     * // Delete one Images
+     * const Images = await prisma.images.delete({
+     *   where: {
+     *     // ... filter to delete one Images
+     *   }
+     * })
+     * 
+     */
+    delete<T extends imagesDeleteArgs>(args: SelectSubset<T, imagesDeleteArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Images.
+     * @param {imagesUpdateArgs} args - Arguments to update one Images.
+     * @example
+     * // Update one Images
+     * const images = await prisma.images.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends imagesUpdateArgs>(args: SelectSubset<T, imagesUpdateArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Images.
+     * @param {imagesDeleteManyArgs} args - Arguments to filter Images to delete.
+     * @example
+     * // Delete a few Images
+     * const { count } = await prisma.images.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends imagesDeleteManyArgs>(args?: SelectSubset<T, imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {imagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Images
+     * const images = await prisma.images.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends imagesUpdateManyArgs>(args: SelectSubset<T, imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Images.
+     * @param {imagesUpsertArgs} args - Arguments to update or create a Images.
+     * @example
+     * // Update or create a Images
+     * const images = await prisma.images.upsert({
+     *   create: {
+     *     // ... data to create a Images
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Images we want to update
+     *   }
+     * })
+     */
+    upsert<T extends imagesUpsertArgs>(args: SelectSubset<T, imagesUpsertArgs<ExtArgs>>): Prisma__imagesClient<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {imagesCountArgs} args - Arguments to filter Images to count.
+     * @example
+     * // Count the number of Images
+     * const count = await prisma.images.count({
+     *   where: {
+     *     // ... the filter for the Images we want to count
+     *   }
+     * })
+    **/
+    count<T extends imagesCountArgs>(
+      args?: Subset<T, imagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ImagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ImagesAggregateArgs>(args: Subset<T, ImagesAggregateArgs>): Prisma.PrismaPromise<GetImagesAggregateType<T>>
+
+    /**
+     * Group by Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {imagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends imagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: imagesGroupByArgs['orderBy'] }
+        : { orderBy?: imagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the images model
+   */
+  readonly fields: imagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for images.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the images model
+   */
+  interface imagesFieldRefs {
+    readonly id: FieldRef<"images", 'String'>
+    readonly file: FieldRef<"images", 'String'>
+    readonly full_path: FieldRef<"images", 'String'>
+    readonly createdAt: FieldRef<"images", 'DateTime'>
+    readonly updatedAt: FieldRef<"images", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * images findUnique
+   */
+  export type imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which images to fetch.
+     */
+    where: imagesWhereUniqueInput
+  }
+
+  /**
+   * images findUniqueOrThrow
+   */
+  export type imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which images to fetch.
+     */
+    where: imagesWhereUniqueInput
+  }
+
+  /**
+   * images findFirst
+   */
+  export type imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which images to fetch.
+     */
+    where?: imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of images to fetch.
+     */
+    orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for images.
+     */
+    cursor?: imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of images.
+     */
+    distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
+  }
+
+  /**
+   * images findFirstOrThrow
+   */
+  export type imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which images to fetch.
+     */
+    where?: imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of images to fetch.
+     */
+    orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for images.
+     */
+    cursor?: imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of images.
+     */
+    distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
+  }
+
+  /**
+   * images findMany
+   */
+  export type imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which images to fetch.
+     */
+    where?: imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of images to fetch.
+     */
+    orderBy?: imagesOrderByWithRelationInput | imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing images.
+     */
+    cursor?: imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` images.
+     */
+    skip?: number
+    distinct?: ImagesScalarFieldEnum | ImagesScalarFieldEnum[]
+  }
+
+  /**
+   * images create
+   */
+  export type imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a images.
+     */
+    data: XOR<imagesCreateInput, imagesUncheckedCreateInput>
+  }
+
+  /**
+   * images createMany
+   */
+  export type imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many images.
+     */
+    data: imagesCreateManyInput | imagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * images update
+   */
+  export type imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a images.
+     */
+    data: XOR<imagesUpdateInput, imagesUncheckedUpdateInput>
+    /**
+     * Choose, which images to update.
+     */
+    where: imagesWhereUniqueInput
+  }
+
+  /**
+   * images updateMany
+   */
+  export type imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update images.
+     */
+    data: XOR<imagesUpdateManyMutationInput, imagesUncheckedUpdateManyInput>
+    /**
+     * Filter which images to update
+     */
+    where?: imagesWhereInput
+    /**
+     * Limit how many images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * images upsert
+   */
+  export type imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the images to update in case it exists.
+     */
+    where: imagesWhereUniqueInput
+    /**
+     * In case the images found by the `where` argument doesn't exist, create a new images with this data.
+     */
+    create: XOR<imagesCreateInput, imagesUncheckedCreateInput>
+    /**
+     * In case the images was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<imagesUpdateInput, imagesUncheckedUpdateInput>
+  }
+
+  /**
+   * images delete
+   */
+  export type imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+    /**
+     * Filter which images to delete.
+     */
+    where: imagesWhereUniqueInput
+  }
+
+  /**
+   * images deleteMany
+   */
+  export type imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which images to delete
+     */
+    where?: imagesWhereInput
+    /**
+     * Limit how many images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * images without action
+   */
+  export type imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the images
+     */
+    select?: imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the images
+     */
+    omit?: imagesOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16604,11 +17627,13 @@ export namespace Prisma {
 
   export const Archive_installationScalarFieldEnum: {
     id: 'id',
-    price: 'price',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
     customer_id: 'customer_id',
-    names: 'names'
+    technician_id: 'technician_id',
+    description: 'description',
+    date: 'date',
+    images: 'images',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type Archive_installationScalarFieldEnum = (typeof Archive_installationScalarFieldEnum)[keyof typeof Archive_installationScalarFieldEnum]
@@ -16642,6 +17667,8 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     logo_url: 'logo_url',
+    npwp: 'npwp',
+    address: 'address',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     description: 'description'
@@ -16749,6 +17776,8 @@ export namespace Prisma {
   export const TransactionsScalarFieldEnum: {
     id: 'id',
     account_id: 'account_id',
+    type_cash: 'type_cash',
+    type_in_out: 'type_in_out',
     date: 'date',
     description: 'description',
     amount: 'amount',
@@ -16801,6 +17830,17 @@ export namespace Prisma {
   export type RolesScalarFieldEnum = (typeof RolesScalarFieldEnum)[keyof typeof RolesScalarFieldEnum]
 
 
+  export const ImagesScalarFieldEnum: {
+    id: 'id',
+    file: 'file',
+    full_path: 'full_path',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ImagesScalarFieldEnum = (typeof ImagesScalarFieldEnum)[keyof typeof ImagesScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -16828,7 +17868,9 @@ export namespace Prisma {
   export const archive_installationOrderByRelevanceFieldEnum: {
     id: 'id',
     customer_id: 'customer_id',
-    names: 'names'
+    technician_id: 'technician_id',
+    description: 'description',
+    images: 'images'
   };
 
   export type archive_installationOrderByRelevanceFieldEnum = (typeof archive_installationOrderByRelevanceFieldEnum)[keyof typeof archive_installationOrderByRelevanceFieldEnum]
@@ -16858,6 +17900,8 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     logo_url: 'logo_url',
+    npwp: 'npwp',
+    address: 'address',
     description: 'description'
   };
 
@@ -16979,6 +18023,15 @@ export namespace Prisma {
   export type rolesOrderByRelevanceFieldEnum = (typeof rolesOrderByRelevanceFieldEnum)[keyof typeof rolesOrderByRelevanceFieldEnum]
 
 
+  export const imagesOrderByRelevanceFieldEnum: {
+    id: 'id',
+    file: 'file',
+    full_path: 'full_path'
+  };
+
+  export type imagesOrderByRelevanceFieldEnum = (typeof imagesOrderByRelevanceFieldEnum)[keyof typeof imagesOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -17016,6 +18069,20 @@ export namespace Prisma {
    * Reference to a field of type 'BigInt'
    */
   export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'transactions_type_cash'
+   */
+  export type Enumtransactions_type_cashFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'transactions_type_cash'>
+    
+
+
+  /**
+   * Reference to a field of type 'transactions_type_in_out'
+   */
+  export type Enumtransactions_type_in_outFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'transactions_type_in_out'>
     
 
 
@@ -17082,20 +18149,24 @@ export namespace Prisma {
     OR?: archive_installationWhereInput[]
     NOT?: archive_installationWhereInput | archive_installationWhereInput[]
     id?: StringFilter<"archive_installation"> | string
-    price?: FloatFilter<"archive_installation"> | number
+    customer_id?: StringNullableFilter<"archive_installation"> | string | null
+    technician_id?: StringFilter<"archive_installation"> | string
+    description?: StringNullableFilter<"archive_installation"> | string | null
+    date?: DateTimeFilter<"archive_installation"> | Date | string
+    images?: StringFilter<"archive_installation"> | string
     createdAt?: DateTimeFilter<"archive_installation"> | Date | string
     updatedAt?: DateTimeFilter<"archive_installation"> | Date | string
-    customer_id?: StringNullableFilter<"archive_installation"> | string | null
-    names?: StringFilter<"archive_installation"> | string
   }
 
   export type archive_installationOrderByWithRelationInput = {
     id?: SortOrder
-    price?: SortOrder
+    customer_id?: SortOrderInput | SortOrder
+    technician_id?: SortOrder
+    description?: SortOrderInput | SortOrder
+    date?: SortOrder
+    images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customer_id?: SortOrderInput | SortOrder
-    names?: SortOrder
     _relevance?: archive_installationOrderByRelevanceInput
   }
 
@@ -17104,25 +18175,27 @@ export namespace Prisma {
     AND?: archive_installationWhereInput | archive_installationWhereInput[]
     OR?: archive_installationWhereInput[]
     NOT?: archive_installationWhereInput | archive_installationWhereInput[]
-    price?: FloatFilter<"archive_installation"> | number
+    customer_id?: StringNullableFilter<"archive_installation"> | string | null
+    technician_id?: StringFilter<"archive_installation"> | string
+    description?: StringNullableFilter<"archive_installation"> | string | null
+    date?: DateTimeFilter<"archive_installation"> | Date | string
+    images?: StringFilter<"archive_installation"> | string
     createdAt?: DateTimeFilter<"archive_installation"> | Date | string
     updatedAt?: DateTimeFilter<"archive_installation"> | Date | string
-    customer_id?: StringNullableFilter<"archive_installation"> | string | null
-    names?: StringFilter<"archive_installation"> | string
   }, "id">
 
   export type archive_installationOrderByWithAggregationInput = {
     id?: SortOrder
-    price?: SortOrder
+    customer_id?: SortOrderInput | SortOrder
+    technician_id?: SortOrder
+    description?: SortOrderInput | SortOrder
+    date?: SortOrder
+    images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customer_id?: SortOrderInput | SortOrder
-    names?: SortOrder
     _count?: archive_installationCountOrderByAggregateInput
-    _avg?: archive_installationAvgOrderByAggregateInput
     _max?: archive_installationMaxOrderByAggregateInput
     _min?: archive_installationMinOrderByAggregateInput
-    _sum?: archive_installationSumOrderByAggregateInput
   }
 
   export type archive_installationScalarWhereWithAggregatesInput = {
@@ -17130,11 +18203,13 @@ export namespace Prisma {
     OR?: archive_installationScalarWhereWithAggregatesInput[]
     NOT?: archive_installationScalarWhereWithAggregatesInput | archive_installationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"archive_installation"> | string
-    price?: FloatWithAggregatesFilter<"archive_installation"> | number
+    customer_id?: StringNullableWithAggregatesFilter<"archive_installation"> | string | null
+    technician_id?: StringWithAggregatesFilter<"archive_installation"> | string
+    description?: StringNullableWithAggregatesFilter<"archive_installation"> | string | null
+    date?: DateTimeWithAggregatesFilter<"archive_installation"> | Date | string
+    images?: StringWithAggregatesFilter<"archive_installation"> | string
     createdAt?: DateTimeWithAggregatesFilter<"archive_installation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"archive_installation"> | Date | string
-    customer_id?: StringNullableWithAggregatesFilter<"archive_installation"> | string | null
-    names?: StringWithAggregatesFilter<"archive_installation"> | string
   }
 
   export type assetsWhereInput = {
@@ -17252,6 +18327,8 @@ export namespace Prisma {
     email?: StringFilter<"company"> | string
     phone?: StringFilter<"company"> | string
     logo_url?: StringNullableFilter<"company"> | string | null
+    npwp?: StringFilter<"company"> | string
+    address?: StringFilter<"company"> | string
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
     description?: StringNullableFilter<"company"> | string | null
@@ -17265,6 +18342,8 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrderInput | SortOrder
+    npwp?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     description?: SortOrderInput | SortOrder
@@ -17282,6 +18361,8 @@ export namespace Prisma {
     email?: StringFilter<"company"> | string
     phone?: StringFilter<"company"> | string
     logo_url?: StringNullableFilter<"company"> | string | null
+    npwp?: StringFilter<"company"> | string
+    address?: StringFilter<"company"> | string
     createdAt?: DateTimeFilter<"company"> | Date | string
     updatedAt?: DateTimeFilter<"company"> | Date | string
     description?: StringNullableFilter<"company"> | string | null
@@ -17295,6 +18376,8 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrderInput | SortOrder
+    npwp?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     description?: SortOrderInput | SortOrder
@@ -17313,6 +18396,8 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"company"> | string
     phone?: StringWithAggregatesFilter<"company"> | string
     logo_url?: StringNullableWithAggregatesFilter<"company"> | string | null
+    npwp?: StringWithAggregatesFilter<"company"> | string
+    address?: StringWithAggregatesFilter<"company"> | string
     createdAt?: DateTimeWithAggregatesFilter<"company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"company"> | Date | string
     description?: StringNullableWithAggregatesFilter<"company"> | string | null
@@ -17813,6 +18898,8 @@ export namespace Prisma {
     NOT?: transactionsWhereInput | transactionsWhereInput[]
     id?: StringFilter<"transactions"> | string
     account_id?: StringFilter<"transactions"> | string
+    type_cash?: Enumtransactions_type_cashFilter<"transactions"> | $Enums.transactions_type_cash
+    type_in_out?: Enumtransactions_type_in_outFilter<"transactions"> | $Enums.transactions_type_in_out
     date?: DateTimeFilter<"transactions"> | Date | string
     description?: StringFilter<"transactions"> | string
     amount?: BigIntFilter<"transactions"> | bigint | number
@@ -17824,6 +18911,8 @@ export namespace Prisma {
   export type transactionsOrderByWithRelationInput = {
     id?: SortOrder
     account_id?: SortOrder
+    type_cash?: SortOrder
+    type_in_out?: SortOrder
     date?: SortOrder
     description?: SortOrder
     amount?: SortOrder
@@ -17839,6 +18928,8 @@ export namespace Prisma {
     OR?: transactionsWhereInput[]
     NOT?: transactionsWhereInput | transactionsWhereInput[]
     account_id?: StringFilter<"transactions"> | string
+    type_cash?: Enumtransactions_type_cashFilter<"transactions"> | $Enums.transactions_type_cash
+    type_in_out?: Enumtransactions_type_in_outFilter<"transactions"> | $Enums.transactions_type_in_out
     date?: DateTimeFilter<"transactions"> | Date | string
     description?: StringFilter<"transactions"> | string
     amount?: BigIntFilter<"transactions"> | bigint | number
@@ -17850,6 +18941,8 @@ export namespace Prisma {
   export type transactionsOrderByWithAggregationInput = {
     id?: SortOrder
     account_id?: SortOrder
+    type_cash?: SortOrder
+    type_in_out?: SortOrder
     date?: SortOrder
     description?: SortOrder
     amount?: SortOrder
@@ -17869,6 +18962,8 @@ export namespace Prisma {
     NOT?: transactionsScalarWhereWithAggregatesInput | transactionsScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"transactions"> | string
     account_id?: StringWithAggregatesFilter<"transactions"> | string
+    type_cash?: Enumtransactions_type_cashWithAggregatesFilter<"transactions"> | $Enums.transactions_type_cash
+    type_in_out?: Enumtransactions_type_in_outWithAggregatesFilter<"transactions"> | $Enums.transactions_type_in_out
     date?: DateTimeWithAggregatesFilter<"transactions"> | Date | string
     description?: StringWithAggregatesFilter<"transactions"> | string
     amount?: BigIntWithAggregatesFilter<"transactions"> | bigint | number
@@ -18084,6 +19179,59 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"roles"> | Date | string | null
   }
 
+  export type imagesWhereInput = {
+    AND?: imagesWhereInput | imagesWhereInput[]
+    OR?: imagesWhereInput[]
+    NOT?: imagesWhereInput | imagesWhereInput[]
+    id?: StringFilter<"images"> | string
+    file?: StringFilter<"images"> | string
+    full_path?: StringFilter<"images"> | string
+    createdAt?: DateTimeFilter<"images"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"images"> | Date | string | null
+  }
+
+  export type imagesOrderByWithRelationInput = {
+    id?: SortOrder
+    file?: SortOrder
+    full_path?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _relevance?: imagesOrderByRelevanceInput
+  }
+
+  export type imagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: imagesWhereInput | imagesWhereInput[]
+    OR?: imagesWhereInput[]
+    NOT?: imagesWhereInput | imagesWhereInput[]
+    file?: StringFilter<"images"> | string
+    full_path?: StringFilter<"images"> | string
+    createdAt?: DateTimeFilter<"images"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"images"> | Date | string | null
+  }, "id">
+
+  export type imagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    file?: SortOrder
+    full_path?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: imagesCountOrderByAggregateInput
+    _max?: imagesMaxOrderByAggregateInput
+    _min?: imagesMinOrderByAggregateInput
+  }
+
+  export type imagesScalarWhereWithAggregatesInput = {
+    AND?: imagesScalarWhereWithAggregatesInput | imagesScalarWhereWithAggregatesInput[]
+    OR?: imagesScalarWhereWithAggregatesInput[]
+    NOT?: imagesScalarWhereWithAggregatesInput | imagesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"images"> | string
+    file?: StringWithAggregatesFilter<"images"> | string
+    full_path?: StringWithAggregatesFilter<"images"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"images"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"images"> | Date | string | null
+  }
+
   export type accountsCreateInput = {
     id: string
     name: string
@@ -18135,65 +19283,79 @@ export namespace Prisma {
 
   export type archive_installationCreateInput = {
     id: string
-    price: number
+    customer_id?: string | null
+    technician_id: string
+    description?: string | null
+    date: Date | string
+    images: string
     createdAt?: Date | string
     updatedAt: Date | string
-    customer_id?: string | null
-    names: string
   }
 
   export type archive_installationUncheckedCreateInput = {
     id: string
-    price: number
+    customer_id?: string | null
+    technician_id: string
+    description?: string | null
+    date: Date | string
+    images: string
     createdAt?: Date | string
     updatedAt: Date | string
-    customer_id?: string | null
-    names: string
   }
 
   export type archive_installationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    technician_id?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    names?: StringFieldUpdateOperationsInput | string
   }
 
   export type archive_installationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    technician_id?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    names?: StringFieldUpdateOperationsInput | string
   }
 
   export type archive_installationCreateManyInput = {
     id: string
-    price: number
+    customer_id?: string | null
+    technician_id: string
+    description?: string | null
+    date: Date | string
+    images: string
     createdAt?: Date | string
     updatedAt: Date | string
-    customer_id?: string | null
-    names: string
   }
 
   export type archive_installationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    technician_id?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    names?: StringFieldUpdateOperationsInput | string
   }
 
   export type archive_installationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
+    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    technician_id?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    names?: StringFieldUpdateOperationsInput | string
   }
 
   export type assetsCreateInput = {
@@ -18329,6 +19491,8 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
+    npwp: string
+    address: string
     createdAt?: Date | string
     updatedAt: Date | string
     description?: string | null
@@ -18342,6 +19506,8 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
+    npwp: string
+    address: string
     createdAt?: Date | string
     updatedAt: Date | string
     description?: string | null
@@ -18355,6 +19521,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    npwp?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18368,6 +19536,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    npwp?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18381,6 +19551,8 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
+    npwp: string
+    address: string
     createdAt?: Date | string
     updatedAt: Date | string
     description?: string | null
@@ -18393,6 +19565,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    npwp?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18405,6 +19579,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    npwp?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18943,6 +20119,8 @@ export namespace Prisma {
   export type transactionsCreateInput = {
     id: string
     account_id: string
+    type_cash: $Enums.transactions_type_cash
+    type_in_out: $Enums.transactions_type_in_out
     date: Date | string
     description: string
     amount: bigint | number
@@ -18954,6 +20132,8 @@ export namespace Prisma {
   export type transactionsUncheckedCreateInput = {
     id: string
     account_id: string
+    type_cash: $Enums.transactions_type_cash
+    type_in_out: $Enums.transactions_type_in_out
     date: Date | string
     description: string
     amount: bigint | number
@@ -18965,6 +20145,8 @@ export namespace Prisma {
   export type transactionsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     account_id?: StringFieldUpdateOperationsInput | string
+    type_cash?: Enumtransactions_type_cashFieldUpdateOperationsInput | $Enums.transactions_type_cash
+    type_in_out?: Enumtransactions_type_in_outFieldUpdateOperationsInput | $Enums.transactions_type_in_out
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     amount?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -18976,6 +20158,8 @@ export namespace Prisma {
   export type transactionsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     account_id?: StringFieldUpdateOperationsInput | string
+    type_cash?: Enumtransactions_type_cashFieldUpdateOperationsInput | $Enums.transactions_type_cash
+    type_in_out?: Enumtransactions_type_in_outFieldUpdateOperationsInput | $Enums.transactions_type_in_out
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     amount?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -18987,6 +20171,8 @@ export namespace Prisma {
   export type transactionsCreateManyInput = {
     id: string
     account_id: string
+    type_cash: $Enums.transactions_type_cash
+    type_in_out: $Enums.transactions_type_in_out
     date: Date | string
     description: string
     amount: bigint | number
@@ -18998,6 +20184,8 @@ export namespace Prisma {
   export type transactionsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     account_id?: StringFieldUpdateOperationsInput | string
+    type_cash?: Enumtransactions_type_cashFieldUpdateOperationsInput | $Enums.transactions_type_cash
+    type_in_out?: Enumtransactions_type_in_outFieldUpdateOperationsInput | $Enums.transactions_type_in_out
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     amount?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19009,6 +20197,8 @@ export namespace Prisma {
   export type transactionsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     account_id?: StringFieldUpdateOperationsInput | string
+    type_cash?: Enumtransactions_type_cashFieldUpdateOperationsInput | $Enums.transactions_type_cash
+    type_in_out?: Enumtransactions_type_in_outFieldUpdateOperationsInput | $Enums.transactions_type_in_out
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     amount?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19244,6 +20434,62 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type imagesCreateInput = {
+    id: string
+    file: string
+    full_path: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type imagesUncheckedCreateInput = {
+    id: string
+    file: string
+    full_path: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type imagesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    full_path?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type imagesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    full_path?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type imagesCreateManyInput = {
+    id: string
+    file: string
+    full_path: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type imagesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    full_path?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type imagesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    full_path?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -19329,17 +20575,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -19368,53 +20603,35 @@ export namespace Prisma {
 
   export type archive_installationCountOrderByAggregateInput = {
     id?: SortOrder
-    price?: SortOrder
+    customer_id?: SortOrder
+    technician_id?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customer_id?: SortOrder
-    names?: SortOrder
-  }
-
-  export type archive_installationAvgOrderByAggregateInput = {
-    price?: SortOrder
   }
 
   export type archive_installationMaxOrderByAggregateInput = {
     id?: SortOrder
-    price?: SortOrder
+    customer_id?: SortOrder
+    technician_id?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customer_id?: SortOrder
-    names?: SortOrder
   }
 
   export type archive_installationMinOrderByAggregateInput = {
     id?: SortOrder
-    price?: SortOrder
+    customer_id?: SortOrder
+    technician_id?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    customer_id?: SortOrder
-    names?: SortOrder
-  }
-
-  export type archive_installationSumOrderByAggregateInput = {
-    price?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19433,6 +20650,17 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type assetsOrderByRelevanceInput = {
@@ -19505,6 +20733,22 @@ export namespace Prisma {
     quantity?: SortOrder
   }
 
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type CustomerListRelationFilter = {
     every?: customerWhereInput
     some?: customerWhereInput
@@ -19528,6 +20772,8 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
+    npwp?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     description?: SortOrder
@@ -19540,6 +20786,8 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
+    npwp?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     description?: SortOrder
@@ -19552,6 +20800,8 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     logo_url?: SortOrder
+    npwp?: SortOrder
+    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     description?: SortOrder
@@ -19956,6 +21206,20 @@ export namespace Prisma {
     debit?: SortOrder
   }
 
+  export type Enumtransactions_type_cashFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_cash | Enumtransactions_type_cashFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_cash[]
+    notIn?: $Enums.transactions_type_cash[]
+    not?: NestedEnumtransactions_type_cashFilter<$PrismaModel> | $Enums.transactions_type_cash
+  }
+
+  export type Enumtransactions_type_in_outFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_in_out | Enumtransactions_type_in_outFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_in_out[]
+    notIn?: $Enums.transactions_type_in_out[]
+    not?: NestedEnumtransactions_type_in_outFilter<$PrismaModel> | $Enums.transactions_type_in_out
+  }
+
   export type Enumtransactions_typeFilter<$PrismaModel = never> = {
     equals?: $Enums.transactions_type | Enumtransactions_typeFieldRefInput<$PrismaModel>
     in?: $Enums.transactions_type[]
@@ -19972,6 +21236,8 @@ export namespace Prisma {
   export type transactionsCountOrderByAggregateInput = {
     id?: SortOrder
     account_id?: SortOrder
+    type_cash?: SortOrder
+    type_in_out?: SortOrder
     date?: SortOrder
     description?: SortOrder
     amount?: SortOrder
@@ -19987,6 +21253,8 @@ export namespace Prisma {
   export type transactionsMaxOrderByAggregateInput = {
     id?: SortOrder
     account_id?: SortOrder
+    type_cash?: SortOrder
+    type_in_out?: SortOrder
     date?: SortOrder
     description?: SortOrder
     amount?: SortOrder
@@ -19998,6 +21266,8 @@ export namespace Prisma {
   export type transactionsMinOrderByAggregateInput = {
     id?: SortOrder
     account_id?: SortOrder
+    type_cash?: SortOrder
+    type_in_out?: SortOrder
     date?: SortOrder
     description?: SortOrder
     amount?: SortOrder
@@ -20008,6 +21278,26 @@ export namespace Prisma {
 
   export type transactionsSumOrderByAggregateInput = {
     amount?: SortOrder
+  }
+
+  export type Enumtransactions_type_cashWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_cash | Enumtransactions_type_cashFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_cash[]
+    notIn?: $Enums.transactions_type_cash[]
+    not?: NestedEnumtransactions_type_cashWithAggregatesFilter<$PrismaModel> | $Enums.transactions_type_cash
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumtransactions_type_cashFilter<$PrismaModel>
+    _max?: NestedEnumtransactions_type_cashFilter<$PrismaModel>
+  }
+
+  export type Enumtransactions_type_in_outWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_in_out | Enumtransactions_type_in_outFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_in_out[]
+    notIn?: $Enums.transactions_type_in_out[]
+    not?: NestedEnumtransactions_type_in_outWithAggregatesFilter<$PrismaModel> | $Enums.transactions_type_in_out
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumtransactions_type_in_outFilter<$PrismaModel>
+    _max?: NestedEnumtransactions_type_in_outFilter<$PrismaModel>
   }
 
   export type Enumtransactions_typeWithAggregatesFilter<$PrismaModel = never> = {
@@ -20157,6 +21447,36 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type imagesOrderByRelevanceInput = {
+    fields: imagesOrderByRelevanceFieldEnum | imagesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type imagesCountOrderByAggregateInput = {
+    id?: SortOrder
+    file?: SortOrder
+    full_path?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type imagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    file?: SortOrder
+    full_path?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type imagesMinOrderByAggregateInput = {
+    id?: SortOrder
+    file?: SortOrder
+    full_path?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -20165,16 +21485,16 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type customerCreateNestedManyWithoutCompanyInput = {
@@ -20365,6 +21685,14 @@ export namespace Prisma {
     deleteMany?: customerScalarWhereInput | customerScalarWhereInput[]
   }
 
+  export type Enumtransactions_type_cashFieldUpdateOperationsInput = {
+    set?: $Enums.transactions_type_cash
+  }
+
+  export type Enumtransactions_type_in_outFieldUpdateOperationsInput = {
+    set?: $Enums.transactions_type_in_out
+  }
+
   export type Enumtransactions_typeFieldUpdateOperationsInput = {
     set?: $Enums.transactions_type
   }
@@ -20496,17 +21824,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -20520,22 +21837,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -20565,6 +21866,33 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -20635,11 +21963,45 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
+  export type NestedEnumtransactions_type_cashFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_cash | Enumtransactions_type_cashFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_cash[]
+    notIn?: $Enums.transactions_type_cash[]
+    not?: NestedEnumtransactions_type_cashFilter<$PrismaModel> | $Enums.transactions_type_cash
+  }
+
+  export type NestedEnumtransactions_type_in_outFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_in_out | Enumtransactions_type_in_outFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_in_out[]
+    notIn?: $Enums.transactions_type_in_out[]
+    not?: NestedEnumtransactions_type_in_outFilter<$PrismaModel> | $Enums.transactions_type_in_out
+  }
+
   export type NestedEnumtransactions_typeFilter<$PrismaModel = never> = {
     equals?: $Enums.transactions_type | Enumtransactions_typeFieldRefInput<$PrismaModel>
     in?: $Enums.transactions_type[]
     notIn?: $Enums.transactions_type[]
     not?: NestedEnumtransactions_typeFilter<$PrismaModel> | $Enums.transactions_type
+  }
+
+  export type NestedEnumtransactions_type_cashWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_cash | Enumtransactions_type_cashFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_cash[]
+    notIn?: $Enums.transactions_type_cash[]
+    not?: NestedEnumtransactions_type_cashWithAggregatesFilter<$PrismaModel> | $Enums.transactions_type_cash
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumtransactions_type_cashFilter<$PrismaModel>
+    _max?: NestedEnumtransactions_type_cashFilter<$PrismaModel>
+  }
+
+  export type NestedEnumtransactions_type_in_outWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.transactions_type_in_out | Enumtransactions_type_in_outFieldRefInput<$PrismaModel>
+    in?: $Enums.transactions_type_in_out[]
+    notIn?: $Enums.transactions_type_in_out[]
+    not?: NestedEnumtransactions_type_in_outWithAggregatesFilter<$PrismaModel> | $Enums.transactions_type_in_out
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumtransactions_type_in_outFilter<$PrismaModel>
+    _max?: NestedEnumtransactions_type_in_outFilter<$PrismaModel>
   }
 
   export type NestedEnumtransactions_typeWithAggregatesFilter<$PrismaModel = never> = {
@@ -20784,6 +22146,8 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
+    npwp: string
+    address: string
     createdAt?: Date | string
     updatedAt: Date | string
     description?: string | null
@@ -20796,6 +22160,8 @@ export namespace Prisma {
     email: string
     phone: string
     logo_url?: string | null
+    npwp: string
+    address: string
     createdAt?: Date | string
     updatedAt: Date | string
     description?: string | null
@@ -20876,6 +22242,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    npwp?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20888,6 +22256,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     logo_url?: NullableStringFieldUpdateOperationsInput | string | null
+    npwp?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null

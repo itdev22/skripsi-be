@@ -1,18 +1,19 @@
 package upload_file
 
 import (
+	"errors"
+	"path/filepath"
 	"skripsi-be/internal/models/entities"
 
-	"github.com/jinzhu/copier"
 	"gorm.io/gorm"
 )
 
 type CommonUploadFileRepositoryInterface interface {
-	FindCommonUploadFileRepository() ([]entities.Areas, error)
-	CreateCommonUploadFileRepository(request CreateWebhookMootaRequest) (entities.Areas, error)
-	FindByIdCommonUploadFileRepository(request IdWebhookMootaRequest) (entities.Areas, error)
-	UpdateCommonUploadFileRepository(request UpdateWebhookMootaRequest) (entities.Areas, error)
-	DeleteCommonUploadFileRepository(request IdWebhookMootaRequest) (entities.Areas, error)
+	FindCommonUploadFileRepository() ([]entities.Image, error)
+	CreateCommonUploadFileRepository(request CreateCommonUploadFileRequest) (entities.Image, error)
+	FindByIdCommonUploadFileRepository(request IdCommonUploadFileRequest) (entities.Image, error)
+	UpdateCommonUploadFileRepository(request UpdateCommonUploadFileRequest) (entities.Image, error)
+	DeleteCommonUploadFileRepository(request IdCommonUploadFileRequest) (entities.Image, error)
 }
 
 type CommonUploadFileRepositoryStruct struct {
@@ -23,8 +24,8 @@ func NewCommonUploadFileRepository(db *gorm.DB) *CommonUploadFileRepositoryStruc
 	return &CommonUploadFileRepositoryStruct{db}
 }
 
-func (r CommonUploadFileRepositoryStruct) FindCommonUploadFileRepository() ([]entities.Areas, error) {
-	areas := []entities.Areas{}
+func (r CommonUploadFileRepositoryStruct) FindCommonUploadFileRepository() ([]entities.Image, error) {
+	areas := []entities.Image{}
 	tx := r.db.Find(&areas)
 
 	if tx.Error != nil {
@@ -34,53 +35,47 @@ func (r CommonUploadFileRepositoryStruct) FindCommonUploadFileRepository() ([]en
 	return areas, nil
 }
 
-func (r CommonUploadFileRepositoryStruct) FindByIdCommonUploadFileRepository(request IdWebhookMootaRequest) (entities.Areas, error) {
-	area := entities.Areas{}
-	tx := r.db.First(&area, "id = ?", request.Id)
-
-	if tx.Error != nil {
-		return area, tx.Error
-	}
+func (r CommonUploadFileRepositoryStruct) FindByIdCommonUploadFileRepository(request IdCommonUploadFileRequest) (entities.Image, error) {
+	area := entities.Image{}
 
 	return area, nil
 }
 
-func (r CommonUploadFileRepositoryStruct) CreateCommonUploadFileRepository(request CreateWebhookMootaRequest) (entities.Areas, error) {
-	area := entities.Areas{}
-	copier.Copy(&area, &request)
-	tx := r.db.Create(&area)
-	if tx.Error != nil {
-		return entities.Areas{}, tx.Error
+func (r CommonUploadFileRepositoryStruct) CreateCommonUploadFileRepository(request CreateCommonUploadFileRequest) (entities.Image, error) {
+
+	image := entities.Image{}
+	extension := filepath.Ext(request.File.Filename)
+	if extension == "" {
+		return image, errors.New("File has no extension")
 	}
+	image.File = request.Name + extension
+	image.FullPath = "uploads/" + request.Path + "/" + request.Name + extension
+	tx := r.db.Create(&image)
+	if tx.Error != nil {
+		return image, tx.Error
+	}
+
+	return image, nil
+}
+
+func (r CommonUploadFileRepositoryStruct) UpdateCommonUploadFileRepository(request UpdateCommonUploadFileRequest) (entities.Image, error) {
+	area := entities.Image{}
 
 	return area, nil
 }
 
-func (r CommonUploadFileRepositoryStruct) UpdateCommonUploadFileRepository(request UpdateWebhookMootaRequest) (entities.Areas, error) {
-	area := entities.Areas{}
-	tx := r.db.First(&area, "id = ?", request.Id)
+func (r CommonUploadFileRepositoryStruct) DeleteCommonUploadFileRepository(request IdCommonUploadFileRequest) (entities.Image, error) {
 
+	image := entities.Image{}
+
+	tx := r.db.First(&image, "id = ?", request.Id)
 	if tx.Error != nil {
-		return area, tx.Error
-	}
-	copier.Copy(&area, &request)
-
-	r.db.Save(&area)
-	return area, nil
-}
-
-func (r CommonUploadFileRepositoryStruct) DeleteCommonUploadFileRepository(request IdWebhookMootaRequest) (entities.Areas, error) {
-
-	area := entities.Areas{}
-
-	tx := r.db.First(&area, "id = ?", request.Id)
-	if tx.Error != nil {
-		return area, tx.Error
+		return image, tx.Error
 	}
 
-	tx = r.db.Delete(&area)
+	tx = r.db.Delete(&image)
 	if tx.Error != nil {
-		return area, tx.Error
+		return image, tx.Error
 	}
-	return area, nil
+	return image, nil
 }
