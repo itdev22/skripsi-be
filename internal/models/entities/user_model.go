@@ -18,11 +18,22 @@ const (
 
 // Accounts model
 type Accounts struct {
-	ID        string      `json:"id" gorm:"primaryKey"`
-	Name      string      `json:"name"`
-	CreatedAt time.Time   `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt time.Time   `json:"updatedAt"`
-	Transfers []Transfers `json:"transfers" gorm:"foreignKey:FromAccountID;foreignKey:ToAccountID"`
+	ID        string    `json:"id" gorm:"primaryKey"`
+	Name      string    `json:"name"`
+	Saldo     int64     `json:"saldo" gorm:"default:0"`
+	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp"`
+	UpdatedAt time.Time `json:"updatedAt"`
+}
+
+func (c *Accounts) TableName() string {
+	return "accounts"
+}
+
+func (u *Accounts) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
 }
 
 type CustomerInstallation struct {
@@ -235,7 +246,6 @@ type TransactionsTypeCash string
 const (
 	TransactionsTypeCashInternet TransactionsTypeCash = "internet"
 	TransactionsTypeCashCashFlow TransactionsTypeCash = "cash_flow"
-	TransactionsTypeCashAsset    TransactionsTypeCash = "asset"
 )
 
 // TransactionsTypeInOut represents the direction of the transaction
@@ -243,8 +253,8 @@ type TransactionsTypeInOut string
 
 // Constants for TransactionsTypeInOut
 const (
-	TransactionsTypeInOutIn  TransactionsTypeInOut = "in"
-	TransactionsTypeInOutOut TransactionsTypeInOut = "out"
+	TransactionsTypeInOutIn  TransactionsTypeInOut = "debit"
+	TransactionsTypeInOutOut TransactionsTypeInOut = "credit"
 )
 
 // TransactionsType represents the general transaction type
@@ -269,6 +279,7 @@ func (u *Transaction) TableName() string {
 func (u *Transaction) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == "" {
 		u.ID = uuid.New().String()
+		u.Date = time.Now().Format("2006-01-02 15:04:05")
 	}
 	return nil
 }
