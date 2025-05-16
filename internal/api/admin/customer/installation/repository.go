@@ -12,7 +12,7 @@ type AdminCustomerInstallationRepositoryInterface interface {
 	UpdateAdminCustomerInstallationRepository(request UpdateAdminCustomerInstallationRequest) (entities.CustomerInstallation, error)
 	DeleteAdminCustomerInstallationRepository(request IdAdminCustomerInstallationRequest) (entities.CustomerInstallation, error)
 	FindByIdAdminCustomerInstallationRepository(request IdAdminCustomerInstallationRequest) (entities.CustomerInstallation, error)
-	FindAdminCustomerInstallationRepository() ([]entities.Customer, error)
+	FindAdminCustomerInstallationRepository() ([]entities.CustomerInstallation, error)
 }
 type AdminCustomerInstallationRepositoryStruct struct {
 	db *gorm.DB
@@ -22,19 +22,19 @@ func NewAdminCustomerInstallationRepository(db *gorm.DB) AdminCustomerInstallati
 	return AdminCustomerInstallationRepositoryStruct{db}
 }
 
-func (r AdminCustomerInstallationRepositoryStruct) FindAdminCustomerInstallationRepository() ([]entities.Customer, error) {
-	customer := []entities.Customer{}
-	tx := r.db.Preload("Area").Preload("Company").Preload("Product").Find(&customer)
+func (r AdminCustomerInstallationRepositoryStruct) FindAdminCustomerInstallationRepository() ([]entities.CustomerInstallation, error) {
+	customerInstallations := []entities.CustomerInstallation{}
+	tx := r.db.Preload("Customer").Preload("Technician").Preload("Images").Find(&customerInstallations)
 
 	if tx.Error != nil {
-		return customer, tx.Error
+		return customerInstallations, tx.Error
 	}
 
-	return customer, nil
+	return customerInstallations, nil
 }
 func (r AdminCustomerInstallationRepositoryStruct) FindByIdAdminCustomerInstallationRepository(request IdAdminCustomerInstallationRequest) (entities.CustomerInstallation, error) {
 	customer := entities.CustomerInstallation{}
-	tx := r.db.Preload("Area").Preload("Company").Preload("Product").Find(&customer, "id = ?", request.Id)
+	tx := r.db.Preload("Customer").Preload("Technician").Preload("Images").Find(&customer, "id = ?", request.Id)
 	if tx.Error != nil {
 		return customer, tx.Error
 	}
@@ -42,32 +42,29 @@ func (r AdminCustomerInstallationRepositoryStruct) FindByIdAdminCustomerInstalla
 	return customer, tx.Error
 }
 func (r AdminCustomerInstallationRepositoryStruct) CreateAdminCustomerInstallationRepository(request CreateAdminCustomerInstallationRequest) (entities.CustomerInstallation, error) {
-	images := []entities.CustomerInstallation{}
+	images := []entities.Image{}
 	customerInstallation := entities.CustomerInstallation{}
 	copier.Copy(&customerInstallation, &request)
 
 	tx := r.db.Begin()
-	tx = tx.Create(&customerInstallation)
+	txCustomer := tx.Create(&customerInstallation)
+	if txCustomer.Error != nil {
+		tx.Rollback()
+		return entities.CustomerInstallation{}, txCustomer.Error
+	}
 
-	tx = tx.Where("id IN ?", request.Images).Find(&images)
+	txImage := tx.Where("id IN ?", request.Images).Find(&images).Update("archive_installation_id", customerInstallation.ID)
+	if txImage.Error != nil {
+		tx.Rollback()
+		return entities.CustomerInstallation{}, tx.Error
+	}
+
 	if tx.Error != nil {
 		tx.Rollback()
 		return entities.CustomerInstallation{}, tx.Error
 	}
 
-	for _, vimage := range images {
-		tx = tx.Model(&vimage).Update("archive_installation_id", customerInstallation.ID)
-		if tx.Error != nil {
-			tx.Rollback()
-			return entities.CustomerInstallation{}, tx.Error
-		}
-
-	}
-
-	if tx.Error != nil {
-		return entities.CustomerInstallation{}, tx.Error
-	}
-
+	tx.Commit()
 	return customerInstallation, nil
 
 }

@@ -7,6 +7,7 @@ import (
 	"skripsi-be/internal/api/admin/customer"
 	customerinstallation "skripsi-be/internal/api/admin/customer/installation"
 	"skripsi-be/internal/api/admin/product"
+	"skripsi-be/internal/api/admin/report"
 	"skripsi-be/internal/api/admin/role"
 	"skripsi-be/internal/api/admin/transaction"
 	usermanagement "skripsi-be/internal/api/admin/user-management"
@@ -32,6 +33,7 @@ func RouteFiber(app *fiber.App) {
 	usermanagement.AdminUserManagementRoute(admin.Group("/user-management"))
 	role.AdminRoleRoute(admin.Group("/role"))
 	product.AdminProductRoute(admin.Group("/product"))
+	report.AdminReportRoute(admin.Group("/report"))
 	area.AdminAreaRoute(admin.Group("/area"))
 	customer.AdminCustomerRoute(admin.Group("/customer"))
 	customerinstallation.AdminCustomerInstallationRoute(admin.Group("/customer-installation"))

@@ -40,6 +40,10 @@ func (h AdminCustomerInstallationHandlerStruct) GetByIdAdminCustomerInstallation
 }
 func (h AdminCustomerInstallationHandlerStruct) CreateAdminCustomerInstallationHandler(c *fiber.Ctx) error {
 	request := CreateAdminCustomerInstallationRequest{}
+	err := c.BodyParser(&request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
+	}
 
 	errValidation := validation.ValidationRequest(request)
 	if errValidation != nil {

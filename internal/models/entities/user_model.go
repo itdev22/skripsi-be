@@ -25,15 +25,28 @@ type Accounts struct {
 	Transfers []Transfers `json:"transfers" gorm:"foreignKey:FromAccountID;foreignKey:ToAccountID"`
 }
 
-// ArchiveInstallation model
 type CustomerInstallation struct {
-	ID         string    `json:"id" gorm:"primaryKey"`
-	Price      float64   `json:"price"`
-	CreatedAt  time.Time `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt  time.Time `json:"updatedAt"`
-	CustomerID *string   `json:"customer_id" gorm:"index:archive_installation_ibfk_1"`
-	Names      string    `json:"names"`
-	Customer   *Customer `json:"customer" gorm:"foreignKey:CustomerID;constraint:OnUpdate:RESTRICT"`
+	ID           string    `gorm:"column:id;type:varchar;primaryKey" json:"id"`
+	CustomerID   string    `gorm:"column:customer_id;type:varchar;index:archive_installation_ibfk_1" json:"customer_id,omitempty"`
+	TechnicianID string    `gorm:"column:technician_id;type:varchar;index:technician_id" json:"technician_id"`
+	Description  string    `gorm:"column:description;type:text" json:"description,omitempty"`
+	Date         string    `gorm:"column:date;type:date" json:"date"`
+	CreatedAt    time.Time `gorm:"column:createdAt;default:current_timestamp" json:"createdAt"`
+	UpdatedAt    time.Time `gorm:"column:updatedAt" json:"updatedAt"`
+	Customer     Customer  `gorm:"foreignKey:CustomerID;references:id;constraint:OnDelete:RESTRICT,OnUpdate:RESTRICT" json:"customer,omitempty"`
+	Technician   User      `gorm:"foreignKey:TechnicianID;references:id;constraint:OnUpdate:RESTRICT" json:"technician,omitempty"`
+	Images       []Image   `gorm:"foreignKey:archive_installation_id;constraint:OnUpdate:RESTRICT" json:"images,omitempty"`
+}
+
+func (c *CustomerInstallation) TableName() string {
+	return "customer_installations"
+}
+
+func (u *CustomerInstallation) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
 }
 
 // Assets model
@@ -76,8 +89,8 @@ type Company struct {
 	Phone       string     `json:"phone"`
 	LogoURL     string     `json:"logo_url"`
 	Description string     `json:"description"`
-	Npwp        string     `json:"description"`
-	Address     string     `json:"description"`
+	Npwp        string     `json:"npwp"`
+	Address     string     `json:"address"`
 	CreatedAt   time.Time  `json:"createdAt" gorm:"column:createdAt; default:current_timestamp"`
 	UpdatedAt   time.Time  `json:"updatedAt"  gorm:"column:updatedAt" `
 	Customers   []Customer `json:"customer" gorm:"foreignKey:company_id"`
@@ -318,11 +331,12 @@ func (u *Role) BeforeCreate(tx *gorm.DB) error {
 }
 
 type Image struct {
-	ID        string     `gorm:"column:id;type:varchar;primaryKey" json:"id"`
-	File      string     `gorm:"column:file;type:varchar;not null" json:"file"`
-	FullPath  string     `gorm:"column:full_path;type:varchar;not null" json:"full_path"`
-	CreatedAt time.Time  `gorm:"column:createdAt;not null;default:now()" json:"createdAt"`
-	UpdatedAt *time.Time `gorm:"column:updatedAt;default:null" json:"updatedAt"`
+	ID                    string     `gorm:"column:id;type:varchar;primaryKey" json:"id"`
+	File                  string     `gorm:"column:file;type:varchar;not null" json:"file"`
+	FullPath              string     `gorm:"column:full_path;type:varchar;not null" json:"full_path"`
+	ArchiveInstallationId string     `gorm:"column:archive_installation_id;type:varchar;not null" json:"archive_installation_id"`
+	CreatedAt             time.Time  `gorm:"column:createdAt;not null;default:now()" json:"createdAt"`
+	UpdatedAt             *time.Time `gorm:"column:updatedAt;default:null" json:"updatedAt"`
 }
 
 func (u *Image) TableName() string {
