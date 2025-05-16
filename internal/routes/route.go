@@ -6,6 +6,7 @@ import (
 	"skripsi-be/internal/api/admin/company"
 	"skripsi-be/internal/api/admin/customer"
 	customerinstallation "skripsi-be/internal/api/admin/customer/installation"
+	"skripsi-be/internal/api/admin/invoice"
 	"skripsi-be/internal/api/admin/product"
 	"skripsi-be/internal/api/admin/report"
 	"skripsi-be/internal/api/admin/role"
@@ -14,6 +15,7 @@ import (
 	authapi "skripsi-be/internal/api/auth"
 	upload_file "skripsi-be/internal/api/common/upload_file"
 	"skripsi-be/internal/api/customer/dashboard"
+	midtrans "skripsi-be/internal/api/webhook/midtrans"
 	"skripsi-be/internal/api/webhook/moota"
 
 	"github.com/gofiber/fiber/v2"
@@ -40,11 +42,15 @@ func RouteFiber(app *fiber.App) {
 	customerinstallation.AdminCustomerInstallationRoute(admin.Group("/customer-installation"))
 	asset.AdminAssetRoute(admin.Group("/asset"))
 	transaction.AdminTrasactionRoute(admin.Group("/transaction"))
+	invoice.AdminInvoiceRoute(admin.Group("/invoice"))
 
 	customer := api.Group("/customer")
 	dashboard.CustomerDashboardRoute(customer.Group("/dashboard"))
 
 	webhook := api.Group("/webhook")
 	moota.WebhookMootaRoute(webhook.Group("/moota"))
+
+	webhookPlain := app.Group("/webhook")
+	midtrans.WebhookMidtransRoute(webhookPlain.Group("/midtrans"))
 
 }

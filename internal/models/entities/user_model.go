@@ -355,8 +355,9 @@ type InvoiceStatus string
 
 // Constants for TransactionsTypeInOut
 const (
-	InvoiceStatusPaid   InvoiceStatus = "paid"
-	InvoiceStatusUnpaid InvoiceStatus = "unpaid"
+	InvoiceStatusPaid    InvoiceStatus = "paid"
+	InvoiceStatusUnpaid  InvoiceStatus = "unpaid"
+	InvoiceStatusPending InvoiceStatus = "pending"
 )
 
 type Invoice struct {
@@ -364,9 +365,9 @@ type Invoice struct {
 	Amount     int64         `gorm:"column:amount;type:int;not null" json:"amount"`
 	CustomerID string        `gorm:"column:customer_id;type:varchar;not null" json:"customer_id"`
 	Link       string        `gorm:"column:link;type:varchar;not null" json:"link"`
-	status     InvoiceStatus `gorm:"column:link;type:varchar;not null" json:"link"`
-	CreatedAt  time.Time     `gorm:"column:created_at;default:current_timestamp" json:"created_at"`
-	UpdatedAt  time.Time     `gorm:"column:updated_at;not null" json:"updated_at"`
+	Status     InvoiceStatus `gorm:"column:status;type:varchar;not null" json:"status"`
+	CreatedAt  time.Time     `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
+	UpdatedAt  time.Time     `gorm:"column:updatedAt;not null" json:"updated_at"`
 }
 
 func (Invoice) TableName() string {
@@ -375,6 +376,7 @@ func (Invoice) TableName() string {
 func (u *Invoice) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == "" {
 		u.ID = uuid.New().String()
+		u.Status = InvoiceStatusUnpaid
 	}
 	return nil
 }

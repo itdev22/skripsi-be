@@ -16,4 +16,5 @@ func CustomerDashboardRoute(app fiber.Router) {
 
 	// Route
 	app.Get("/", helpers.CustomerVerifyToken, handler.MyUserCustomerDashboard)
+	app.Post("/", helpers.CustomerVerifyToken, handler.CreatePaymentCustomerDashboard)
 }

@@ -45,15 +45,15 @@ func CreatePaymentLink(midtrans MidtransCreatePaymentLink) (MidtransResponsePaym
 	// 	}
 	// }`)
 
-	payload := strings.NewReader(`{
+	payload := strings.NewReader(fmt.Sprintf(`{
 		"transaction_details": {
-			"order_id": ` + midtrans.OrderID + `,
-			"gross_amount": ` + fmt.Sprintf("%d", midtrans.GrossAmount) + `
+			"order_id": %q,
+			"gross_amount": %d
 		},
 		"credit_card": {
 			"secure": true
 		}
-	}`)
+	}`, midtrans.OrderID, midtrans.GrossAmount))
 
 	client := &http.Client{}
 	req, err := http.NewRequest(method, url, payload)

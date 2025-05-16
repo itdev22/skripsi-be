@@ -49,7 +49,7 @@ func (r CustomerDashboardRepositoryStruct) MyProductCustomerDashboard(request st
 
 func (r CustomerDashboardRepositoryStruct) MyInvoiceCustomerDashboard(request string) ([]entities.Invoice, error) {
 	invoice := []entities.Invoice{}
-	err := r.db.Where("customer_id = ?", &request).Find(&invoice).Error
+	err := r.db.Where("customer_id = ?", &request).Order("createdAt desc").Find(&invoice).Error
 	if err != nil {
 		return invoice, err
 	}
@@ -74,6 +74,7 @@ func (r CustomerDashboardRepositoryStruct) MyInvoiceUpdatePaymentCustomerDashboa
 		return invoice, err
 	}
 	invoice.Link = link
+	invoice.Status = entities.InvoiceStatusPending
 	err = r.db.Save(&invoice).Error
 	if err != nil {
 		return invoice, err

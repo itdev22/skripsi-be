@@ -51,7 +51,7 @@ func (s CustomerDashboardServiceStruct) CreatePaymentCustomerDashboard(request S
 
 	mindtransRequest := midtrans.MidtransCreatePaymentLink{
 		OrderID:     invoice.ID,
-		GrossAmount: int64(invoice.Amount),
+		GrossAmount: invoice.Amount,
 	}
 	midtransResponse, err = midtrans.CreatePaymentLink(mindtransRequest)
 
