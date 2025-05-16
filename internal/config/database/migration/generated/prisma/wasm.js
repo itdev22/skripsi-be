@@ -123,17 +123,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.AccountsScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Archive_installationScalarFieldEnum = {
-  id: 'id',
-  customer_id: 'customer_id',
-  technician_id: 'technician_id',
-  description: 'description',
-  date: 'date',
-  images: 'images',
+  saldo: 'saldo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -245,19 +235,6 @@ exports.Prisma.Report_cashScalarFieldEnum = {
   description: 'description'
 };
 
-exports.Prisma.TransactionsScalarFieldEnum = {
-  id: 'id',
-  account_id: 'account_id',
-  type_cash: 'type_cash',
-  type_in_out: 'type_in_out',
-  date: 'date',
-  description: 'description',
-  amount: 'amount',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  type: 'type'
-};
-
 exports.Prisma.TransfersScalarFieldEnum = {
   id: 'id',
   from_account_id: 'from_account_id',
@@ -294,6 +271,37 @@ exports.Prisma.ImagesScalarFieldEnum = {
   id: 'id',
   file: 'file',
   full_path: 'full_path',
+  archive_installation_id: 'archive_installation_id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Customer_installationsScalarFieldEnum = {
+  id: 'id',
+  customer_id: 'customer_id',
+  technician_id: 'technician_id',
+  description: 'description',
+  date: 'date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InvoicesScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  customer_id: 'customer_id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TransactionsScalarFieldEnum = {
+  id: 'id',
+  account_id: 'account_id',
+  type_cash: 'type_cash',
+  type_in_out: 'type_in_out',
+  date: 'date',
+  description: 'description',
+  amount: 'amount',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -308,19 +316,6 @@ exports.Prisma.accountsOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
-exports.Prisma.archive_installationOrderByRelevanceFieldEnum = {
-  id: 'id',
-  customer_id: 'customer_id',
-  technician_id: 'technician_id',
-  description: 'description',
-  images: 'images'
-};
-
 exports.Prisma.assetsOrderByRelevanceFieldEnum = {
   id: 'id',
   brand: 'brand',
@@ -333,6 +328,11 @@ exports.Prisma.assetsOrderByRelevanceFieldEnum = {
   status: 'status',
   status_in_out: 'status_in_out',
   type: 'type'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 exports.Prisma.companyOrderByRelevanceFieldEnum = {
@@ -399,12 +399,6 @@ exports.Prisma.report_cashOrderByRelevanceFieldEnum = {
   description: 'description'
 };
 
-exports.Prisma.transactionsOrderByRelevanceFieldEnum = {
-  id: 'id',
-  account_id: 'account_id',
-  description: 'description'
-};
-
 exports.Prisma.transfersOrderByRelevanceFieldEnum = {
   id: 'id',
   from_account_id: 'from_account_id',
@@ -432,28 +426,39 @@ exports.Prisma.rolesOrderByRelevanceFieldEnum = {
 exports.Prisma.imagesOrderByRelevanceFieldEnum = {
   id: 'id',
   file: 'file',
-  full_path: 'full_path'
+  full_path: 'full_path',
+  archive_installation_id: 'archive_installation_id'
+};
+
+exports.Prisma.customer_installationsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  customer_id: 'customer_id',
+  technician_id: 'technician_id',
+  description: 'description'
+};
+
+exports.Prisma.invoicesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  customer_id: 'customer_id'
+};
+
+exports.Prisma.transactionsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  account_id: 'account_id',
+  description: 'description'
 };
 exports.transactions_type_cash = exports.$Enums.transactions_type_cash = {
   internet: 'internet',
-  cash_flow: 'cash_flow',
-  asset: 'asset',
-  transaction: 'transaction'
+  cash_flow: 'cash_flow'
 };
 
 exports.transactions_type_in_out = exports.$Enums.transactions_type_in_out = {
-  in: 'in',
-  out: 'out'
-};
-
-exports.transactions_type = exports.$Enums.transactions_type = {
   debit: 'debit',
   credit: 'credit'
 };
 
 exports.Prisma.ModelName = {
   accounts: 'accounts',
-  archive_installation: 'archive_installation',
   assets: 'assets',
   company: 'company',
   customer: 'customer',
@@ -463,11 +468,13 @@ exports.Prisma.ModelName = {
   products: 'products',
   report_assets: 'report_assets',
   report_cash: 'report_cash',
-  transactions: 'transactions',
   transfers: 'transfers',
   users: 'users',
   roles: 'roles',
-  images: 'images'
+  images: 'images',
+  customer_installations: 'customer_installations',
+  invoices: 'invoices',
+  transactions: 'transactions'
 };
 
 /**

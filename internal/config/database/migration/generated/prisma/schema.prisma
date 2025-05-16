@@ -11,21 +11,9 @@ datasource db {
 model accounts {
   id        String   @id
   name      String
+  saldo     Int
   createdAt DateTime @default(now())
   updatedAt DateTime
-}
-
-model archive_installation {
-  id            String   @id
-  customer_id   String?
-  technician_id String
-  description   String?  @db.Text
-  date          DateTime @db.Date
-  images        String   @db.LongText
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime
-
-  @@index([customer_id], map: "archive_installation_ibfk_1")
 }
 
 model assets {
@@ -62,31 +50,32 @@ model company {
 }
 
 model customer {
-  id                String    @id
-  address           String
-  area_id           String
-  card_identition   String
-  company_id        String
-  email             String    @unique
-  gender            String
-  product_id        String
-  ip_static         String
-  job               String
-  latitude          Float
-  longitude         Float
-  mac_address       String
-  name              String
-  no_identition     Int
-  password          String
-  phone             String
-  type_of_service   String
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime
-  installation_date DateTime  @db.Date
-  next_payment_date DateTime? @db.Date
-  areas             areas     @relation(fields: [area_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
-  company           company   @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
-  products          products  @relation(fields: [product_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_3")
+  id                     String                   @id
+  address                String
+  area_id                String
+  card_identition        String
+  company_id             String
+  email                  String?
+  gender                 String
+  product_id             String
+  ip_static              String
+  job                    String
+  latitude               Float
+  longitude              Float
+  mac_address            String
+  name                   String
+  no_identition          Int
+  password               String
+  phone                  String
+  type_of_service        String
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime
+  installation_date      DateTime                 @db.Date
+  next_payment_date      DateTime                 @db.Date
+  areas                  areas                    @relation(fields: [area_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
+  company                company                  @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
+  products               products                 @relation(fields: [product_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_3")
+  customer_installations customer_installations[]
 
   @@index([area_id], map: "area_id")
   @@index([company_id], map: "company_id")
@@ -149,21 +138,6 @@ model report_cash {
   description String
 }
 
-model transactions {
-  id          String                   @id
-  account_id  String
-  type_cash   transactions_type_cash
-  type_in_out transactions_type_in_out
-  date        DateTime
-  description String
-  amount      BigInt
-  createdAt   DateTime                 @default(now())
-  updatedAt   DateTime
-  type        transactions_type
-
-  @@index([account_id], map: "transactions_account_id_fkey")
-}
-
 model transfers {
   id              String   @id
   from_account_id String
@@ -180,17 +154,18 @@ model transfers {
 }
 
 model users {
-  id        String    @id
-  email     String    @unique
-  name      String
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime?
-  token     String?   @db.Text
-  role_id   String?
-  logo_url  String?
-  phone     String?
-  role      roles?    @relation(fields: [role_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "users_ibfk_1")
+  id                     String                   @id
+  email                  String                   @unique
+  name                   String
+  password               String
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime?
+  token                  String?                  @db.Text
+  role_id                String?
+  logo_url               String?
+  phone                  String?
+  customer_installations customer_installations[]
+  role                   roles?                   @relation(fields: [role_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "users_ibfk_1")
 
   @@index([role_id], map: "role_id")
 }
@@ -204,26 +179,57 @@ model roles {
 }
 
 model images {
-  id        String    @id
-  file      String
-  full_path String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime?
+  id                      String    @id
+  file                    String
+  full_path               String
+  archive_installation_id String
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime?
+}
+
+model customer_installations {
+  id            String    @id
+  customer_id   String?
+  technician_id String
+  description   String?   @db.Text
+  date          DateTime  @db.Date
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime
+  customer      customer? @relation(fields: [customer_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "customer_installations_ibfk_1")
+  users         users     @relation(fields: [technician_id], references: [id], onUpdate: Restrict, map: "customer_installations_ibfk_2")
+
+  @@index([customer_id], map: "archive_installation_ibfk_1")
+  @@index([technician_id], map: "technician_id")
+}
+
+model invoices {
+  id          String   @id
+  amount      Int
+  customer_id String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+}
+
+model transactions {
+  id          String                   @id
+  account_id  String
+  type_cash   transactions_type_cash
+  type_in_out transactions_type_in_out
+  date        DateTime
+  description String
+  amount      BigInt
+  createdAt   DateTime                 @default(now())
+  updatedAt   DateTime
+
+  @@index([account_id], map: "transactions_account_id_fkey")
 }
 
 enum transactions_type_in_out {
-  in
-  out
+  debit
+  credit
 }
 
 enum transactions_type_cash {
   internet
   cash_flow
-  asset
-  transaction
-}
-
-enum transactions_type {
-  debit
-  credit
 }

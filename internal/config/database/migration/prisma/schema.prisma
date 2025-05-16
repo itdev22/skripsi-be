@@ -11,6 +11,7 @@ datasource db {
 model accounts {
   id        String   @id
   name      String
+  saldo     Int
   createdAt DateTime @default(now())
   updatedAt DateTime
 }
@@ -54,7 +55,7 @@ model customer {
   area_id                String
   card_identition        String
   company_id             String
-  email                  String                   @unique
+  email                  String?
   gender                 String
   product_id             String
   ip_static              String
@@ -70,9 +71,9 @@ model customer {
   createdAt              DateTime                 @default(now())
   updatedAt              DateTime
   installation_date      DateTime                 @db.Date
-  next_payment_date      DateTime?                @db.Date
+  next_payment_date      DateTime                 @db.Date
   areas                  areas                    @relation(fields: [area_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
-  company                company                  @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
+  company                company                 @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
   products               products                 @relation(fields: [product_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_3")
   customer_installations customer_installations[]
 
@@ -135,21 +136,6 @@ model report_cash {
   credit      BigInt
   debit       BigInt
   description String
-}
-
-model transactions {
-  id          String                   @id
-  account_id  String
-  type_cash   transactions_type_cash
-  type_in_out transactions_type_in_out
-  date        DateTime
-  description String
-  amount      BigInt
-  createdAt   DateTime                 @default(now())
-  updatedAt   DateTime
-  type        transactions_type
-
-  @@index([account_id], map: "transactions_account_id_fkey")
 }
 
 model transfers {
@@ -216,19 +202,33 @@ model customer_installations {
   @@index([technician_id], map: "technician_id")
 }
 
+model invoices {
+  id          String   @id
+  amount      Int
+  customer_id String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+}
+
+model transactions {
+  id          String                   @id
+  account_id  String
+  type_cash   transactions_type_cash
+  type_in_out transactions_type_in_out
+  date        DateTime
+  description String
+  amount      BigInt
+  createdAt   DateTime                 @default(now())
+  updatedAt   DateTime
+
+  @@index([account_id], map: "transactions_account_id_fkey")
+}
 enum transactions_type_in_out {
-  in
-  out
+  debit
+  credit
 }
 
 enum transactions_type_cash {
   internet
   cash_flow
-  asset
-  transaction
-}
-
-enum transactions_type {
-  debit
-  credit
 }

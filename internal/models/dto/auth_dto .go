@@ -18,3 +18,15 @@ func ModelToLoginAuth(token string, user entities.User) *LoginAuthDTO {
 		},
 	}
 }
+
+type CustomerLoginAuthDTO struct {
+	Token    string      `json:"token"`
+	Customer CustomerDTO `json:"user"`
+}
+
+func ModelToCustomerLoginAuth(token string, user CustomerDTO) *CustomerLoginAuthDTO {
+	return &CustomerLoginAuthDTO{
+		Token:    token,
+		Customer: user,
+	}
+}

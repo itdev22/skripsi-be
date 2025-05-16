@@ -112,14 +112,14 @@ type Customer struct {
 	ID               string    `json:"id" gorm:"primaryKey"`
 	Address          string    `gorm:"column:address" json:"address"`
 	AreaID           string    `gorm:"column:area_id" json:"area_id"`
-	Area             Areas     `gorm:"foreignKey:AreaID" json:"area"`
+	Area             *Areas    `gorm:"foreignKey:AreaID" json:"area"`
 	CardIdentition   string    `gorm:"column:card_identition" json:"card_identition"`
 	CompanyID        string    `gorm:"column:company_id" json:"company_id"`
-	Company          Company   `gorm:"foreignKey:CompanyID" json:"company"`
+	Company          *Company  `gorm:"foreignKey:CompanyID" json:"company"`
 	Email            string    `gorm:"column:email;unique" json:"email"`
 	Gender           string    `gorm:"column:gender" json:"gender"`
 	ProductID        string    `gorm:"column:product_id" json:"product_id"`
-	Product          Products  `gorm:"foreignKey:ProductID" json:"product"`
+	Product          *Products `gorm:"foreignKey:ProductID" json:"product"`
 	IPStatic         string    `gorm:"column:ip_static" json:"ip_static"`
 	Job              string    `gorm:"column:job" json:"job"`
 	Latitude         float64   `gorm:"column:latitude" json:"latitude"`
@@ -344,6 +344,35 @@ func (u *Image) TableName() string {
 }
 
 func (u *Image) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
+	}
+	return nil
+}
+
+// TransactionsTypeInOut represents the direction of the transaction
+type InvoiceStatus string
+
+// Constants for TransactionsTypeInOut
+const (
+	InvoiceStatusPaid   InvoiceStatus = "paid"
+	InvoiceStatusUnpaid InvoiceStatus = "unpaid"
+)
+
+type Invoice struct {
+	ID         string        `gorm:"column:id;type:varchar;primaryKey" json:"id"`
+	Amount     int64         `gorm:"column:amount;type:int;not null" json:"amount"`
+	CustomerID string        `gorm:"column:customer_id;type:varchar;not null" json:"customer_id"`
+	Link       string        `gorm:"column:link;type:varchar;not null" json:"link"`
+	status     InvoiceStatus `gorm:"column:link;type:varchar;not null" json:"link"`
+	CreatedAt  time.Time     `gorm:"column:created_at;default:current_timestamp" json:"created_at"`
+	UpdatedAt  time.Time     `gorm:"column:updated_at;not null" json:"updated_at"`
+}
+
+func (Invoice) TableName() string {
+	return "invoices"
+}
+func (u *Invoice) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == "" {
 		u.ID = uuid.New().String()
 	}

@@ -33,6 +33,21 @@ func (db *AuthRepositoryStruct) GetEmailAuthRepository(LoginRequest LoginRequest
 	return user, nil
 }
 
+func (db *AuthRepositoryStruct) GetPhoneCustomerAuthRepository(LoginRequest LoginRequest) (*entities.Customer, error) {
+	// Implement the logic to get a user by ID from the database
+
+	user := &entities.Customer{}
+	if err := db.DB.First(user, "phone = ?", LoginRequest.Email).Error; err != nil {
+		return nil, err
+	}
+
+	// Check if the user exists
+	if user.ID == "" {
+		return nil, gorm.ErrRecordNotFound
+	}
+	return user, nil
+}
+
 func (db *AuthRepositoryStruct) GetTokenAuthRepository(token string) (*entities.User, error) {
 	// Implement the logic to get a user by ID from the database
 
