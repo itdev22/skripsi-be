@@ -90,3 +90,12 @@ func (h AdminTransactionHandlerStruct) DeleteAdminTransactionHandlerStruct(c *fi
 
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", transaction)
 }
+
+func (h AdminTransactionHandlerStruct) SyncAdminTransactionHandlerStruct(c *fiber.Ctx) error {
+	err := h.service.SyncAdminTransactionService()
+
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
+	}
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", "Sync Success")
+}

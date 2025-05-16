@@ -2,6 +2,7 @@ package midtrans
 
 import (
 	"skripsi-be/internal/models/entities"
+	"strconv"
 )
 
 type WebhookMidtransServiceInterface interface {
@@ -32,5 +33,19 @@ func (s WebhookMidtransServiceStruct) ReceivedWebhookMidtransService(request *Mi
 		return err
 	}
 
+	requestTransaction := CreateWebhookMidtransRequest{}
+	requestTransaction.AccountID = "b82074e7-7acb-40e2-ab33-014f4b09c1f8"
+	requestTransaction.TypeCash = string(entities.TransactionsTypeCashInternet)
+	requestTransaction.TypeInOut = string(entities.TransactionsTypeInOutIn)
+	amount, err := strconv.ParseFloat(request.GrossAmount, 64)
+	if err != nil {
+		return err
+	}
+	requestTransaction.Amount = int64(amount)
+	_, err = s.repository.CreateWebhookMidtransRepository(requestTransaction)
+
+	if err != nil {
+		return err
+	}
 	return nil
 }

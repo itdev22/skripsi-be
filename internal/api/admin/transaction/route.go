@@ -14,6 +14,7 @@ func AdminTrasactionRoute(app fiber.Router) {
 
 	app.Get("/", handler.GetAllAdminTransactionHandlerStruct)
 	app.Get("/:id", handler.GetByIdAdminTransactionHandlerStruct)
+	app.Get("/:id/sync", handler.SyncAdminTransactionHandlerStruct)
 	app.Post("/", handler.CreateAdminTransactionHandlerStruct)
 	app.Put("/:id", handler.UpdateAdminTransactionHandlerStruct)
 	app.Delete("/:id", handler.DeleteAdminTransactionHandlerStruct)

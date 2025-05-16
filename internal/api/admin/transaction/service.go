@@ -10,6 +10,7 @@ type AdminTransactionServiceInterface interface {
 	CreateAdminTransactionService(request CreateAdminTransactionRequest) (entities.Transaction, error)
 	UpdateAdminTransactionService(request UpdateAdminTransactionRequest) (entities.Transaction, error)
 	DeleteAdminTransactionService(request IdAdminTransactionRequest) (entities.Transaction, error)
+	SyncAdminTransactionService() error
 }
 
 type AdminTransactionServiceStruct struct {
@@ -64,4 +65,13 @@ func (s AdminTransactionServiceStruct) DeleteAdminTransactionService(request IdA
 	}
 
 	return transaction, nil
+}
+
+func (s AdminTransactionServiceStruct) SyncAdminTransactionService() error {
+	err := s.repository.SyncAdminTransactionRepository()
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

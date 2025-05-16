@@ -4,10 +4,8 @@ type CreateAdminTransactionRequest struct {
 	AccountID   string `json:"account_id" validate:"required"`
 	TypeCash    string `json:"type_cash" validate:"required"`
 	TypeInOut   string `json:"type_in_out" validate:"required"`
-	Date        string `json:"date" validate:"required"`
-	Description string `json:"description" validate:"required"`
+	Description string `json:"description"`
 	Amount      int64  `json:"amount" validate:"required"`
-	Type        string `json:"type" validate:"required"`
 }
 
 type IdAdminTransactionRequest struct {

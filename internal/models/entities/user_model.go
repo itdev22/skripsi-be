@@ -18,11 +18,11 @@ const (
 
 // Accounts model
 type Accounts struct {
-	ID        string    `json:"id" gorm:"primaryKey"`
-	Name      string    `json:"name"`
-	Saldo     int64     `json:"saldo" gorm:"default:0"`
-	CreatedAt time.Time `json:"createdAt" gorm:"default:current_timestamp"`
-	UpdatedAt time.Time `json:"updatedAt"`
+	ID        string    `json:"id" gorm:"column:id;primaryKey"`
+	Name      string    `json:"name" gorm:"column:name"`
+	Saldo     int64     `json:"saldo" gorm:"column:saldo;default:0"`
+	CreatedAt time.Time `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
+	UpdatedAt time.Time `json:"updatedAt" gorm:"column:updatedAt;"`
 }
 
 func (c *Accounts) TableName() string {
@@ -270,7 +270,7 @@ type Transaction struct {
 	Amount      int64                 `json:"amount" gorm:"column:amount;type:bigint"`
 	CreatedAt   time.Time             `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
 	UpdatedAt   time.Time             `json:"updatedAt" gorm:"column:updatedAt;type:datetime"`
-	Type        TransactionsType      `json:"type" gorm:"column:type;type:varchar"`
+	Account     Accounts              `json:"account" gorm:"foreignKey:AccountID;constraint:OnUpdate:RESTRICT"`
 }
 
 func (u *Transaction) TableName() string {

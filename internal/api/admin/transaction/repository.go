@@ -13,6 +13,7 @@ type AdminTransactionRepositoryInterface interface {
 	CreateAdminTransactionRepository(request CreateAdminTransactionRequest) (entities.Transaction, error)
 	UpdateAdminTransactionRepository(request UpdateAdminTransactionRequest) (entities.Transaction, error)
 	DeleteAdminTransactionRepository(request IdAdminTransactionRequest) (entities.Transaction, error)
+	SyncAdminTransactionRepository() error
 }
 type AdminTransactionRepositoryStruct struct {
 	db *gorm.DB
@@ -33,7 +34,7 @@ func (r AdminTransactionRepositoryStruct) FindAdminTransactionRepository(request
 		tx = tx.Where("type = ?", request.Type)
 	}
 
-	tx = tx.Find(&transactions)
+	tx = tx.Preload("Account").Find(&transactions)
 
 	if tx.Error != nil {
 		return transactions, tx.Error
@@ -43,7 +44,7 @@ func (r AdminTransactionRepositoryStruct) FindAdminTransactionRepository(request
 }
 func (r AdminTransactionRepositoryStruct) FindByIdAdminTransactionRepository(request IdAdminTransactionRequest) (entities.Transaction, error) {
 	transactions := entities.Transaction{}
-	tx := r.db.First(&transactions, "id = ?", request.Id)
+	tx := r.db.Preload("Account").First(&transactions, "id = ?", request.Id)
 	if tx.Error != nil {
 		return transactions, tx.Error
 	}
@@ -52,15 +53,40 @@ func (r AdminTransactionRepositoryStruct) FindByIdAdminTransactionRepository(req
 }
 func (r AdminTransactionRepositoryStruct) CreateAdminTransactionRepository(request CreateAdminTransactionRequest) (entities.Transaction, error) {
 	transactions := entities.Transaction{}
+	account := entities.Accounts{}
 	copier.Copy(&transactions, &request)
-	tx := r.db.Create(&transactions)
-	if tx.Error != nil {
+
+	tx := r.db.Begin()
+	txTransaction := r.db.Create(&transactions)
+	if txTransaction.Error != nil {
+		tx.Rollback()
 		return transactions, tx.Error
 	}
 
-	return transactions, nil
+	txAccount := r.db.First(&account, "id = ?", request.AccountID)
+	if txAccount.Error != nil {
+		tx.Rollback()
+		return transactions, tx.Error
+	}
 
+	if condition := transactions.TypeInOut; condition == "credit" {
+		account.Saldo = account.Saldo - transactions.Amount
+	} else if condition == "debit" {
+		account.Saldo = account.Saldo + transactions.Amount
+	}
+
+	txAccount = tx.Save(&account)
+
+	if txAccount.Error != nil {
+		tx.Rollback()
+		return transactions, tx.Error
+	}
+
+	tx.Commit()
+
+	return transactions, nil
 }
+
 func (r AdminTransactionRepositoryStruct) UpdateAdminTransactionRepository(request UpdateAdminTransactionRequest) (entities.Transaction, error) {
 	transactions := entities.Transaction{}
 	tx := r.db.First(&transactions, "id = ?", request.Id)
@@ -88,4 +114,35 @@ func (r AdminTransactionRepositoryStruct) DeleteAdminTransactionRepository(reque
 	tx = r.db.Delete(&transactions)
 
 	return transactions, nil
+}
+
+func (r AdminTransactionRepositoryStruct) SyncAdminTransactionRepository() error {
+	transactions := []entities.Transaction{}
+	tx := r.db.Find(&transactions)
+	if tx.Error != nil {
+		return tx.Error
+	}
+
+	account := entities.Accounts{}
+	txAccount := r.db.First(&account, "id = ?", "b82074e7-7acb-40e2-ab33-014f4b09c1f8")
+	if txAccount.Error != nil {
+		return tx.Error
+	}
+
+	var amount int64 = 0
+	for _, vtransactions := range transactions {
+		if vtransactions.TypeInOut == "credit" {
+			amount = amount - vtransactions.Amount
+		} else if vtransactions.TypeInOut == "debit" {
+			amount = amount + vtransactions.Amount
+		}
+
+		account.Saldo = amount
+		tx = r.db.Save(&account)
+		if tx.Error != nil {
+			return tx.Error
+		}
+	}
+
+	return nil
 }

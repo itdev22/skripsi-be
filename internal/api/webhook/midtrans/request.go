@@ -32,6 +32,14 @@ type MidtransNotification struct {
 	Currency          string `json:"currency"`
 	Acquirer          string `json:"acquirer"`
 }
+
+type CreateWebhookMidtransRequest struct {
+	AccountID   string `json:"account_id" validate:"required"`
+	TypeCash    string `json:"type_cash" validate:"required"`
+	TypeInOut   string `json:"type_in_out" validate:"required"`
+	Description string `json:"description"`
+	Amount      int64  `json:"amount" validate:"required"`
+}
 type IdWebhookMootaRequest struct {
 	Id string `json:"id" validate:"required"`
 }
