@@ -99,7 +99,6 @@ func (r *AdminUserManagementRepositoryStruct) UpdateAdminUserManagementRepositor
 	// Simulate a database call
 	user := entities.User{}
 	userDto := dto.UserDTO{}
-	copier.Copy(&user, &request)
 
 	// Update password only if provided
 	if request.Password != "" {
@@ -113,10 +112,13 @@ func (r *AdminUserManagementRepositoryStruct) UpdateAdminUserManagementRepositor
 		}
 		user.Password = string(password)
 	}
+	tx := r.db.Preload("Role").First(&user, "id = ?", request.Id)
+	if tx.Error != nil {
+		return userDto, tx.Error
+	}
 
-	tx := r.db.Create(&user)
-
-	copier.Copy(&userDto, &user)
+	copier.Copy(&user, &request)
+	tx = r.db.Save(&user)
 
 	if tx.Error != nil {
 		return userDto, tx.Error
