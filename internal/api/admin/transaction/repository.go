@@ -31,7 +31,7 @@ func (r AdminTransactionRepositoryStruct) FindAdminTransactionRepository(request
 	}
 
 	if request.Type != "" && request.Type != "all" {
-		tx = tx.Where("type = ?", request.Type)
+		tx = tx.Where("type_in_out = ?", request.Type)
 	}
 
 	tx = tx.Preload("Account").Find(&transactions)
