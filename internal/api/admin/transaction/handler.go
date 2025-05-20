@@ -19,6 +19,7 @@ func NewAdminTransactionHandler(service AdminTransactionServiceInterface) AdminT
 func (h AdminTransactionHandlerStruct) GetAllAdminTransactionHandlerStruct(c *fiber.Ctx) error {
 	request := SearchAdminTransactionRequest{}
 	request.TypeCash = c.Query("type_cash")
+	request.Type = c.Query("type")
 	transactions, err := h.service.GetAllAdminTransactionService(request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
