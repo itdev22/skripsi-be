@@ -375,6 +375,7 @@ type Invoice struct {
 	ID         string        `gorm:"column:id;type:varchar;primaryKey" json:"id"`
 	Amount     int64         `gorm:"column:amount;type:int;not null" json:"amount"`
 	CustomerID string        `gorm:"column:customer_id;type:varchar;not null" json:"customer_id"`
+	Customer   Customer      `gorm:"foreignKey:CustomerID;references:id;constraint:OnUpdate:RESTRICT" json:"customer"`
 	Link       string        `gorm:"column:link;type:varchar;not null" json:"link"`
 	Status     InvoiceStatus `gorm:"column:status;type:varchar;not null" json:"status"`
 	CreatedAt  time.Time     `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
