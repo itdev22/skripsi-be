@@ -7,6 +7,7 @@ import (
 	"skripsi-be/internal/api/admin/company"
 	"skripsi-be/internal/api/admin/customer"
 	customerinstallation "skripsi-be/internal/api/admin/customer/installation"
+	"skripsi-be/internal/api/admin/dashboard"
 	"skripsi-be/internal/api/admin/invoice"
 	"skripsi-be/internal/api/admin/product"
 	"skripsi-be/internal/api/admin/report"
@@ -15,7 +16,7 @@ import (
 	usermanagement "skripsi-be/internal/api/admin/user-management"
 	authapi "skripsi-be/internal/api/auth"
 	upload_file "skripsi-be/internal/api/common/upload_file"
-	"skripsi-be/internal/api/customer/dashboard"
+	customerdashboard "skripsi-be/internal/api/customer/dashboard"
 	midtrans "skripsi-be/internal/api/webhook/midtrans"
 	"skripsi-be/internal/api/webhook/moota"
 
@@ -33,6 +34,7 @@ func RouteFiber(app *fiber.App) {
 	authapi.AuthRoute(auth)
 
 	admin := api.Group("/admin")
+	dashboard.AdminDashboardRoute(admin.Group("/dashboard"))
 	company.AdminCompanyRoute(admin.Group("/company"))
 	account.AdminAccountRoute(admin.Group("/account"))
 	usermanagement.AdminUserManagementRoute(admin.Group("/user-management"))
@@ -47,7 +49,7 @@ func RouteFiber(app *fiber.App) {
 	invoice.AdminInvoiceRoute(admin.Group("/invoice"))
 
 	customer := api.Group("/customer")
-	dashboard.CustomerDashboardRoute(customer.Group("/dashboard"))
+	customerdashboard.CustomerDashboardRoute(customer.Group("/dashboard"))
 
 	webhook := api.Group("/webhook")
 	moota.WebhookMootaRoute(webhook.Group("/moota"))
