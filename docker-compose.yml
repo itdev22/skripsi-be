@@ -6,3 +6,5 @@ services:
     ports:
       - "3001:3001"
     restart: always
+    volumes:
+      - ./public:/app/public
