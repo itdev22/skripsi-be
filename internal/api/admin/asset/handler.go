@@ -1,11 +1,12 @@
 package asset
 
 import (
-	"skripsi-be/internal/api/common/validation"
-	"skripsi-be/internal/helpers"
 	"strings"
 
 	"github.com/gofiber/fiber/v2"
+
+	"skripsi-be/internal/api/common/validation"
+	"skripsi-be/internal/helpers"
 )
 
 type AdminAssetHandlerStruct struct {
@@ -21,7 +22,7 @@ func (h AdminAssetHandlerStruct) GetAllAdminAssetHandler(c *fiber.Ctx) error {
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", assets)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", assets)
 }
 
 func (h AdminAssetHandlerStruct) GetByIdAdminAssetHandler(c *fiber.Ctx) error {
@@ -38,7 +39,7 @@ func (h AdminAssetHandlerStruct) GetByIdAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", asset)
 }
 
 func (h AdminAssetHandlerStruct) CreateAdminAssetHandler(c *fiber.Ctx) error {
@@ -58,7 +59,7 @@ func (h AdminAssetHandlerStruct) CreateAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Create Data", asset)
 }
 
 func (h AdminAssetHandlerStruct) UpdateAdminAssetHandler(c *fiber.Ctx) error {
@@ -78,7 +79,7 @@ func (h AdminAssetHandlerStruct) UpdateAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Data", asset)
 }
 
 func (h AdminAssetHandlerStruct) DeleteAdminAssetHandler(c *fiber.Ctx) error {
@@ -95,5 +96,5 @@ func (h AdminAssetHandlerStruct) DeleteAdminAssetHandler(c *fiber.Ctx) error {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), "")
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "", asset)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Delete Data", asset)
 }
