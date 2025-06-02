@@ -7,4 +7,4 @@ services:
       - "3001:3001"
     restart: always
     volumes:
-      - ./public:/app/public
+      - /media/services/public_be:/app/public
