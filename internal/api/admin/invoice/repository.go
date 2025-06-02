@@ -1,10 +1,10 @@
 package invoice
 
 import (
-	"skripsi-be/internal/models/entities"
-
 	"github.com/jinzhu/copier"
 	"gorm.io/gorm"
+
+	"skripsi-be/internal/models/entities"
 )
 
 type AdminInvoiceRepositoryInterface interface {
@@ -25,7 +25,7 @@ func NewAdminInvoiceRepository(db *gorm.DB) *AdminInvoiceRepositoryStruct {
 
 func (r AdminInvoiceRepositoryStruct) FindAdminInvoiceRepository() ([]entities.Invoice, error) {
 	invoices := []entities.Invoice{}
-	tx := r.db.Preload("Customer").Find(&invoices)
+	tx := r.db.Preload("Customer.Product").Find(&invoices)
 
 	if tx.Error != nil {
 		return invoices, tx.Error
