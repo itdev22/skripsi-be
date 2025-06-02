@@ -1,9 +1,9 @@
 package company
 
 import (
-	"skripsi-be/internal/models/entities"
-
 	"gorm.io/gorm"
+
+	"skripsi-be/internal/models/entities"
 )
 
 type AdminCompanyRepositoryInterface interface {
@@ -44,6 +44,7 @@ func (r *AdminCompanyRepositoryStruct) CreateAdminCompanyRepository(request Crea
 	company.LogoURL = request.LogoUrl
 	company.Npwp = request.Npwp
 	company.Address = request.Address
+	company.Description = request.Description
 
 	tx := r.db.Create(company)
 
@@ -66,6 +67,7 @@ func (r *AdminCompanyRepositoryStruct) UpdateAdminCompanyRepository(request Upda
 	company.LogoURL = request.LogoUrl
 	company.Npwp = request.Npwp
 	company.Address = request.Address
+	company.Description = request.Description
 
 	tx := r.db.Save(company)
 
