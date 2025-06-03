@@ -397,7 +397,7 @@ func (u *Invoice) BeforeCreate(tx *gorm.DB) error {
 type InvoiceItems struct {
 	ID        string    `gorm:"column:id;type:varchar;primaryKey" json:"id"`
 	Name      string    `gorm:"column:name;type:int;not null" json:"name"`
-	Qty       string    `gorm:"column:qty;type:varchar;not null" json:"qty"`
+	Qty       int64     `gorm:"column:qty;type:varchar;not null" json:"qty"`
 	Price     int64     `gorm:"column:price;type:varchar;not null" json:"price"`
 	Total     int64     `gorm:"column:total;type:varchar;not null" json:"link"`
 	InvoiceID string    `gorm:"column:invoices_id;type:varchar;not null" json:"invoice_id"`
