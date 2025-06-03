@@ -1,8 +1,16 @@
 package invoice
 
+type InvoiceItem struct {
+	Name  string `json:"name" validate:"required"`
+	Price int64  `json:"price" validate:"required"`
+	Qty   int64  `json:"qty" validate:"required"`
+	Total int64  `json:"total" validate:"required"`
+}
+
 type CreateAdminInvoiceRequest struct {
-	Amount     int64  `json:"amount" validate:"required"`
-	CustomerId string `json:"customer_id" validate:"required"`
+	Amount       int64  `json:"amount" validate:"required"`
+	CustomerId   string `json:"customer_id" validate:"required"`
+	InvoiceItems []InvoiceItem
 }
 
 type IdAdminInvoiceRequest struct {

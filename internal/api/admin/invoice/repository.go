@@ -47,11 +47,23 @@ func (r AdminInvoiceRepositoryStruct) FindByIdAdminInvoiceRepository(request IdA
 
 func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request CreateAdminInvoiceRequest) (entities.Invoice, error) {
 	invoice := entities.Invoice{}
+	invoiceItem := []entities.InvoiceItems{}
 	copier.Copy(&invoice, &request)
-	tx := r.db.Create(&invoice)
-	if tx.Error != nil {
+	copier.Copy(&invoiceItem, &request.InvoiceItems)
+	tx := r.db.Begin()
+	txInvoice := tx.Create(&invoice)
+	if txInvoice.Error != nil {
+		tx.Rollback()
 		return entities.Invoice{}, tx.Error
 	}
+
+	txInvoiceItem := tx.Create(&invoiceItem)
+	if txInvoiceItem.Error != nil {
+		tx.Rollback()
+		return entities.Invoice{}, tx.Error
+	}
+
+	tx.Commit()
 
 	return invoice, nil
 }
