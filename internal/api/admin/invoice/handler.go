@@ -1,11 +1,12 @@
 package invoice
 
 import (
-	"skripsi-be/internal/api/common/validation"
-	"skripsi-be/internal/helpers"
 	"strings"
 
 	"github.com/gofiber/fiber/v2"
+
+	"skripsi-be/internal/api/common/validation"
+	"skripsi-be/internal/helpers"
 )
 
 type AdminInvoiceHandlerStruct struct {
@@ -53,7 +54,7 @@ func (h AdminInvoiceHandlerStruct) CreateAdminInvoiceHandler(c *fiber.Ctx) error
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Create Area", area)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Create Invoice", area)
 }
 
 func (h AdminInvoiceHandlerStruct) UpdateAdminInvoiceHandler(c *fiber.Ctx) error {
@@ -77,7 +78,7 @@ func (h AdminInvoiceHandlerStruct) UpdateAdminInvoiceHandler(c *fiber.Ctx) error
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Area", area)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Invoice", area)
 }
 
 func (h AdminInvoiceHandlerStruct) DeleteAdminInvoiceHandler(c *fiber.Ctx) error {
@@ -93,6 +94,6 @@ func (h AdminInvoiceHandlerStruct) DeleteAdminInvoiceHandler(c *fiber.Ctx) error
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}
 
-	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Delete Area", area)
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Delete Invoice", area)
 
 }

@@ -47,9 +47,9 @@ func (r AdminInvoiceRepositoryStruct) FindByIdAdminInvoiceRepository(request IdA
 
 func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request CreateAdminInvoiceRequest) (entities.Invoice, error) {
 	invoice := entities.Invoice{}
-	invoiceItem := []entities.InvoiceItems{}
+	invoiceItems := []entities.InvoiceItems{}
 	copier.Copy(&invoice, &request)
-	copier.Copy(&invoiceItem, &request.InvoiceItems)
+	copier.Copy(&invoiceItems, &request.InvoiceItems)
 	tx := r.db.Begin()
 	txInvoice := tx.Create(&invoice)
 	if txInvoice.Error != nil {
@@ -57,11 +57,18 @@ func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request Creat
 		return entities.Invoice{}, tx.Error
 	}
 
-	txInvoiceItem := tx.Create(&invoiceItem)
-	if txInvoiceItem.Error != nil {
-		tx.Rollback()
-		return entities.Invoice{}, tx.Error
+	for _, invoiceItem := range invoiceItems {
+		invoiceItem.InvoiceID = invoice.ID
+		invoiceItem.Total = invoiceItem.Price * invoiceItem.Total
+		txInvoiceItem := tx.Create(&invoiceItem)
+		if txInvoiceItem.Error != nil {
+			tx.Rollback()
+			return entities.Invoice{}, tx.Error
+		}
+		invoice.Amount += invoiceItem.Total
 	}
+
+	txInvoice = tx.Save(&invoice)
 
 	tx.Commit()
 
