@@ -25,7 +25,7 @@ func NewAdminInvoiceRepository(db *gorm.DB) *AdminInvoiceRepositoryStruct {
 
 func (r AdminInvoiceRepositoryStruct) FindAdminInvoiceRepository() ([]entities.Invoice, error) {
 	invoices := []entities.Invoice{}
-	tx := r.db.Preload("Customer.Product").Preload("InvoiceItems.Invoice").Find(&invoices)
+	tx := r.db.Preload("Customer.Product").Preload("InvoiceItems.Invoice").Order("createdAt DESC").Find(&invoices)
 
 	if tx.Error != nil {
 		return invoices, tx.Error
@@ -47,9 +47,9 @@ func (r AdminInvoiceRepositoryStruct) FindByIdAdminInvoiceRepository(request IdA
 
 func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request CreateAdminInvoiceRequest) (entities.Invoice, error) {
 	invoice := entities.Invoice{}
-	invoiceItems := []entities.InvoiceItems{}
+	// invoiceItems := []entities.InvoiceItems{}
 	copier.Copy(&invoice, &request)
-	copier.Copy(&invoiceItems, &request.InvoiceItems)
+	// copier.Copy(&invoiceItems, &request.InvoiceItems)
 	tx := r.db.Begin()
 	txInvoice := tx.Create(&invoice)
 	if txInvoice.Error != nil {
@@ -57,16 +57,16 @@ func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request Creat
 		return entities.Invoice{}, tx.Error
 	}
 
-	for _, invoiceItem := range invoiceItems {
-		invoiceItem.InvoiceID = invoice.ID
-		invoiceItem.Total = invoiceItem.Price * invoiceItem.Total
-		txInvoiceItem := tx.Create(&invoiceItem)
-		if txInvoiceItem.Error != nil {
-			tx.Rollback()
-			return entities.Invoice{}, tx.Error
-		}
-		invoice.Amount += invoiceItem.Total
-	}
+	// for _, invoiceItem := range invoiceItems {
+	// 	invoiceItem.InvoiceID = invoice.ID
+	// 	invoiceItem.Total = invoiceItem.Price * invoiceItem.Total
+	// 	txInvoiceItem := tx.Create(&invoiceItem)
+	// 	if txInvoiceItem.Error != nil {
+	// 		tx.Rollback()
+	// 		return entities.Invoice{}, tx.Error
+	// 	}
+	// 	invoice.Amount += invoiceItem.Total
+	// }
 
 	txInvoice = tx.Save(&invoice)
 

@@ -8,9 +8,9 @@ type InvoiceItem struct {
 }
 
 type CreateAdminInvoiceRequest struct {
-	Amount       int64         `json:"amount" validate:"required"`
-	CustomerId   string        `json:"customer_id" validate:"required"`
-	InvoiceItems []InvoiceItem `json:"invoice_items" validate:"required"`
+	Amount     int64  `json:"amount" validate:"required"`
+	CustomerId string `json:"customer_id" validate:"required"`
+	// InvoiceItems []InvoiceItem `json:"invoice_items" validate:"required"`
 }
 
 type IdAdminInvoiceRequest struct {
