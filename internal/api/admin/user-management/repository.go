@@ -2,13 +2,13 @@ package usermanagement
 
 import (
 	"errors"
-	"skripsi-be/internal/models/dto"
-	"skripsi-be/internal/models/entities"
 
 	"github.com/jinzhu/copier"
 	"golang.org/x/crypto/bcrypt"
-
 	"gorm.io/gorm"
+
+	"skripsi-be/internal/models/dto"
+	"skripsi-be/internal/models/entities"
 )
 
 type AdminUserManagementRepositoryInterface interface {
@@ -100,6 +100,12 @@ func (r *AdminUserManagementRepositoryStruct) UpdateAdminUserManagementRepositor
 	user := entities.User{}
 	userDto := dto.UserDTO{}
 
+	tx := r.db.Preload("Role").First(&user, "id = ?", request.Id)
+	if tx.Error != nil {
+		return userDto, tx.Error
+	}
+	copier.Copy(&user, &request)
+
 	// Update password only if provided
 	if request.Password != "" {
 		if request.Password != request.PasswordConfirm {
@@ -110,14 +116,10 @@ func (r *AdminUserManagementRepositoryStruct) UpdateAdminUserManagementRepositor
 		if err != nil {
 			return userDto, err
 		}
+
 		user.Password = string(password)
 	}
-	tx := r.db.Preload("Role").First(&user, "id = ?", request.Id)
-	if tx.Error != nil {
-		return userDto, tx.Error
-	}
 
-	copier.Copy(&user, &request)
 	tx = r.db.Save(&user)
 
 	if tx.Error != nil {
