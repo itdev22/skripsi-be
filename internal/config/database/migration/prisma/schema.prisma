@@ -73,7 +73,7 @@ model customer {
   installation_date      DateTime                 @db.Date
   next_payment_date      DateTime                 @db.Date
   areas                  areas                    @relation(fields: [area_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
-  company                company                 @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
+  company                company                  @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
   products               products                 @relation(fields: [product_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_3")
   customer_installations customer_installations[]
 
@@ -117,40 +117,6 @@ model products {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime
   customer    customer[]
-}
-
-model report_assets {
-  id          String   @id
-  description String
-  quantity    BigInt
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
-
-  @@index([id], map: "report_assets_ibfk_1")
-}
-
-model report_cash {
-  id          String   @id
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
-  credit      BigInt
-  debit       BigInt
-  description String
-}
-
-model transfers {
-  id              String   @id
-  from_account_id String
-  to_account_id   String
-  date            DateTime
-  description     String
-  amount          BigInt
-  tags            String
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime
-
-  @@index([from_account_id], map: "transfers_from_account_id_fkey")
-  @@index([to_account_id], map: "transfers_to_account_id_fkey")
 }
 
 model users {
@@ -203,10 +169,12 @@ model customer_installations {
 }
 
 model invoices {
-  id          String   @id
+  id          String          @id
   amount      Int
+  link        String          @db.Text
+  status      invoices_status
   customer_id String
-  createdAt   DateTime @default(now())
+  createdAt   DateTime        @default(now())
   updatedAt   DateTime
 }
 
@@ -223,6 +191,7 @@ model transactions {
 
   @@index([account_id], map: "transactions_account_id_fkey")
 }
+
 enum transactions_type_in_out {
   debit
   credit
@@ -231,4 +200,10 @@ enum transactions_type_in_out {
 enum transactions_type_cash {
   internet
   cash_flow
+}
+
+enum invoices_status {
+  paid
+  unpaid
+  pending
 }
