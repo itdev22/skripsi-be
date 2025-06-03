@@ -119,40 +119,6 @@ model products {
   customer    customer[]
 }
 
-model report_assets {
-  id          String   @id
-  description String
-  quantity    BigInt
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
-
-  @@index([id], map: "report_assets_ibfk_1")
-}
-
-model report_cash {
-  id          String   @id
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
-  credit      BigInt
-  debit       BigInt
-  description String
-}
-
-model transfers {
-  id              String   @id
-  from_account_id String
-  to_account_id   String
-  date            DateTime
-  description     String
-  amount          BigInt
-  tags            String
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime
-
-  @@index([from_account_id], map: "transfers_from_account_id_fkey")
-  @@index([to_account_id], map: "transfers_to_account_id_fkey")
-}
-
 model users {
   id                     String                   @id
   email                  String                   @unique
@@ -203,11 +169,25 @@ model customer_installations {
 }
 
 model invoices {
-  id          String   @id
-  amount      Int
-  customer_id String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
+  id            String          @id
+  amount        Int
+  link          String          @db.Text
+  status        invoices_status
+  customer_id   String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime
+  invoice_items invoice_items[]
+}
+
+model invoice_items {
+  id         String   @id
+  name       String
+  qty        String
+  price      Int
+  invoice_id invoices @relation(fields: [invoicesId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime
+  invoicesId String
 }
 
 model transactions {
@@ -232,4 +212,10 @@ enum transactions_type_in_out {
 enum transactions_type_cash {
   internet
   cash_flow
+}
+
+enum invoices_status {
+  paid
+  unpaid
+  pending
 }

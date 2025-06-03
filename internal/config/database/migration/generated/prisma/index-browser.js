@@ -218,35 +218,6 @@ exports.Prisma.ProductsScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.Report_assetsScalarFieldEnum = {
-  id: 'id',
-  description: 'description',
-  quantity: 'quantity',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.Report_cashScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  credit: 'credit',
-  debit: 'debit',
-  description: 'description'
-};
-
-exports.Prisma.TransfersScalarFieldEnum = {
-  id: 'id',
-  from_account_id: 'from_account_id',
-  to_account_id: 'to_account_id',
-  date: 'date',
-  description: 'description',
-  amount: 'amount',
-  tags: 'tags',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -289,9 +260,21 @@ exports.Prisma.Customer_installationsScalarFieldEnum = {
 exports.Prisma.InvoicesScalarFieldEnum = {
   id: 'id',
   amount: 'amount',
+  link: 'link',
+  status: 'status',
   customer_id: 'customer_id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Invoice_itemsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  qty: 'qty',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  invoicesId: 'invoicesId'
 };
 
 exports.Prisma.TransactionsScalarFieldEnum = {
@@ -389,24 +372,6 @@ exports.Prisma.productsOrderByRelevanceFieldEnum = {
   description: 'description'
 };
 
-exports.Prisma.report_assetsOrderByRelevanceFieldEnum = {
-  id: 'id',
-  description: 'description'
-};
-
-exports.Prisma.report_cashOrderByRelevanceFieldEnum = {
-  id: 'id',
-  description: 'description'
-};
-
-exports.Prisma.transfersOrderByRelevanceFieldEnum = {
-  id: 'id',
-  from_account_id: 'from_account_id',
-  to_account_id: 'to_account_id',
-  description: 'description',
-  tags: 'tags'
-};
-
 exports.Prisma.usersOrderByRelevanceFieldEnum = {
   id: 'id',
   email: 'email',
@@ -439,7 +404,15 @@ exports.Prisma.customer_installationsOrderByRelevanceFieldEnum = {
 
 exports.Prisma.invoicesOrderByRelevanceFieldEnum = {
   id: 'id',
+  link: 'link',
   customer_id: 'customer_id'
+};
+
+exports.Prisma.invoice_itemsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  qty: 'qty',
+  invoicesId: 'invoicesId'
 };
 
 exports.Prisma.transactionsOrderByRelevanceFieldEnum = {
@@ -447,6 +420,12 @@ exports.Prisma.transactionsOrderByRelevanceFieldEnum = {
   account_id: 'account_id',
   description: 'description'
 };
+exports.invoices_status = exports.$Enums.invoices_status = {
+  paid: 'paid',
+  unpaid: 'unpaid',
+  pending: 'pending'
+};
+
 exports.transactions_type_cash = exports.$Enums.transactions_type_cash = {
   internet: 'internet',
   cash_flow: 'cash_flow'
@@ -466,14 +445,12 @@ exports.Prisma.ModelName = {
   areas: 'areas',
   logs: 'logs',
   products: 'products',
-  report_assets: 'report_assets',
-  report_cash: 'report_cash',
-  transfers: 'transfers',
   users: 'users',
   roles: 'roles',
   images: 'images',
   customer_installations: 'customer_installations',
   invoices: 'invoices',
+  invoice_items: 'invoice_items',
   transactions: 'transactions'
 };
 
