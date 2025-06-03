@@ -169,25 +169,25 @@ model customer_installations {
 }
 
 model invoices {
-  id            String          @id
-  amount        Int
-  link          String          @db.Text
-  status        invoices_status
-  customer_id   String
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime
-  invoice_items invoice_items[]
+  id          String          @id
+  amount      Int
+  link        String          @db.Text
+  status      invoices_status
+  customer_id String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime
 }
 
 model invoice_items {
-  id         String   @id
-  name       String
-  qty        String
-  price      Int
-  invoice_id invoices @relation(fields: [invoicesId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime
-  invoicesId String
+  id          String   @id
+  name        String
+  qty         String
+  price       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  invoices_id String
+
+  @@index([invoices_id], map: "invoice_items_invoicesId_fkey")
 }
 
 model transactions {

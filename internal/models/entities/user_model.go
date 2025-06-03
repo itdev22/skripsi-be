@@ -372,14 +372,15 @@ const (
 )
 
 type Invoice struct {
-	ID         string        `gorm:"column:id;type:varchar;primaryKey" json:"id"`
-	Amount     int64         `gorm:"column:amount;type:int;not null" json:"amount"`
-	CustomerID string        `gorm:"column:customer_id;type:varchar;not null" json:"customer_id"`
-	Customer   Customer      `gorm:"foreignKey:CustomerID;references:id;constraint:OnUpdate:RESTRICT" json:"customer"`
-	Link       string        `gorm:"column:link;type:varchar;not null" json:"link"`
-	Status     InvoiceStatus `gorm:"column:status;type:varchar;not null" json:"status"`
-	CreatedAt  time.Time     `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
-	UpdatedAt  time.Time     `gorm:"column:updatedAt;not null" json:"updated_at"`
+	ID           string         `gorm:"column:id;type:varchar;primaryKey" json:"id"`
+	Amount       int64          `gorm:"column:amount;type:int;not null" json:"amount"`
+	CustomerID   string         `gorm:"column:customer_id;type:varchar;not null" json:"customer_id"`
+	Customer     Customer       `gorm:"foreignKey:CustomerID;references:id;constraint:OnUpdate:RESTRICT" json:"customer"`
+	Link         string         `gorm:"column:link;type:varchar;not null" json:"link"`
+	Status       InvoiceStatus  `gorm:"column:status;type:varchar;not null" json:"status"`
+	CreatedAt    time.Time      `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
+	UpdatedAt    time.Time      `gorm:"column:updatedAt;not null" json:"updated_at"`
+	InvoiceItems []InvoiceItems `gorm:"foreignKey:invoices_id;constraint:OnUpdate:RESTRICT" json:"invoice_items"`
 }
 
 func (Invoice) TableName() string {
@@ -389,6 +390,28 @@ func (u *Invoice) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == "" {
 		u.ID = uuid.New().String()
 		u.Status = InvoiceStatusUnpaid
+	}
+	return nil
+}
+
+type InvoiceItems struct {
+	ID        string    `gorm:"column:id;type:varchar;primaryKey" json:"id"`
+	Name      string    `gorm:"column:name;type:int;not null" json:"name"`
+	Qty       string    `gorm:"column:qty;type:varchar;not null" json:"qty"`
+	Price     int64     `gorm:"column:price;type:varchar;not null" json:"price"`
+	Total     int64     `gorm:"column:total;type:varchar;not null" json:"link"`
+	InvoiceID string    `gorm:"column:invoices_id;type:varchar;not null" json:"invoice_id"`
+	Invoice   Invoice   `gorm:"foreignKey:InvoiceID;references:id" json:"invoice"`
+	CreatedAt time.Time `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
+	UpdatedAt time.Time `gorm:"column:updatedAt;not null" json:"updated_at"`
+}
+
+func (InvoiceItems) TableName() string {
+	return "invoice_items"
+}
+func (u *InvoiceItems) BeforeCreate(tx *gorm.DB) error {
+	if u.ID == "" {
+		u.ID = uuid.New().String()
 	}
 	return nil
 }

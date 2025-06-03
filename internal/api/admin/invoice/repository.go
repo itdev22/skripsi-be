@@ -25,7 +25,7 @@ func NewAdminInvoiceRepository(db *gorm.DB) *AdminInvoiceRepositoryStruct {
 
 func (r AdminInvoiceRepositoryStruct) FindAdminInvoiceRepository() ([]entities.Invoice, error) {
 	invoices := []entities.Invoice{}
-	tx := r.db.Preload("Customer.Product").Find(&invoices)
+	tx := r.db.Preload("Customer.Product").Preload("InvoiceItems.Invoice").Find(&invoices)
 
 	if tx.Error != nil {
 		return invoices, tx.Error
