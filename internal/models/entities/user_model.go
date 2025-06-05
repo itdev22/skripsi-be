@@ -382,7 +382,7 @@ type Invoice struct {
 	CreatedAt    time.Time      `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
 	UpdatedAt    time.Time      `gorm:"column:updatedAt;not null" json:"updated_at"`
 	InvoiceItems []InvoiceItems `gorm:"foreignKey:invoices_id;constraint:OnUpdate:RESTRICT" json:"invoice_items"`
-	Transaction  Transaction    `gorm:"foreignKey:invoice_id;constraint:OnUpdate:RESTRICT" json:"invoice_items""`
+	Transaction  Transaction    `gorm:"foreignKey:invoice_id;constraint:OnUpdate:RESTRICT" json:"transaction""`
 }
 
 func (Invoice) TableName() string {
