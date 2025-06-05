@@ -263,6 +263,7 @@ type TransactionsType string
 type Transaction struct {
 	ID          string                `json:"id" gorm:"column:id;primaryKey;type:varchar"`
 	AccountID   string                `json:"account_id" gorm:"column:account_id;index:transactions_account_id_fkey;type:varchar"`
+	InvoiceID   string                `json:"invoice_id" gorm:"column:invoice_id;index:transactions_invoice_id_fkey;type:varchar"`
 	TypeCash    TransactionsTypeCash  `json:"type_cash" gorm:"column:type_cash;type:varchar"`
 	TypeInOut   TransactionsTypeInOut `json:"type_in_out" gorm:"column:type_in_out;type:varchar"`
 	Date        string                `json:"date" gorm:"column:date;type:datetime"`
@@ -381,6 +382,7 @@ type Invoice struct {
 	CreatedAt    time.Time      `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
 	UpdatedAt    time.Time      `gorm:"column:updatedAt;not null" json:"updated_at"`
 	InvoiceItems []InvoiceItems `gorm:"foreignKey:invoices_id;constraint:OnUpdate:RESTRICT" json:"invoice_items"`
+	Transaction  Transaction    `gorm:"foreignKey:invoice_id;constraint:OnUpdate:RESTRICT" json:"invoice_items""`
 }
 
 func (Invoice) TableName() string {
@@ -399,7 +401,7 @@ type InvoiceItems struct {
 	Name      string    `gorm:"column:name;type:int;not null" json:"name"`
 	Qty       int64     `gorm:"column:qty;type:varchar;not null" json:"qty"`
 	Price     int64     `gorm:"column:price;type:varchar;not null" json:"price"`
-	Total     int64     `gorm:"column:total;type:varchar;not null" json:"link"`
+	Total     int64     `gorm:"column:total;type:varchar;not null" json:"total"`
 	InvoiceID string    `gorm:"column:invoices_id;type:varchar;not null" json:"invoice_id"`
 	Invoice   Invoice   `gorm:"foreignKey:InvoiceID;references:id" json:"invoice"`
 	CreatedAt time.Time `gorm:"column:createdAt;default:current_timestamp" json:"created_at"`
