@@ -36,7 +36,7 @@ func (r AdminInvoiceRepositoryStruct) FindAdminInvoiceRepository() ([]entities.I
 
 func (r AdminInvoiceRepositoryStruct) FindByIdAdminInvoiceRepository(request IdAdminInvoiceRequest) (entities.Invoice, error) {
 	invoice := entities.Invoice{}
-	tx := r.db.First(&invoice, "id = ?", request.Id)
+	tx := r.db.Preload("Customer.Product").First(&invoice, "id = ?", request.Id)
 
 	if tx.Error != nil {
 		return invoice, tx.Error
