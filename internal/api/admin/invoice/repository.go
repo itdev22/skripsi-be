@@ -12,6 +12,7 @@ type AdminInvoiceRepositoryInterface interface {
 	CreateAdminInvoiceRepository(request CreateAdminInvoiceRequest) (entities.Invoice, error)
 	FindByIdAdminInvoiceRepository(request IdAdminInvoiceRequest) (entities.Invoice, error)
 	UpdateAdminInvoiceRepository(request UpdateAdminInvoiceRequest) (entities.Invoice, error)
+	UpdateStatusAdminInvoiceRepository(request UpdateStatusAdminInvoiceRequest) (entities.Invoice, error)
 	DeleteAdminInvoiceRepository(request IdAdminInvoiceRequest) (entities.Invoice, error)
 }
 
@@ -36,7 +37,7 @@ func (r AdminInvoiceRepositoryStruct) FindAdminInvoiceRepository() ([]entities.I
 
 func (r AdminInvoiceRepositoryStruct) FindByIdAdminInvoiceRepository(request IdAdminInvoiceRequest) (entities.Invoice, error) {
 	invoice := entities.Invoice{}
-	tx := r.db.Preload("Customer.Product", "InvoiceItems").First(&invoice, "id = ?", request.Id)
+	tx := r.db.Preload("Customer.Product").Preload("InvoiceItems.Invoice").First(&invoice, "id = ?", request.Id)
 
 	if tx.Error != nil {
 		return invoice, tx.Error
@@ -78,6 +79,19 @@ func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request Creat
 }
 
 func (r AdminInvoiceRepositoryStruct) UpdateAdminInvoiceRepository(request UpdateAdminInvoiceRequest) (entities.Invoice, error) {
+	invoice := entities.Invoice{}
+	tx := r.db.First(&invoice, "id = ?", request.Id)
+
+	if tx.Error != nil {
+		return invoice, tx.Error
+	}
+	copier.Copy(&invoice, &request)
+
+	r.db.Save(&invoice)
+	return invoice, nil
+}
+
+func (r AdminInvoiceRepositoryStruct) UpdateStatusAdminInvoiceRepository(request UpdateStatusAdminInvoiceRequest) (entities.Invoice, error) {
 	invoice := entities.Invoice{}
 	tx := r.db.First(&invoice, "id = ?", request.Id)
 

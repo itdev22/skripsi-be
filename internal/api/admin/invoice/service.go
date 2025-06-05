@@ -1,9 +1,9 @@
 package invoice
 
 import (
-	"skripsi-be/internal/models/entities"
-
 	"github.com/jinzhu/copier"
+
+	"skripsi-be/internal/models/entities"
 )
 
 type AdminInvoiceServiceInterface interface {
@@ -11,6 +11,7 @@ type AdminInvoiceServiceInterface interface {
 	CreateAdminInvoiceService(request CreateAdminInvoiceRequest) (entities.Invoice, error)
 	GetByIdAdminInvoiceService(request IdAdminInvoiceRequest) (entities.Invoice, error)
 	UpdateAdminInvoiceService(request UpdateAdminInvoiceRequest) (entities.Invoice, error)
+	UpdateStatusAdminInvoiceService(request UpdateStatusAdminInvoiceRequest) (entities.Invoice, error)
 	DeleteAdminInvoiceService(request IdAdminInvoiceRequest) (entities.Invoice, error)
 }
 type AdminInvoiceServiceStruct struct {
@@ -59,6 +60,16 @@ func (s AdminInvoiceServiceStruct) CreateAdminInvoiceService(request CreateAdmin
 
 func (s AdminInvoiceServiceStruct) UpdateAdminInvoiceService(request UpdateAdminInvoiceRequest) (entities.Invoice, error) {
 	area, err := s.repository.UpdateAdminInvoiceRepository(request)
+
+	if err != nil {
+		return area, err
+	}
+
+	return area, nil
+}
+
+func (s AdminInvoiceServiceStruct) UpdateStatusAdminInvoiceService(request UpdateStatusAdminInvoiceRequest) (entities.Invoice, error) {
+	area, err := s.repository.UpdateStatusAdminInvoiceRepository(request)
 
 	if err != nil {
 		return area, err

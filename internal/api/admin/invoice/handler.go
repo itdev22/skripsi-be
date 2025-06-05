@@ -81,6 +81,30 @@ func (h AdminInvoiceHandlerStruct) UpdateAdminInvoiceHandler(c *fiber.Ctx) error
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Invoice", area)
 }
 
+func (h AdminInvoiceHandlerStruct) UpdateStatusAdminInvoiceHandler(c *fiber.Ctx) error {
+
+	request := &UpdateStatusAdminInvoiceRequest{}
+
+	id := c.Params("id")
+	err := c.BodyParser(request)
+	request.Id = id
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	errValidation := validation.ValidationRequest(request)
+	if errValidation != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, strings.Join(errValidation, ", "), nil)
+	}
+
+	area, err := h.service.UpdateStatusAdminInvoiceService(*request)
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Update Invoice", area)
+}
+
 func (h AdminInvoiceHandlerStruct) DeleteAdminInvoiceHandler(c *fiber.Ctx) error {
 	request := &IdAdminInvoiceRequest{}
 	request.Id = c.Params("id")

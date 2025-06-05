@@ -17,6 +17,11 @@ type IdAdminInvoiceRequest struct {
 	Id string `json:"id" validate:"required"`
 }
 
+type UpdateStatusAdminInvoiceRequest struct {
+	IdAdminInvoiceRequest
+	Status string `json:"status" validate:"required"`
+}
+
 type UpdateAdminInvoiceRequest struct {
 	IdAdminInvoiceRequest
 	CreateAdminInvoiceRequest
