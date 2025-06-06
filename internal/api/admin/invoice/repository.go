@@ -50,7 +50,7 @@ func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request Creat
 	invoice := entities.Invoice{}
 	copier.Copy(&invoice, &request)
 	tx := r.db.Begin()
-	txInvoice := tx.Model(&invoice).Create(entities.Invoice{})
+	txInvoice := tx.Model(&invoice).Create(&invoice)
 	if txInvoice.Error != nil {
 		tx.Rollback()
 		return entities.Invoice{}, tx.Error
@@ -66,7 +66,6 @@ func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request Creat
 		// }
 		invoice.Amount += invoiceItem.Total
 	}
-
 	txInvoice = tx.Model(&invoice).Updates(entities.Invoice{Amount: invoice.Amount})
 	if txInvoice.Error != nil {
 		tx.Rollback()
