@@ -1,10 +1,10 @@
 package invoice
 
 import (
+	"github.com/gofiber/fiber/v2"
+
 	"skripsi-be/internal/config/database"
 	"skripsi-be/internal/helpers"
-
-	"github.com/gofiber/fiber/v2"
 )
 
 func AdminInvoiceRoute(app fiber.Router) {
@@ -18,5 +18,6 @@ func AdminInvoiceRoute(app fiber.Router) {
 	app.Get("/:id", handler.GetByIdAdminInvoiceHandler)
 	app.Post("/", handler.CreateAdminInvoiceHandler)
 	app.Put("/:id", handler.UpdateAdminInvoiceHandler)
+	app.Put("/:id/status", handler.UpdateStatusAdminInvoiceHandler)
 	app.Delete("/:id", handler.DeleteAdminInvoiceHandler)
 }

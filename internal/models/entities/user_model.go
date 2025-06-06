@@ -269,6 +269,8 @@ type Transaction struct {
 	Date        string                `json:"date" gorm:"column:date;type:datetime"`
 	Description string                `json:"description" gorm:"column:description;type:varchar"`
 	Amount      int64                 `json:"amount" gorm:"column:amount;type:bigint"`
+	Category    string                `json:"category" gorm:"column:category;type:varchar"`
+	Method      string                `json:"method" gorm:"column:method;type:varchar"`
 	CreatedAt   time.Time             `json:"createdAt" gorm:"column:createdAt;default:current_timestamp"`
 	UpdatedAt   time.Time             `json:"updatedAt" gorm:"column:updatedAt;type:datetime"`
 	Account     Accounts              `json:"account" gorm:"foreignKey:AccountID;constraint:OnUpdate:RESTRICT"`
