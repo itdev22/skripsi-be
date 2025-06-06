@@ -13,9 +13,9 @@ func AdminInvoiceRoute(app fiber.Router) {
 	service := NewAdminInvoiceService(repository)
 	handler := NewAdminInvoiceHandler(service)
 
+	app.Get("/:id", handler.GetByIdAdminInvoiceHandler)
 	app.Use(helpers.VerifyToken)
 	app.Get("/", handler.GetAllAdminInvoiceHandler)
-	app.Get("/:id", handler.GetByIdAdminInvoiceHandler)
 	app.Post("/", handler.CreateAdminInvoiceHandler)
 	app.Put("/:id", handler.UpdateAdminInvoiceHandler)
 	app.Put("/:id/status", handler.UpdateStatusAdminInvoiceHandler)
