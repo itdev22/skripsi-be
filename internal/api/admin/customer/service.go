@@ -1,9 +1,10 @@
 package customer
 
 import (
-	"skripsi-be/internal/models/entities"
-
 	"github.com/jinzhu/copier"
+
+	"skripsi-be/internal/helpers"
+	"skripsi-be/internal/models/entities"
 )
 
 type AdminCustomerServiceInterface interface {
@@ -52,6 +53,15 @@ func (s AdminCustomerServiceStruct) CreateAdminCustomerService(request CreateAdm
 	if err != nil {
 		return customer, err
 	}
+
+	payload := `{
+	"mac-address": "` + customer.MacAddress + `",
+	"to-address": "` + customer.Address + `",
+	"address": "` + customer.Address + `",
+	"type": "bypassed"
+	}`
+
+	helpers.HttpRequestHelpers("http://103.148.18.189/rest/ip/hotspot/ip-binding", "PUT", payload)
 
 	return customer, err
 
