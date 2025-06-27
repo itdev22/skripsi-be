@@ -2,6 +2,9 @@ package dashboard
 
 type AdminDashboardServiceInterface interface {
 	CardCustomer() (map[string]interface{}, error)
+	GetTotalIncome() (int64, error)
+	GetTotalExpenses() (int64, error)
+	GetTotalCustomer() (int64, error)
 }
 
 type AdminDashboardServiceStruct struct {
@@ -19,4 +22,31 @@ func (s AdminDashboardServiceStruct) CardCustomer() (map[string]interface{}, err
 	}
 
 	return data, err
+}
+
+func (s AdminDashboardServiceStruct) GetTotalIncome() (int64, error) {
+	data, err := s.repository.GetTotalIncome()
+	if err != nil {
+		return 0, err
+	}
+
+	return data, nil
+}
+
+func (s AdminDashboardServiceStruct) GetTotalExpenses() (int64, error) {
+	data, err := s.repository.GetTotalExpenses()
+	if err != nil {
+		return 0, err
+	}
+
+	return data, nil
+}
+
+func (s AdminDashboardServiceStruct) GetTotalCustomer() (int64, error) {
+	data, err := s.repository.GetTotalCustomer()
+	if err != nil {
+		return 0, err
+	}
+
+	return data, nil
 }

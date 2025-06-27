@@ -10,6 +10,9 @@ import (
 
 type AdminDashboardRepositoryInterface interface {
 	CardCustomer() (map[string]interface{}, error)
+	GetTotalIncome() (int64, error)
+	GetTotalExpenses() (int64, error)
+	GetTotalCustomer() (int64, error)
 }
 
 type AdminDashboardRepositoryStruct struct {
@@ -66,4 +69,37 @@ func (r AdminDashboardRepositoryStruct) CardCustomer() (map[string]interface{}, 
 	}
 
 	return data, nil
+}
+
+func (r AdminDashboardRepositoryStruct) GetTotalIncome() (int64, error) {
+	var totalIncome int64
+	if err := r.db.Model(&entities.Transaction{}).
+		Where("type_in_out = ?", entities.TransactionsTypeInOutIn).
+		Select("SUM(amount)").
+		Scan(&totalIncome).Error; err != nil {
+		return 0, err
+	}
+
+	return totalIncome, nil
+}
+
+func (r AdminDashboardRepositoryStruct) GetTotalExpenses() (int64, error) {
+	var totalIncome int64
+	if err := r.db.Model(&entities.Transaction{}).
+		Where("type_in_out = ?", entities.TransactionsTypeInOutOut).
+		Select("SUM(amount)").
+		Scan(&totalIncome).Error; err != nil {
+		return 0, err
+	}
+
+	return totalIncome, nil
+}
+
+func (r AdminDashboardRepositoryStruct) GetTotalCustomer() (int64, error) {
+	var total int64
+	if err := r.db.Model(&entities.Customer{}).Count(&total).Error; err != nil {
+		return 0, err
+	}
+
+	return total, nil
 }

@@ -18,8 +18,14 @@ func (h AdminDashboardHandlerStruct) GetTotalIncome(c *fiber.Ctx) error {
 	type GetTotalIncome struct {
 		TotalIncome int64 `json:"total_income"`
 	}
+
+	totalIncome, err := h.service.GetTotalIncome()
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Failed Get Data Total Income", nil)
+	}
+
 	data := GetTotalIncome{
-		TotalIncome: 1000,
+		TotalIncome: totalIncome,
 	}
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", data)
 }
@@ -29,8 +35,12 @@ func (h AdminDashboardHandlerStruct) GetTotalExpenses(c *fiber.Ctx) error {
 		TotalExpenses int64 `json:"total_expenses"`
 	}
 
+	totalExpenses, err := h.service.GetTotalExpenses()
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Failed Get Data Total Income", nil)
+	}
 	data := GetTotalExpenses{
-		TotalExpenses: 1000,
+		TotalExpenses: totalExpenses,
 	}
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", data)
 }
@@ -51,8 +61,13 @@ func (h AdminDashboardHandlerStruct) GetSales(c *fiber.Ctx) error {
 		TotalSale int64 `json:"total_sales"`
 	}
 
+	totalCustomer, err := h.service.GetTotalCustomer()
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Failed Get Data Total Customer", nil)
+	}
+
 	data := GetSales{
-		TotalSale: 400,
+		TotalSale: totalCustomer,
 	}
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", data)
 }

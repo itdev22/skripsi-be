@@ -5,7 +5,7 @@ type CreateAdminCustomerInstallationRequest struct {
 	TechnicianId string   `json:"technician_id" validate:"required"`
 	Date         string   `json:"date" validate:"required"`
 	Description  string   `json:"description"`
-	Images       []string `json:"images" validate:"required"`
+	ImageIds     []string `json:"image_ids" validate:"required"`
 }
 
 type IdAdminCustomerInstallationRequest struct {

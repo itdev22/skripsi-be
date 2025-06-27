@@ -1,10 +1,10 @@
 package customerinstallation
 
 import (
-	"skripsi-be/internal/models/entities"
-
 	"github.com/jinzhu/copier"
 	"gorm.io/gorm"
+
+	"skripsi-be/internal/models/entities"
 )
 
 type AdminCustomerInstallationRepositoryInterface interface {
@@ -53,7 +53,7 @@ func (r AdminCustomerInstallationRepositoryStruct) CreateAdminCustomerInstallati
 		return entities.CustomerInstallation{}, txCustomer.Error
 	}
 
-	txImage := tx.Where("id IN ?", request.Images).Find(&images).Update("archive_installation_id", customerInstallation.ID)
+	txImage := tx.Where("id IN ?", request.ImageIds).Find(&images).Update("archive_installation_id", customerInstallation.ID)
 	if txImage.Error != nil {
 		tx.Rollback()
 		return entities.CustomerInstallation{}, tx.Error
