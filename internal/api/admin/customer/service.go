@@ -85,7 +85,7 @@ func (s AdminCustomerServiceStruct) CreateAdminCustomerService(request CreateAdm
 		return customer, err
 	}
 
-	helpers.HttpRequestHelpers("http://103.148.18.189/rest/ip/hotspot/ip-binding", "PUT", string(payload))
+	helpers.HttpRequestHelpers("http://10.3.2.33/rest/ip/hotspot/ip-binding", "PUT", string(payload))
 
 	return customer, err
 
