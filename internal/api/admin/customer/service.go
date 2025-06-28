@@ -1,6 +1,9 @@
 package customer
 
 import (
+	"encoding/json"
+	"fmt"
+
 	"github.com/jinzhu/copier"
 
 	"skripsi-be/internal/helpers"
@@ -42,6 +45,13 @@ func (s AdminCustomerServiceStruct) GetByIdAdminCustomerService(request IdAdminC
 }
 
 func (s AdminCustomerServiceStruct) CreateAdminCustomerService(request CreateAdminCustomerRequest) (entities.Customer, error) {
+	type PayloadMikrotik struct {
+		MacAddress string `json:"mac-address"`
+		ToAddress  string `json:"to-address"`
+		Address    string `json:"address"`
+		Type       string `json:"type"`
+	}
+
 	customer := entities.Customer{}
 
 	err := copier.Copy(&customer, &request)
@@ -54,14 +64,28 @@ func (s AdminCustomerServiceStruct) CreateAdminCustomerService(request CreateAdm
 		return customer, err
 	}
 
-	payload := `{
-	"mac-address": "` + customer.MacAddress + `",
-	"to-address": "` + customer.Address + `",
-	"address": "` + customer.Address + `",
-	"type": "bypassed"
-	}`
+	// payload := `{
+	// "mac-address": "` + customer.MacAddress + `",
+	// "to-address": "` + customer.Address + `",
+	// "address": "` + customer.Address + `",
+	// "type": "bypassed"
+	// }`
 
-	helpers.HttpRequestHelpers("http://103.148.18.189/rest/ip/hotspot/ip-binding", "PUT", payload)
+	payloadStruct := PayloadMikrotik{
+		MacAddress: customer.MacAddress,
+		ToAddress:  customer.Address,
+		Address:    customer.Address,
+		Type:       "bypassed",
+	}
+
+	// Convert to JSON
+	payload, err := json.Marshal(payloadStruct)
+	if err != nil {
+		fmt.Printf("Error marshaling JSON: %v\n", err)
+		return customer, err
+	}
+
+	helpers.HttpRequestHelpers("http://103.148.18.189/rest/ip/hotspot/ip-binding", "PUT", string(payload))
 
 	return customer, err
 
