@@ -58,13 +58,14 @@ func (r AdminInvoiceRepositoryStruct) CreateAdminInvoiceRepository(request Creat
 
 	for _, invoiceItem := range invoice.InvoiceItems {
 		invoiceItem.InvoiceID = invoice.ID
-		invoiceItem.Total = invoiceItem.Price * invoiceItem.Total
+		invoiceItem.Total = invoiceItem.Price * invoiceItem.Qty
 		// txInvoiceItem := tx.Create(&invoiceItem)
 		// if txInvoiceItem.Error != nil {
 		// 	tx.Rollback()
 		// 	return entities.Invoice{}, tx.Error
 		// }
-		invoice.Amount += invoiceItem.Total
+
+		invoice.Amount = invoiceItem.Total
 	}
 	txInvoice = tx.Model(&invoice).Updates(entities.Invoice{Amount: invoice.Amount})
 	if txInvoice.Error != nil {
