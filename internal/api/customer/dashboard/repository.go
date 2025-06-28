@@ -1,11 +1,11 @@
 package dashboard
 
 import (
-	"skripsi-be/internal/models/dto"
-	"skripsi-be/internal/models/entities"
-
 	"github.com/jinzhu/copier"
 	"gorm.io/gorm"
+
+	"skripsi-be/internal/models/dto"
+	"skripsi-be/internal/models/entities"
 )
 
 type CustomerDashboardRepositoryInterface interface {
