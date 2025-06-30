@@ -84,3 +84,34 @@ func (h AdminDashboardHandlerStruct) CardCustomer(c *fiber.Ctx) error {
 
 	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", data)
 }
+
+func (h AdminDashboardHandlerStruct) CardPacketPopular(c *fiber.Ctx) error {
+	type CardPacketPopular struct {
+		Total     int64                  `json:"total_sales"`
+		DataGraph map[string]interface{} `json:"data_graph"`
+	}
+	data, err := h.service.CardPacketPopular()
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Failed Get Data Card", nil)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", data)
+}
+
+func (h AdminDashboardHandlerStruct) CardAreaPopular(c *fiber.Ctx) error {
+	data, err := h.service.CardAreaPopular()
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Failed Get Data Card", nil)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", data)
+}
+
+func (h AdminDashboardHandlerStruct) CardReportCash(c *fiber.Ctx) error {
+	data, err := h.service.CardReportCash()
+	if err != nil {
+		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, "Failed Get Data Card", nil)
+	}
+
+	return helpers.ResponseUtils(c, fiber.StatusOK, true, "Success Get Data", data)
+}
