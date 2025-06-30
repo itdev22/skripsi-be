@@ -72,14 +72,14 @@ model customer {
   updatedAt              DateTime
   installation_date      DateTime                 @db.Date
   next_payment_date      DateTime                 @db.Date
-  areas                  areas                    @relation(fields: [area_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_1")
-  company                company                  @relation(fields: [company_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_2")
-  products               products                 @relation(fields: [product_id], references: [id], onUpdate: Restrict, map: "customer_ibfk_3")
+  areas                  areas                    @relation(fields: [area_id], references: [id], onDelete: Cascade, map: "customer_ibfk_1")
+  company                company                  @relation(fields: [company_id], references: [id], onDelete: Cascade, map: "customer_ibfk_2")
+  products               products                 @relation(fields: [product_id], references: [id], onDelete: Cascade, map: "customer_ibfk_3")
   customer_installations customer_installations[]
 
-  @@index([area_id], map: "area_id")
   @@index([company_id], map: "company_id")
-  @@index([product_id], map: "product_id")
+  @@index([area_id], map: "customer_ibfk_1")
+  @@index([product_id], map: "customer_ibfk_3")
 }
 
 model device {
@@ -161,33 +161,36 @@ model customer_installations {
   date          DateTime  @db.Date
   createdAt     DateTime  @default(now())
   updatedAt     DateTime
-  customer      customer? @relation(fields: [customer_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "customer_installations_ibfk_1")
-  users         users     @relation(fields: [technician_id], references: [id], onUpdate: Restrict, map: "customer_installations_ibfk_2")
+  customer      customer? @relation(fields: [customer_id], references: [id], onDelete: Cascade, map: "customer_installations_ibfk_1")
+  users         users     @relation(fields: [technician_id], references: [id], onDelete: Cascade, map: "customer_installations_ibfk_2")
 
   @@index([customer_id], map: "archive_installation_ibfk_1")
-  @@index([technician_id], map: "technician_id")
+  @@index([technician_id], map: "customer_installations_ibfk_2")
 }
 
 model invoices {
-  id          String          @id
-  amount      Int
-  link        String          @db.Text
-  status      invoices_status
-  customer_id String
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime
+  id            String          @id
+  amount        Int
+  link          String          @db.Text
+  status        invoices_status
+  customer_id   String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime
+  invoice_items invoice_items[]
 }
 
 model invoice_items {
   id          String   @id
   name        String
-  qty         String
+  qty         Int
+  total       Int
   price       Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime
   invoices_id String
+  invoices    invoices @relation(fields: [invoices_id], references: [id], onDelete: Cascade, map: "invoice_items_ibfk_1")
 
-  @@index([invoices_id], map: "invoice_items_invoicesId_fkey")
+  @@index([invoices_id], map: "invoice_items_ibfk_1")
 }
 
 model transactions {
@@ -198,6 +201,9 @@ model transactions {
   date        DateTime
   description String
   amount      BigInt
+  category    String
+  method      String
+  invoice_id  String?
   createdAt   DateTime                 @default(now())
   updatedAt   DateTime
 
