@@ -28,7 +28,8 @@ func (s WebhookMidtransServiceStruct) GetAllWebhookMidtransService() ([]entities
 }
 
 func (s WebhookMidtransServiceStruct) ReceivedWebhookMidtransService(request *MidtransNotification) error {
-	_, err := s.repository.UpdatePaidWebhookMidtransRepository(request.OrderID)
+
+	_, err := s.repository.UpdatePaidWebhookMidtransRepository(request)
 	if err != nil {
 		return err
 	}

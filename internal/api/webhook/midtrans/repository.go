@@ -9,7 +9,7 @@ import (
 
 type WebhookMidtransRepositoryInterface interface {
 	FindWebhookMidtransRepository() ([]entities.Areas, error)
-	UpdatePaidWebhookMidtransRepository(id string) (entities.Invoice, error)
+	UpdatePaidWebhookMidtransRepository(request *MidtransNotification) (entities.Invoice, error)
 	CreateWebhookMidtransRepository(request CreateWebhookMidtransRequest) (entities.Transaction, error)
 }
 
@@ -32,13 +32,13 @@ func (r WebhookMidtransRepositoryStruct) FindWebhookMidtransRepository() ([]enti
 	return areas, nil
 }
 
-func (r WebhookMidtransRepositoryStruct) UpdatePaidWebhookMidtransRepository(id string) (entities.Invoice, error) {
+func (r WebhookMidtransRepositoryStruct) UpdatePaidWebhookMidtransRepository(request MidtransNotification) (entities.Invoice, error) {
 	invoice := entities.Invoice{}
-	tx := r.db.First(&invoice, "id = ?", id)
+	tx := r.db.First(&invoice, "id = ?", request.OrderID)
 	if tx.Error != nil {
 		return invoice, tx.Error
 	}
-	invoice.Status = entities.InvoiceStatusPaid
+	invoice.Status = entities.InvoiceStatus(request.TransactionStatus)
 	tx = r.db.Save(&invoice)
 	if tx.Error != nil {
 		return invoice, tx.Error

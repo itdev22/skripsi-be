@@ -372,6 +372,7 @@ const (
 	InvoiceStatusPaid    InvoiceStatus = "paid"
 	InvoiceStatusUnpaid  InvoiceStatus = "unpaid"
 	InvoiceStatusPending InvoiceStatus = "pending"
+	InvoiceStatusExpire  InvoiceStatus = "expire"
 )
 
 type Invoice struct {
