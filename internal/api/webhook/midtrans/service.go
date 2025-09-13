@@ -7,7 +7,7 @@ import (
 
 type WebhookMidtransServiceInterface interface {
 	GetAllWebhookMidtransService() ([]entities.Areas, error)
-	ReceivedWebhookMidtransService(request *MidtransNotification) error
+	ReceivedWebhookMidtransService(request MidtransNotification) error
 }
 type WebhookMidtransServiceStruct struct {
 	repository WebhookMidtransRepositoryInterface
@@ -27,7 +27,7 @@ func (s WebhookMidtransServiceStruct) GetAllWebhookMidtransService() ([]entities
 	return areas, err
 }
 
-func (s WebhookMidtransServiceStruct) ReceivedWebhookMidtransService(request *MidtransNotification) error {
+func (s WebhookMidtransServiceStruct) ReceivedWebhookMidtransService(request MidtransNotification) error {
 
 	_, err := s.repository.UpdatePaidWebhookMidtransRepository(request)
 	if err != nil {

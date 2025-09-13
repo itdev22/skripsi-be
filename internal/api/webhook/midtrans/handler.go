@@ -28,7 +28,7 @@ func (h WebhookMidtransHandlerStruct) ReceivedWebhookMidtransHandler(c *fiber.Ct
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}
 
-	err := h.service.ReceivedWebhookMidtransService(request)
+	err := h.service.ReceivedWebhookMidtransService(*request)
 	if err != nil {
 		return helpers.ResponseUtils(c, fiber.StatusBadRequest, false, err.Error(), nil)
 	}

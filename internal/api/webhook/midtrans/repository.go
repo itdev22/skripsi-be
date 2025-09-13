@@ -9,7 +9,7 @@ import (
 
 type WebhookMidtransRepositoryInterface interface {
 	FindWebhookMidtransRepository() ([]entities.Areas, error)
-	UpdatePaidWebhookMidtransRepository(request *MidtransNotification) (entities.Invoice, error)
+	UpdatePaidWebhookMidtransRepository(request MidtransNotification) (entities.Invoice, error)
 	CreateWebhookMidtransRepository(request CreateWebhookMidtransRequest) (entities.Transaction, error)
 }
 
